@@ -1,0 +1,35 @@
+/*
+@Author: ThemeMascot
+@URL: http://ThemeMascot.com
+
+This is the file where you can add your custom styles to change the look of the
+theme. But don't modify style-main.css file.
+
+*/
+
+/* Your custom css codes start here: */
+.header-nav-wrapper.navbar-scrolltofixed {
+    background: #10783b !important;
+}
+nav#menuzord {
+    background: #10783b !important;
+}
+.actives{
+    background: white;
+    color: #10783b !important;
+}
+.menuzord .menuzord-menu > li.active > a, 
+.menuzord .menuzord-menu > li:hover > a, 
+.menuzord .menuzord-menu ul.dropdown li:hover > a {
+  background: white !important;
+  color: #10783b !important;
+}
+.menuzord-brand img {
+	max-height: 60px;
+}
+.hvr-bounce-to-right:before {
+    background: #10783b !important;
+}
+.hvr-bounce-to-right:hover  {
+    color: #f3f3f3 !important;
+}

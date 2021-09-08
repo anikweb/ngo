@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    BackendController,
+    FrontendController,
+    GeneralSettingController,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('frontend.main');
+// });
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+// Frontend
+
+Route::get('/', [FrontendController::class,'frontend'])->name('frontend');
+// Backend
+Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware('auth');
+Route::resource('generalSetting', GeneralSettingController::class)->middleware('auth');
+require __DIR__.'/auth.php';
