@@ -10,14 +10,14 @@
 <meta name="author" content="Muktir Bondhon Foundation" />
 
 <!-- Page Title -->
-<title> Muktir Bondhon Foundation - Nonprofit, Crowdfunding & Charity HTML5 Template - Nonprofit, Crowdfunding & Charity</title>
+<title> {{ generalSettings()->site_title.' - '.generalSettings()->tagline }}</title>
 
 <!-- Favicon and Touch Icons -->
-<link href="{{ asset('assets/images/favicon.png')}}" rel="shortcut icon" type="image/png">
-<link href="{{ asset('assets/images/apple-touch-icon.png')}}" rel="apple-touch-icon">
-<link href="{{ asset('assets/images/apple-touch-icon-72x72.png')}}" rel="apple-touch-icon" sizes="72x72">
-<link href="{{ asset('assets/images/apple-touch-icon-114x114.png')}}" rel="apple-touch-icon" sizes="114x114">
-<link href="{{ asset('assets/images/apple-touch-icon-144x144.png')}}" rel="apple-touch-icon" sizes="144x144">
+<link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
+<link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="apple-touch-icon">
+<link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="apple-touch-icon" sizes="72x72">
+<link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="apple-touch-icon" sizes="114x114">
+<link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="apple-touch-icon" sizes="144x144">
 
 <!-- Stylesheet -->
 <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
@@ -81,7 +81,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="widget no-border m-0">
-              <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="{{ route('frontend') }}"><img src="{{ asset('assets/images/mbf-logo.png') }}" alt="mbf logo"></a>
+              <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="{{ route('frontend') }}"><img src="{{ asset('images/generalSettings/'.generalSettings()->logo) }}" alt="mbf logo"></a>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-6">

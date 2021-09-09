@@ -31,5 +31,5 @@ use App\Http\Controllers\{
 Route::get('/', [FrontendController::class,'frontend'])->name('frontend');
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware('auth');
-Route::resource('generalSetting', GeneralSettingController::class)->middleware('auth');
+Route::resource('dashboard/generalSetting', GeneralSettingController::class)->middleware('auth');
 require __DIR__.'/auth.php';
