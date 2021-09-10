@@ -3,8 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('role.index') }}">Roles</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Create Role</li>
+            <li class="breadcrumb-item active" aria-current="page">Roles</li>
         </ol>
     </nav>
     <div class="content">
