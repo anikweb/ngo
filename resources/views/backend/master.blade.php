@@ -248,6 +248,41 @@
               </li>
             </ul>
           </li>
+          {{-- Role Management  --}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tasks"></i>
+              <p>
+                Role Management
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('role.create') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Role</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('role.index') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Roles</p>
+                    </a>
+                </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                @csrf
+            </form>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

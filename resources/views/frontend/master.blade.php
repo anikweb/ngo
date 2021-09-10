@@ -98,6 +98,29 @@
                 <li>
                   <a class="text-success" target="_blank" href="contact.html">Contact</a>
                 </li>
+                @auth
+
+                <li class="text-success">|</li>
+                <li>
+                    <a class="text-success" target="_blank" href="{{ route('dashboard') }}">Dashboard</a>
+                </li>
+                <li class="text-success">|</li>
+                <li>
+                    <a class="text-success" href="" target="_blank" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    </form>
+                </li>
+                @else
+                <li class="text-success">|</li>
+                <li>
+                    <a class="text-success" href="{{  route('login' ) }}">Login</a>
+                </li>
+                <li class="text-success">|</li>
+                <li>
+                    <a class="text-success" href="{{ route('register') }}">Register</a>
+                </li>
+                @endauth
               </ul>
             </div>
             <div class="widget no-border clearfix m-0 mt-5">
