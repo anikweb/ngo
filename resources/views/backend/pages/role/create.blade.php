@@ -24,15 +24,21 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Role Name</label>
-                                        <input type="text" name="role_name" class="form-control" placeholder="Enter Role Name" >
+                                        <input type="text" name="role_name" value="{{ old('role_name') }}" class="form-control @error('role_name') is-invalid @enderror" placeholder="Enter Role Name" >
+                                        @error('role_name')
+                                            <div class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         @foreach ($permissions as $permission)
-                                            <input name="permission_name[]" value="{{ $permission->name }}" id="permission{{ $permission->id }}" type="checkbox">
+                                            <input name="permission_name[]" value="{{ $permission->name }}" id="permission{{ $permission->id }}" type="checkbox" class="@error('permission_name[]') is-invalid @enderror">
                                             <label for="permission{{ $permission->id }}">{{ Str::title($permission->name) }}</label>
-                                        @endforeach
+                                            @endforeach
+                                            @error('permission_name[]')
+                                                <div class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</div>
+                                            @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">

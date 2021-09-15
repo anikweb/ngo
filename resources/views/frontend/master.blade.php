@@ -112,14 +112,16 @@
                     </form>
                 </li>
                 @else
-                <li class="text-success">|</li>
-                <li>
-                    <a class="text-success" href="{{  route('login' ) }}">Login</a>
-                </li>
-                <li class="text-success">|</li>
-                <li>
-                    <a class="text-success" href="{{ route('register') }}">Register</a>
-                </li>
+                    <li class="text-success">|</li>
+                    <li>
+                        <a class="text-success" href="{{  route('login' ) }}">Login</a>
+                    </li>
+                    @if (generalSettings()->membership == 2)
+                        <li class="text-success">|</li>
+                        <li>
+                            <a class="text-success" href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endif
                 @endauth
               </ul>
             </div>

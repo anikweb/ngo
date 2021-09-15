@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ generalSettings()->site_title }} | @if(Route::is('generalSetting.index')) General Settings @endif</title>
+  <title> @if(Route::is('dashboard')) Dashboard @elseif(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @endif | {{ generalSettings()->site_title }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -192,7 +192,14 @@
           <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">
+              <p>{{ Auth::user()->name }}</p>
+              <p>
+                  @foreach (Auth::user()->roles() as $item)
+                    <p>{{ $item }}</p>
+                  @endforeach
+              </p>
+        </a>
         </div>
       </div>
 
@@ -231,47 +238,57 @@
             </a>
           </li>
           {{-- dropdown --}}
-          <li class="nav-item @if(Route::is('generalSetting.index')) menu-open @endif">
-            <a href="#" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
-              <i class="nav-icon fas fa-wrench"></i>
-              <p>
-                Settings
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('generalSetting.index') }}" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
+          @if (auth()->user()->can('general settings'))
+            <li class="nav-item @if(Route::is('generalSetting.index')) menu-open @endif">
+                <a href="#" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
+                <i class="nav-icon fas fa-wrench"></i>
+                <p>
+                    Settings
+                    <i class="fas fa-angle-left right"></i>
+                </p>
                 </a>
-              </li>
-            </ul>
-          </li>
+                <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('generalSetting.index') }}" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>General</p>
+                    </a>
+                </li>
+                </ul>
+            </li>
+          @endif
           {{-- Role Management  --}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tasks"></i>
-              <p>
+          @if (auth()->user()->can('role management'))
+            <li class="nav-item @if(Route::is('role.index')||Route::is('role.create')||Route::is('role.edit')||Route::is('role.assign.users')) menu-open @endif">
+            <a href="#" class="nav-link @if(Route::is('role.index')||Route::is('role.create')||Route::is('role.edit')||Route::is('role.assign.users')) active @endif">
+                <i class="nav-icon fas fa-tasks"></i>
+                <p>
                 Role Management
                 <i class="fas fa-angle-left right"></i>
-              </p>
+                </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('role.create') }}" class="nav-link">
+                    <a href="{{ route('role.create') }}" class="nav-link @if(Route::is('role.create')) active @endif">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Role</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('role.index') }}" class="nav-link">
+                    <a href="{{ route('role.index') }}" class="nav-link @if(Route::is('role.index')||Route::is('role.edit')) active @endif">
                     <i class="far fa-circle nav-icon"></i>
                     <p>View Roles</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('role.assign.users') }}" class="nav-link @if(Route::is('role.assign.users')) active @endif">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Assign Users</p>
+                    </a>
+                </li>
             </ul>
-          </li>
+            </li>
+          @endif
           <li class="nav-item">
             <a href="" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="nav-icon fas fa-sign-out-alt"></i>

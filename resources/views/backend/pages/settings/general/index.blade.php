@@ -77,7 +77,7 @@
                                             <tr>
                                                 <td  class="font-weight-bold">Membership</td>
                                                 <td>
-                                                    <input type="checkbox" name="membership" id="membership" value="2">
+                                                    <input type="checkbox" name="membership" id="membership" value="2" @if($gSettings->membership == 2) checked @endif >
                                                     <label for="membership">Anyone can register</label>
                                                 </td>
                                             </tr>
@@ -85,8 +85,10 @@
                                                 <td  class="font-weight-bold">New User Default Role</td>
                                                 <td>
                                                     <select name="new_user_role" id="new_user_role" class="form-control @error('new_user_role') is-invalid @enderror">
-                                                        <option value="subscriber">Subscriber</option>
-                                                        <option value="editor">Editor</option>
+                                                        <option value="">-Select-</option>
+                                                        @foreach ($roles as $role)
+                                                            <option @if($role->name ==$gSettings->new_user_role ) selected @endif value="{{$role->name}}">{{$role->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                     @error('new_user_role')
                                                         <div class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</div>
