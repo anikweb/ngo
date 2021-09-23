@@ -24,7 +24,7 @@
                                         <th class="text-center">Role Name</th>
                                         <th class="text-center">Created</th>
                                         <th class="text-center">Last Update</th>
-                                        <th class="text-center" colspan="3">Action</th>
+                                        <th class="text-center" colspan="2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,9 +39,6 @@
                                             </td>
                                             <td class="text-center">
                                                 <a href="{{ route('role.edit',$role->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
-                                            </td>
-                                            <td class="text-left">
-                                                <a href="{{ route('role.destroy',$role->id) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Remove</a>
                                             </td>
                                         </tr>
                                     @empty

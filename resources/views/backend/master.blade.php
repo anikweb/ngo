@@ -230,14 +230,24 @@
           </li>
           {{-- single  --}}
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a target="_blank" href="{{ route('frontend') }}" class="nav-link">
+              <i class="nav-icon fas fa-eye"></i>
               <p>
-                Widgets
+                View Website
               </p>
             </a>
           </li>
           {{-- dropdown --}}
+          @if (auth()->user()->can('contact and basic info'))
+            <li class="nav-item">
+                <a href="{{ route('contact_and_basic_info.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-phone"></i>
+                    <p>
+                        Contact & Basic Info
+                    </p>
+                </a>
+            </li>
+          @endif
           @if (auth()->user()->can('general settings'))
             <li class="nav-item @if(Route::is('generalSetting.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
