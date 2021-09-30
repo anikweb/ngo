@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- csrf token  --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title> @if(Route::is('dashboard')) Dashboard @elseif(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @endif | {{ generalSettings()->site_title }}</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -28,6 +31,7 @@
     <link rel="shortcut icon" href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" type="image/x-icon">
     {{-- toastr css  --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
     @yield('internal_css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

@@ -85,4 +85,15 @@ class ContactAndBasicInfoController extends Controller
     {
         //
     }
+    public function getSocialUrl($platform_id)
+    {
+        $social = SocialPlatform::find($platform_id)->url;
+        if($social){
+            $socialURl = "https://".$social."/";
+        }else{
+            $socialURl ="";
+        }
+        return response()->json($socialURl);
+    }
+
 }
