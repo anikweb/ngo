@@ -1,56 +1,72 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+@extends('frontend.master')
+@section('content')
+    <section class="inner-header divider parallax layer-overlay overlay-dark-6" data-bg-img="http://placehold.it/1920x1280" style="background-image: url(&quot;http://placehold.it/1920x1280&quot;); background-position: 50% 59px;">
+        <div class="container pt-60 pb-60">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="font-28 text-white">My Account</h3>
+                        <ol class="breadcrumb text-center text-black mt-10">
+                            <li><a href="{{ route('frontend') }}">Home</a></li>
+                            <li class="active text-theme-colored">Login</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <h4 class="text-gray mt-0 pt-5"> Login</h4>
+                    <hr>
+                    {{--  <p>Lorem ipsum dolor sit amet, consectetur elit.</p>  --}}
+                    <form name="login-form" class="clearfix"  action="{{ route('login') }}" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" type="text">
+                                @error('email')
+                                    <div class="text-danger">
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="password">Password</label>
+                                <input id="password" name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror" type="text">
+                                @error('password')
+                                    <div class="text-danger">
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="checkbox pull-left mt-15">
+                            <label for="remember">
+                            <input id="remember" name="remember" type="checkbox">
+                            Remember me </label>
+                        </div>
+                        <div class="form-group pull-right mt-10">
+                            <button type="submit" class="btn btn-dark btn-sm">Login</button>
+                        </div>
+                        <div class="clear text-center pt-10">
+                            <a class="text-theme-colored font-weight-600 font-12" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                        </div>
+                        <div class="clear text-center pt-10">
+                            <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Login with facebook</a>
+                            <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Login with twitter</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        </div>
+    </section>
+@endsection

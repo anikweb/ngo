@@ -69,7 +69,7 @@
   <!-- preloader -->
   <div id="preloader">
     <div id="spinner">
-      <img class="floating" src="{{ asset('assets/images/preloaders/MBF.png') }}" alt="">
+      <img class="floating" width="250px" src="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" alt="{{ generalSettings()->site_title }}">
       <h5 class="line-height-50 font-18 ml-15">Loading...</h5>
     </div>
     <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
@@ -208,8 +208,8 @@
       <div class="row border-bottom-black">
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <img class="mt-10 mb-20" alt="" src="{{ asset('assets/images/mbf-logo.png') }}">
-            <p>203, Envato Labs, Behind Alis Steet, Melbourne, Australia.</p>
+            <img class="mt-10 mb-20" alt="{{ generalSettings()->site_title }}" src="{{ asset('images/generalSettings/'.generalSettings()->logo) }}">
+            <p>{{ generalSettings()->tagline }}</p>
             <ul class="list-inline mt-5">
               <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-gray" href="#">123-456-789</a> </li>
               <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-gray" href="#">contact@yourdomain.com</a> </li>
@@ -344,7 +344,7 @@
       <div class="container pt-15 pb-10">
         <div class="row">
           <div class="col-md-6">
-            <p class="font-11 text-black-777 m-0">Copyright &copy;2020 Muktir Bondhon Foundation. All Rights Reserved</p>
+            <p class="font-11 text-black-777 m-0">Copyright &copy; 2017-{{ date('y') }} Muktir Bondhon Foundation. All Rights Reserved</p>
           </div>
           <div class="col-md-6 text-right">
             <div class="widget no-border m-0">
