@@ -65,6 +65,7 @@
                             <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Login with twitter</a>
                         </div>
                     </form>
+                    <a href="{{ route('register') }}">register </a>
                 </div>
             </div>
         </div>

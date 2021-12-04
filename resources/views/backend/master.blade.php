@@ -196,6 +196,7 @@
           <img src="{{ asset('backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
+        @auth
           <a href="#" class="d-block">
               <p>{{ Auth::user()->name }}</p>
               <p>
@@ -203,7 +204,9 @@
                     <p>{{ $item }}</p>
                   @endforeach
               </p>
-        </a>
+          </a>
+
+        @endauth
         </div>
       </div>
 

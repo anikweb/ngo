@@ -21,6 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        
         if(generalSettings()->membership == 2){
             return view('auth.register');
         }else{
