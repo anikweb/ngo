@@ -67,13 +67,13 @@
 <body class="">
 <div id="wrapper" class="clearfix">
   <!-- preloader -->
-  <div id="preloader">
-    <div id="spinner">
-      <img class="floating" width="250px" src="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" alt="{{ generalSettings()->site_title }}">
-      <h5 class="line-height-50 font-18 ml-15">Loading...</h5>
-    </div>
-    <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
-  </div>
+    {{-- <div id="preloader">
+        <div id="spinner">
+        <img class="floating" width="250px" src="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" alt="{{ generalSettings()->site_title }}">
+        <h5 class="line-height-50 font-18 ml-15">Loading...</h5>
+        </div>
+        <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
+    </div> --}}
   <!-- Header -->
   <header id="header" class="header">
     <div class="header-top p-0 bg-light xs-text-center" data-bg-img="{{ asset('assets/images/footer-bg.png') }}">

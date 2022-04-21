@@ -58,7 +58,7 @@ class ContactAndBasicInfoController extends Controller
      */
     public function show(ContactAndBasicInfo $contactAndBasicInfo)
     {
-        //
+        // return 'he';
     }
 
     /**
@@ -69,7 +69,9 @@ class ContactAndBasicInfoController extends Controller
      */
     public function edit(ContactAndBasicInfo $contactAndBasicInfo)
     {
-        //
+        return view('backend.pages.contact_and_basic_info.edit',[
+            'contactInfo' =>$contactAndBasicInfo,
+        ]);
     }
 
     /**
@@ -81,7 +83,13 @@ class ContactAndBasicInfoController extends Controller
      */
     public function update(Request $request, ContactAndBasicInfo $contactAndBasicInfo)
     {
-        //
+        // return $contactAndBasicInfo;
+        $request->validate([
+            'username' => 'required'
+        ]);
+        $contactAndBasicInfo->username = $request->username;
+        $contactAndBasicInfo->save();
+        return back()->with('success','Social link updated!');
     }
 
     /**
@@ -92,7 +100,8 @@ class ContactAndBasicInfoController extends Controller
      */
     public function destroy(ContactAndBasicInfo $contactAndBasicInfo)
     {
-        //
+        $contactAndBasicInfo->delete();
+        return redirect()->route('contact_and_basic_info.index')->with('success','Social link delete successfull!');
     }
     public function getSocialUrl($platform_id)
     {

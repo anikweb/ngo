@@ -89,8 +89,12 @@
                                             <td>@if($contact->platform->name =='whatsapp') <a href="tel:{{$contact->username}}">{{$contact->username}}</a> @else <a target="_blank" href="https://{{ $contact->platform->url }}/{{ $contact->username }}">https://{{ $contact->platform->url }}/{{ $contact->username }}</a> @endif </td>
                                             <td>
                                                 @if($contact->platform->name =='whatsapp') <a class="btn btn-primary" href="tel:{{$contact->username}}"><i class="fa fa-phone"></i></a> @else <a target="_blank" class="btn btn-primary" href="https://{{ $contact->platform->url }}/{{ $contact->username }}"><i class="fa fa-link"></i></a> @endif
-                                                <a href="#" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                                                <a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('contact_and_basic_info.edit',$contact->id) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                <form action="{{ route('contact_and_basic_info.destroy',$contact->id) }}" method="POST">
+                                                    @csrf
+                                                    @method("DELETE")
+                                                    <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
 
                                             </td>
                                         </tr>
@@ -125,7 +129,12 @@
                         type:'GET',
                         url : 'get/social/url/'+platform_value,
                         success:function(res){
-                            $('#socialURL').html(res);
+                            if(res){
+                                $('#socialURL').html(res);
+                            }else{
+                                $('#socialURL').html('+88');
+
+                            }
                         }
                     });
                 }else{
