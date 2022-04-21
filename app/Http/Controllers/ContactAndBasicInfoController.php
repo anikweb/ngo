@@ -15,10 +15,14 @@ class ContactAndBasicInfoController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.contact_and_basic_info.index',[
-            'socialPlatforms' => SocialPlatform::orderBy('name','asc')->get(),
-            'contact_and_basic_info' => ContactAndBasicInfo::latest()->paginate(5),
-        ]);
+        if(auth()->user()->can('contact and basic info')){
+            return view('backend.pages.contact_and_basic_info.index',[
+                'socialPlatforms' => SocialPlatform::orderBy('name','asc')->get(),
+                'contact_and_basic_info' => ContactAndBasicInfo::latest()->paginate(5),
+            ]);
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -39,15 +43,19 @@ class ContactAndBasicInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'platform' => "required",
-            'username' => 'required',
-        ]);
-        $contactAndBasicInfo = new ContactAndBasicInfo();
-        $contactAndBasicInfo->platform_id =  $request->platform;
-        $contactAndBasicInfo->username =  $request->username;
-        $contactAndBasicInfo->save();
-        return back()->with('success','New Contact Added!');
+        if(auth()->user()->can('contact and basic info')){
+            $request->validate([
+                'platform' => "required",
+                'username' => 'required',
+            ]);
+            $contactAndBasicInfo = new ContactAndBasicInfo();
+            $contactAndBasicInfo->platform_id =  $request->platform;
+            $contactAndBasicInfo->username =  $request->username;
+            $contactAndBasicInfo->save();
+            return back()->with('success','New Contact Added!');
+        }else{
+            abort(404);
+        }
     }
 
     /**

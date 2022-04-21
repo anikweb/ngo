@@ -6,7 +6,7 @@
     {{-- csrf token  --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title> @if(Route::is('dashboard')) Dashboard @elseif(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @endif | {{ generalSettings()->site_title }}</title>
+  <title> @if(Route::is('dashboard')) Dashboard @elseif(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @endif | {{ generalSettings()->site_title }}</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
