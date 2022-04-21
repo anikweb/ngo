@@ -184,8 +184,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('dashboard') }}" class="brand-link">
-      <img src="{{ asset('backend/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <img src="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" alt="{{ generalSettings()->site_title }}" class="brand-image img-circle">
+      <span class="brand-text font-weight-light">{{ Str::limit(generalSettings()->site_title,'18', '..') }}</span>
     </a>
 
     <!-- Sidebar -->

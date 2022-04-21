@@ -17,6 +17,7 @@ class ContactAndBasicInfoController extends Controller
     {
         return view('backend.pages.contact_and_basic_info.index',[
             'socialPlatforms' => SocialPlatform::orderBy('name','asc')->get(),
+            'contact_and_basic_info' => ContactAndBasicInfo::latest()->paginate(5),
         ]);
     }
 
@@ -38,7 +39,15 @@ class ContactAndBasicInfoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'platform' => "required",
+            'username' => 'required',
+        ]);
+        $contactAndBasicInfo = new ContactAndBasicInfo();
+        $contactAndBasicInfo->platform_id =  $request->platform;
+        $contactAndBasicInfo->username =  $request->username;
+        $contactAndBasicInfo->save();
+        return back()->with('success','New Contact Added!');
     }
 
     /**

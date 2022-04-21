@@ -15,7 +15,8 @@ class CreateContactAndBasicInfosTable extends Migration
     {
         Schema::create('contact_and_basic_infos', function (Blueprint $table) {
             $table->id();
-
+            $table->foreignId('platform_id');
+            $table->string('username');
             $table->timestamps();
         });
     }

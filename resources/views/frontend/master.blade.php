@@ -328,13 +328,14 @@
         <div class="col-md-3">
           <div class="widget dark">
             <h5 class="widget-title mb-10">Connect With Us</h5>
-            <ul class="styled-icons icon-dark icon-theme-colored icon-circled icon-sm">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-skype"></i></a></li>
-              <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-              <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <ul class="styled-icons icon-dark icon-theme-colored icon-circled">
+                @foreach (contactInfo() as $item)
+                    @if ($item->platform->name == 'whatsapp')
+                    <li><a href="tel:{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                    @else
+                        <li><a href="https://{{ $item->platform->url }}/{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                    @endif
+                @endforeach
             </ul>
           </div>
         </div>
