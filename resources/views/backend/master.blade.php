@@ -6,7 +6,7 @@
     {{-- csrf token  --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title> @if(Route::is('dashboard')) Dashboard @elseif(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @endif | {{ generalSettings()->site_title }}</title>
+  <title> @if(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @elseif(Route::is('about-settings.index')) About Settings @endif @if(Route::is('dashboard')) @else | @endif Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -26,8 +26,6 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('backend/plugins/daterangepicker/daterangepicker.css') }}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ asset('backend/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" type="image/x-icon">
     {{-- toastr css  --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
@@ -255,8 +253,27 @@
                 </a>
             </li>
           @endif
-          @if (auth()->user()->can('general settings'))
-            <li class="nav-item @if(Route::is('generalSetting.index')) menu-open @endif">
+          {{-- @if (auth()->user()->can('contact and basic info')) --}}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        Team
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('advisors-settings.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Advisors</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+          {{-- @endif --}}
+        @if (auth()->user()->can('general settings'))
+            <li class="nav-item @if(Route::is('generalSetting.index')||Route::is('about-settings.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
                 <i class="nav-icon fas fa-wrench"></i>
                 <p>
@@ -265,12 +282,20 @@
                 </p>
                 </a>
                 <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('generalSetting.index') }}" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>General</p>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a href="{{ route('generalSetting.index') }}" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>General</p>
+                        </a>
+                    </li>
+                    @if (auth()->user()->can('about'))
+                        <li class="nav-item">
+                            <a href="{{ route('about-settings.index') }}" class="nav-link @if(Route::is('about-settings.index')) active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>About</p>
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </li>
           @endif
@@ -371,8 +396,6 @@
 <script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Summernote -->
-<script src="{{ asset('backend/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- overlayScrollbars -->
 <script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
@@ -381,7 +404,11 @@
 <script src="{{ asset('backend/dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('backend/dist/js/pages/dashboard.js') }}"></script>
+{{-- tostr --}}
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+{{-- ckeditor --}}
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
 @yield('footer_js')
 </body>
 </html>

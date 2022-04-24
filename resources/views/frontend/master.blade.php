@@ -57,6 +57,7 @@
 <!-- Revolution Slider 5.x SCRIPTS -->
 <script src="{{ asset('assets/js/revolution-slider/js/jquery.themepunch.tools.min.js')}}"></script>
 <script src="{{ asset('assets/js/revolution-slider/js/jquery.themepunch.revolution.min.js')}}"></script>
+@yield('internal_css')
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -165,7 +166,6 @@
                   <li><a href="event-calendar.html">Event Calendar</a></li>
                 </ul>
               </li>
-              <li><a class="text-white mr-5" href="cause.html">Causes</a></li>
               <li><a class="text-white mr-5" href="#">Donations</a>
                 <ul class="dropdown">
                   <li><a href="donate.html">Donate Now</a></li>
@@ -184,8 +184,10 @@
                   <li><a href="publications.html">Publications</a></li>
                   <li><a href="press-releases.html">Press Releases</a></li>
                   <li><a href="gallery.html">Gallery</a></li>
-                </ul></li>
+                </ul>
+            </li>
               <li><a class="text-white mr-5" href="blog.html">Blog</a></li>
+              <li><a class="text-white mr-5" href="{{ route('about') }}">About us</a></li>
             </ul>
             <ul class="list-inline pull-right flip hidden-sm hidden-xs">
               <li>
