@@ -23,29 +23,43 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="name">Name <span class="text-danger">*</span></label>
-                                                <input type="text" name="name" id="name" class="form-control" placeholder="Enter name of advisor">
+                                                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name of advisor">
+                                                @error('name')
+                                                    <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="designation">Designation <span class="text-danger">*</span></label>
-                                                <input type="text" name="designation" id="designation" class="form-control" placeholder="Enter designation">
+                                                <input type="text" name="designation" id="designation" class="form-control @error('designation') is-invalid @enderror" placeholder="Enter designation">
+                                                @error('designation')
+                                                    <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="email">E-mail <span class="text-danger">*</span></label>
-                                                <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+                                                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email">
+                                                @error('email')
+                                                    <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="card">
+                                    <div class="card @error('image') border border-danger @enderror ">
                                         <div class="card-body text-center">
                                             <img class="card-img-top rounded" id="image_preview" src="{{ asset('images/placeholder/image.jpg') }}" alt="">
                                             <label for="img" class="btn btn-primary mt-2"><i class="fa fa-file-image"></i> Choose Image </label>
                                             <input type="file" name="image" style="display: none" id="img" onchange="document.getElementById('image_preview').src = window.URL.createObjectURL(this.files[0])">
+                                            @error('image')
+                                                <div>
+                                                    <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

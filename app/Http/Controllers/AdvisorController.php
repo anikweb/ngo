@@ -39,10 +39,13 @@ class AdvisorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+        ]);
         $advisor = new advisor;
         $advisor->name = $request->name;
         $advisor->designation = $request->designation;
-        $advisor->email = $request->name;
+        $advisor->email = $request->email;
         $advisor->save();
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -52,7 +55,7 @@ class AdvisorController extends Controller
             $advisor->image = $newName;
             $advisor->save();
         }
-        return redirect()->route('advisors-settings.index');
+        return redirect()->route('advisors-settings.index')->with('success','Advisor added!');
     }
 
     /**
@@ -95,8 +98,10 @@ class AdvisorController extends Controller
      * @param  \App\Models\advisor  $advisor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(advisor $advisor)
+    public function destroy($id)
     {
-        //
+        $advisor = advisor::findOrFail($id);
+        $advisor->delete();
+        return back()->with('success','Advisor deleted!');
     }
 }

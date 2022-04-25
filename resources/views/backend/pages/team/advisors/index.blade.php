@@ -35,14 +35,22 @@
                                         @foreach ($advisors as $advisor)
                                             <tr>
                                                 <td>{{ $advisors->firstItem() + $loop->index }}</td>
-                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/advisors/'.$advisor->image) }}" alt=""></td>
+                                                @if ($advisor->image)
+                                                    <td><img class="rounded" style="width: 150px" src="{{ asset('images/advisors/'.$advisor->image) }}" alt="{{ $advisor->name }}"></td>
+                                                @else
+                                                    <td><img class="rounded" style="width: 150px" src="{{ asset('images/placeholder/image.jpg') }}" alt=""></td>
+                                                @endif
                                                 <td>{{ $advisor->name }}</td>
                                                 <td>{{ $advisor->designation }}</td>
                                                 <td>{{ $advisor->email }}</td>
                                                 <td>Social Links</td>
                                                 <td>
                                                     <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                    <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                    <button data-id="{{ $advisor->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
+                                                    <form id="trashForm-{{ $advisor->id }}" action="{{ route('advisors-settings.destroy',$advisor->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -60,10 +68,35 @@
 @endsection
 @section('footer_js')
 <script>
-    @if(session('success'))
-        toastr["success"]("{{ session('success') }}")
-    @elseif(session('error'))
-        toastr["error"]("{{ session('error') }}")
+     @if (session('success'))
+            toastr.success('{{ session("success") }}','Success')
     @endif
+    @if (session('error'))
+        toastr.error('{{ session("error") }}','Failed')
+    @endif
+    $('.trash-btn').click(function(){
+        var advisor_id = $(this).attr('data-id');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                Swal.fire(
+                'Deleted!',
+                'Advisor has been deleted.',
+                'success'
+                )
+                setTimeout(function() {
+                    $('#trashForm-'+advisor_id).submit();
+                }, 1000);
+            }
+        })
+    });
 </script>
 @endsection

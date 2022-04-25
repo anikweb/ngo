@@ -408,6 +408,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 {{-- ckeditor --}}
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 @yield('footer_js')
 </body>
