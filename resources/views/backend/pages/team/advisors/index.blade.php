@@ -31,29 +31,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                        @foreach ($advisors as $advisor)
-                                            <tr>
-                                                <td>{{ $advisors->firstItem() + $loop->index }}</td>
-                                                @if ($advisor->image)
-                                                    <td><img class="rounded" style="width: 150px" src="{{ asset('images/advisors/'.$advisor->image) }}" alt="{{ $advisor->name }}"></td>
-                                                @else
-                                                    <td><img class="rounded" style="width: 150px" src="{{ asset('images/placeholder/image.jpg') }}" alt=""></td>
-                                                @endif
-                                                <td>{{ $advisor->name }}</td>
-                                                <td>{{ $advisor->designation }}</td>
-                                                <td>{{ $advisor->email }}</td>
-                                                <td>Social Links</td>
-                                                <td>
-                                                    <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                    <button data-id="{{ $advisor->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
-                                                    <form id="trashForm-{{ $advisor->id }}" action="{{ route('advisors-settings.destroy',$advisor->id) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                    @forelse ($advisors as $advisor)
+                                        <tr>
+                                            <td>{{ $advisors->firstItem() + $loop->index }}</td>
+                                            @if ($advisor->image)
+                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/advisors/'.$advisor->image) }}" alt="{{ $advisor->name }}"></td>
+                                            @else
+                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/placeholder/image.jpg') }}" alt=""></td>
+                                            @endif
+                                            <td>{{ $advisor->name }}</td>
+                                            <td>{{ $advisor->designation }}</td>
+                                            <td>{{ $advisor->email }}</td>
+                                            <td class="text-left">
+                                                <ul>
+                                                    @foreach ($advisor->advisorSocial as $item)
+                                                    <li>{{ $item->platform->name.'/'.$item->username }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <a href="{{route('advisors-settings.edit',$advisor->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <button data-id="{{ $advisor->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
+                                                <form id="trashForm-{{ $advisor->id }}" action="{{ route('advisors-settings.destroy',$advisor->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7"><i class="fa fa-exclamation-circle"></i> No data to show</td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             <div>

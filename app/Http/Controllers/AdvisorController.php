@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\advisor;
+use App\Models\AdvisorSocial;
+use App\Models\SocialPlatform;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+
 
 class AdvisorController extends Controller
 {
@@ -28,7 +31,9 @@ class AdvisorController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.team.advisors.create');
+        return view('backend.pages.team.advisors.create',[
+            'socialPlatforms' => SocialPlatform::orderBy('name','asc')->get(),
+        ]);
     }
 
     /**
@@ -39,6 +44,9 @@ class AdvisorController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
         $request->validate([
             'name' => 'required|string',
         ]);
@@ -54,6 +62,17 @@ class AdvisorController extends Controller
             Image::make($image)->save($destination);
             $advisor->image = $newName;
             $advisor->save();
+        }
+        if($request->username[0] != null){
+            foreach ($request->socialPlatform as $key => $socialPlatform) {
+                if($request->username[$key]){
+                    $advisorSocial = new AdvisorSocial;
+                    $advisorSocial->advisor_id = $advisor->id;
+                    $advisorSocial->platform_id = $socialPlatform;
+                    $advisorSocial->username = $request->username[$key];
+                    $advisorSocial->save();
+                }
+            }
         }
         return redirect()->route('advisors-settings.index')->with('success','Advisor added!');
     }
@@ -75,9 +94,12 @@ class AdvisorController extends Controller
      * @param  \App\Models\advisor  $advisor
      * @return \Illuminate\Http\Response
      */
-    public function edit(advisor $advisor)
+    public function edit($id)
     {
-        //
+
+        return view('backend.pages.team.advisors.edit',[
+            'advisor' => advisor::findOrFail($id),
+        ]);
     }
 
     /**
@@ -87,9 +109,35 @@ class AdvisorController extends Controller
      * @param  \App\Models\advisor  $advisor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, advisor $advisor)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => "required|string",
+        ]);
+        $advisor = advisor::findOrFail($request->advisor_id);
+        $advisor->name = $request->name;
+        $advisor->designation = $request->designation;
+        $advisor->email = $request->email;
+        $advisor->save();
+        if($request->hasFile('image')){
+            // return 'hello';
+            if($advisor->image){
+                $oldImage = public_path('images/advisors/'.$advisor->image);
+                if(file_exists($oldImage)){
+                    unlink($oldImage);
+                    // return 'aschi';
+                }
+            }
+            $image = $request->file('image');
+            // return $image;
+            $newName = Str::slug($advisor->name).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
+            $destination = public_path('images/advisors/'.$newName);
+            // return 'hello';
+            Image::make($image)->save($destination);
+            $advisor->image = $newName;
+            $advisor->save();
+        }
+        return redirect()->route('advisors-settings.index')->with('success','Advisor Updated!');
     }
 
     /**

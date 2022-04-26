@@ -12,4 +12,7 @@ class SocialPlatform extends Model
     public function contactInfo(){
         return $this->hasMany(ContactAndBasicInfo::class,'platform_id');
     }
+    public function advisorSocial(){
+        return $this->hasMany(AdvisorSocial::class,'platform_id');
+    }
 }
