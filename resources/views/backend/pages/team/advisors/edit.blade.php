@@ -49,6 +49,48 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="multi-field-wrapper">
+                                                <div class="multi-fields">
+                                                    <div class="multi-field my-2">
+                                                        @forelse ($advisor->advisorSocial as $advisorSocial)
+                                                        <div class="row multi-field-r-item my-2">
+                                                            <div class="col-md-12 socialItem  input-group">
+                                                                <input type="hidden" value="{{ $advisorSocial->id }}" name="advisor_social_id[]">
+                                                                <select name="socialPlatform[]" id="platform" class="form-control">
+                                                                        @foreach ($socialPlatforms as $socialPlatform)
+                                                                            <option @if ($advisorSocial->platform->name == $socialPlatform->name) selected @endif value="{{ $socialPlatform->id }}">{{ Str::title($socialPlatform->name) }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <input type="text" value="{{ $advisorSocial->username }}" name="username[]" class="form-control" placeholder="Username">
+                                                                    <div class="input-group-append remove-field">
+                                                                        <!-- <i class=" fas fa-minus-circle"></i> -->
+                                                                        <span class="input-group-text  text-danger" style="cursor:pointer"><i class=" fas fa-minus-circle"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @empty
+                                                        <div class="row multi-field-r-item my-2">
+                                                            <div class="col-md-12 socialItem  input-group">
+                                                                <input type="hidden" value="" name="advisor_social_id[]">
+                                                                <select name="socialPlatform[]" id="platform" class="form-control">
+                                                                        @foreach ($socialPlatforms as $socialPlatform)
+                                                                            <option value="{{ $socialPlatform->id }}">{{ Str::title($socialPlatform->name) }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <input type="text" name="username[]" class="form-control" placeholder="Username">
+                                                                    <div class="input-group-append remove-field">
+                                                                        <!-- <i class=" fas fa-minus-circle"></i> -->
+                                                                        <span class="input-group-text  text-danger" style="cursor:pointer"><i class=" fas fa-minus-circle"></i></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endforelse
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="add-field btn btn-primary mb-2 ">Add New</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -87,5 +129,17 @@
     @elseif(session('error'))
         toastr["error"]("{{ session('error') }}")
     @endif
+    $('.multi-field-wrapper').each(function(){
+        var $wrapper = $('.multi-fields', this);
+        $('.add-field').click(function(){
+            $('.multi-field-r-item:first-child').clone(true).appendTo($wrapper).find('input').val('');
+        });
+        $('.remove-field').click(function(){
+            // alert(1);
+            if($('.multi-field-r-item', $wrapper).length >1){
+                $(this).parent('.socialItem').parent('.multi-field-r-item').remove();
+            }
+        });
+    });
 </script>
 @endsection

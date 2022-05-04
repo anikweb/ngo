@@ -63,6 +63,7 @@ class AdvisorController extends Controller
             $advisor->image = $newName;
             $advisor->save();
         }
+
         if($request->username[0] != null){
             foreach ($request->socialPlatform as $key => $socialPlatform) {
                 if($request->username[$key]){
@@ -99,6 +100,7 @@ class AdvisorController extends Controller
 
         return view('backend.pages.team.advisors.edit',[
             'advisor' => advisor::findOrFail($id),
+            'socialPlatforms' => SocialPlatform::orderBy('name','asc')->get(),
         ]);
     }
 
@@ -111,6 +113,7 @@ class AdvisorController extends Controller
      */
     public function update(Request $request)
     {
+
         $request->validate([
             'name' => "required|string",
         ]);
@@ -137,6 +140,27 @@ class AdvisorController extends Controller
             $advisor->image = $newName;
             $advisor->save();
         }
+        if($request->username[0] != null){
+            foreach ($request->advisor_social_id as $key => $advisor_social_id) {
+                if($advisor_social_id != ''){
+                    // return $advisor_id;
+                    $advisorSocial = AdvisorSocial::find($advisor_social_id);
+                    $advisorSocial->advisor_id = $advisor->id;
+                    $advisorSocial->platform_id = $request->socialPlatform[$key];
+                    $advisorSocial->username = $request->username[$key];
+                    $advisorSocial->save();
+                }else{
+                    if($request->username[$key] != ''){
+                        $advisorSocial = new AdvisorSocial;
+                        $advisorSocial->advisor_id = $advisor->id;
+                        $advisorSocial->platform_id = $request->socialPlatform[$key];
+                        $advisorSocial->username = $request->username[$key];
+                        $advisorSocial->save();
+                    }
+                }
+            }
+        }
+
         return redirect()->route('advisors-settings.index')->with('success','Advisor Updated!');
     }
 
