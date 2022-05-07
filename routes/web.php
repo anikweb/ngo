@@ -42,6 +42,7 @@ Route::resource('dashboard/contact_and_basic_info', ContactAndBasicInfoControlle
 
 Route::resource('dashboard/about-settings', aboutSettings::class)->middleware(['auth','verified']);
 Route::get('dashboard/team',[TeamController::class, 'teamIndex'])->name('team.index')->middleware(['auth','verified']);
+Route::get('dashboard/advisor/social/delete/{advisor_id}',[AdvisorController::class,'deleteAdvisor'])->middleware(['auth','verified']);
 Route::resource('dashboard/advisors-settings', AdvisorController::class)->middleware(['auth','verified']);
 // Route::get('/phpinfo', function() {
 //     return phpinfo();

@@ -63,7 +63,7 @@
                                                                         @endforeach
                                                                     </select>
                                                                     <input type="text" value="{{ $advisorSocial->username }}" name="username[]" class="form-control" placeholder="Username">
-                                                                    <div class="input-group-append remove-field">
+                                                                    <div class="input-group-append remove-field" data-id="{{ $advisorSocial->id }}">
                                                                         <!-- <i class=" fas fa-minus-circle"></i> -->
                                                                         <span class="input-group-text  text-danger" style="cursor:pointer"><i class=" fas fa-minus-circle"></i></span>
                                                                     </div>
@@ -79,7 +79,7 @@
                                                                         @endforeach
                                                                     </select>
                                                                     <input type="text" name="username[]" class="form-control" placeholder="Username">
-                                                                    <div class="input-group-append remove-field">
+                                                                    <div class="input-group-append remove-field" data-id>
                                                                         <!-- <i class=" fas fa-minus-circle"></i> -->
                                                                         <span class="input-group-text  text-danger" style="cursor:pointer"><i class=" fas fa-minus-circle"></i></span>
                                                                     </div>
@@ -135,10 +135,28 @@
             $('.multi-field-r-item:first-child').clone(true).appendTo($wrapper).find('input').val('');
         });
         $('.remove-field').click(function(){
-            // alert(1);
-            if($('.multi-field-r-item', $wrapper).length >1){
-                $(this).parent('.socialItem').parent('.multi-field-r-item').remove();
+            var advisor_social_id = $(this).attr('data-id');
+            // alert(advisor_id);
+            if(advisor_social_id){
+
+                $.ajax({
+                    type:'GET',
+                    url : '/dashboard/advisor/social/delete/'+advisor_social_id,
+                    success:function(res){
+                        if(res == true){
+                            toastr["success"]("Deleted!");
+                        }else{
+                           alert('failed');
+                        }
+                    }
+                });
+                if($('.multi-field-r-item', $wrapper).length >1){
+                    $(this).parent('.socialItem').parent('.multi-field-r-item').remove();
+                }
             }
+            // if($('.multi-field-r-item', $wrapper).length >1){
+            //     $(this).parent('.socialItem').parent('.multi-field-r-item').remove();
+            // }
         });
     });
 </script>

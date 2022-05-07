@@ -176,4 +176,13 @@ class AdvisorController extends Controller
         $advisor->delete();
         return back()->with('success','Advisor deleted!');
     }
+    public function deleteAdvisor($advisor_id){
+        $advisor = AdvisorSocial::find($advisor_id)->delete();
+        if($advisor){
+            $result = true;
+        }else{
+            $result = false;
+        }
+        return response()->json($result);
+    }
 }
