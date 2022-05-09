@@ -269,6 +269,12 @@
                         <p>Advisors</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('official-team.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Official</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
           {{-- @endif --}}

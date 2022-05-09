@@ -3,18 +3,18 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Advisors</li>
+        <li class="breadcrumb-item active" aria-current="page">Official Team</li>
         </ol>
     </nav>
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('advisors-settings.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Create new</a>
+                <a href="{{ route('official-team.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Create new</a>
             </div>
             <div class="col-md-12 pt-2">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Advisors</h3>
+                        <h3 class="card-title">Official Team</h3>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,28 +31,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($advisors as $advisor)
+                                    @forelse ($official_teams as $official_team)
                                         <tr>
-                                            <td>{{ $advisors->firstItem() + $loop->index }}</td>
-                                            @if ($advisor->image)
-                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/advisors/'.$advisor->image) }}" alt="{{ $advisor->name }}"></td>
+                                            <td>{{ $official_teams->firstItem() + $loop->index }}</td>
+                                            @if ($official_team->image)
+                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/advisors/'.$official_team->image) }}" alt="{{ $official_team->name }}"></td>
                                             @else
                                                 <td><img class="rounded" style="width: 150px" src="{{ asset('images/placeholder/image.jpg') }}" alt=""></td>
                                             @endif
-                                            <td>{{ $advisor->name }}</td>
-                                            <td>{{ $advisor->designation }}</td>
-                                            <td><a href="mailto:{{ $advisor->email }}">{{ $advisor->email }}</a></td>
+                                            <td>{{ $official_team->name }}</td>
+                                            <td>{{ $official_team->designation }}</td>
+                                            <td><a href="mailto:{{ $official_team->email }}">{{ $official_team->email }}</a></td>
                                             <td class="text-left">
-                                                <ul style="list-style: none">
-                                                    @foreach ($advisor->advisorSocial as $item)
+                                                {{-- <ul style="list-style: none">
+                                                    @foreach ($official_team->advisorSocial as $item)
                                                     <li> <i class="{{ $item->platform->icon }}"></i> {{ $item->platform->name.'/'.$item->username }}</li>
                                                     @endforeach
-                                                </ul>
+                                                </ul> --}}
                                             </td>
                                             <td>
-                                                <a href="{{route('advisors-settings.edit',$advisor->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                <button data-id="{{ $advisor->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
-                                                <form id="trashForm-{{ $advisor->id }}" action="{{ route('advisors-settings.destroy',$advisor->id) }}" method="POST">
+                                                <a href="{{route('advisors-settings.edit',$official_team->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <button data-id="{{ $official_team->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
+                                                <form id="trashForm-{{ $official_team->id }}" action="{{ route('official-team.destroy',$official_team->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
@@ -66,7 +66,7 @@
                                 </tbody>
                             </table>
                             <div>
-                                {{ $advisors->links() }}
+                                {{ $official_teams->links() }}
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
         toastr.error('{{ session("error") }}','Failed')
     @endif
     $('.trash-btn').click(function(){
-        var advisor_id = $(this).attr('data-id');
+        var officialTeam_id = $(this).attr('data-id');
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -102,7 +102,7 @@
                 'success'
                 )
                 setTimeout(function() {
-                    $('#trashForm-'+advisor_id).submit();
+                    $('#trashForm-'+officialTeam_id).submit();
                 }, 1000);
             }
         })
