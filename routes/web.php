@@ -10,7 +10,6 @@ use App\Http\Controllers\{
     GeneralSettingController,
     OffcialTeamController,
     RoleController,
-    TeamController,
 };
 
 /*
@@ -42,9 +41,10 @@ Route::get('dashboard/get/social/url/{platform_url}', [ContactAndBasicInfoContro
 Route::resource('dashboard/contact_and_basic_info', ContactAndBasicInfoController::class)->middleware(['auth','verified']);
 
 Route::resource('dashboard/about-settings', aboutSettings::class)->middleware(['auth','verified']);
-Route::get('dashboard/team',[TeamController::class, 'teamIndex'])->name('team.index')->middleware(['auth','verified']);
-Route::get('dashboard/advisor/social/delete/{advisor_id}',[AdvisorController::class,'deleteAdvisor'])->middleware(['auth','verified']);
+Route::get('dashboard/advisor/social/delete/{advisor_id}',[AdvisorController::class,'deleteAdvisorSocial'])->middleware(['auth','verified']);
+Route::post('dashboard/advisor/change-priority',[AdvisorController::class,'changePriority'])->name('change.priority')->middleware(['auth','verified']);
 Route::resource('dashboard/advisors-settings', AdvisorController::class)->middleware(['auth','verified']);
+Route::get('dashboard/official/team/social/delete/{official_team_id}',[OffcialTeamController::class,'deleteOfficialTeam'])->middleware(['auth','verified']);
 Route::resource('dashboard/official-team', OffcialTeamController::class)->middleware(['auth','verified']);
 // Route::get('/phpinfo', function() {
 //     return phpinfo();

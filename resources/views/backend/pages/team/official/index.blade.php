@@ -35,7 +35,7 @@
                                         <tr>
                                             <td>{{ $official_teams->firstItem() + $loop->index }}</td>
                                             @if ($official_team->image)
-                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/advisors/'.$official_team->image) }}" alt="{{ $official_team->name }}"></td>
+                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/official_team/'.$official_team->image) }}" alt="{{ $official_team->name }}"></td>
                                             @else
                                                 <td><img class="rounded" style="width: 150px" src="{{ asset('images/placeholder/image.jpg') }}" alt=""></td>
                                             @endif
@@ -43,14 +43,14 @@
                                             <td>{{ $official_team->designation }}</td>
                                             <td><a href="mailto:{{ $official_team->email }}">{{ $official_team->email }}</a></td>
                                             <td class="text-left">
-                                                {{-- <ul style="list-style: none">
-                                                    @foreach ($official_team->advisorSocial as $item)
+                                                <ul style="list-style: none">
+                                                    @foreach ($official_team->officialTeamSocial as $item)
                                                     <li> <i class="{{ $item->platform->icon }}"></i> {{ $item->platform->name.'/'.$item->username }}</li>
                                                     @endforeach
-                                                </ul> --}}
+                                                </ul>
                                             </td>
                                             <td>
-                                                <a href="{{route('advisors-settings.edit',$official_team->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <a href="{{route('official-team.edit',$official_team->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                                 <button data-id="{{ $official_team->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
                                                 <form id="trashForm-{{ $official_team->id }}" action="{{ route('official-team.destroy',$official_team->id) }}" method="POST">
                                                     @csrf

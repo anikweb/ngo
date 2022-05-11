@@ -20,7 +20,7 @@ class AdvisorController extends Controller
     public function index()
     {
         return view('backend.pages.team.advisors.index',[
-            'advisors' => advisor::latest()->paginate(5),
+            'advisors' => advisor::orderBy('priority','asc')->paginate(5),
         ]);
     }
 
@@ -44,9 +44,6 @@ class AdvisorController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
         $request->validate([
             'name' => 'required|string',
         ]);
@@ -54,6 +51,10 @@ class AdvisorController extends Controller
         $advisor->name = $request->name;
         $advisor->designation = $request->designation;
         $advisor->email = $request->email;
+        // highest vallue of priority
+        $exists_priority = advisor::all()->max('priority');
+        $advisor->priority = $exists_priority+1;
+
         $advisor->save();
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -123,12 +124,10 @@ class AdvisorController extends Controller
         $advisor->email = $request->email;
         $advisor->save();
         if($request->hasFile('image')){
-            // return 'hello';
             if($advisor->image){
                 $oldImage = public_path('images/advisors/'.$advisor->image);
                 if(file_exists($oldImage)){
                     unlink($oldImage);
-                    // return 'aschi';
                 }
             }
             $image = $request->file('image');
@@ -160,7 +159,6 @@ class AdvisorController extends Controller
                 }
             }
         }
-
         return redirect()->route('advisors-settings.index')->with('success','Advisor Updated!');
     }
 
@@ -173,10 +171,16 @@ class AdvisorController extends Controller
     public function destroy($id)
     {
         $advisor = advisor::findOrFail($id);
+        if($advisor->image){
+            $oldImage = public_path('images/advisors/'.$advisor->image);
+            if(file_exists($oldImage)){
+                unlink($oldImage);
+            }
+        }
         $advisor->delete();
         return back()->with('success','Advisor deleted!');
     }
-    public function deleteAdvisor($advisor_id){
+    public function deleteAdvisorSocial($advisor_id){
         $advisor = AdvisorSocial::find($advisor_id)->delete();
         if($advisor){
             $result = true;
@@ -184,5 +188,17 @@ class AdvisorController extends Controller
             $result = false;
         }
         return response()->json($result);
+    }
+    public function changePriority(Request $request){
+        $exists_advisor = advisor::where('priority','>=',$request->priority)->get();
+        foreach ($exists_advisor as $key => $value) {
+            $exists_data = advisor::find($value->id);
+            $exists_data->priority =  $exists_data->priority+1;
+            $exists_data->save();
+        }
+        $advisor = advisor::find($request->advisor_id);
+        $advisor->priority = $request->priority;
+        $advisor->save();
+        return back()->with('success','Advisor priority changed!');
     }
 }

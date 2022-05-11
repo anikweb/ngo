@@ -15,4 +15,7 @@ class SocialPlatform extends Model
     public function advisorSocial(){
         return $this->hasMany(AdvisorSocial::class,'platform_id');
     }
+    public function officialTeamSocial(){
+        return $this->hasMany(OfficialTeamSocial::class,'platform_id');
+    }
 }
