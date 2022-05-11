@@ -27,6 +27,7 @@
                                         <th>Designation</th>
                                         <th>Email</th>
                                         <th>Social Links</th>
+                                        <th>Priority</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -49,6 +50,7 @@
                                                     @endforeach
                                                 </ul>
                                             </td>
+                                            <td class="priority-td"><button class="btn priority-btn" data-id="{{ $official_team->priority }}" data-priority="{{ $official_team->id }}" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-edit"></i></button> {{ $official_team->priority }}</td>
                                             <td>
                                                 <a href="{{route('official-team.edit',$official_team->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                                 <button data-id="{{ $official_team->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
@@ -74,6 +76,47 @@
             </div>
         </div>
     </div>
+    {{-- Modal  --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="{{ route('official.team.change.priority') }}" method="POST" >
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" name="official_team_id" id="official_team_id">
+                            <label for="priority">priority</label>
+                            <select name="priority" id="priority" class="form-control">
+                                @foreach ($officialTeam_priority as $officialTeam)
+                                    <option value="{{$officialTeam->priority}}">{{$officialTeam->priority}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('internal_css')
+<style>
+    .priority-btn{
+        display: none;
+    }
+    .priority-td:hover .priority-btn{
+        display: inline-block;
+    }
+</style>
 @endsection
 @section('footer_js')
 <script>
@@ -106,6 +149,14 @@
                 }, 1000);
             }
         })
+    });
+    $('.priority-btn').click(function(){
+        var officialTeam_id = $(this).attr('data-priority');
+        var officialTeam_priority = $(this).attr('data-id');
+        // alert(advisor_priority);
+        $('#official_team_id').val(officialTeam_id);
+        $('#priority').val(officialTeam_priority);
+
     });
 </script>
 @endsection

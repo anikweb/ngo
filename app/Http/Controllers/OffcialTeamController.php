@@ -19,7 +19,8 @@ class OffcialTeamController extends Controller
     public function index()
     {
         return view('backend.pages.team.official.index',[
-            'official_teams' => OffcialTeam::latest()->paginate(5),
+            'official_teams' => OffcialTeam::orderBy('priority','asc')->paginate(5),
+            'officialTeam_priority' => OffcialTeam::orderBy('priority','asc')->get(),
         ]);
     }
 
@@ -50,6 +51,9 @@ class OffcialTeamController extends Controller
         $offcialTeam->name = $request->name;
         $offcialTeam->designation = $request->designation;
         $offcialTeam->email = $request->email;
+        // highest vallue of priority
+        $exists_priority = OffcialTeam::all()->max('priority');
+        $offcialTeam->priority = $exists_priority+1;
         $offcialTeam->save();
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -185,5 +189,26 @@ class OffcialTeamController extends Controller
             $result = false;
         }
         return response()->json($result);
+    }
+    public function changePriority(Request $request){
+        $officalTeam = OffcialTeam::find($request->official_team_id);
+        if($officalTeam->priority == 1){
+            $exists_officalTeam = OffcialTeam::where('priority','<=',$request->priority)->get();
+            foreach ($exists_officalTeam as $key => $value) {
+                $exists_data = OffcialTeam::find($value->id);
+                $exists_data->priority =  $exists_data->priority-1;
+                $exists_data->save();
+            }
+        }else{
+            $exists_officalTeam = OffcialTeam::where('priority','>=',$request->priority)->get();
+            foreach ($exists_officalTeam as $key => $value) {
+                $exists_data = OffcialTeam::find($value->id);
+                $exists_data->priority =  $exists_data->priority+1;
+                $exists_data->save();
+            }
+        }
+        $officalTeam->priority = $request->priority;
+        $officalTeam->save();
+        return back()->with('success','Official team priority changed!');
     }
 }

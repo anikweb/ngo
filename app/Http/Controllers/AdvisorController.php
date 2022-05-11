@@ -55,7 +55,6 @@ class AdvisorController extends Controller
         // highest vallue of priority
         $exists_priority = advisor::all()->max('priority');
         $advisor->priority = $exists_priority+1;
-
         $advisor->save();
         if($request->hasFile('image')){
             $image = $request->file('image');
