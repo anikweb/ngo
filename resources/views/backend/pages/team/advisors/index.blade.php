@@ -68,7 +68,7 @@
                                 </tbody>
                             </table>
                             <div>
-
+                                {{ $advisors->links() }}
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <input type="hidden" name="advisor_id" id="advisor_id">
                             <label for="priority">priority</label>
                             <select name="priority" id="priority" class="form-control">
-                                @foreach ($advisors as $advisor)
+                                @foreach ($advisors_priority as $advisor)
                                     <option value="{{$advisor->priority}}">{{$advisor->priority}}</option>
                                 @endforeach
                             </select>

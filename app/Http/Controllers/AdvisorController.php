@@ -21,6 +21,7 @@ class AdvisorController extends Controller
     {
         return view('backend.pages.team.advisors.index',[
             'advisors' => advisor::orderBy('priority','asc')->paginate(5),
+            'advisors_priority' => advisor::orderBy('priority','asc')->get(),
         ]);
     }
 
@@ -190,13 +191,22 @@ class AdvisorController extends Controller
         return response()->json($result);
     }
     public function changePriority(Request $request){
-        $exists_advisor = advisor::where('priority','>=',$request->priority)->get();
-        foreach ($exists_advisor as $key => $value) {
-            $exists_data = advisor::find($value->id);
-            $exists_data->priority =  $exists_data->priority+1;
-            $exists_data->save();
-        }
         $advisor = advisor::find($request->advisor_id);
+        if($advisor->priority == 1){
+            $exists_advisor = advisor::where('priority','<=',$request->priority)->get();
+            foreach ($exists_advisor as $key => $value) {
+                $exists_data = advisor::find($value->id);
+                $exists_data->priority =  $exists_data->priority-1;
+                $exists_data->save();
+            }
+        }else{
+            $exists_advisor = advisor::where('priority','>=',$request->priority)->get();
+            foreach ($exists_advisor as $key => $value) {
+                $exists_data = advisor::find($value->id);
+                $exists_data->priority =  $exists_data->priority+1;
+                $exists_data->save();
+            }
+        }
         $advisor->priority = $request->priority;
         $advisor->save();
         return back()->with('success','Advisor priority changed!');
