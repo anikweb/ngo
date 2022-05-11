@@ -27,6 +27,8 @@ use App\Http\Controllers\{
 
 Route::get('/', [FrontendController::class,'frontend'])->name('frontend');
 Route::get('/about', [FrontendController::class,'aboutIndex'])->name('about');
+Route::get('/team/adviser', [FrontendController::class,'advisorTeamIndex'])->name('team.advisor.index');
+Route::get('/team/official', [FrontendController::class,'officialTeamIndex'])->name('team.official.index');
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);
 Route::resource('dashboard/generalSetting', GeneralSettingController::class)->middleware(['auth','verified']);

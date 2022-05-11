@@ -10,7 +10,7 @@
 <meta name="author" content="Muktir Bondhon Foundation" />
 
 <!-- Page Title -->
-<title> {{ generalSettings()->site_title.' - '.generalSettings()->tagline }}</title>
+<title>@if(Route::is('team.advisor.index')) Adviser @elseif(Route::is('team.official.index')) Official Team @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -175,8 +175,8 @@
               </li>
               <li><a class="text-white mr-5" href="#">Team</a>
                 <ul class="dropdown">
-                  <li><a href="advisers.html">Adviser</a></li>
-                  <li><a href="officail-team.html">Official</a></li>
+                  <li><a href="{{ route('team.advisor.index') }}">Adviser</a></li>
+                  <li><a href="{{ route('team.official.index') }}">Official</a></li>
                 </ul>
               </li>
               <li><a class="text-white mr-5" href="#">Media</a>
