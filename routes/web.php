@@ -10,6 +10,7 @@ use App\Http\Controllers\{
     GeneralSettingController,
     OffcialTeamController,
     RoleController,
+    SliderController,
 };
 
 /*
@@ -27,8 +28,8 @@ use App\Http\Controllers\{
 
 Route::get('/', [FrontendController::class,'frontend'])->name('frontend');
 Route::get('/about', [FrontendController::class,'aboutIndex'])->name('about');
-Route::get('/team/adviser', [FrontendController::class,'advisorTeamIndex'])->name('team.advisor.index');
-Route::get('/team/official', [FrontendController::class,'officialTeamIndex'])->name('team.official.index');
+Route::get('/team/adviser', [FrontendController::class,'advisorTeamIndex'])->name('frontend.team.advisor.index');
+Route::get('/team/official', [FrontendController::class,'officialTeamIndex'])->name('frontend.team.official.index');
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);
 Route::resource('dashboard/generalSetting', GeneralSettingController::class)->middleware(['auth','verified']);
@@ -49,7 +50,7 @@ Route::resource('dashboard/advisors-settings', AdvisorController::class)->middle
 Route::get('dashboard/official/team/social/delete/{official_team_id}',[OffcialTeamController::class,'deleteOfficialTeam'])->middleware(['auth','verified']);
 Route::post('dashboard/official/team/change-priority',[OffcialTeamController::class,'changePriority'])->name('official.team.change.priority')->middleware(['auth','verified']);
 Route::resource('dashboard/official-team', OffcialTeamController::class)->middleware(['auth','verified']);
-// Route::get('/phpinfo', function() {
-//     return phpinfo();
-// });
+Route::post('dashboard/slider/change-priority',[SliderController::class,'changePriority'])->name('slider.change.priority')->middleware(['auth','verified']);
+Route::resource('dashboard/sliders',SliderController::class)->middleware(['auth','verified']);
+
 require __DIR__.'/auth.php';

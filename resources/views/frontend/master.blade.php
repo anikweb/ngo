@@ -10,7 +10,7 @@
 <meta name="author" content="Muktir Bondhon Foundation" />
 
 <!-- Page Title -->
-<title>@if(Route::is('team.advisor.index')) Adviser @elseif(Route::is('team.official.index')) Official Team @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -144,7 +144,7 @@
         <div class="container">
           <nav id="menuzord" class="menuzord default">
             <ul class="menuzord-menu">
-              <li class=" text-light"><a class="text-white mr-5 actives" href="#home">Home</a></li>
+              <li class=" text-light"><a class="text-white mr-5 @if(Route::is('frontend')) actives @endif" href="#home">Home</a></li>
               <li ><a class=" text-white mr-5" href="#">Services</a>
                 <ul class="dropdown">
                   <li><a href="environmental-conservation.html">Environmental Conservation</a></li>
@@ -173,10 +173,10 @@
                   <li><a href="bank-information.html">Bank Information</a></li>
                 </ul>
               </li>
-              <li><a class="text-white mr-5" href="#">Team</a>
+              <li><a class="text-white mr-5 @if(Route::is('frontend.team.advisor.index')||Route::is('frontend.team.official.index')) actives @endif" href="#">Team</a>
                 <ul class="dropdown">
-                  <li><a href="{{ route('team.advisor.index') }}">Adviser</a></li>
-                  <li><a href="{{ route('team.official.index') }}">Official</a></li>
+                  <li><a href="{{ route('frontend.team.advisor.index') }}">Adviser</a></li>
+                  <li><a href="{{ route('frontend.team.official.index') }}">Official</a></li>
                 </ul>
               </li>
               <li><a class="text-white mr-5" href="#">Media</a>
@@ -347,7 +347,7 @@
       <div class="container pt-15 pb-10">
         <div class="row">
           <div class="col-md-6">
-            <p class="font-11 text-black-777 m-0">Copyright &copy; 2017-{{ date('y') }} Muktir Bondhon Foundation. All Rights Reserved</p>
+            <p class="font-11 text-black-777 m-0">Copyright &copy; 2015-{{ date('y') }} Muktir Bondhon Foundation. All Rights Reserved</p>
           </div>
           <div class="col-md-6 text-right">
             <div class="widget no-border m-0">

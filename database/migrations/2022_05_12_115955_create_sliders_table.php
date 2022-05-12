@@ -17,11 +17,11 @@ class CreateSlidersTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle');
-            $table->text('description');
-            $table->string('image');
-            $table->string('button_name');
-            $table->text('button_link');
+            $table->string('image')->nullable();
+            $table->string('button_name')->nullable();
+            $table->text('button_link')->nullable();
             $table->string('align');
+            $table->tinyInteger('priority');
             $table->timestamps();
         });
     }

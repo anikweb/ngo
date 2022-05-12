@@ -6,7 +6,7 @@
     {{-- csrf token  --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title> @if(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @elseif(Route::is('about-settings.index')) About Settings @elseif(Route::is('advisors-settings.index')) Advisors @elseif(Route::is('advisors-settings.create')) Create-Advisor @elseif(Route::is('advisors-settings.edit')) Edit-Advisor @elseif(Route::is('official-team.index')) Official Team @elseif(Route::is('official-team.create')) Create-Official Team @elseif(Route::is('official-team.edit')) Edit-Official Team @endif @if(Route::is('dashboard')) @else | @endif Dashboard</title>
+    <title> @if(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @elseif(Route::is('about-settings.index')) About Settings @elseif(Route::is('advisors-settings.index')) Advisors @elseif(Route::is('advisors-settings.create')) Create-Advisor @elseif(Route::is('advisors-settings.edit')) Edit-Advisor @elseif(Route::is('official-team.index')) Official Team @elseif(Route::is('official-team.create')) Create-Official Team @elseif(Route::is('official-team.edit')) Edit-Official Team @elseif(Route::is('sliders.index')) Sliders @elseif(Route::is('sliders.create')) Create-Slider @elseif(Route::is('sliders.show')) Details-Slider @elseif(Route::is('sliders.edit')) Edit-Slider @endif @if(Route::is('dashboard')) @else | @endif Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -253,6 +253,16 @@
                 </a>
             </li>
           @endif
+        @can('slider management')
+            <li class="nav-item">
+                <a href="{{ route('sliders.index') }}" class="nav-link @if(Route::is('sliders.create')||Route::is('sliders.edit')||Route::is('sliders.index')||Route::is('sliders.show')) active @endif">
+                    <i class="nav-icon fa fa-bars" aria-hidden="true"></i>
+                    <p>
+                        Sliders
+                    </p>
+                </a>
+            </li>
+        @endcan
           @if (auth()->user()->can('team management'))
             <li class="nav-item @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) active @endif">
@@ -363,7 +373,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2017- {{ date('y') }} <a href="https://muktirbondhon.org">Muktir Bondhon Foundation</a>.</strong>
+    <strong>Copyright &copy; 2015- {{ date('y') }} <a href="https://muktirbondhon.org">Muktir Bondhon Foundation</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       {{--  <b>Version</b> 3.1.0  --}}

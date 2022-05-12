@@ -6,12 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\about;
 use App\Models\advisor;
 use App\Models\OffcialTeam;
+use App\Models\Slider;
 use PDO;
 
 class FrontendController extends Controller
 {
     function frontend(){
-        return view('frontend.main');
+        return view('frontend.main',[
+            'sliders' => Slider::orderBy('priority','asc')->get(),
+        ]);
     }
     public function aboutIndex(){
         return view('frontend.about.index',[
