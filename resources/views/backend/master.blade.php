@@ -253,7 +253,7 @@
                 </a>
             </li>
           @endif
-          {{-- @if (auth()->user()->can('contact and basic info')) --}}
+          @if (auth()->user()->can('team management'))
             <li class="nav-item @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) active @endif">
                     <i class="nav-icon fas fa-users"></i>
@@ -277,7 +277,7 @@
                     </li>
                 </ul>
             </li>
-          {{-- @endif --}}
+          @endif
         @if (auth()->user()->can('general settings'))
             <li class="nav-item @if(Route::is('generalSetting.index')||Route::is('about-settings.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
