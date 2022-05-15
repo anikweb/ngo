@@ -263,6 +263,16 @@
                 </a>
             </li>
         @endcan
+        {{-- @can('slider management') --}}
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="nav-icon fa fa-bars" aria-hidden="true"></i>
+                    <p>
+                        Projects
+                    </p>
+                </a>
+            </li>
+        {{-- @endcan --}}
           @if (auth()->user()->can('team management'))
             <li class="nav-item @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) active @endif">
