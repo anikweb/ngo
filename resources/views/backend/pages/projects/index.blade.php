@@ -39,8 +39,8 @@
                                                 <td><img class="rounded" style="width: 150px" src="{{ asset('images/placeholder/image.jpg') }}" alt="{{ $project->title }}"></td>
                                             @endif
                                             <td>{{ $project->title }}</td>
-                                            <td>{{ $project->description }}</td>
-                                            <td>{{ $project->created_at->format('D-M-y, h:i A') }}</td>
+                                            <td>@php echo $project->description; @endphp</td>
+                                            <td>{{ $project->created_at->format('d-m-y, h:i A') }}</td>
                                             <td>
                                                 <a href="{{route('projects.show',$project->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('projects.edit',$project->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
@@ -77,7 +77,7 @@
         toastr.error('{{ session("error") }}','Failed')
     @endif
     $('.trash-btn').click(function(){
-        var slider_id = $(this).attr('data-id');
+        var project_id = $(this).attr('data-id');
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -95,7 +95,7 @@
                 'success'
                 )
                 setTimeout(function() {
-                    $('#trashForm-'+slider_id).submit();
+                    $('#trashForm-'+project_id).submit();
                 }, 1000);
             }
         })

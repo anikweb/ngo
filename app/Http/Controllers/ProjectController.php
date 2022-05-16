@@ -39,14 +39,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+        $request->validate([
+            'title'=> 'required|max:50',
+            'description'=> 'required|max:1000',
+            'image'=> 'required|mimes:jpg,jpeg,png,webp',
+        ]);
         $project = new Project();
         $project->title =$request->title;
+        $project->slug =Str::slug($request->title);
         $project->description =$request->description;
         $project->save();
         if($request->hasFile('image')){
             $image = $request->file('image');
-            $newName = Str::slug($project->name).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
+            $newName = Str::slug($project->title).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
             $destination = public_path('images/projects/'.$newName);
             Image::make($image)->save($destination);
             $project->featured_image = $newName;
@@ -64,7 +69,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('backend.pages.projects.show',[
+            'project' => $project,
+        ]);
     }
 
     /**
@@ -75,7 +82,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('backend.pages.projects.edit',[
+            'project' => $project,
+        ]);
     }
 
     /**
@@ -87,7 +96,34 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $request->validate([
+            'title'=> 'required|max:50',
+            'description'=> 'required|max:1000',
+        ]);
+        if($request->hasFile('image')){
+            $request->validate([
+                'image'=> 'required|mimes:png,jpg,webp,jpeg',
+            ]);
+        }
+        $project->title =$request->title;
+        $project->slug = Str::slug($request->title);
+        $project->description =$request->description;
+        $project->save();
+        if($request->hasFile('image')){
+            if($project->featured_image){
+                $oldImage = public_path('images/projects/'.$project->featured_image);
+                if(file_exists($oldImage)){
+                    unlink($oldImage);
+                }
+            }
+            $image = $request->file('image');
+            $newName = Str::slug($project->title).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
+            $destination = public_path('images/projects/'.$newName);
+            Image::make($image)->save($destination);
+            $project->featured_image = $newName;
+            $project->save();
+        }
+        return redirect()->route('projects.index')->with('success','Project Updated!');
     }
 
     /**
@@ -98,6 +134,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return back()->with('success','Project moved to trash');
     }
 }

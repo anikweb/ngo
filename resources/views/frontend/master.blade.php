@@ -157,7 +157,9 @@
               </li>
               <li><a class="text-white mr-5" href="#">Projects</a>
                 <ul class="dropdown">
-                  <li><a href="free-hut.html">Free hut</a></li>
+                    @foreach (projects() as $project)
+                        <li><a href="{{ route('frontend.project.index',$project->slug) }}">{{ $project->title }}</a></li>
+                    @endforeach
                 </ul>
               </li>
               <li><a class="text-white mr-5" href="#">Events</a>

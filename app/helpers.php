@@ -6,6 +6,10 @@
         return App\Models\ContactAndBasicInfo::latest()->get();
     }
 
+    function projects(){
+        return App\Models\Project::get();
+    }
+
 
 
 
