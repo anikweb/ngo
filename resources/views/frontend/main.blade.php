@@ -123,12 +123,12 @@
             <div class="col-md-6">
               <img class="img-fullwidth" src="http://placehold.it/555x280" alt="">
               <h3 class="line-bottom">Who We Are?</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et magni temporibus voluptates. Iure quam laboriosam ullam omnis nulla deleniti, repellendus sequi reiciendis quas voluptatibus consectetur alias aspernatur deserunt veritatis.</p>
+              <p>@php echo $about->about; @endphp</p>
               <a class="text-theme-colored font-13" href="page-about1.html">Read More →</a>
             </div>
             <div class="col-md-6">
               <h3 class="line-bottom mt-0 mt-sm-30">Our Mission</h3>
-              <p class="mb-30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quia, eaque tempora eligendi facere excepturi facilis earum inventore harum dolores. Maxime, aspernatur. Voluptatum, sit.</p>
+              <p class="mb-30">@php echo $about->mission; @endphp</p>
               <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                   <div class="icon-box p-0 mb-30">

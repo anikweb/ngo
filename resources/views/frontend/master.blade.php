@@ -10,7 +10,7 @@
 <meta name="author" content="Muktir Bondhon Foundation" />
 
 <!-- Page Title -->
-<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -187,7 +187,7 @@
                 </ul>
             </li>
               <li><a class="text-white mr-5" href="blog.html">Blog</a></li>
-              <li><a class="text-white mr-5" href="{{ route('about') }}">About us</a></li>
+              <li><a class="text-white mr-5" href="{{ route('frontend.about') }}">About us</a></li>
             </ul>
             <ul class="list-inline pull-right flip hidden-sm hidden-xs">
               <li>

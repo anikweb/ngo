@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -14,7 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.pages.projects.index',[
+            'projects' => Project::latest()->paginate(10),
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.pages.projects.create');
     }
 
     /**
@@ -35,7 +39,21 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $project = new Project();
+        $project->title =$request->title;
+        $project->description =$request->description;
+        $project->save();
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $newName = Str::slug($project->name).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
+            $destination = public_path('images/projects/'.$newName);
+            Image::make($image)->save($destination);
+            $project->featured_image = $newName;
+            $project->save();
+        }
+        return redirect()->route('projects.index')->with('success','Project Created!');
+
     }
 
     /**

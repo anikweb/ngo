@@ -14,6 +14,7 @@ class FrontendController extends Controller
     function frontend(){
         return view('frontend.main',[
             'sliders' => Slider::orderBy('priority','asc')->get(),
+            'about' => about::first(),
         ]);
     }
     public function aboutIndex(){

@@ -265,8 +265,8 @@
         @endcan
         {{-- @can('slider management') --}}
             <li class="nav-item">
-                <a href="" class="nav-link">
-                    <i class="nav-icon fa fa-bars" aria-hidden="true"></i>
+                <a href="{{ route('projects.index') }}" class="nav-link">
+                    <i class="nav-icon fa fa-tasks" aria-hidden="true"></i>
                     <p>
                         Projects
                     </p>

@@ -28,7 +28,7 @@ use App\Http\Controllers\{
 // Frontend
 
 Route::get('/', [FrontendController::class,'frontend'])->name('frontend');
-Route::get('/about', [FrontendController::class,'aboutIndex'])->name('about');
+Route::get('/about', [FrontendController::class,'aboutIndex'])->name('frontend.about');
 Route::get('/team/adviser', [FrontendController::class,'advisorTeamIndex'])->name('frontend.team.advisor.index');
 Route::get('/team/official', [FrontendController::class,'officialTeamIndex'])->name('frontend.team.official.index');
 // Backend
