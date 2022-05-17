@@ -54,5 +54,7 @@ Route::post('dashboard/official/team/change-priority',[OffcialTeamController::cl
 Route::resource('dashboard/official-team', OffcialTeamController::class)->middleware(['auth','verified']);
 Route::post('dashboard/slider/change-priority',[SliderController::class,'changePriority'])->name('slider.change.priority')->middleware(['auth','verified']);
 Route::resource('dashboard/sliders',SliderController::class)->middleware(['auth','verified']);
+Route::get('dashboard/project/{slug}/multiple-image/add',[ProjectController::class,'multipleImageCreate'])->name('projects.multiple.image.create');
+Route::post('dashboard/project/multiple-image/update',[ProjectController::class,'multipleImageUpdate'])->name('projects.multiple.image.update');
 Route::resource('dashboard/projects', ProjectController::class)->middleware(['auth','verified']);
 require __DIR__.'/auth.php';

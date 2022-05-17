@@ -21,12 +21,12 @@
                             <table class="table table-bordered text-center">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Featured Image</th>
-                                        <th>Title</th>
-                                        <th>Description</th>
-                                        <th>Created at</th>
-                                        <th>Action</th>
+                                        <th width="3%">#</th>
+                                        <th width="17%">Featured Image</th>
+                                        <th width="10%">Title</th>
+                                        <th width="30%">Description</th>
+                                        <th width="5%">Created at</th>
+                                        <th width="10%">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,16 +34,17 @@
                                         <tr>
                                             <td>{{ $projects->firstItem() + $loop->index }}</td>
                                             @if ($project->featured_image)
-                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/projects/'.$project->featured_image) }}" alt="{{ $project->title }}"></td>
+                                                <td><img class="rounded" style="width: 250px" src="{{ asset('images/projects/'.$project->featured_image) }}" alt="{{ $project->title }}"></td>
                                             @else
-                                                <td><img class="rounded" style="width: 150px" src="{{ asset('images/placeholder/image.jpg') }}" alt="{{ $project->title }}"></td>
+                                                <td><img class="rounded" style="width: 250px" src="{{ asset('images/placeholder/image.jpg') }}" alt="{{ $project->title }}"></td>
                                             @endif
                                             <td>{{ $project->title }}</td>
-                                            <td>@php echo $project->description; @endphp</td>
+                                            <td>@php echo Str::limit($project->description, 50, '...') @endphp</td>
                                             <td>{{ $project->created_at->format('d-m-y, h:i A') }}</td>
                                             <td>
                                                 <a href="{{route('projects.show',$project->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('projects.edit',$project->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('projects.multiple.image.create',$project->slug) }}" class="btn btn-primary"><i class="fa fa-file-image"></i></a>
                                                 <button data-id="{{ $project->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
                                                 <form id="trashForm-{{ $project->id }}" action="{{ route('projects.destroy',$project->id) }}" method="POST">
                                                     @csrf

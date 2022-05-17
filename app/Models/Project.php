@@ -9,4 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Project extends Model
 {
     use HasFactory, SoftDeletes;
+    public function imageGallery(){
+        return $this->hasMany(ProjectImageGallery::class,'project_id');
+    }
 }

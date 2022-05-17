@@ -15,16 +15,20 @@
                         <h3 class="card-title">Create Project</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+                        <form id="form" action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img style="width:800px; height:460px;" id="image_preview" class="img-fluid d-block @error('image') border border-danger @enderror" src="{{ asset('images/placeholder/1920x1280.jpg') }}" >
-                                    <label for="img" class="btn btn-primary mt-2 "><i class="fa fa-file-image"></i> Choose Image </label>
-                                    <input type="file" name="image" style="display: none" id="img" onchange="document.getElementById('image_preview').src = window.URL.createObjectURL(this.files[0])">
-                                    @error('image')
-                                        <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
-                                    @enderror
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <img style="width:800px; height:460px;" id="image_preview" class="img-fluid d-block @error('image') border border-danger @enderror" src="{{ asset('images/placeholder/1920x1280.jpg') }}" >
+                                            <label for="img" class="btn btn-primary mt-2 "><i class="fa fa-file-image"></i> Choose Featured Image </label>
+                                            <input type="file" name="image" style="display: none" id="img" onchange="document.getElementById('image_preview').src = window.URL.createObjectURL(this.files[0])">
+                                            @error('image')
+                                                <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
@@ -46,20 +50,22 @@
                                                 @enderror
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <button class="btn btn-primary my-2"><i class="fa fa-plus"></i> Create Project</button>
                                 </div>
                             </div>
-
                         </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
 @section('footer_js')
 <script>
     @if(session('success'))

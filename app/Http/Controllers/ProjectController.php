@@ -125,6 +125,10 @@ class ProjectController extends Controller
         }
         return redirect()->route('projects.index')->with('success','Project Updated!');
     }
+    public function multipleImageCreate($slug){
+        $project = Project::where('slug',$slug)->first();
+        return view('backend.pages.projects.multiple_image',compact('project'));
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -136,5 +140,13 @@ class ProjectController extends Controller
     {
         $project->delete();
         return back()->with('success','Project moved to trash');
+    }
+    public function multipleImageUpdate(Request $request)
+    {
+        if($request->hasFile('images')){
+            return 'ase';
+        }else{
+            return 'nai';
+        }
     }
 }
