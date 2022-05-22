@@ -27,15 +27,11 @@
             </div>
             <div class="col-md-5">
               <div class="owl-carousel-1col" data-nav="true">
-                <div class="item">
-                  <img src="images/1.jpg" alt="">
-                </div>
-                <div class="item">
-                  <img src="images/2.jpg" alt="">
-                </div>
-                <div class="item">
-                  <img src="images/3.jpg" alt="">
-                </div>
+                  @foreach ($project->imageGallery as $imageGallery)
+                    <div class="item">
+                        <img src="{{ asset('images/projects/image_gallery/'.$project->slug.'/'.$imageGallery->image) }}" alt="{{ $project->title }}">
+                    </div>
+                  @endforeach
               </div>
             </div>
           </div>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\ProjectImageGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
@@ -143,10 +145,40 @@ class ProjectController extends Controller
     }
     public function multipleImageUpdate(Request $request)
     {
-        if($request->hasFile('images')){
-            return 'ase';
-        }else{
-            return 'nai';
+
+        if($request->hasFile('gallery')){
+            $size = 0;
+            foreach ($request->file('gallery') as $image) {
+                $ext = $image->getClientOriginalExtension();
+                $valid_ext = ['jpg','jpeg','png','webp'];
+                if(!in_array($ext, $valid_ext)){
+                    return back()->with('validation_error','Uploaded file only suport jpg, jpeg, png or webp');
+                }
+                $size += $image->getSize();
+            }
+            if($size < 10485760){
+                $loopKey = 0;
+                foreach ($request->file('gallery') as $key => $image) {
+                    $loopKey += $key;
+                    $project = Project::where('slug',$request->project_slug)->first();
+                    $projectGallery = new ProjectImageGallery;
+                    $newName = Str::slug($project->title).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
+                    $path = public_path('images/projects/image_gallery/').$project->slug.'/';
+                    File::makeDirectory($path, $mode = 0777, true, true);
+                    Image::make($image)->save($path.$newName);
+                    $projectGallery->project_id = $project->id;
+                    $projectGallery->image = $newName;
+                    $projectGallery->save();
+                }
+                if($loopKey > 0){
+                    return back()->with('success','New Images Added!');
+                }else{
+                    return back()->with('success','New Image Added!');
+                }
+            }else{
+                return back()->with('validation_error','Uploaded file can not longer than 10MB');
+            }
+
         }
     }
 }

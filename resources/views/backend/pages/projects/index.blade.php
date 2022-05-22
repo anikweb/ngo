@@ -39,7 +39,7 @@
                                                 <td><img class="rounded" style="width: 250px" src="{{ asset('images/placeholder/image.jpg') }}" alt="{{ $project->title }}"></td>
                                             @endif
                                             <td>{{ $project->title }}</td>
-                                            <td>@php echo Str::limit($project->description, 50, '...') @endphp</td>
+                                            <td>@php echo Str::limit($project->description, 50, '....') @endphp @if(Str::length($project->description) >50) <a href="{{route('projects.show',$project->id)}}">More</a> @endif</td>
                                             <td>{{ $project->created_at->format('d-m-y, h:i A') }}</td>
                                             <td>
                                                 <a href="{{route('projects.show',$project->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>

@@ -80,7 +80,6 @@ class AdvisorController extends Controller
                 $advisor->image = $newName;
                 $advisor->save();
             }
-
             if($request->username[0] != null){
                 foreach ($request->socialPlatform as $key => $socialPlatform) {
                     if($request->username[$key]){
