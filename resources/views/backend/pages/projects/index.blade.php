@@ -44,7 +44,7 @@
                                             <td>
                                                 <a href="{{route('projects.show',$project->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>
                                                 <a href="{{route('projects.edit',$project->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ route('projects.multiple.image.create',$project->slug) }}" class="btn btn-primary"><i class="fa fa-file-image"></i></a>
+                                                <a href="{{ route('projects.multiple.image.create',$project->slug) }}" class="btn btn-primary"><i class="fa fa-images"></i></a>
                                                 <button data-id="{{ $project->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
                                                 <form id="trashForm-{{ $project->id }}" action="{{ route('projects.destroy',$project->id) }}" method="POST">
                                                     @csrf

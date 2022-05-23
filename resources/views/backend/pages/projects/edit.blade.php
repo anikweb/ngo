@@ -9,6 +9,9 @@
     </nav>
     <div class="content">
         <div class="row">
+            <div class="col-md-12">
+                <a href="{{ route('projects.multiple.image.create',$project->slug) }}" class="btn btn-primary"><i class="fa fa-images"></i> Edit Image Gallery</a>
+            </div>
             <div class="col-md-12 pt-2">
                 <div class="card card-primary">
                     <div class="card-header">

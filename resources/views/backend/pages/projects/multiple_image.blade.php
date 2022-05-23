@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-12">
                 <div class="card card-primary">
-                    <div class="card-header">Image Gallery</div>
+                    <div class="card-header">{{ $project->title }} -Image Gallery</div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered">
@@ -52,7 +52,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($project->imageGallery as $key => $imageGallery)
+                                    @forelse ($project->imageGallery as $key => $imageGallery)
                                         <tr>
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td><img width="300" src="{{ asset('images/projects/image_gallery/'.$project->slug.'/'.$imageGallery->image) }}" alt="{{ $project->title }}"></td>
@@ -60,10 +60,19 @@
                                             <td>{{ $imageGallery->created_at->format('d-M-y, h:i A') }}</td>
                                             <td>
                                                 <a href="#" class="btn btn-primary"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a>
-                                                <a href="#" class="btn btn-danger "><i class="fa fa-trash"></i></a>
+                                                <button data-id="{{ $imageGallery->id }}" class="btn btn-danger trash-btn"><i class="fa fa-trash"></i></button>
+                                                <form action="{{ route('projects.multiple.image.delete') }}" id='trashForm-{{$imageGallery->id}}' method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="project_id" value="{{ $project->id }}">
+                                                    <input type="hidden" name="image_id" value="{{ $imageGallery->id }}">
+                                                </form>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center"><i class="fa fa-exclamation-triangle"></i> No image added!</td>
+                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -121,5 +130,29 @@
 
         }
     }
+    $('.trash-btn').click(function(){
+        var image_id = $(this).attr('data-id');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                Swal.fire(
+                'Deleted!',
+                'Image has been deleted.',
+                'success'
+                )
+                setTimeout(function() {
+                    $('#trashForm-'+image_id).submit();
+                }, 1000);
+            }
+        })
+    });
 </script>
 @endsection

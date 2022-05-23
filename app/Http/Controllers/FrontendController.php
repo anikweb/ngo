@@ -38,6 +38,7 @@ class FrontendController extends Controller
     public function projectIndex($slug){
         return view('frontend.projects.index',[
             'project' => Project::where('slug',$slug)->first(),
+            'projects' => Project::all(),
         ]);
     }
 }

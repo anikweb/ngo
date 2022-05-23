@@ -10,7 +10,7 @@
 <meta name="author" content="Muktir Bondhon Foundation" />
 
 <!-- Page Title -->
-<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -57,6 +57,40 @@
 <!-- Revolution Slider 5.x SCRIPTS -->
 <script src="{{ asset('assets/js/revolution-slider/js/jquery.themepunch.tools.min.js')}}"></script>
 <script src="{{ asset('assets/js/revolution-slider/js/jquery.themepunch.revolution.min.js')}}"></script>
+<style>
+    .tab-slider .nav.nav-pills a:hover, .tab-slider .nav.nav-pills a.active, .custom-nav-tabs > li > a:hover, .widget .tags a:hover, .progress-item .progress-bar, .small-title .title::after, .title-icon::before, .title-icon::after, .testimonial .item::after, .drop-caps.colored-square p:first-child:first-letter, .drop-caps.colored-rounded p:first-child:first-letter, .list-icon.theme-colored.square li i, .list-icon.theme-colored.rounded li i, .working-process.theme-colored a, .widget.dark .tags a:hover, .blog-posts .post .entry-content .post-date.right, .horizontal-tab-centered .nav-pills > li > a:hover, .horizontal-tab-centered .nav-pills > li.active > a, .horizontal-tab-centered .nav-pills > li.active > a:hover, .horizontal-tab-centered .nav-pills > li.active > a:focus, .owl-theme.dot-theme-colored .owl-controls .owl-dot span, .pagination.theme-colored li.active a, .section-title .both-side-line::after, .section-title .both-side-line::before, .section-title .top-side-line::after, .section-title .left-side-line::before, .section-title .right-side-line::before, .product .tag-sale, .owl-theme .owl-dots .owl-dot.active span, .title-icon::after, .title-icon::before, .line-bottom:after, .line-bottom:before, .line-bottom:after, .line-bottom-no-border:after, .line-bottom-center:after, .line-bottom-center:before, .title-dots span, .home-countdown > li {
+        background:  #10783b !important;
+    }
+    .border-theme-colored, .owl-theme .owl-dots .owl-dot span {
+        border-color: #10783b;
+    }
+    .btn-theme-colored {
+        color: #fff !important;
+        background-color: #10783b !important;
+        border-color: #208c4c !important;
+    }
+    .overlay-theme-colored:before {
+        background-color: rgb(16 120 59) !important;
+    }
+    .layer-overlay.overlay-dark-8::before {
+        background-color: rgb(16 120 59);
+    }
+    .btn-theme-colored:hover {
+        color: #fff !important;;
+        background-color: #0d6231 !important;;
+        border-color: #064a22 !important;;
+    }
+    .btn-theme-colored:active, .btn-theme-colored.active, .open > .dropdown-toggle.btn-theme-colored {
+        color: #fff !important;;
+        background-color: #0d6231 !important;;
+        border-color: #064a22 !important;;
+    }
+    .btn-theme-colored:focus, .btn-theme-colored.focus {
+        color: #fff !important;;
+        background-color: #0d6231 !important;;
+        border-color: #064a22 !important;;
+    }
+</style>
 @yield('internal_css')
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -144,17 +178,7 @@
         <div class="container">
           <nav id="menuzord" class="menuzord default">
             <ul class="menuzord-menu">
-              <li class=" text-light"><a class="text-white mr-5 @if(Route::is('frontend')) actives @endif" href="#home">Home</a></li>
-              <li ><a class=" text-white mr-5" href="#">Services</a>
-                <ul class="dropdown">
-                  <li><a href="environmental-conservation.html">Environmental Conservation</a></li>
-                  <li><a href="education-for-sustainable-development.html">Education for sustainable development</a></li>
-                  <li><a href="promoting-social-safety-for-all.html">Promoting social safety for all</a></li>
-                  <li><a href="conservation-of-native-history-culture-and-pride.html">Conservation of native history, culture and pride</a></li>
-                  <li><a href="safe-health-for-all.html">Safe health for all</a></li>
-                  <li><a href="the-safe-road-for-all.html">The safe road for all</a></li>
-                </ul>
-              </li>
+              <li class=" text-light"><a class="text-white mr-5 @if(Route::is('frontend')) actives @endif" href="{{ route('frontend') }}">Home</a></li>
               <li><a class="text-white mr-5" href="#">Projects</a>
                 <ul class="dropdown">
                     @foreach (projects() as $project)
