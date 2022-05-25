@@ -273,6 +273,16 @@
                 </a>
             </li>
         @endcan
+        {{-- @can('project management') --}}
+            <li class="nav-item">
+                <a href="{{ route('events.index') }}" class="nav-link">
+                    <i class="nav-icon fa fa-calendar" aria-hidden="true"></i>
+                    <p>
+                        Events
+                    </p>
+                </a>
+            </li>
+        {{-- @endcan --}}
           @if (auth()->user()->can('team management'))
             <li class="nav-item @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) active @endif">
@@ -410,8 +420,6 @@
 <script src="{{ asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
 <script src="{{ asset('backend/plugins/chart.js/Chart.min.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset('backend/plugins/sparklines/sparkline.js') }}"></script>
 <!-- JQVMap -->
 <script src="{{ asset('backend/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
 <script src="{{ asset('backend/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
@@ -422,8 +430,6 @@
 <script src="{{ asset('backend/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('backend/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->

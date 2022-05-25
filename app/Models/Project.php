@@ -12,4 +12,7 @@ class Project extends Model
     public function imageGallery(){
         return $this->hasMany(ProjectImageGallery::class,'project_id');
     }
+    public function events(){
+        return $this->hasMany(Events::class,'project_id');
+    }
 }
