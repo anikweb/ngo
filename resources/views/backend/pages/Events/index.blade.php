@@ -24,11 +24,11 @@
                                         <th width="3%">#</th>
                                         <th width="17%">Image</th>
                                         <th width="10%">Title</th>
-                                        <th width="30%">Description</th>
-                                        <th width="30%">Location</th>
-                                        <th width="30%">Likes</th>
-                                        <th width="30%">Tags</th>
-                                        <th width="5%">Created at</th>
+                                        <th width="20%">Description</th>
+                                        <th width="10%">Location</th>
+                                        <th width="3%">Likes</th>
+                                        <th width="10%">Tags</th>
+                                        <th width="7%">Created at</th>
                                         <th width="10%">Action</th>
                                     </tr>
                                 </thead>
@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>{{ $events->firstItem() + $loop->index }}</td>
                                             @if ($event->image)
-                                                <td><img class="rounded" style="width: 250px" src="{{ asset('images/projects/'.$event->image) }}" alt="{{ $event->title }}"></td>
+                                                <td><img class="rounded" style="width: 250px" src="{{ asset('images/projects/events/'.$event->image) }}" alt="{{ $event->title }}"></td>
                                             @else
                                                 <td><img class="rounded" style="width: 250px" src="{{ asset('images/placeholder/image.jpg') }}" alt="{{ $event->title }}"></td>
                                             @endif
@@ -45,7 +45,14 @@
                                             <td>@php echo Str::limit($event->description, 50, '....') @endphp @if(Str::length($event->description) >50) <a href="{{route('events.show',$event->id)}}">More</a> @endif</td>
                                             <td>{{ $event->location }}</td>
                                             <td>{{ $event->likes }}</td>
-                                            <td>{{ $event->tags }}</td>
+                                            @php
+                                                $tags = Str::of($event->tags)->explode(',');
+                                            @endphp
+                                            <td>
+                                                @foreach ($tags as $tag)
+                                                    <span class="badge badge-primary">{{ $tag }}</span>
+                                                @endforeach    
+                                            </td>
                                             <td>{{ $event->created_at->format('d-m-y, h:i A') }}</td>
                                             <td>
                                                 <a href="{{route('events.show',$event->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>

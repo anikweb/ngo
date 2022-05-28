@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('events.index') }}">Events</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Create Events</li>
+        <li class="breadcrumb-item active" aria-current="page">Edit Events</li>
         </ol>
     </nav>
     <div class="content">
@@ -12,16 +12,22 @@
             <div class="col-md-12 pt-2">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Create Events</h3>
+                        <h3 class="card-title">Edit Events</h3>
                     </div>
                     <div class="card-body">
-                        <form id="form" action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data">
+                        <form id="form" action="{{ route('events.update',$event->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <img style="width:800px; height:460px;" id="image_preview" class="img-fluid d-block @error('image') border border-danger @enderror" src="{{ asset('images/placeholder/1920x1280.jpg') }}" >
+                                            <input type="hidden" name="event_id" value="{{ $event->id }}">
+                                            @if ($event->image)
+                                                <img style="width:800px; height:460px;" id="image_preview" class="img-fluid d-block @error('image') border border-danger @enderror" src="{{ asset('images/projects/events/'.$event->image) }}" alt="{{ $event->title }}">
+                                            @else
+                                                <img style="width:800px; height:460px;" id="image_preview" class="img-fluid d-block @error('image') border border-danger @enderror" src="{{ asset('images/placeholder/1920x1280.jpg') }}" >
+                                            @endif
                                             <label for="img" class="btn btn-primary mt-2 "><i class="fa fa-file-image"></i> Choose Featured Image </label>
                                             <input type="file" name="image" style="display: none" id="img" onchange="document.getElementById('image_preview').src = window.URL.createObjectURL(this.files[0])">
                                             @error('image')
@@ -35,7 +41,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="title">Title <span class="text-danger">*</span></label>
-                                                <input type="text" value="{{ old('title') }}" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title">
+                                                <input type="text" value="{{ $event->title }}" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title">
                                                 @error('title')
                                                     <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
                                                 @enderror
@@ -46,7 +52,7 @@
                                                 <label for="project_id">Under Project: <span class="text-danger">*</span></label>
                                                 <select name="project_id" id="project_id" class="form-control @error('project_id') is-invalid @enderror">
                                                     @foreach ($projects as $project)
-                                                        <option value="{{ $project->id }}">{{ Str::title($project->title) }}</option>
+                                                        <option @if($event->project_id == $project->id) selected @endif value="{{ $project->id }}">{{ Str::title($project->title) }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('project_id')
@@ -57,7 +63,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group border @error('description') border-danger @enderror p-1">
                                                 <label for="description">Description <span class="text-danger">*</span></label>
-                                                <textarea name="description" id="description" cols="30" rows="10">{{ old('description') }}</textarea>
+                                                <textarea name="description" id="description" cols="30" rows="10">{{ $event->description }}</textarea>
                                                 @error('description')
                                                     <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
                                                 @enderror
@@ -66,7 +72,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="location">Location <span class="text-danger">*</span></label>
-                                                <input type="text" name="location" value="{{ old('location') }}" id="location" class="form-control @error('location') is-invalid @enderror">
+                                                <input type="text" name="location" value="{{ $event->location }}" id="location" class="form-control @error('location') is-invalid @enderror">
                                                 @error('location')
                                                     <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
                                                 @enderror
@@ -79,7 +85,7 @@
                                                     <div class="input-group-prepend">
                                                     <div class="input-group-text"><i class="fa fa-tags text-primary"></i>  Tags</div>
                                                     </div>
-                                                    <input type="text" data-role="tagsinput" name="tags">
+                                                    <input type="text" data-role="tagsinput" name="tags" value="{{ $event->tags }}">
                                                 </div>
                                                 @error('tags')
                                                     <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
@@ -90,11 +96,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-center">
-                                    <button class="btn btn-primary my-2"><i class="fa fa-plus"></i> Create Project</button>
+                                    <button class="btn btn-primary my-2"><i class="fa fa-save"></i> Save Project</button>
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>

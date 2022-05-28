@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Events;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class EventsController extends Controller
 {
@@ -15,9 +17,13 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.Events.index',[
-            'events' => Events::latest()->paginate(10),
-        ]);
+        if(auth()->user()->can('event management')){
+            return view('backend.pages.Events.index',[
+                'events' => Events::latest()->paginate(10),
+            ]);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -27,9 +33,13 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.Events.create',[
-            'projects' => Project::all(),
-        ]);
+        if(auth()->user()->can('event management')){
+            return view('backend.pages.Events.create',[
+                'projects' => Project::all(),
+            ]);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -40,8 +50,37 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        $event = new Events();
-        // $event->title = ;
+        if(auth()->user()->can('event management')){
+            $request->validate([
+                'project_id' => 'required',
+                'title' => 'required|string|max:100|min:2',
+                'slug' => 'required',
+                'description' => 'required',
+                'location' => 'required',
+                'image' => 'required|mimes:png,jpg,webp,jpeg',
+            ]);
+            $event = new Events();
+            $event->project_id = $request->project_id;
+            $event->title = $request->title;
+            $event->slug = Str::slug($request->title);
+    
+            $event->description = $request->description;
+            $event->location = $request->location;
+            $event->tags = $request->tags;
+            $event->save();
+            if($request->hasFile('image')){
+                $image = $request->file('image');
+                $newName = Str::slug($event->slug).Str::random(5).'.'.$image->getClientOriginalExtension();
+                $destination = public_path('images/projects/events/'.$newName);
+                Image::make($image)->save($destination);
+                $event->image = $newName;
+                $event->save();
+            }
+            // $event->image = $request->
+            return redirect()->route('events.index')->with('success','New events added!');
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -50,9 +89,15 @@ class EventsController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function show(Events $events)
+    public function show($id)
     {
-        return $events;
+        if(auth()->user()->can('event management')){
+            return view('backend.pages.Events.show',[
+                'event' => Events::find($id),
+            ]);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -61,9 +106,16 @@ class EventsController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function edit(Events $events)
+    public function edit($id)
     {
-        return $events;
+        if(auth()->user()->can('event management')){
+            return view('backend.pages.Events.edit',[
+                'event' => Events::find($id),
+                'projects' => Project::all(),
+            ]);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -73,9 +125,42 @@ class EventsController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Events $events)
+    public function update(Request $request)
     {
-        //
+        if(auth()->user()->can('event management')){
+            $event = Events::find($request->event_id);
+            $request->validate([
+                'project_id' => 'required',
+                'title' => 'required|string|max:100|min:2',
+                'description' => 'required',
+                'location' => 'required',
+            ]);
+            $event->project_id = $request->project_id;
+            $event->title = $request->title;
+            $event->slug = Str::slug($request->title);
+    
+            $event->description = $request->description;
+            $event->location = $request->location;
+            $event->tags = $request->tags;
+            $event->save();
+            if($request->hasFile('image')){
+                if($event->image){
+                    $oldImage = public_path('images/projects/events/'.$event->image);
+                    if(file_exists($oldImage)){
+                        unlink($oldImage);
+                    }
+                }
+                $image = $request->file('image');
+                $newName = Str::slug($event->slug).Str::random(5).'.'.$image->getClientOriginalExtension();
+                $destination = public_path('images/projects/events/'.$newName);
+                Image::make($image)->save($destination);
+                $event->image = $newName;
+                $event->save();
+            }
+            return redirect()->route('events.index')->with('success','events updated!');
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -84,8 +169,14 @@ class EventsController extends Controller
      * @param  \App\Models\Events  $events
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Events $events)
+    public function destroy($id)
     {
-        //
+        if(auth()->user()->can('event management')){
+            $event = Events::find($id);
+            $event->delete();
+            return back()->with('success','Event Deleted!');
+        }else{
+            abort(404);
+        }
     }
 }

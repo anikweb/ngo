@@ -6,8 +6,7 @@
     {{-- csrf token  --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> @if(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @elseif(Route::is('about-settings.index')) About Settings @elseif(Route::is('advisors-settings.index')) Advisors @elseif(Route::is('advisors-settings.create')) Create-Advisor @elseif(Route::is('advisors-settings.edit')) Edit-Advisor @elseif(Route::is('official-team.index')) Official Team @elseif(Route::is('official-team.create')) Create-Official Team @elseif(Route::is('official-team.edit')) Edit-Official Team @elseif(Route::is('sliders.index')) Sliders @elseif(Route::is('sliders.create')) Create-Slider @elseif(Route::is('sliders.show')) Details-Slider @elseif(Route::is('sliders.edit')) Edit-Slider @elseif(Route::is('projects.create')) Create-Project @elseif(Route::is('projects.index')) Create-Project @elseif(Route::is('projects.show')) {{ $project->title }}-Project @elseif(Route::is('projects.edit')) Edit-Project @elseif(Route::is('projects.multiple.image.create')) Multiple Images-Project @endif @if(Route::is('dashboard')) @else | @endif Dashboard</title>
-
+    <title> @if(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @elseif(Route::is('about-settings.index')) About Settings @elseif(Route::is('advisors-settings.index')) Advisors @elseif(Route::is('advisors-settings.create')) Create-Advisor @elseif(Route::is('advisors-settings.edit')) Edit-Advisor @elseif(Route::is('official-team.index')) Official Team @elseif(Route::is('official-team.create')) Create-Official Team @elseif(Route::is('official-team.edit')) Edit-Official Team @elseif(Route::is('sliders.index')) Sliders @elseif(Route::is('sliders.create')) Create-Slider @elseif(Route::is('sliders.show')) Details-Slider @elseif(Route::is('sliders.edit')) Edit-Slider @elseif(Route::is('projects.create')) Create-Project @elseif(Route::is('projects.index')) Create-Project @elseif(Route::is('projects.show')) {{ $project->title }}-Project @elseif(Route::is('projects.edit')) Edit-Project @elseif(Route::is('projects.multiple.image.create')) Multiple Images-Project @elseif(Route::is('events.create')) Create-Event @elseif(Route::is('events.index')) Events @elseif(Route::is('events.show')) {{ $event->title }}-Event @elseif(Route::is('events.edit')) Edit-Event @endif @if(Route::is('dashboard')) @else | @endif Dashboard</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -273,16 +272,16 @@
                 </a>
             </li>
         @endcan
-        {{-- @can('project management') --}}
+        @can('event management')
             <li class="nav-item">
-                <a href="{{ route('events.index') }}" class="nav-link">
+                <a href="{{ route('events.index') }}" class="nav-link @if(Route::is('events.create')||Route::is('events.edit')||Route::is('events.index')||Route::is('events.show')) active @endif">
                     <i class="nav-icon fa fa-calendar" aria-hidden="true"></i>
                     <p>
                         Events
                     </p>
                 </a>
             </li>
-        {{-- @endcan --}}
+        @endcan
           @if (auth()->user()->can('team management'))
             <li class="nav-item @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('advisors-settings.create')||Route::is('advisors-settings.edit')||Route::is('advisors-settings.index')||Route::is('official-team.create')||Route::is('official-team.edit')||Route::is('official-team.index')) active @endif">

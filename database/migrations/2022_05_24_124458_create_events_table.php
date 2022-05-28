@@ -17,6 +17,7 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('project_id');
             $table->string('title');
+            $table->string('slug');
             $table->string('image')->nullable();
             $table->string('description');
             $table->string('location');
