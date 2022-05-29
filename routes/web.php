@@ -33,6 +33,12 @@ Route::get('/about', [FrontendController::class,'aboutIndex'])->name('frontend.a
 Route::get('/team/adviser', [FrontendController::class,'advisorTeamIndex'])->name('frontend.team.advisor.index');
 Route::get('/team/official', [FrontendController::class,'officialTeamIndex'])->name('frontend.team.official.index');
 Route::get('/project/{slug}', [FrontendController::class,'projectIndex'])->name('frontend.project.index');
+Route::get('/events', [FrontendController::class,'eventsIndex'])->name('frontend.events.index');
+Route::get('/events/{slug}', [FrontendController::class,'eventsShow'])->name('frontend.events.show');
+
+
+
+
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);
 Route::resource('dashboard/generalSetting', GeneralSettingController::class)->middleware(['auth','verified']);

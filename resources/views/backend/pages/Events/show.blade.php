@@ -22,7 +22,7 @@
                             </div>
                             <div class="col-md-6">
                                 <h2> <strong>Title: </strong>{{ $event->title }}</h2>
-                                <h5> <strong>Title: </strong>{{ $event->project->title }}</h5>
+                                <h5> <strong>Project: </strong>{{ $event->project->title }}</h5>
                                 <h5> <strong>location: </strong> {{ $event->location }}</h5>
                                 @php
                                     $tags = Str::of($event->tags)->explode(',');

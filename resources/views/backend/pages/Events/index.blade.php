@@ -24,10 +24,11 @@
                                         <th width="3%">#</th>
                                         <th width="17%">Image</th>
                                         <th width="10%">Title</th>
-                                        <th width="20%">Description</th>
+                                        <th width="10%">Project</th>
                                         <th width="10%">Location</th>
                                         <th width="3%">Likes</th>
                                         <th width="10%">Tags</th>
+                                        <th width="7%">Event Date</th>
                                         <th width="7%">Created at</th>
                                         <th width="10%">Action</th>
                                     </tr>
@@ -42,7 +43,7 @@
                                                 <td><img class="rounded" style="width: 250px" src="{{ asset('images/placeholder/image.jpg') }}" alt="{{ $event->title }}"></td>
                                             @endif
                                             <td>{{ $event->title }}</td>
-                                            <td>@php echo Str::limit($event->description, 50, '....') @endphp @if(Str::length($event->description) >50) <a href="{{route('events.show',$event->id)}}">More</a> @endif</td>
+                                            <td>{{ $event->project->title }}</td>
                                             <td>{{ $event->location }}</td>
                                             <td>{{ $event->likes }}</td>
                                             @php
@@ -53,6 +54,10 @@
                                                     <span class="badge badge-primary">{{ $tag }}</span>
                                                 @endforeach    
                                             </td>
+                                            @php
+                                                $timestamp = strtotime($event->event_date);  
+                                            @endphp
+                                            <td>@php echo date('d-m-y', $timestamp) @endphp</td>
                                             <td>{{ $event->created_at->format('d-m-y, h:i A') }}</td>
                                             <td>
                                                 <a href="{{route('events.show',$event->id)}}" class="btn btn-success"><i class="fa fa-eye"></i></a>

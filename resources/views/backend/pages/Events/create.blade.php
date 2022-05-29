@@ -63,11 +63,20 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-8">
                                             <div class="form-group">
                                                 <label for="location">Location <span class="text-danger">*</span></label>
-                                                <input type="text" name="location" value="{{ old('location') }}" id="location" class="form-control @error('location') is-invalid @enderror">
+                                                <input type="text" name="location" value="{{ old('location') }}" id="location" class="form-control @error('location') is-invalid @enderror" placeholder="Enter Location">
                                                 @error('location')
+                                                    <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="event_date">Event Date <span class="text-danger">*</span></label>
+                                                <input type="date" name="event_date" value="{{ old('event_date') }}" id="event_date" class="form-control @error('event_date') is-invalid @enderror">
+                                                @error('event_date')
                                                     <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>
                                                 @enderror
                                             </div>

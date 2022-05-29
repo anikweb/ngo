@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\{
     about,
     advisor,
+    Events,
     OffcialTeam,
     Slider,
     Project,
@@ -18,6 +19,7 @@ class FrontendController extends Controller
         return view('frontend.main',[
             'sliders' => Slider::orderBy('priority','asc')->get(),
             'about' => about::first(),
+            'events' => Events::latest()->limit(6)->get(),
         ]);
     }
     public function aboutIndex(){
@@ -41,4 +43,17 @@ class FrontendController extends Controller
             'projects' => Project::all(),
         ]);
     }
+    public function eventsIndex(){
+        // return 'aschi';
+        return view('frontend.projects.events.events',[
+            'events' => Events::latest()->get(),
+        ]);
+    }
+    public function eventsShow($slug){
+        // return $slug;
+        return view('frontend.projects.events.event',[
+            'event' => Events::where('slug',$slug)->first(),
+        ]);
+    }
+    
 }

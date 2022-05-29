@@ -50,22 +50,23 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         if(auth()->user()->can('event management')){
             $request->validate([
                 'project_id' => 'required',
                 'title' => 'required|string|max:100|min:2',
-                'slug' => 'required',
                 'description' => 'required',
                 'location' => 'required',
+                'event_date' => 'required',
                 'image' => 'required|mimes:png,jpg,webp,jpeg',
             ]);
             $event = new Events();
             $event->project_id = $request->project_id;
             $event->title = $request->title;
             $event->slug = Str::slug($request->title);
-    
             $event->description = $request->description;
             $event->location = $request->location;
+            $event->event_date = $request->event_date;
             $event->tags = $request->tags;
             $event->save();
             if($request->hasFile('image')){
@@ -133,12 +134,13 @@ class EventsController extends Controller
                 'project_id' => 'required',
                 'title' => 'required|string|max:100|min:2',
                 'description' => 'required',
+                'event_date' => 'required',
                 'location' => 'required',
             ]);
             $event->project_id = $request->project_id;
             $event->title = $request->title;
             $event->slug = Str::slug($request->title);
-    
+            $event->event_date = $request->event_date;
             $event->description = $request->description;
             $event->location = $request->location;
             $event->tags = $request->tags;

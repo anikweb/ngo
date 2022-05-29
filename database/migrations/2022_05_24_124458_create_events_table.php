@@ -19,10 +19,11 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('image')->nullable();
-            $table->string('description');
+            $table->text('description');
             $table->string('location');
             $table->string('likes')->nullable()->default(0);
             $table->string('tags')->nullable();
+            $table->date('event_date');
             $table->timestamps();
             $table->softDeletes();
         });

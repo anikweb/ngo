@@ -871,6 +871,44 @@
       </div>
     </section>
 
+    {{-- section: Latest Events --}}
+    <section class="bg-silver-light">
+        <div class="container">
+          <div class="section-content">
+            <div class="container pt-0">
+                <div class="section-title text-center">
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                      <h2 class="text-uppercase line-bottom-center mt-0">Latest Events</h2>
+                      <p>Here our latest events</p>
+                    </div>
+                  </div>
+                </div>
+            <div class="row mt-30">
+                @foreach ($events as $event)
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                      <div class="schedule-box maxwidth500 bg-lighter mb-30">
+                      <div class="thumb">
+                          <img class="img-fullwidth" alt="{{ $event->title }}" src="{{ asset('images/projects/events/'.$event->image) }}">
+                      </div>
+                      <div class="schedule-details clearfix p-15 pt-10">
+                          <h4 class="title ‍c-title mt-0"><a href="{{route('frontend.events.show',$event->slug)}}">{{ $event->title }}</a></h4>
+                          <div class="clearfix"></div>
+                          <p class="mt-10">@php echo Str::limit($event->description, 230, '....') @endphp @if(Str::length($event->description) >230) <a href="{{route('frontend.events.show',$event->slug)}}">More</a> @endif</p>
+                          <div class="mt-10">
+                          <a href="{{route('frontend.events.show',$event->slug)}}" class="btn btn-theme-colored btn-sm mt-10">Details</a>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+                @endforeach
+                <div class="col-md-12 text-center">
+                    <a href="{{ route('frontend.events.index') }}" class="btn btn-lg btn-theme-colored">See More</a>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
     <!-- Section: blog -->
     <section id="blog">
       <div class="container pt-0">

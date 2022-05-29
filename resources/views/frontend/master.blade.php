@@ -100,6 +100,8 @@
 <![endif]-->
 </head>
 <body class="">
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0" nonce="1ysZlWQx"></script>
 <div id="wrapper" class="clearfix">
   <!-- preloader -->
     {{-- <div id="preloader">
@@ -162,11 +164,13 @@
             </div>
             <div class="widget no-border clearfix m-0 mt-5">
               <ul class="styled-icons icon-gray icon-theme-colored icon-circled icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                @foreach (contactInfo() as $item)
+                    @if ($item->platform->name == 'whatsapp')
+                    <li><a href="tel:{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                    @else
+                        <li><a href="https://{{ $item->platform->url }}/{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                    @endif
+                @endforeach
               </ul>
             </div>
           </div>
@@ -186,11 +190,11 @@
                     @endforeach
                 </ul>
               </li>
-              <li><a class="text-white mr-5" href="#">Events</a>
-                <ul class="dropdown">
+              <li><a class="text-white mr-5" href="{{ route('frontend.events.index') }}">Events</a>
+                {{-- <ul class="dropdown">
                   <li><a href="event-list.html">Event List</a></li>
                   <li><a href="event-calendar.html">Event Calendar</a></li>
-                </ul>
+                </ul> --}}
               </li>
               <li><a class="text-white mr-5" href="#">Donations</a>
                 <ul class="dropdown">
@@ -247,7 +251,7 @@
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <h5 class="widget-title line-bottom">Latest News</h5>
+            <h5 class="widget-title line-bottom">Latest Events</h5>
             <div class="latest-posts">
               <article class="post media-post clearfix pb-0 mb-10">
                 <a href="#" class="post-thumb"><img alt="" src="http://placehold.it/80x55"></a>
@@ -275,13 +279,16 @@
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <h5 class="widget-title line-bottom">Useful Links</h5>
+            <h5 class="widget-title line-bottom">Visit</h5>
             <ul class="list angle-double-right list-border">
-              <li><a href="#">Body Building</a></li>
-              <li><a href="#">Fitness Classes</a></li>
-              <li><a href="#">Weight lifting</a></li>
-              <li><a href="#">Yoga Courses</a></li>
-              <li><a href="#">Training</a></li>
+              <li><a href="">Donate</a></li>
+              <li><a href="#">Projects</a></li>
+              <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
+              <li><a href="#">Media</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Policy</a></li>
+              <li><a href="#">Constitution</a></li>
             </ul>
           </div>
         </div>
@@ -321,7 +328,7 @@
               </div>
             </form>
             <!-- Mailchimp Subscription Form Validation-->
-            <script type="text/javascript">
+            {{-- <script type="text/javascript">
               $('#mailchimp-subscription-form-footer').ajaxChimp({
                   callback: mailChimpCallBack,
                   url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
@@ -340,7 +347,7 @@
                   }
                   $mailchimpform.prepend($response);
               }
-            </script>
+            </script> --}}
             <!-- Mailchimp Subscription Form Ends Here -->
           </div>
         </div>
@@ -373,7 +380,7 @@
       <div class="container pt-15 pb-10">
         <div class="row">
           <div class="col-md-6">
-            <p class="font-11 text-black-777 m-0">Copyright &copy; 2015-{{ date('y') }} Muktir Bondhon Foundation. All Rights Reserved</p>
+            <p class="font-11 text-black-777 m-0">Copyright &copy; 2015-{{ date('y') }} <a href="{{ route('frontend') }}">Muktir Bondhon Foundation</a>. All Rights Reserved</p>
           </div>
           <div class="col-md-6 text-right">
             <div class="widget no-border m-0">
