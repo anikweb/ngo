@@ -10,7 +10,7 @@
 <meta name="author" content="Muktir Bondhon Foundation" />
 
 <!-- Page Title -->
-<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
