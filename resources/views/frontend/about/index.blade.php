@@ -196,174 +196,62 @@
               <!-- Portfolio Gallery Grid -->
               <div id="grid" class="gallery-isotope grid-4 gutter clearfix">
                 <!-- Portfolio Item Start -->
-                <div class="gallery-item photography">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a data-lightbox="image" href="http://placehold.it/470x320"><i class="fa fa-plus"></i></a>
-                          <a href="#"><i class="fa fa-link"></i></a>
+                @foreach ($image_galleries as $gallery)
+                    <div class="gallery-item photography">
+                        <div class="thumb">
+                            <img class="img-fullwidth" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}">
+                            <div class="overlay-shade"></div>
+                            <div class="text-holder text-center">
+                                <h5 class="title">{{ $gallery->alt_text }}</h5>
+                            </div>
+                            <div class="icons-holder">
+                                <div class="icons-holder-inner">
+                                    <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
+                                    <a data-lightbox="image" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><i class="fa fa-plus"></i></a>
+                                    {{-- <a href="#"><i class="fa fa-link"></i></a> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="hover-link" data-lightbox="image" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}">View more</a>
                         </div>
-                      </div>
                     </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
 
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item photography">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a data-lightbox="image" href="http://placehold.it/470x320"><i class="fa fa-plus"></i></a>
+                @endforeach
+                <!-- Portfolio Item End -->
+                {{-- video gallery start --}}
+                {{-- @foreach ($image_galleries as $gallery)
+                    <!-- Portfolio Item Start -->
+                    <div class="gallery-item branding">
+                        <div class="thumb">
+                            <img class="img-fullwidth" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="project">
+                            <div class="overlay-shade"></div>
+                            <div class="text-holder text-center">
+                            <h5 class="title">Gallery Title Here</h5>
+                            </div>
+                            <div class="icons-holder">
+                            <div class="icons-holder-inner">
+                                <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
+                                <a class="popup-vimeo" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><i class="fa fa-play"></i></a>
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
+                    <!-- Portfolio Item End -->
+                @endforeach --}}
+                 {{-- video gallery end --}}
 
+                {{-- slider gallery start --}}
                 <!-- Portfolio Item Start -->
-                <div class="gallery-item photography">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a data-lightbox="image" href="http://placehold.it/470x320"><i class="fa fa-plus"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item photography">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a data-lightbox="image" href="http://placehold.it/470x320"><i class="fa fa-plus"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item branding">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a href="#"><i class="fa fa-link"></i></a>
-                          <a href="#"><i class="fa fa-heart-o"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item design">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a href="#"><i class="fa fa-link"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item photography">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a class="popup-youtube" href="http://www.youtube.com/watch?v=0O2aH4XLbto"><i class="fa fa-youtube-play"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item branding">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a class="popup-vimeo" href="https://vimeo.com/45830194"><i class="fa fa-play"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
+                {{-- @foreach ($image_galleries as $gallery)
                 <div class="gallery-item design">
                   <div class="thumb">
                     <div class="flexslider-wrapper">
                       <div class="flexslider">
                         <ul class="slides">
-                          <li><a href="http://placehold.it/470x320" title="Portfolio Gallery - Photo 1"><img src="http://placehold.it/470x320" alt=""></a></li>
-                          <li><a href="http://placehold.it/470x320" title="Portfolio Gallery - Photo 2"><img src="http://placehold.it/470x320" alt=""></a></li>
-                          <li><a href="http://placehold.it/470x320" title="Portfolio Gallery - Photo 3"><img src="http://placehold.it/470x320" alt=""></a></li>
+                          <li><a href="{{ asset('images/media/image_gallery/'.$gallery->image) }}" title="Portfolio Gallery - Photo 1"><img src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt=""></a></li>
+                          <li><a href="{{ asset('images/media/image_gallery/'.$gallery->image) }}" title="Portfolio Gallery - Photo 2"><img src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt=""></a></li>
+                          <li><a href="{{ asset('images/media/image_gallery/'.$gallery->image) }}" title="Portfolio Gallery - Photo 3"><img src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt=""></a></li>
                         </ul>
                       </div>
                     </div>
@@ -380,76 +268,9 @@
                     </div>
                   </div>
                 </div>
+                @endforeach --}}
                 <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item photography">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a data-lightbox="image" href="http://placehold.it/470x320"><i class="fa fa-plus"></i></a>
-                          <a href="#"><i class="fa fa-link"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item design">
-                  <div class="thumb">
-                    <div class="flexslider-wrapper" data-direction="vertical">
-                      <div class="flexslider">
-                        <ul class="slides">
-                          <li><a href="http://placehold.it/470x320" title="Portfolio Gallery - Photo 1"><img src="http://placehold.it/470x320" alt=""></a></li>
-                          <li><a href="http://placehold.it/470x320" title="Portfolio Gallery - Photo 2"><img src="http://placehold.it/470x320" alt=""></a></li>
-                          <li><a href="http://placehold.it/470x320" title="Portfolio Gallery - Photo 3"><img src="http://placehold.it/470x320" alt=""></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a href="#"><i class="fa fa-picture-o"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
-
-                <!-- Portfolio Item Start -->
-                <div class="gallery-item photography">
-                  <div class="thumb">
-                    <img class="img-fullwidth" src="http://placehold.it/470x320" alt="project">
-                    <div class="overlay-shade"></div>
-                    <div class="text-holder text-center">
-                      <h5 class="title">Gallery Title Here</h5>
-                    </div>
-                    <div class="icons-holder">
-                      <div class="icons-holder-inner">
-                        <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a data-lightbox="image" href="http://placehold.it/470x320"><i class="fa fa-plus"></i></a>
-                          <a href="#"><i class="fa fa-link"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                    <a class="hover-link" data-lightbox="image" href="http://placehold.it/470x320">View more</a>
-                  </div>
-                </div>
-                <!-- Portfolio Item End -->
+                {{-- slider gallery end --}}
               </div>
               <!-- End Portfolio Gallery Grid -->
             </div>

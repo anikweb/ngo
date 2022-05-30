@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     ContactAndBasicInfoController,
     FrontendController,
     GeneralSettingController,
+    ImageGalleryController,
     OffcialTeamController,
     ProjectController,
     RoleController,
@@ -66,5 +67,5 @@ Route::post('dashboard/project/multiple-image/update',[ProjectController::class,
 Route::post('dashboard/project/multiple-image/delete',[ProjectController::class,'multipleImageDelete'])->name('projects.multiple.image.delete');
 Route::resource('dashboard/projects', ProjectController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/events',EventsController::class)->middleware(['auth','verified']);
-
+Route::resource('dashboard/image-gallery',ImageGalleryController::class)->middleware(['auth','verified']);
 require __DIR__.'/auth.php';

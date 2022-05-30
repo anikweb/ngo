@@ -7,6 +7,7 @@ use App\Models\{
     about,
     advisor,
     Events,
+    ImageGallery,
     OffcialTeam,
     Slider,
     Project,
@@ -20,11 +21,13 @@ class FrontendController extends Controller
             'sliders' => Slider::orderBy('priority','asc')->get(),
             'about' => about::first(),
             'events' => Events::latest()->limit(6)->get(),
+            'image_galleries' => ImageGallery::latest()->limit(28)->get(),
         ]);
     }
     public function aboutIndex(){
         return view('frontend.about.index',[
             'about' => about::first(),
+            'image_galleries' => ImageGallery::latest()->limit(28)->get(),
         ]);
     }
     public function advisorTeamIndex(){
@@ -55,5 +58,5 @@ class FrontendController extends Controller
             'event' => Events::where('slug',$slug)->first(),
         ]);
     }
-    
+
 }

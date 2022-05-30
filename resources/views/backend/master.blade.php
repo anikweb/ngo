@@ -252,6 +252,37 @@
                 </a>
             </li>
           @endif
+        {{-- @can('slider management') --}}
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fa fa-file-image" aria-hidden="true"></i>
+                    <p>
+                        Media
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('image-gallery.index') }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Image Gallery</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Publications</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Press Releases</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        {{-- @endcan --}}
         @can('slider management')
             <li class="nav-item">
                 <a href="{{ route('sliders.index') }}" class="nav-link @if(Route::is('sliders.create')||Route::is('sliders.edit')||Route::is('sliders.index')||Route::is('sliders.show')) active @endif">

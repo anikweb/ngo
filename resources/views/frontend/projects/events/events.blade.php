@@ -4,7 +4,7 @@
   <div class="main-content">
 
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="http://placehold.it/1920x1280">
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/projects/events/events.jpg') }}">
       <div class="container pt-100 pb-50">
         <!-- Section Content -->
         <div class="section-content pt-100">
@@ -35,7 +35,7 @@
                                         <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
                                             <ul>
                                                 @php
-                                                    $timestamp = strtotime($event->event_date);  
+                                                    $timestamp = strtotime($event->event_date);
                                                 @endphp
                                                 <li class="font-24 text-white font-weight-600 border-bottom ">@php echo date('d', $timestamp ) @endphp</li>
                                                 <li class="font-18 text-white text-uppercase">@php echo date('M', $timestamp ) @endphp</li>
