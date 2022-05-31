@@ -69,5 +69,7 @@ Route::resource('dashboard/projects', ProjectController::class)->middleware(['au
 Route::resource('dashboard/events',EventsController::class)->middleware(['auth','verified']);
 Route::get('dashboard/get/image/{id}',[ImageGalleryController::class,'getImage'])->middleware(['auth','verified']);
 Route::post('dashboard/image-gallery/update/custom',[ImageGalleryController::class,'updateImage'])->name('image-gallery.update.custom')->middleware(['auth','verified']);
+Route::get('dashboard/image-gallery/trash/{id}',[ImageGalleryController::class,'updateTrash'])->name('image-gallery.trash')->middleware(['auth','verified']);
+Route::get('dashboard/image-gallery/delete/permanently/{id}',[ImageGalleryController::class,'updateDeletePermanently'])->name('image-gallery.trash')->middleware(['auth','verified']);
 Route::resource('dashboard/image-gallery',ImageGalleryController::class)->middleware(['auth','verified']);
 require __DIR__.'/auth.php';

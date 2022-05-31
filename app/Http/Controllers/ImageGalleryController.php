@@ -132,4 +132,26 @@ class ImageGalleryController extends Controller
             return back()->with('error','Failed');
         }
     }
+    public function updateTrash($id){
+        $image = ImageGallery::find($id);
+        if($image->delete()){
+            return back()->with('success','Image Moved to trash');
+        }else{
+            return back()->with('error','Failed');
+        }
+    }
+    public function updateDeletePermanently($id){
+        $image = ImageGallery::find($id);
+        $oldImage = public_path('images/media/image_gallery/'.$image->image);
+        if($oldImage){
+            unlink($oldImage);
+            if($image->forceDelete()){
+                return back()->with('success','Image Moved to trash');
+            }else{
+                return back()->with('error','Failed');
+            }
+        }else{
+            return back()->with('error','Failed');
+        }
+    }
 }

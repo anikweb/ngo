@@ -62,17 +62,16 @@
                                     <input type="text" disabled class="form-control" id="img_url">
                                     <button
                                     type="button"
-                                    class="btn btn-primary img_url_copy_btn mt-2"
-                                    data-clipboard-target="#img_url"
-                                    role="button"
+                                    class="btn-primary btn-sm img_url_copy_btn mt-2"
+                                    onclick="copyURL()"
                                     data-toggle="popover"
                                     data-trigger="focus"
                                     data-content="URL Copied"
                                     ><i class="fa fa-copy"></i> Copy Url</button>
                                 </div>
                             </form>
-                            <a href="#" class="btn btn-danger">Move to trash</a>
-                            <a href="#" class="btn btn-danger">Permanetly Delete</a>
+                            <a href="#" class="btn btn-danger img-trash-btn">Move to trash</a>
+                            <a href="#" class="btn btn-danger delete-btn" data-id="">Permanetly Delete</a>
                         </div>
                     </div>
                 </div>
@@ -101,13 +100,20 @@
 </style>
 @endsection
 @section('footer_js')
-<script src="//cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
 <script>
-      $('.img_url_copy_btn').popover({
+    $('.img_url_copy_btn').popover({
         container: 'body'
     })
+    function copyURL(){
+        var copyText = document.getElementById("img_url");
+         /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-    var clipboard = new ClipboardJS('.img_url_copy_btn');
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+    }
      @if (session('success'))
             toastr.success('{{ session("success") }}','Success')
     @endif
@@ -128,6 +134,8 @@
                      $('.img_id_input').val(image_id);
                      $('.alt_name_input').val(res.alt_text);
                      $('#image_update_form').attr('action','{{ route("image-gallery.update.custom") }}/');
+                     $('.img-trash-btn').attr('href','{{ url("/dashboard/image-gallery/trash") }}/'+res.id);
+                     $('.delete-btn').attr('data-id',res.id);
                 }else{
                     // $("#state").empty();
                 }
@@ -136,11 +144,12 @@
 
 
     });
-    $('.trash-btn').click(function(){
-        var project_id = $(this).attr('data-id');
+    $('.delete-btn').click(function(){
+        var image_id = $(this).attr('data-id');
+
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "You won't be able to revert this!, and this image will show missing images where URLs have been used",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -151,11 +160,11 @@
 
                 Swal.fire(
                 'Deleted!',
-                'Advisor has been deleted.',
+                'Image deleted, you can not recover in future.',
                 'success'
                 )
                 setTimeout(function() {
-                    $('#trashForm-'+project_id).submit();
+                    window.location.href= "{{ url('dashboard/image-gallery/delete/permanently') }}/"+image_id;
                 }, 1000);
             }
         })
