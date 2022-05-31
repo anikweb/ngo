@@ -57,6 +57,7 @@ class ImageGalleryController extends Controller
                     $newName = 'Image-gallery'.Str::random(5).time().'.'.$image->getClientOriginalExtension();
                     $path = public_path('images/media/image_gallery/'.$newName);
                     Image::make($image)->save($path);
+                    $ImageGallery->alt_text =  pathinfo($image->getClientOriginalname(),PATHINFO_FILENAME);
                     $ImageGallery->image = $newName;
                     $ImageGallery->save();
                 }
@@ -117,5 +118,18 @@ class ImageGalleryController extends Controller
     public function destroy(ImageGallery $imageGallery)
     {
         //
+    }
+    public function getImage($id){
+        $img = ImageGallery::find($id);
+        return response()->json($img);
+    }
+    public function updateImage(Request $request){
+        $image = ImageGallery::find($request->image_id);
+        $image->alt_text = $request->alt_name;
+        if($image->save()){
+            return back()->with('success','Alt Name Saved');
+        }else{
+            return back()->with('error','Failed');
+        }
     }
 }

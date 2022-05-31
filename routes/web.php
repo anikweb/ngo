@@ -67,5 +67,7 @@ Route::post('dashboard/project/multiple-image/update',[ProjectController::class,
 Route::post('dashboard/project/multiple-image/delete',[ProjectController::class,'multipleImageDelete'])->name('projects.multiple.image.delete');
 Route::resource('dashboard/projects', ProjectController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/events',EventsController::class)->middleware(['auth','verified']);
+Route::get('dashboard/get/image/{id}',[ImageGalleryController::class,'getImage'])->middleware(['auth','verified']);
+Route::post('dashboard/image-gallery/update/custom',[ImageGalleryController::class,'updateImage'])->name('image-gallery.update.custom')->middleware(['auth','verified']);
 Route::resource('dashboard/image-gallery',ImageGalleryController::class)->middleware(['auth','verified']);
 require __DIR__.'/auth.php';
