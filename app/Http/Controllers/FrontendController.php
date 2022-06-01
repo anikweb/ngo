@@ -58,5 +58,11 @@ class FrontendController extends Controller
             'event' => Events::where('slug',$slug)->first(),
         ]);
     }
+    public function imagegalleryIndex(){
+        // return $slug;
+        return view('frontend.media.image_gallery.index',[
+            'image_galleries' => ImageGallery::latest()->paginate(40),
+        ]);
+    }
 
 }

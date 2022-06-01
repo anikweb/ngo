@@ -824,28 +824,7 @@
       </div>
     </section>
 
-    <!-- Divider: Clients -->
-    <section class="clients bg-theme-colored">
-      <div class="container pt-0 pb-0">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- Section: Clients -->
-            <div class="owl-carousel-6col clients-logo transparent text-center">
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="http://placehold.it/200x120" alt=""></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
   </div>
   <!-- end main-content -->
 

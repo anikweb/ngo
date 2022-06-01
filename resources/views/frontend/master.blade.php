@@ -10,7 +10,7 @@
 <meta name="author" content="Muktir Bondhon Foundation" />
 
 <!-- Page Title -->
-<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -217,7 +217,7 @@
                         <ul class="dropdown">
                         <li><a href="#">Publications</a></li>
                         <li><a href="#">Press Releases</a></li>
-                        <li><a href="#">Gallery</a></li>
+                        <li><a href="{{ route('frontend.image.gallery') }}">Image Gallery</a></li>
                         </ul>
                     </li>
                     <li><a class="text-white mr-5" href="blog.html">Blog</a></li>
@@ -239,6 +239,21 @@
         {{--  Main Content   --}}
         @yield('content')
         {{--  Main Content   --}}
+        <!-- Divider: Clients -->
+        <section class="clients bg-theme-colored">
+            <div class="container pt-0 pb-0">
+            <div class="row">
+                <div class="col-md-12">
+                <!-- Section: Clients -->
+                <div class="owl-carousel-7col clients-logo transparent text-center">
+                    @foreach (imageGallery() as $gallery)
+                        <div class="item"> <a href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="100" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
+                    @endforeach
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
         <footer id="footer" class="footer" data-bg-img="{{ asset('assets/images/footer-bg.png') }}" data-bg-color="#25272e">
             <div class="container pt-70 pb-40">
             <div class="row border-bottom-black">
@@ -288,7 +303,7 @@
                     <li><a href="">Donate</a></li>
                     <li><a href="#">Projects</a></li>
                     <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
-                    <li><a href="#">Media</a></li>
+                    <li><a href="{{ route('frontend.image.gallery') }}">Media</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Terms & Condition</a></li>
                     <li><a href="#">Policy</a></li>

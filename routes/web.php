@@ -36,6 +36,7 @@ Route::get('/team/official', [FrontendController::class,'officialTeamIndex'])->n
 Route::get('/project/{slug}', [FrontendController::class,'projectIndex'])->name('frontend.project.index');
 Route::get('/events', [FrontendController::class,'eventsIndex'])->name('frontend.events.index');
 Route::get('/events/{slug}', [FrontendController::class,'eventsShow'])->name('frontend.events.show');
+Route::get('/media/image-gallery', [FrontendController::class,'imagegalleryIndex'])->name('frontend.image.gallery');
 
 
 
