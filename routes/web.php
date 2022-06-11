@@ -12,9 +12,11 @@ use App\Http\Controllers\{
     ImageGalleryController,
     OffcialTeamController,
     ProjectController,
+    PublicationsController,
     RoleController,
     SliderController,
 };
+use App\Models\Publications;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,4 +75,5 @@ Route::post('dashboard/image-gallery/update/custom',[ImageGalleryController::cla
 Route::get('dashboard/image-gallery/trash/{id}',[ImageGalleryController::class,'updateTrash'])->name('image-gallery.trash')->middleware(['auth','verified']);
 Route::get('dashboard/image-gallery/delete/permanently/{id}',[ImageGalleryController::class,'updateDeletePermanently'])->name('image-gallery.trash')->middleware(['auth','verified']);
 Route::resource('dashboard/image-gallery',ImageGalleryController::class)->middleware(['auth','verified']);
+Route::resource('dashboard/publications',PublicationsController::class)->middleware(['auth','verified']);
 require __DIR__.'/auth.php';

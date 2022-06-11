@@ -2,8 +2,8 @@
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Image Gallery</li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Image Gallery</li>
         </ol>
     </nav>
     <div class="content">
@@ -35,53 +35,53 @@
     {{-- <button type="button" class="btn btn-primary">Large modal</button> --}}
 
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" class="text-white">&times;</span>
-                </button>
-            </div>
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="text-white">&times;</span>
+                    </button>
+                </div>
 
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img class="img-fluid modal-img" src="" alt="">
-                        </div>
-                        <div class="col-md-6">
-                            <form id="image_update_form" method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="alt_name">Alt Name</label>
-                                    <input type="hidden" name="image_id" class="img_id_input">
-                                    <input type="text" name="alt_name" class="form-control alt_name_input" placeholder="Enter Alt Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="alt_name">Image URL</label>
-                                    <input type="text" disabled class="form-control" id="img_url">
-                                    <button
-                                    type="button"
-                                    class="btn-primary btn-sm img_url_copy_btn mt-2"
-                                    onclick="copyURL()"
-                                    data-toggle="popover"
-                                    data-trigger="focus"
-                                    data-content="URL Copied"
-                                    ><i class="fa fa-copy"></i> Copy Url</button>
-                                </div>
-                            </form>
-                            <a href="#" class="btn btn-danger img-trash-btn">Move to trash</a>
-                            <a href="#" class="btn btn-danger delete-btn" data-id="">Permanetly Delete</a>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid modal-img" src="" alt="">
+                            </div>
+                            <div class="col-md-6">
+                                <form id="image_update_form" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="alt_name">Alt Name</label>
+                                        <input type="hidden" name="image_id" class="img_id_input">
+                                        <input type="text" name="alt_name" class="form-control alt_name_input" placeholder="Enter Alt Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="alt_name">Image URL</label>
+                                        <input type="text" disabled class="form-control" id="img_url">
+                                        <button
+                                        type="button"
+                                        class="btn-primary btn-sm img_url_copy_btn mt-2"
+                                        onclick="copyURL()"
+                                        data-toggle="popover"
+                                        data-trigger="focus"
+                                        data-content="URL Copied"
+                                        ><i class="fa fa-copy"></i> Copy Url</button>
+                                    </div>
+                                </form>
+                                <a href="#" class="btn btn-danger img-trash-btn">Move to trash</a>
+                                <a href="#" class="btn btn-danger delete-btn" data-id="">Permanetly Delete</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close</button>
-                    <button type="button" onclick="document.getElementById('image_update_form').submit()" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"> Close</button>
+                        <button type="button" onclick="document.getElementById('image_update_form').submit()" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>
 
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 @section('internal_css')
