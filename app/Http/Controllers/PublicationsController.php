@@ -73,9 +73,13 @@ class PublicationsController extends Controller
      * @param  \App\Models\Publications  $publications
      * @return \Illuminate\Http\Response
      */
-    public function show(Publications $publications)
+    public function show($id)
     {
-        //
+        return view('backend.pages.media.publications.show',[
+            'publication' => Publications::find($id),
+        ]);
+
+
     }
 
     /**

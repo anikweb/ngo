@@ -9,28 +9,27 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('publications.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Add New</a>
+                <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Back</a>
             </div>
             <div class="col-md-12 pt-2">
                 <div class="card card-primary">
-                    <div class="card-header">Publications</div>
+                    <div class="card-header">{{ $publication->headline }}</div>
                     <div class="card-body">
                         <div class="row">
-                            @foreach ($publications as $publication)
-                                <div class="col-md-3">
-                                    <div class="card card-primary">
-                                        <img src="{{ asset('images/media/publications/'.$publication->featured_image) }}" height="250" class="card-img-top" alt="{{ $publication->headline }}">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $publication->headline }}</h5>
-                                        </div>
-                                        <div class="card-footer text-center">
-                                            <a href="{{ route('publications.edit',$publication->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                            <a target="_blank" href="{{$publication->url}}" class="btn btn-warning"><i class="fa fa-link"></i></a>
-                                        <a href="{{ route('publications.show',$publication->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                            <div class="col-md-6">
+                                <img class="img-fluid" src="{{ asset('images/media/publications/'.$publication->featured_image) }}" alt="{{ $publication->headline }}">
+                            </div>
+                            <div class="col-md-6">
+                                <h3><strong>Headline:</strong> {{ $publication->headline }}</h3>
+                                <h6><strong>Slug:</strong> {{ $publication->slug }}</h6>
+                                <h4><strong>Media:</strong> {{ $publication->media }}</h4>
+                                <h4><strong>Url:</strong><a href="{{ $publication->url }}"> {{ $publication->url }}</a></h4>
+                                @php
+                                    $time = strtotime($publication->published_date);
+                                @endphp
+                                <h6><strong>Published at:</strong> {{ date('d-m-Y',$time) }}</h6>
+                                <h6><strong>Created  at:</strong> {{ $publication->created_at->format('d-m-Y') }}</h6>
+                            </div>
                         </div>
                     </div>
                 </div>
