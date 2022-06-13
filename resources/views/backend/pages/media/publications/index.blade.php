@@ -41,6 +41,9 @@
                             </div>
                             @endforelse
                         </div>
+                        <div>
+                            {{ $publications->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -37,22 +37,39 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="published_date">Published Date <span>*</span></label>
-                                    <input type="date" value="{{ old('published_date') }}" name="published_date" id="published_date" class="form-control @error('published_date') is-invalid @enderror">
-                                    @error('published_date')
+                                    <label for="project_id">Project <span>*</span></label>
+                                    <select name="project_id" id="project_id" class="form-control">
+                                        <option>-Select-</option>
+                                        @foreach($projects as $project)
+                                            <option @if($project->id == old('project_id')) selected @endif value="{{$project->id}}">{{$project->title}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('project_id')
                                         <div class="text-danger">
                                             <i class="fa fa-exclamation-circle"></i> {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="media">Print/Electronic Media <span>*</span></label>
                                     <input type="text" value="{{ old('media') }}" name="media" id="media" class="form-control" @error('media') is-invalid @enderror placeholder="Enter name of media">
                                     @error('media')
+                                        <div class="text-danger">
+                                            <i class="fa fa-exclamation-circle"></i> {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="published_date">Published Date <span>*</span></label>
+                                    <input type="date" value="{{ old('published_date') }}" name="published_date" id="published_date" class="form-control @error('published_date') is-invalid @enderror">
+                                    @error('published_date')
                                         <div class="text-danger">
                                             <i class="fa fa-exclamation-circle"></i> {{ $message }}
                                         </div>

@@ -15,4 +15,7 @@ class Project extends Model
     public function events(){
         return $this->hasMany(Events::class,'project_id');
     }
+    public function publications(){
+        return $this->hasMany(Publications::class,'project_id');
+    }
 }

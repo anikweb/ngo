@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Publications;
+use App\Models\Project;
 use Illuminate\Cache\RateLimiting\Unlimited;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -18,7 +19,7 @@ class PublicationsController extends Controller
     public function index()
     {
         return view('backend.pages.media.publications.index',[
-            'publications' => Publications::latest()->paginate(10),
+            'publications' => Publications::latest()->paginate(12),
         ]);
     }
 
@@ -29,7 +30,9 @@ class PublicationsController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.media.publications.create');
+        return view('backend.pages.media.publications.create',[
+            'projects' => Project::all(),
+        ]);
     }
 
     /**
@@ -51,6 +54,7 @@ class PublicationsController extends Controller
         $publication->headline = $request->headline;
         $publication->slug = Str::slug($request->headline);
         $publication->url = $request->url;
+        $publication->project_id = $request->project_id;
         $publication->media = $request->media;
         $publication->published_date = $request->published_date;
         $publication->save();
@@ -117,6 +121,7 @@ class PublicationsController extends Controller
         $publication->headline = $request->headline;
         $publication->slug = Str::slug($request->headline);
         $publication->url = $request->url;
+        $publication->project_id = $request->project_id;
         $publication->media = $request->media;
         $publication->published_date = $request->published_date;
         $publication->save();

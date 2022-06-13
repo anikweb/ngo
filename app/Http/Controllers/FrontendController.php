@@ -67,7 +67,7 @@ class FrontendController extends Controller
     }
     public function publicationsIndex(){
         return view('frontend.media.publications.index',[
-            'publications' => Publications::all(),
+            'projects' => Project::latest()->get(),
         ]);
 
     }

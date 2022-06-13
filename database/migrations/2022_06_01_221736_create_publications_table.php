@@ -15,6 +15,7 @@ class CreatePublicationsTable extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('project_id');
             $table->string('headline');
             $table->string('slug');
             $table->text('url');

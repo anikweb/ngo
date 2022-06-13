@@ -7,41 +7,27 @@
 @section('content')
 <!-- Start main-content -->
 <div class="main-content">
-
-    <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg') }}">
-      <div class="container pt-100 pb-50">
-        <!-- Section Content -->
-        <div class="section-content pt-100">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="title text-white">Latest Publications</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="bg-primary">
-      <div class="container pb-0 ">
+      <div class="container pt-0 pb-0 ">
         <div class="section-content">
           <div class="row">
             <div class="col-md-12">
-
-
-                <div class="your-class p-2 bg-primary">
-                    @foreach ($publications as $publication)
-                        <div class="bg-white p-5">
-                            <img style="height: 200px; width:300px" class="img-fluid card-img-top" src="{{ asset('images/media/publications/'.$publication->featured_image) }}" alt="{{ $publication->headline }}">
-                            <h5>{{ Str::limit($publication->headline,32,'...') }}</h5>
-                            <span class="badge">{{ $publication->media }}</span>
-                            <p class="text-primary"> Published: {{ date('d-m-y',strtotime($publication->published)) }}</p>
-                            <a style="display: block" class="btn btn-info" target="_blank" href="{{ $publication->url }}"><i class="fa fa-link"></i> See more</a>
-                        </div>
-                    @endforeach
-                </div>
-
-
+                @foreach ($projects as $project)
+                        @if ($project->publications->count() !=0)
+                            <h2 class="text-center text-white">{{ Str::upper($project->title) }}</h2>
+                            <div class="your-class p-2 bg-primary">
+                                @foreach ($project->publications as $projectPublication)
+                                    <div class="bg-white p-5">
+                                        <img style="height: 200px; width:300px" class="img-fluid card-img-top" src="{{ asset('images/media/publications/'.$projectPublication->featured_image) }}" alt="{{ $projectPublication->headline }}">
+                                        <h5>{{ Str::limit($projectPublication->headline,32,'...') }}</h5>
+                                        <span class="badge">{{ $projectPublication->media }}</span>
+                                        <p class="text-primary"> Published: {{ date('d-M-Y',strtotime($projectPublication->published_date)) }}</p>
+                                        <a style="display: block" class="btn btn-info" target="_blank" href="{{ $projectPublication->url }}"><i class="fa fa-link"></i> Read Article </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                @endforeach
             </div>
           </div>
         </div>
@@ -56,11 +42,12 @@
     <script>
 
         $('.your-class').slick({
-            centerMode: true,
-            centerPadding: '200px',
-            slidesToShow: 3,
             autoplay: true,
             autoplaySpeed: 2000,
+            centerMode: true,
+            centerPadding: '150px',
+            slidesToShow: 3,
+
             responsive: [
                 {
                 breakpoint: 768,
