@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Publications;
+use Illuminate\Cache\RateLimiting\Unlimited;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -142,8 +143,15 @@ class PublicationsController extends Controller
      * @param  \App\Models\Publications  $publications
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Publications $publications)
+    public function destroy($id)
     {
-        //
+        $publication = Publications::find($id);
+        if($publication->featured_image){
+            if(file_exists(public_path("images/media/publications/".$publication->featured_image))){
+                unlink(public_path("images/media/publications/".$publication->featured_image));
+            }
+        }
+        $publication->delete();
+        return back()->with('success','Publication Deleted!');
     }
 }

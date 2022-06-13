@@ -16,7 +16,7 @@
                     <div class="card-header">Publications</div>
                     <div class="card-body">
                         <div class="row">
-                            @foreach ($publications as $publication)
+                            @forelse ($publications as $publication)
                                 <div class="col-md-3">
                                     <div class="card card-primary">
                                         <img src="{{ asset('images/media/publications/'.$publication->featured_image) }}" height="250" class="card-img-top" alt="{{ $publication->headline }}">
@@ -27,10 +27,19 @@
                                             <a href="{{ route('publications.edit',$publication->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                             <a target="_blank" href="{{$publication->url}}" class="btn btn-warning"><i class="fa fa-link"></i></a>
                                         <a href="{{ route('publications.show',$publication->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                                        <button class="btn btn-danger delete-btn" data-id="{{ $publication->id }}"><i class="fa fa-trash"></i></button>
+                                        <form class="d-inline" id="trashForm-{{ $publication->id }}" action="{{ route('publications.destroy',$publication->id) }}" method="POST">
+                                            @csrf
+                                            @method("DELETE")
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                            <div class="col-md-12 text-center">
+                                <h4><i class="fa fa-exclamation-circle"></i> No data founded</h4>
+                            </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -77,11 +86,11 @@
     @endif
 
     $('.delete-btn').click(function(){
-        var image_id = $(this).attr('data-id');
+        var publication_id = $(this).attr('data-id');
 
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!, and this image will show missing images where URLs have been used",
+            text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -92,11 +101,11 @@
 
                 Swal.fire(
                 'Deleted!',
-                'Image deleted, you can not recover in future.',
+                'data deleted, you can not recover in future.',
                 'success'
                 )
                 setTimeout(function() {
-                    $('#trashForm-'+image_id).submit();
+                    $('#trashForm-'+publication_id).submit();
                 }, 1000);
             }
         })

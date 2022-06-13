@@ -11,6 +11,7 @@ use App\Models\{
     OffcialTeam,
     Slider,
     Project,
+    Publications,
 };
 use PDO;
 
@@ -63,6 +64,12 @@ class FrontendController extends Controller
         return view('frontend.media.image_gallery.index',[
             'image_galleries' => ImageGallery::latest()->paginate(40),
         ]);
+    }
+    public function publicationsIndex(){
+        return view('frontend.media.publications.index',[
+            'publications' => Publications::all(),
+        ]);
+
     }
 
 }

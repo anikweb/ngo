@@ -6,7 +6,7 @@
     {{-- csrf token  --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> @if(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @elseif(Route::is('about-settings.index')) About Settings @elseif(Route::is('advisors-settings.index')) Advisors @elseif(Route::is('advisors-settings.create')) Create-Advisor @elseif(Route::is('advisors-settings.edit')) Edit-Advisor @elseif(Route::is('official-team.index')) Official Team @elseif(Route::is('official-team.create')) Create-Official Team @elseif(Route::is('official-team.edit')) Edit-Official Team @elseif(Route::is('sliders.index')) Sliders @elseif(Route::is('sliders.create')) Create-Slider @elseif(Route::is('sliders.show')) Details-Slider @elseif(Route::is('sliders.edit')) Edit-Slider @elseif(Route::is('projects.create')) Create-Project @elseif(Route::is('projects.index')) Create-Project @elseif(Route::is('projects.show')) {{ $project->title }}-Project @elseif(Route::is('projects.edit')) Edit-Project @elseif(Route::is('projects.multiple.image.create')) Multiple Images-Project @elseif(Route::is('events.create')) Create-Event @elseif(Route::is('events.index')) Events @elseif(Route::is('events.show')) {{ $event->title }}-Event @elseif(Route::is('events.edit')) Edit-Event @elseif(Route::is('image-gallery.index')) Image Gallery @elseif(Route::is('image-gallery.create')) Add-Image Gallery @endif @if(Route::is('dashboard')) @else | @endif Dashboard</title>
+    <title> @if(Route::is('generalSetting.index')) General Settings @elseif(Route::is('role.index')) Roles @elseif(Route::is('role.create')) Create Role @elseif(Route::is('role.edit')) Edit Role @elseif(Route::is('role.assign.users')) Assign User @elseif(Route::is('contact_and_basic_info.edit')) Edit Contact @elseif(Route::is('contact_and_basic_info.index')) Contact and basic info @elseif(Route::is('about-settings.index')) About Settings @elseif(Route::is('advisors-settings.index')) Advisors @elseif(Route::is('advisors-settings.create')) Create-Advisor @elseif(Route::is('advisors-settings.edit')) Edit-Advisor @elseif(Route::is('official-team.index')) Official Team @elseif(Route::is('official-team.create')) Create-Official Team @elseif(Route::is('official-team.edit')) Edit-Official Team @elseif(Route::is('sliders.index')) Sliders @elseif(Route::is('sliders.create')) Create-Slider @elseif(Route::is('sliders.show')) Details-Slider @elseif(Route::is('sliders.edit')) Edit-Slider @elseif(Route::is('projects.create')) Create-Project @elseif(Route::is('projects.index')) Create-Project @elseif(Route::is('projects.show')) {{ $project->title }}-Project @elseif(Route::is('projects.edit')) Edit-Project @elseif(Route::is('projects.multiple.image.create')) Multiple Images-Project @elseif(Route::is('events.create')) Create-Event @elseif(Route::is('events.index')) Events @elseif(Route::is('events.show')) {{ $event->title }}-Event @elseif(Route::is('events.edit')) Edit-Event @elseif(Route::is('image-gallery.index')) Image Gallery @elseif(Route::is('image-gallery.create')) Add-Image Gallery @elseif(Route::is('publications.create')) Create-Publication @elseif(Route::is('publications.edit')) Edit-Publication @elseif(Route::is('publications.index')) Publications @elseif(Route::is('publications.show')) Details-Publications @endif @if(Route::is('dashboard')) @else | @endif Dashboard</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -253,8 +253,8 @@
             </li>
           @endif
         {{-- @can('slider management') --}}
-            <li class="nav-item @if(Route::is('image-gallery.create')||Route::is('image-gallery.index')) menu-open @endif">
-                <a href="#" class="nav-link @if(Route::is('image-gallery.create')||Route::is('image-gallery.index')) active @endif">
+            <li class="nav-item @if(Route::is('image-gallery.create')||Route::is('image-gallery.index')||Route::is('publications.create')||Route::is('publications.edit')||Route::is('publications.index')||Route::is('publications.show')) menu-open @endif">
+                <a href="#" class="nav-link @if(Route::is('image-gallery.create')||Route::is('image-gallery.index')||Route::is('publications.create')||Route::is('publications.edit')||Route::is('publications.index')||Route::is('publications.show')) active @endif">
                     <i class="nav-icon fa fa-file-image" aria-hidden="true"></i>
                     <p>
                         Media
@@ -269,7 +269,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('publications.index') }}" class="nav-link">
+                        <a href="{{ route('publications.index') }}" class="nav-link @if(Route::is('publications.create')||Route::is('publications.edit')||Route::is('publications.index')||Route::is('publications.show')) active  @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Publications</p>
                         </a>

@@ -23,7 +23,7 @@
                                 <h3><strong>Headline:</strong> {{ $publication->headline }}</h3>
                                 <h6><strong>Slug:</strong> {{ $publication->slug }}</h6>
                                 <h4><strong>Media:</strong> {{ $publication->media }}</h4>
-                                <h4><strong>Url:</strong><a href="{{ $publication->url }}"> {{ $publication->url }}</a></h4>
+                                <h4><strong>Url:</strong><a href="{{ $publication->url }}"> {{ Str::limit($publication->url, 50, '...')  }}</a></h4>
                                 @php
                                     $time = strtotime($publication->published_date);
                                 @endphp

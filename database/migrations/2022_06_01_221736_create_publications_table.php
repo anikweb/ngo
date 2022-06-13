@@ -17,7 +17,7 @@ class CreatePublicationsTable extends Migration
             $table->id();
             $table->string('headline');
             $table->string('slug');
-            $table->string('url');
+            $table->text('url');
             $table->string('media');
             $table->string('featured_image')->nullable();
             $table->date('published_date');

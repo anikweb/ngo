@@ -215,7 +215,7 @@
                     </li>
                     <li><a class="text-white mr-5" href="#">Media</a>
                         <ul class="dropdown">
-                        <li><a href="#">Publications</a></li>
+                        <li><a href="{{route('frontend.publications.index')}}">Publications</a></li>
                         <li><a href="#">Press Releases</a></li>
                         <li><a href="{{ route('frontend.image.gallery') }}">Image Gallery</a></li>
                         </ul>
