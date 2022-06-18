@@ -15,6 +15,7 @@ use App\Http\Controllers\{
     PublicationsController,
     RoleController,
     SliderController,
+    VolunteerApplyController,
 };
 use App\Models\Publications;
 
@@ -40,7 +41,7 @@ Route::get('/events', [FrontendController::class,'eventsIndex'])->name('frontend
 Route::get('/events/{slug}', [FrontendController::class,'eventsShow'])->name('frontend.events.show');
 Route::get('/media/image-gallery', [FrontendController::class,'imagegalleryIndex'])->name('frontend.image.gallery');
 Route::get('/media/publications', [FrontendController::class,'publicationsIndex'])->name('frontend.publications.index');
-
+Route::get('/volunteer/apply',[VolunteerApplyController::class,'create'])->name('frontend.volunteer.apply');
 
 
 

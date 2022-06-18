@@ -21,7 +21,10 @@
                                     <div class="card card-primary">
                                         <img src="{{ asset('images/media/publications/'.$publication->featured_image) }}" height="250" class="card-img-top" alt="{{ $publication->headline }}">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $publication->headline }}</h5>
+                                            <h5 class="card-title" style="display: block">{{ $publication->headline }}</h5>
+                                            <span class="badge badge-primary">{{ $publication->media }}</span>
+                                            <span class="badge badge-info">Published: {{ date('d-m-Y',strtotime($publication->published_date)) }}</span>
+                                            <span class="badge badge-info">Project: {{ $publication->project->title }}</span>
                                         </div>
                                         <div class="card-footer text-center">
                                             <a href="{{ route('publications.edit',$publication->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>

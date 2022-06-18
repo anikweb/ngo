@@ -228,7 +228,7 @@
                         <a class="btn text-success  btn-flat bg-white mt-15 hvr-bounce-to-right" target="_blank" href="#">Donate Now</a>
                     </li>
                     <li>
-                        <a class="btn text-success btn-flat bg-white mt-15 hvr-bounce-to-right" href="#" >Join Us</a>
+                        <a class="btn text-success btn-flat bg-white mt-15 hvr-bounce-to-right" href="{{ route('frontend.volunteer.apply') }}" >Join Us</a>
                     </li>
                     </ul>
                 </nav>
@@ -304,6 +304,7 @@
                     <li><a href="#">Projects</a></li>
                     <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
                     <li><a href="{{ route('frontend.image.gallery') }}">Media</a></li>
+                    <li><a href="{{ route('frontend.volunteer.apply') }}">Volunteers</a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Terms & Condition</a></li>
                     <li><a href="#">Policy</a></li>
