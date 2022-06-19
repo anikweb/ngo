@@ -42,8 +42,11 @@ Route::get('/events/{slug}', [FrontendController::class,'eventsShow'])->name('fr
 Route::get('/media/image-gallery', [FrontendController::class,'imagegalleryIndex'])->name('frontend.image.gallery');
 Route::get('/media/publications', [FrontendController::class,'publicationsIndex'])->name('frontend.publications.index');
 Route::get('/volunteer/apply',[VolunteerApplyController::class,'create'])->name('frontend.volunteer.apply');
-
-
+Route::post('volunteer/apply/store',[VolunteerApplyController::class,'store'])->name('frontend.volunteer.store');
+Route::get('/get/ajax/present/district/info/{division_id}',[VolunteerApplyController::class,'getDistrict']);
+Route::get('/get/ajax/present/thana/info/{district_id}',[VolunteerApplyController::class,'getThana']);
+Route::get('/get/ajax/permanent/district/info/{division_id}',[VolunteerApplyController::class,'getPmDistrict']);
+Route::get('/get/ajax/permanent/thana/info/{district_id}',[VolunteerApplyController::class,'getPmThana']);
 
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);

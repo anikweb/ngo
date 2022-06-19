@@ -76,7 +76,8 @@
             </div>
             <h5><span class="text-danger">*</span> marked field must be met.</h5>
 
-            <form id="volunteer_apply_form" name="job_apply_form" action="includes/become-volunteer.php" method="post" enctype="multipart/form-data">
+            <form id="volunteer_apply_form" action="{{route('frontend.volunteer.store')}}" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -104,14 +105,14 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="father_name">Father Name </label>
-                            <input id="father_name" name="father_name" class="form-control" type="text" placeholder="Enter Father Name">
+                            <label for="father_name">Father's Name </label>
+                            <input id="father_name" name="father_name" class="form-control" type="text" placeholder="Enter Father's Name">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="mother_name">Mother Name </label>
-                            <input id="mother_name" name="mother_name" class="form-control" type="text" placeholder="Enter Mother Name">
+                            <label for="mother_name">Mother's Name </label>
+                            <input id="mother_name" name="mother_name" class="form-control" type="text" placeholder="Enter Mother's Name">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -122,7 +123,6 @@
                                 <option value="o+">O+</option>
                                 <option value="b+">B+</option>
                                 <option value="ab+">AB+</option>
-
                                 <option value="a-">A-</option>
                                 <option value="o-">O-</option>
                                 <option value="b-">B-</option>
@@ -135,9 +135,9 @@
                         <div class="form-group">
                             <label for="sex">Sex <span class="text-danger">*</span></label>
                             <select name="sex" id="sex" class="form-control">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="3rd_gender">3rd Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">3rd Gender</option>
                             </select>
                         </div>
                     </div>
@@ -162,9 +162,8 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="nationality">Nationality</label>
-                            <select name="nationality" id="nationality" class="form-control">
-                                <option value="">Bangladeshi</option>
-                                <option value="">indian</option>
+                            <select name="nationality" disabled id="nationality" class="form-control">
+                                <option value="bangladeshi">Bangladeshi</option>
                             </select>
                         </div>
                     </div>
@@ -172,14 +171,18 @@
                         <div class="form-group">
                             <label for="occupation">Occupation</label>
                             <select name="occupation" id="occupation" class="form-control">
-                                <option value="">Student</option>
-                                <option value="">Teacher</option>
-                                <option value="">Farmer</option>
-                                <option value="">Entrepreneur</option>
-                                <option value="">Business</option>
-                                <option value="">Banker</option>
-                                <option value="">Government Job</option>
-                                <option value="">Private Job</option>
+                                <option value="">-Select-</option>
+                                <option value="banker">Banker</option>
+                                <option value="business">Business</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="entrepreneur">Entrepreneur</option>
+                                <option value="farmer">Farmer</option>
+                                <option value="government_job">Government Job</option>
+                                <option value="nurse">Nurse</option>
+                                <option value="private_job">Private Job</option>
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                                <option value="others">Others</option>
                             </select>
                         </div>
                     </div>
@@ -216,10 +219,20 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
+                            <label for="prDivison">Division <span class="text-danger">*</span></label>
+                            <select name="prDivison" id="prDivison" class="form-control">
+                                <option value="">-Select-</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
                             <label for="prDistrict">District <span class="text-danger">*</span></label>
                             <select name="prDistrict" id="prDistrict" class="form-control">
-                                <option value="">Dhaka</option>
-                                <option value="">Mymensingh</option>
+                                <option value="">-Select-</option>
                             </select>
                         </div>
                     </div>
@@ -227,8 +240,7 @@
                         <div class="form-group">
                             <label for="prThana">Thana <span class="text-danger">*</span></label>
                             <select name="prThana" id="prThana" class="form-control">
-                                <option value="">Ishwargonj</option>
-                                <option value="">Sadar</option>
+                                <option value="">-Select-</option>
                             </select>
                         </div>
                     </div>
@@ -244,7 +256,7 @@
                             <input type="text" class="form-control" name="prZIP" id="prZIP" placeholder="Enter ZIP Code">
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="prVillage">Village</label>
                             <input type="text" class="form-control" name="prVillage" id="prVillage" placeholder="Enter Name of Village">
@@ -252,51 +264,61 @@
                     </div>
                     <div class="col-sm-12 m-0 p-0">
                         <h3 class="text-center">Permanent Address</h3>
-                        <label for="psap" class="text-center"><input type="checkbox" id="psap"> Permanent address same as present address </label>
+                        <p class="text-black ml-5 pl-5"> <i class="text-danger fa fa-question-circle"></i> Permanent address same as present address?
+                            <label for="presentSameTrue"><input type="radio" id="presentSameTrue" name="presentsame" value="true"> Yes</label>
+                            <label for="presentSameFalse"><input checked type="radio" id="presentSameFalse" name="presentsame" value="false"> NO</label>
+                        </p>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="prDistrict">District <span class="text-danger">*</span></label>
-                            <select name="prDistrict" id="prDistrict" class="form-control">
-                                <option value="">Dhaka</option>
-                                <option value="">Mymensingh</option>
+                            <label for="pmDivison">Division <span class="text-danger">*</span></label>
+                            <select name="pmDivison" id="pmDivison" class="form-control">
+                                <option value="">-Select-</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->id }}">{{ $division->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="prThana">Thana <span class="text-danger">*</span></label>
-                            <select name="prThana" id="prThana" class="form-control">
-                                <option value="">Ishwargonj</option>
-                                <option value="">Sadar</option>
+                            <label for="pmDistrict">District <span class="text-danger">*</span></label>
+                            <select name="pmDistrict" id="pmDistrict" class="form-control">
+                                <option value="">-Select-</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="prPostOffice">Post Office <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="prPostOffice" id="prPostOffice" placeholder="Enter Post Office">
+                            <label for="pmThana">Thana <span class="text-danger">*</span></label>
+                            <select name="pmThana" id="pmThana" class="form-control">
+                                <option value="">-Select-</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="prZIP">ZIP Code</label>
-                            <input type="text" class="form-control" name="prZIP" id="prZIP" placeholder="Enter ZIP Code">
+                            <label for="pmPostOffice">Post Office <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="pmPostOffice" id="pmPostOffice" placeholder="Enter Post Office">
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="prVillage">Village</label>
-                            <input type="text" class="form-control" name="prVillage" id="prVillage" placeholder="Enter Name of Village">
+                            <label for="pmZIP">ZIP Code</label>
+                            <input type="text" class="form-control" name="pmZIP" id="pmZIP" placeholder="Enter ZIP Code">
                         </div>
                     </div>
-
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pmVillage">Village</label>
+                            <input type="text" class="form-control" name="pmVillage" id="pmVillage" placeholder="Enter Name of Village">
+                        </div>
+                    </div>
                 </div>
+                <div class="form-group">
 
-              <div class="form-group">
-                <input id="form_botcheck" name="form_botcheck" class="form-control" type="hidden" value="" />
-                <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Apply Now</button>
-              </div>
+                    <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Apply Now</button>
+                </div>
             </form>
           </div>
         </div>
@@ -304,4 +326,104 @@
     </section>
   </div>
   <!-- end main-content -->
+@endsection
+@section('footer_js')
+  <script>
+    // get  present district
+    $('#prDivison').change(function(){
+        var division_id = $('#prDivison').val();
+        if(division_id){
+            $.ajax({
+                type:"GET",
+                url:"{{url('get/ajax/present/district/info')}}/"+division_id,
+                success:function(res){
+                    if(res){
+                        $("#prDistrict").empty();
+                        $("#prDistrict").append('<option value="">-Select-</option>');
+                        $.each(res,function(key,value){
+                            $("#prDistrict").append('<option value="'+value.id+'">'+value.name+'</option>');
+                        });
+                        // get present thana
+                        $('#prDistrict').change(function(){
+                            var district_id = $('#prDistrict').val();
+                            if(district_id){
+                                $.ajax({
+                                    type:"GET",
+                                    url:"{{url('get/ajax/present/thana/info')}}/"+district_id,
+                                    success:function(res2){
+                                        if(res2){
+                                            $("#prThana").empty();
+                                            $("#prThana").append('<option value="">-Select-</option>');
+                                            $.each(res2,function(key,value){
+                                                $("#prThana").append('<option value="'+value.id+'">'+value.name+'</option>');
+                                            });
+
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    });
+    // get  Permanent district
+    $('#pmDivison').change(function(){
+        var pmdivision_id = $('#pmDivison').val();
+        if(pmdivision_id){
+            $.ajax({
+                type:"GET",
+                url:"{{url('get/ajax/permanent/district/info')}}/"+pmdivision_id,
+                success:function(res){
+                    if(res){
+                        $("#pmDistrict").empty();
+                        $("#pmDistrict").append('<option value="">-Select-</option>');
+                        $.each(res,function(key,value){
+                            $("#pmDistrict").append('<option value="'+value.id+'">'+value.name+'</option>');
+                        });
+                        // get present thana
+                        $('#pmDistrict').change(function(){
+                            var pmdistrict_id = $('#pmDistrict').val();
+                            if(pmdistrict_id){
+                                $.ajax({
+                                    type:"GET",
+                                    url:"{{url('get/ajax/permanent/thana/info')}}/"+pmdistrict_id,
+                                    success:function(res2){
+                                        if(res2){
+                                            $("#pmThana").empty();
+                                            $("#pmThana").append('<option value="">-Select-</option>');
+                                            $.each(res2,function(key,value){
+                                                $("#pmThana").append('<option value="'+value.id+'">'+value.name+'</option>');
+                                            });
+
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    });
+    // permanent address same
+    $('#presentSameTrue').click(function(){
+        $('#pmDivison').attr('disabled','');
+        $('#pmDistrict').attr('disabled','');
+        $('#pmThana').attr('disabled','');
+        $('#pmPostOffice').attr('disabled','');
+        $('#pmZIP').attr('disabled','');
+        $('#pmVillage').attr('disabled','');
+    });
+    $('#presentSameFalse').click(function(){
+        $('#pmDivison').removeAttr('disabled');
+        $('#pmDistrict').removeAttr('disabled');
+        $('#pmThana').removeAttr('disabled');
+        $('#pmPostOffice').removeAttr('disabled');
+        $('#pmZIP').removeAttr('disabled');
+        $('#pmVillage').removeAttr('disabled');
+    });
+
+  </script>
 @endsection

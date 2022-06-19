@@ -247,7 +247,7 @@
                 <!-- Section: Clients -->
                 <div class="owl-carousel-7col clients-logo transparent text-center">
                     @foreach (imageGallery() as $gallery)
-                        <div class="item"> <a href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="100" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
+                        <div class="item"> <a target="_blank" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="100" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
                     @endforeach
                 </div>
                 </div>

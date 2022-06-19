@@ -15,12 +15,12 @@ class CreateVolunteersTable extends Migration
     {
         Schema::create('volunteers', function (Blueprint $table) {
             $table->id();
-            $table->string('volunteer_id')->unique();
+            $table->string('volunteer_id')->nullable()->unique();
             $table->string('name_en');
             $table->string('name_bn');
             $table->string('email')->nullable()->unique();
             $table->string('mobile')->unique();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
             $table->string('blood_group')->nullable();
@@ -34,15 +34,17 @@ class CreateVolunteersTable extends Migration
             $table->text('facebook_url')->nullable()->unique();
             $table->string('giverFromInspiration')->nullable();
             // present address
-            $table->string('prDistrict');
-            $table->string('prThana');
-            $table->string('prPostOffice');
+            $table->foreignId('prDivison');
+            $table->foreignId('prDistrict');
+            $table->foreignId('prThana');
+            $table->string('prPostOffice')->nullable();
             $table->string('prZIP')->nullable();
             $table->string('prVillage');
             // permanent address
-            $table->string('pmDistrict');
-            $table->string('pmThana');
-            $table->string('pmPostOffice');
+            $table->foreignId('pmDivison');
+            $table->foreignId('pmDistrict');
+            $table->foreignId('pmThana');
+            $table->string('pmPostOffice')->nullable();
             $table->string('pmZIP')->nullable();
             $table->string('pmVillage');
 

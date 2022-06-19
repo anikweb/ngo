@@ -73,6 +73,7 @@ class SliderController extends Controller
              $slider->priority = $exists_priority+1;
             $slider->save();
             if($request->hasFile('image')){
+                // return 'aschi';
                 $image = $request->file('image');
                 $newName = Str::slug($slider->title).'-slider-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/sliders/'.$newName);
