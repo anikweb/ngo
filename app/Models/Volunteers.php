@@ -17,7 +17,6 @@ class Volunteers extends Model
     public function prThana(){
         return $this->belongsTo(District::class,'prThana');
     }
-
     public function pmDivision(){
         return $this->belongsTo(Division::class,'pmDivison');
     }

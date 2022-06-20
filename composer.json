@@ -12,6 +12,7 @@
         "intervention/image": "^2.6",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "mews/captcha": "^3.2",
         "spatie/laravel-permission": "^5.1"
     },
     "require-dev": {

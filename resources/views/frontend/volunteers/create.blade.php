@@ -82,126 +82,162 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name_en">Name (English) <span class="text-danger">*</span></label>
-                            <input id="name_en" name="name_en" type="text" placeholder="Enter Name(English)" class="form-control">
+                            @error('name_en')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <input @error('name_en') style="border:1px solid red" @enderror id="name_en" name="name_en" value="{{ old('name_en') }}" type="text" placeholder="Enter Name(English)" class=" form-control">
+
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="name_bn">নাম (বাংলা) <span class="text-danger">*</span></label>
-                            <input id="name_bn" name="name_bn" type="text" placeholder="বাংলায় আপনার নাম লিখুন"  class="form-control">
+                            @error('name_bn')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <input @error('name_bn') style="border:1px solid red" @enderror id="name_bn" name="name_bn" value="{{ old('name_bn') }}" type="text" placeholder="বাংলায় আপনার নাম লিখুন"  class="form-control">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Email <span class="text-danger">*</span></label>
-                            <input id="email" name="email" class="form-control  email" type="email" placeholder="Enter Email">
+                            @error('email')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <input @error('email') style="border:1px solid red" @enderror id="email" name="email" value="{{ old('email') }}" class="form-control  email" type="email" placeholder="Enter Email">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="mobile">Mobile Number <span class="text-danger">*</span></label>
-                            <input id="mobile" name="mobile" class="form-control" type="text" placeholder="Enter Mobile Number">
+                            @error('mobile')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <input @error('mobile') style="border:1px solid red" @enderror id="mobile" name="mobile" value="{{ old('mobile') }}" class="form-control" type="text" placeholder="Enter Mobile Number">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="father_name">Father's Name </label>
-                            <input id="father_name" name="father_name" class="form-control" type="text" placeholder="Enter Father's Name">
+                            <input id="father_name" name="father_name" value="{{ old('father_name') }}" class="form-control" type="text" placeholder="Enter Father's Name">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="mother_name">Mother's Name </label>
-                            <input id="mother_name" name="mother_name" class="form-control" type="text" placeholder="Enter Mother's Name">
+                            <input id="mother_name" name="mother_name" value="{{ old('mother_name') }}" class="form-control" type="text" placeholder="Enter Mother's Name">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="blood_group">Blood Group </label>
                             <select name="blood_group" id="blood_group" class="form-control">
-                                <option value="a+">A+</option>
-                                <option value="o+">O+</option>
-                                <option value="b+">B+</option>
-                                <option value="ab+">AB+</option>
-                                <option value="a-">A-</option>
-                                <option value="o-">O-</option>
-                                <option value="b-">B-</option>
-                                <option value="ab-">AB-</option>
-
+                                <option @if(old('a+')) selected @endif value="a+">A+</option>
+                                <option @if(old('o+')) selected @endif  value="o+">O+</option>
+                                <option @if(old('b+')) selected @endif  value="b+">B+</option>
+                                <option @if(old('ab+')) selected @endif  value="ab+">AB+</option>
+                                <option @if(old('a-')) selected @endif  value="a-">A-</option>
+                                <option @if(old('o-')) selected @endif  value="o-">O-</option>
+                                <option @if(old('b-')) selected @endif  value="b-">B-</option>
+                                <option @if(old('ab-')) selected @endif  value="ab-">AB-</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="sex">Sex <span class="text-danger">*</span></label>
-                            <select name="sex" id="sex" class="form-control">
-                                <option value="1">Male</option>
-                                <option value="2">Female</option>
-                                <option value="3">3rd Gender</option>
+                            @error('sex')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('sex') style="border:1px solid red" @enderror name="sex" id="sex" class="form-control">
+                                <option  value="">-Select-</option>
+                                <option @if(old('1')) @endif value="1">Male</option>
+                                <option @if(old('2')) @endif value="2">Female</option>
+                                <option @if(old('3')) @endif value="3">3rd Gender</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="date_of_birth">Date of Birth <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" name="date_of_birth" id="date_of_birth">
+                            @error('date_of_birth')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <input @error('date_of_birth') style="border:1px solid red" @enderror type="date" value="{{ old('date_of_birth') }}" class="form-control" name="date_of_birth" id="date_of_birth">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="nid">National Identity Number (NID) </label>
-                            <input type="text" class="form-control" name="nid" id="nid" placeholder="Enter National Identity Nummber (NID)">
+                            <input type="text" value="{{ old('nid') }}" class="form-control" name="nid" id="nid" placeholder="Enter National Identity Nummber (NID)">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="bcn">Birth Certification Number</label>
-                            <input type="text" class="form-control" name="bcn" id="bcn" placeholder="Enter Birth Certification Number">
+                            <input type="text" value="{{ old('bcn') }}" class="form-control" name="bcn" id="bcn" placeholder="Enter Birth Certification Number">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="nationality">Nationality</label>
                             <select name="nationality" disabled id="nationality" class="form-control">
-                                <option value="bangladeshi">Bangladeshi</option>
+                                <option selected value="bangladeshi">Bangladeshi</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="occupation">Occupation</label>
-                            <select name="occupation" id="occupation" class="form-control">
-                                <option value="">-Select-</option>
-                                <option value="banker">Banker</option>
-                                <option value="business">Business</option>
-                                <option value="doctor">Doctor</option>
-                                <option value="entrepreneur">Entrepreneur</option>
-                                <option value="farmer">Farmer</option>
-                                <option value="government_job">Government Job</option>
-                                <option value="nurse">Nurse</option>
-                                <option value="private_job">Private Job</option>
-                                <option value="student">Student</option>
-                                <option value="teacher">Teacher</option>
-                                <option value="others">Others</option>
+                            <label for="occupation">Occupation <span class="text-danger">*</span></label>
+                            @error('occupation')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('occupation') style="border:1px solid red" @enderror name="occupation" id="occupation" class="form-control">
+                                <option  value="">-Select-</option>
+                                <option @if(old('banker')) @endif value="banker">Banker</option>
+                                <option @if(old('business')) @endif value="business">Business</option>
+                                <option @if(old('doctor')) @endif value="doctor">Doctor</option>
+                                <option @if(old('entrepreneur')) @endif value="entrepreneur">Entrepreneur</option>
+                                <option @if(old('farmer')) @endif value="farmer">Farmer</option>
+                                <option @if(old('government_job')) @endif value="government_job">Government Job</option>
+                                <option @if(old('nurse')) @endif value="nurse">Nurse</option>
+                                <option @if(old('private_job')) @endif value="private_job">Private Job</option>
+                                <option @if(old('student')) @endif value="student">Student</option>
+                                <option @if(old('teacher')) @endif value="teacher">Teacher</option>
+                                <option @if(old('others')) @endif value="others">Others</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="institute">Institute</label>
-                            <input type="text" name="institute" id="institute" class="form-control" placeholder="Enter name of institute">
+                            <input type="text" name="institute" value="{{ old('institute') }}" id="institute" class="form-control" placeholder="Enter name of institute">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="facebook_url">Facebook URL</label>
-                           <input type="text" name="facebook_url" id="facebook_url" class="form-control" placeholder="Enter your facebook url">
+                           <input type="text" name="facebook_url" value="{{ old('facebook_url') }}" id="facebook_url" class="form-control" placeholder="Enter your facebook url">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="giverFromInspiration">Who inspired you about MBF?</label>
-                           <input type="text" name="giverFromInspiration" id="giverFromInspiration" class="form-control" placeholder="Enter your Giver from Inspiration">
+                           <input type="text" name="giverFromInspiration" value="{{ old('giverFromInspiration') }}" id="giverFromInspiration" class="form-control" placeholder="Enter your Giver from Inspiration">
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -209,7 +245,12 @@
                             <div class="col-sm-6 my-auto">
                                 <div class="form-group">
                                     <label for="image">Your formal Photo <span class="text-danger">* (recommended image size 160x160)</span></label>
-                                    <input type="file" class="form-control" name="image" id="image">
+                                    @error('image')
+                                        <p class="text-danger">
+                                            <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                        </p>
+                                    @enderror
+                                    <input @error('image') style="border:1px solid red" @enderror type="file" class="form-control" name="image" id="image">
                                 </div>
                             </div>
                         </div>
@@ -220,7 +261,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="prDivison">Division <span class="text-danger">*</span></label>
-                            <select name="prDivison" id="prDivison" class="form-control">
+                            @error('prDivison')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('prDivison') style="border:1px solid red" @enderror name="prDivison" id="prDivison" class="form-control">
                                 <option value="">-Select-</option>
                                 @foreach ($divisions as $division)
                                     <option value="{{ $division->id }}">{{ $division->name }}</option>
@@ -231,7 +277,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="prDistrict">District <span class="text-danger">*</span></label>
-                            <select name="prDistrict" id="prDistrict" class="form-control">
+                            @error('prDistrict')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('prDistrict') style="border:1px solid red" @enderror name="prDistrict" id="prDistrict" class="form-control">
                                 <option value="">-Select-</option>
                             </select>
                         </div>
@@ -239,40 +290,55 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="prThana">Thana <span class="text-danger">*</span></label>
-                            <select name="prThana" id="prThana" class="form-control">
+                            @error('prThana')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('prThana') style="border:1px solid red" @enderror name="prThana" id="prThana" class="form-control">
                                 <option value="">-Select-</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="prPostOffice">Post Office <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="prPostOffice" id="prPostOffice" placeholder="Enter Post Office">
+                            <label  for="prPostOffice">Post Office <span class="text-danger">*</span></label>
+                            <input type="text" value="{{ old('prPostOffice') }}" class="form-control" name="prPostOffice" id="prPostOffice" placeholder="Enter Post Office">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="prZIP">ZIP Code</label>
-                            <input type="text" class="form-control" name="prZIP" id="prZIP" placeholder="Enter ZIP Code">
+                            <input type="text" value="{{ old('prZIP') }}" class="form-control" name="prZIP" id="prZIP" placeholder="Enter ZIP Code">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="prVillage">Village</label>
-                            <input type="text" class="form-control" name="prVillage" id="prVillage" placeholder="Enter Name of Village">
+                            <label for="prVillage">Village/Area <span class="text-danger">*</span></label>
+                            @error('prVillage')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <input @error('prVillage') style="border:1px solid red" @enderror type="text" value="{{ old('prVillage') }}" class="form-control" name="prVillage" id="prVillage" placeholder="Enter Name of Village">
                         </div>
                     </div>
                     <div class="col-sm-12 m-0 p-0">
                         <h3 class="text-center">Permanent Address</h3>
                         <p class="text-black ml-5 pl-5"> <i class="text-danger fa fa-question-circle"></i> Permanent address same as present address?
-                            <label for="presentSameTrue"><input type="radio" id="presentSameTrue" name="presentsame" value="true"> Yes</label>
-                            <label for="presentSameFalse"><input checked type="radio" id="presentSameFalse" name="presentsame" value="false"> NO</label>
+                            <label for="presentSameTrue"><input type="radio" id="presentSameTrue" name="presentsame" value="yes"> Yes</label>
+                            <label for="presentSameFalse"><input checked type="radio" id="presentSameFalse" name="presentsame" value="no"> NO</label>
                         </p>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="pmDivison">Division <span class="text-danger">*</span></label>
-                            <select name="pmDivison" id="pmDivison" class="form-control">
+                            @error('pmDivison')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('pmDivison') style="border:1px solid red" @enderror name="pmDivison" id="pmDivison" class="form-control">
                                 <option value="">-Select-</option>
                                 @foreach ($divisions as $division)
                                     <option value="{{ $division->id }}">{{ $division->name }}</option>
@@ -283,7 +349,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="pmDistrict">District <span class="text-danger">*</span></label>
-                            <select name="pmDistrict" id="pmDistrict" class="form-control">
+                            @error('pmDistrict')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('pmDistrict') style="border:1px solid red" @enderror name="pmDistrict" id="pmDistrict" class="form-control">
                                 <option value="">-Select-</option>
                             </select>
                         </div>
@@ -291,7 +362,12 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="pmThana">Thana <span class="text-danger">*</span></label>
-                            <select name="pmThana" id="pmThana" class="form-control">
+                            @error('pmThana')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <select @error('pmThana') style="border:1px solid red" @enderror name="pmThana" id="pmThana" class="form-control">
                                 <option value="">-Select-</option>
                             </select>
                         </div>
@@ -299,24 +375,48 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="pmPostOffice">Post Office <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" name="pmPostOffice" id="pmPostOffice" placeholder="Enter Post Office">
+                            <input type="text" value="{{ old('pmPostOffice') }}" class="form-control" name="pmPostOffice" id="pmPostOffice" placeholder="Enter Post Office">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="pmZIP">ZIP Code</label>
-                            <input type="text" class="form-control" name="pmZIP" id="pmZIP" placeholder="Enter ZIP Code">
+                            <input type="text" value="{{ old('pmZIP') }}" class="form-control" name="pmZIP" id="pmZIP" placeholder="Enter ZIP Code">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="pmVillage">Village</label>
-                            <input type="text" class="form-control" name="pmVillage" id="pmVillage" placeholder="Enter Name of Village">
+                            <label for="pmVillage">Village/Area <span class="text-danger">*</span></label>
+                            @error('pmVillage')
+                                <span class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </span>
+                            @enderror
+                            <input @error('pmVillage') style="border:1px solid red" @enderror type="text" value="{{ old('pmVillage') }}" class="form-control" name="pmVillage" id="pmVillage" placeholder="Enter Name of Village">
                         </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <p><strong>Captcha</strong> <span class="text-danger">*</span></p>
+                        <span id="captcha-img">
+                            {!! captcha_img() !!}
+                        </span>
+                        <button id="captcha-reload" type="button" class="btn btn-primary">Reload</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @error('captcha')
+                                <p class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </p>
+                            @enderror
+                            <input @error('captcha') style="border:1px solid red" @endif type="number" class="form-control" name="captcha" id="captcha" placeholder="Enter Captcha">
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <label for="terms"><input type="checkbox" id="terms"> I read all <a target="_blank" href="#" class="text-primary">terms and condition</a>, and i agree with that's.</label>
                     </div>
                 </div>
                 <div class="form-group">
-
                     <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Apply Now</button>
                 </div>
             </form>
@@ -406,6 +506,17 @@
                 }
             });
         }
+    });
+    $('#captcha-reload').click(function(){
+        // alert('yes');
+        $.ajax({
+            type:"GET",
+            url: "{{ url('get/ajax/captcha/reload') }}",
+            success:function(res){
+                console.log(res);
+                $('#captcha-img').html(res);
+            }
+        });
     });
     // permanent address same
     $('#presentSameTrue').click(function(){

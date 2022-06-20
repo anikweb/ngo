@@ -47,6 +47,7 @@ Route::get('/get/ajax/present/district/info/{division_id}',[VolunteerApplyContro
 Route::get('/get/ajax/present/thana/info/{district_id}',[VolunteerApplyController::class,'getThana']);
 Route::get('/get/ajax/permanent/district/info/{division_id}',[VolunteerApplyController::class,'getPmDistrict']);
 Route::get('/get/ajax/permanent/thana/info/{district_id}',[VolunteerApplyController::class,'getPmThana']);
+Route::get('/get/ajax/captcha/reload/',[VolunteerApplyController::class,'reloadCaptcha']);
 
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);

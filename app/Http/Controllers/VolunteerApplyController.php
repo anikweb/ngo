@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VolunteerApplyRequest;
 use App\Models\Countries;
 use App\Models\District;
 use App\Models\Division;
@@ -19,8 +20,21 @@ class VolunteerApplyController extends Controller
             'countries' =>Countries::orderBy('name','asc')->get(),
         ]);
     }
-    public function store(Request $request){
+    public function store(VolunteerApplyRequest $request){
 
+        if($request->presentsame=='no'){
+            $request->validate([
+                'pmDivison' => 'required',
+                'pmDistrict' => 'required',
+                'pmThana' => 'required',
+                'pmVillage' => 'required',
+            ],[
+                'pmDivison.required' => 'Permanent Division required',
+                'pmDistrict.required' => 'Permanent District required',
+                'pmThana.required' => 'Permanent Thana required',
+                'pmVillage.required' => 'Permanent Village/Area required',
+            ]);
+        }
         $volunteer = new Volunteers;
         $volunteer-> name_en = $request->name_en;
         $volunteer->name_bn = $request->name_bn;
@@ -32,7 +46,7 @@ class VolunteerApplyController extends Controller
         $volunteer->sex = $request->sex;
         $volunteer->date_of_birth = $request->date_of_birth;
         $volunteer->nid = $request->nid;
-        $volunteer->bcn = $request->nid;
+        $volunteer->bcn = $request->bcn;
         $volunteer->nationality = 'bangladeshi';
         $volunteer->occupation = $request->occupation;
         $volunteer->institute = $request->institute;
@@ -44,14 +58,23 @@ class VolunteerApplyController extends Controller
         $volunteer->prPostOffice = $request->prPostOffice;
         $volunteer->prZIP = $request->prZIP;
         $volunteer->prVillage = $request->prVillage;
-        $volunteer->pmDivison = $request->pmDivison;
-        $volunteer->pmDistrict = $request->pmDistrict;
-        $volunteer->pmThana = $request->pmThana;
-        $volunteer->pmPostOffice = $request->pmPostOffice;
-        $volunteer->pmZIP = $request->pmZIP;
-        $volunteer->pmVillage = $request->pmVillage;
-        $volunteer->save();
-        $volunteer->volunteer_id = "MBF-".$volunteer->id;
+        if($request->presentsame=='yes'){
+            $volunteer->pmDivison = $request->prDivison;
+            $volunteer->pmDistrict = $request->prDistrict;
+            $volunteer->pmThana = $request->prThana;
+            $volunteer->pmPostOffice = $request->prPostOffice;
+            $volunteer->pmZIP = $request->prZIP;
+            $volunteer->pmVillage = $request->prVillage;
+        }
+        if($request->presentsame=='no'){
+            $volunteer->pmDivison = $request->pmDivison;
+            $volunteer->pmDistrict = $request->pmDistrict;
+            $volunteer->pmThana = $request->pmThana;
+            $volunteer->pmPostOffice = $request->pmPostOffice;
+            $volunteer->pmZIP = $request->pmZIP;
+            $volunteer->pmVillage = $request->pmVillage;
+        }
+        $volunteer->status = 1;
         $volunteer->save();
 
         if($request->hasFile('image')){
@@ -62,7 +85,7 @@ class VolunteerApplyController extends Controller
             $volunteer->image = $newName;
             $volunteer->save();
         }
-
+        return 'added';
     }
     public function getDistrict($id){
         $district = District::where('division_id',$id)->orderBy('name','asc')->get();
@@ -79,5 +102,8 @@ class VolunteerApplyController extends Controller
     public function getPmThana($id){
         $thana = Thana::where('district_id',$id)->orderBy('name','asc')->get();
         return response()->json($thana);
+    }
+    public function reloadCaptcha(){
+        return response()->json(captcha_img());
     }
 }
