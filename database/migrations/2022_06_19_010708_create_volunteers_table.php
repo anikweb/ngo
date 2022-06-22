@@ -15,6 +15,7 @@ class CreateVolunteersTable extends Migration
     {
         Schema::create('volunteers', function (Blueprint $table) {
             $table->id();
+            $table->string('applicant_id')->nullable()->unique();
             $table->string('volunteer_id')->nullable()->unique();
             $table->string('name_en');
             $table->string('name_bn');
@@ -47,7 +48,7 @@ class CreateVolunteersTable extends Migration
             $table->string('pmPostOffice')->nullable();
             $table->string('pmZIP')->nullable();
             $table->string('pmVillage');
-            $table->tinyInteger('status')->comment('1=applicant, 2=volunteer, 3=resticted, 4=suspanded');
+            $table->tinyInteger('status')->comment('1=applicant, 2=volunteer, 3=resticted');
             $table->timestamps();
         });
     }

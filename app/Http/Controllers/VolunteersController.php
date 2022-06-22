@@ -14,7 +14,9 @@ class VolunteersController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.pages.volunteers.index',[
+            'volunteers' => Volunteers::latest()->paginate(10),
+        ]);
     }
 
     /**

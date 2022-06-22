@@ -9,6 +9,7 @@ use App\Models\Division;
 use App\Models\Thana;
 use App\Models\Volunteers;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 
@@ -76,6 +77,7 @@ class VolunteerApplyController extends Controller
         }
         $volunteer->status = 1;
         $volunteer->save();
+        $volunteer->applicant_id = Str::upper(Str::random(8)).$volunteer->id;
 
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -85,7 +87,12 @@ class VolunteerApplyController extends Controller
             $volunteer->image = $newName;
             $volunteer->save();
         }
-        return 'added';
+        return redirect()->route('frontend.volunteer.success',$volunteer->id);
+    }
+    public function success($id){
+        return view('frontend.volunteers.success',[
+            'volunteer' => Volunteers::find($id),
+        ]);
     }
     public function getDistrict($id){
         $district = District::where('division_id',$id)->orderBy('name','asc')->get();

@@ -72,7 +72,6 @@
           <div class="col-md-12">
             <div class="heading-line-bottom mt-0 mb-30">
               <h3 class="heading-title">Become a Volunteer</h3>
-
             </div>
             <h5><span class="text-danger">*</span> marked field must be met.</h5>
 
@@ -417,7 +416,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10" data-loading-text="Please wait...">Apply Now</button>
+                    <button disabled id="submit_form" type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10">Apply Now</button>
                 </div>
             </form>
           </div>
@@ -517,6 +516,13 @@
                 $('#captcha-img').html(res);
             }
         });
+    });
+    $('#terms').click(function() {
+        if (this.checked) {
+            $('#submit_form').prop('disabled', false); // If checked enable item
+        } else {
+            $('#submit_form').prop('disabled', true); // If checked disable item
+        }
     });
     // permanent address same
     $('#presentSameTrue').click(function(){

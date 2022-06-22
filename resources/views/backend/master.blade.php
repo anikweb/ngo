@@ -338,6 +338,16 @@
                 </ul>
             </li>
           @endif
+        {{-- @if (auth()->user()->can('general settings')) --}}
+            <li class="nav-item">
+                <a href="{{ route('volunteer.index') }}" class="nav-link">
+                    <i class="nav-icon fa  fa-user-secret"></i>
+                    <p>
+                        Volunteers
+                    </p>
+                </a>
+            </li>
+        {{-- @endif --}}
         @if (auth()->user()->can('general settings'))
             <li class="nav-item @if(Route::is('generalSetting.index')||Route::is('about-settings.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
@@ -364,7 +374,7 @@
                     @endif
                 </ul>
             </li>
-          @endif
+        @endif
           {{-- Role Management  --}}
           @if (auth()->user()->can('role management'))
             <li class="nav-item @if(Route::is('role.index')||Route::is('role.create')||Route::is('role.edit')||Route::is('role.assign.users')) menu-open @endif">

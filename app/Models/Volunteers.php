@@ -8,22 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Volunteers extends Model
 {
     use HasFactory;
-    public function prDivision(){
+    public function preDivision(){
         return $this->belongsTo(Division::class,'prDivison');
     }
-    public function prDistrict(){
+    public function preDistrict(){
         return $this->belongsTo(District::class,'prDistrict');
     }
-    public function prThana(){
-        return $this->belongsTo(District::class,'prThana');
+    public function preThana(){
+        return $this->belongsTo(Thana::class,'prThana');
     }
-    public function pmDivision(){
+    public function permDivision(){
         return $this->belongsTo(Division::class,'pmDivison');
     }
-    public function pmDistrict(){
+    public function permDistrict(){
         return $this->belongsTo(District::class,'pmDistrict');
     }
-    public function pmThana(){
-        return $this->belongsTo(District::class,'pmThana');
+    public function permThana(){
+        return $this->belongsTo(Thana::class,'pmThana');
     }
 }
