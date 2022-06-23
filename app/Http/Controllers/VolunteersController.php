@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Volunteers;
 use Illuminate\Http\Request;
+use PDF;
 
 class VolunteersController extends Controller
 {
@@ -48,9 +49,12 @@ class VolunteersController extends Controller
      */
     public function show($id)
     {
-        return view('backend.pages.volunteers.show',[
-            'volunteer' => Volunteers::find($id),
-        ]);
+        $pdf = PDF::loadView('backend.pages.volunteers.show_pdf', compact('id'))->setPaper('a4', 'portrait');
+        return $pdf->download('invoice.pdf');
+
+        // $pdf = PDF::loadView(''.$id);
+        // return $pdf->download('invoice.pdf');
+
     }
 
     /**
