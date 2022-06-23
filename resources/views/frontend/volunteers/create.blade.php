@@ -212,9 +212,9 @@
                                 <option @if(old('doctor')) @endif value="doctor">Doctor</option>
                                 <option @if(old('entrepreneur')) @endif value="entrepreneur">Entrepreneur</option>
                                 <option @if(old('farmer')) @endif value="farmer">Farmer</option>
-                                <option @if(old('government_job')) @endif value="government_job">Government Job</option>
+                                <option @if(old('government job')) @endif value="government_job">Government Job</option>
                                 <option @if(old('nurse')) @endif value="nurse">Nurse</option>
-                                <option @if(old('private_job')) @endif value="private_job">Private Job</option>
+                                <option @if(old('private job')) @endif value="private_job">Private Job</option>
                                 <option @if(old('student')) @endif value="student">Student</option>
                                 <option @if(old('teacher')) @endif value="teacher">Teacher</option>
                                 <option @if(old('others')) @endif value="others">Others</option>

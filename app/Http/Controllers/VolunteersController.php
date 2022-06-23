@@ -37,7 +37,7 @@ class VolunteersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -46,9 +46,11 @@ class VolunteersController extends Controller
      * @param  \App\Models\Volunteers  $volunteers
      * @return \Illuminate\Http\Response
      */
-    public function show(Volunteers $volunteers)
+    public function show($id)
     {
-        //
+        return view('backend.pages.volunteers.show',[
+            'volunteer' => Volunteers::find($id),
+        ]);
     }
 
     /**
