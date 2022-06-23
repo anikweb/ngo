@@ -49,8 +49,10 @@ class VolunteersController extends Controller
      */
     public function show($id)
     {
-        $pdf = PDF::loadView('backend.pages.volunteers.show_pdf', compact('id'))->setPaper('a4', 'portrait');
-        return $pdf->download('invoice.pdf');
+        $volunteer = Volunteers::find($id);
+        // return $volunteer->applicant_id;
+        $pdf = PDF::loadView('backend.pages.volunteers.show_pdf', compact('volunteer'))->setPaper('a4', 'portrait');
+        return $pdf->stream($volunteer->applicant_id.'.pdf');
 
         // $pdf = PDF::loadView(''.$id);
         // return $pdf->download('invoice.pdf');

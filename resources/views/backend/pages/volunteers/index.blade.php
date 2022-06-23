@@ -40,7 +40,7 @@
                                         <tr>
                                             <td>{{ $volunteers->firstItem() +$loop->index }}</td>
                                             <td>
-                                                <img width="100px" src="{{ asset('images/volunteers/'.$volunteer->image) }}" alt="{{ $volunteer->name_en }}">
+                                                <img width="70px" src="{{ asset('images/volunteers/'.$volunteer->image) }}" alt="{{ $volunteer->name_en }}">
                                             </td>
                                             <td>{{ $volunteer->name_en }}</td>
                                             <td>{{ $volunteer->applicant_id }}</td>
@@ -64,7 +64,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('volunteer.show',$volunteer->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                                <a target="_blank" href="{{ route('volunteer.show',$volunteer->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 <a href="#" class="btn btn-info"><i class="fa fa-bars"></i></a>
                                             </td>
                                         </tr>
@@ -102,6 +102,9 @@
     @if (session('error'))
         toastr.error('{{ session("error") }}','Failed')
     @endif
+    $(document).ready( function () {
+        $('.table').DataTable();
+    } );
     $('.trash-btn').click(function(){
         var officialTeam_id = $(this).attr('data-id');
         Swal.fire({

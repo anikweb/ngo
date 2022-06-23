@@ -28,6 +28,7 @@
     <link rel="shortcut icon" href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" type="image/x-icon">
     {{-- toastr css  --}}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
     @yield('internal_css')
 </head>
@@ -481,6 +482,7 @@
 {{-- ckeditor --}}
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
 
 @yield('footer_js')
