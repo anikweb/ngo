@@ -55,11 +55,14 @@
             <h3 class="office-copy">Office Copy</h3>
         </div>
         <div class="info">
-            <span class="info-1">Applicant Id: <strong>{{ $volunteer->applicant_id }}</strong></span>
+            @if (!$volunteer->volunteer_id)
+                <span class="info-1">Applicant Id: <strong>{{ $volunteer->applicant_id }}</strong></span>
+            @else
+                <span class="info-1">Volunteer Id: <strong>{{ $volunteer->volunteer_id }}</strong></span>
+            @endif
         </div>
         <div class="main-data">
            <div class="data-conainer1">
-
                <table>
                     <tr>
                         <th width="10%">Name</th>
@@ -149,7 +152,8 @@
        </div>
        <div>
             <h4 style="margin-top: 5px;"> Applicant Facebook: <a href="{{ $volunteer->facebook_url }}">{{ $volunteer->facebook_url }}</a></h4>
-            <h4 style="margin-top: 5px;"> Application Date: {{ $volunteer->created_at->format('d-M-Y') }}</h4>
+            <h4 style="margin-top: 5px;"> Application Date: {{ $volunteer->created_at->format('d-M-Y, h:i A') }}</h4>
+            <h4 style="margin-top: 5px;"> Last Update: {{ $volunteer->updated_at->format('d-M-Y, h:i A') }}</h4>
             <h4>Status: @if($volunteer->status == 1) <span style="color:coral;"> Application Pending</span> @elseif($volunteer->status == 2)<span style="color:#10783b"> Volunteer </span> @elseif($volunteer->status == 3) <span style="color:red;">Resticted</span><span style="color:blue;">  @endif</h4>
 
        </div>

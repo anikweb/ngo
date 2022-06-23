@@ -156,7 +156,6 @@
         // alert(advisor_priority);
         $('#advisor_id').val(advisor_id);
         $('#priority').val(advisor_priority);
-
     });
 </script>
 @endsection

@@ -15,9 +15,13 @@ class VolunteersController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.volunteers.index',[
-            'volunteers' => Volunteers::latest()->paginate(10),
-        ]);
+        if(auth()->user()->can('volunteers management')){
+            return view('backend.pages.volunteers.index',[
+                'volunteers' => Volunteers::latest()->paginate(10),
+            ]);
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -49,14 +53,13 @@ class VolunteersController extends Controller
      */
     public function show($id)
     {
-        $volunteer = Volunteers::find($id);
-        // return $volunteer->applicant_id;
-        $pdf = PDF::loadView('backend.pages.volunteers.show_pdf', compact('volunteer'))->setPaper('a4', 'portrait');
-        return $pdf->stream($volunteer->applicant_id.'.pdf');
-
-        // $pdf = PDF::loadView(''.$id);
-        // return $pdf->download('invoice.pdf');
-
+        if(auth()->user()->can('volunteers management')){
+            $volunteer = Volunteers::find($id);
+            $pdf = PDF::loadView('backend.pages.volunteers.show_pdf', compact('volunteer'))->setPaper('a4', 'portrait');
+            return $pdf->stream($volunteer->applicant_id.'.pdf');
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -67,7 +70,7 @@ class VolunteersController extends Controller
      */
     public function edit(Volunteers $volunteers)
     {
-        //
+        // return $volunteers;
     }
 
     /**
@@ -77,9 +80,29 @@ class VolunteersController extends Controller
      * @param  \App\Models\Volunteers  $volunteers
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Volunteers $volunteers)
+    public function update(Request $request)
     {
-        //
+        if(auth()->user()->can('volunteers management')){
+            if($request->action=='2'||$request->action=='3'||$request->action=='4'){
+                $volunteer = Volunteers::find($request->volunteer_id);
+                if($request->action == 2){
+                    if(!$volunteer->volunteer_id){
+                        $volunteer->volunteer_id = 'MBF-'.date('Y').$volunteer->id;
+                    }
+                }
+                $volunteer->status = $request->action;
+                if($volunteer->save()){
+                    return back()->with('success','Status Changed!');
+                }else{
+                    return back()->with('error','Failed!');
+
+                }
+            }else{
+                return back()->with('error','Failed!');
+            }
+        }else{
+            return abort(404);
+        }
     }
 
     /**

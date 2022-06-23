@@ -47,6 +47,8 @@
                                             <td>
                                                 @if (!$volunteer->volunteer_id)
                                                     <span class="badge badge-danger">Volunteer id is not generate yet</span>
+                                                @else
+                                                {{ $volunteer->volunteer_id }}
                                                 @endif
                                             </td>
                                             <td>{{ $volunteer->email }}</td>
@@ -58,14 +60,16 @@
                                                 @if ($volunteer->status == 1)
                                                     <span class="badge badge-primary">Applicant</span>
                                                 @elseif ($volunteer->status == 2)
-                                                    <span class="badge badge-primary">Volunteer</span>
+                                                    <span class="badge badge-info">Volunteer</span>
                                                 @elseif ($volunteer->status == 3)
                                                     <span class="badge badge-danger">Resticted</span>
+                                                @elseif ($volunteer->status == 4)
+                                                    <span class="badge badge-danger">Declined</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <a target="_blank" href="{{ route('volunteer.show',$volunteer->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                                <a href="#" class="btn btn-info"><i class="fa fa-bars"></i></a>
+                                                <a href="javascript:void(0)" class="btn btn-info bars-btn" data-id="{{ $volunteer->id }}" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-bars"></i></a>
                                             </td>
                                         </tr>
                                     @empty
@@ -83,6 +87,37 @@
         </div>
     </div>
     {{-- Modal  --}}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form id="action_form" action="{{ route('volunteer.update',1) }}" method="POST" >
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Take Action</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="hidden" name="volunteer_id" id="volunteer_id">
+                            <label for="action">Take Action</label>
+                            <select name="action" id="action" class="form-control">
+                                <option value="2">Approve volunteer</option>
+                                <option value="3">Resticted</option>
+                                <option value="4">Decline</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('internal_css')
 <style>
@@ -102,8 +137,15 @@
     @if (session('error'))
         toastr.error('{{ session("error") }}','Failed')
     @endif
+
     $(document).ready( function () {
         $('.table').DataTable();
+        $('.bars-btn').click(function() {
+            var volunteer_id = $(this).attr('data-id');
+            if(volunteer_id){
+                $('#volunteer_id').val(volunteer_id);
+            }
+        });
     } );
     $('.trash-btn').click(function(){
         var officialTeam_id = $(this).attr('data-id');

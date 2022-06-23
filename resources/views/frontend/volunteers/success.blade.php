@@ -25,7 +25,7 @@
                 <div class="col-md-12 text-center">
                     <img src="{{ asset('images/placeholder/success tick.gif') }}" alt="Muktir Bondhon Foundation">
                     <h1 class="h1">Success</h1>
-                    <h4>Your Applicant id is <strong class="text-success">{{ $volunteer->applicant_id }}</strong></h4>
+                    <h4>Your Volunteer Applicant id is <strong class="text-success">{{ $volunteer->applicant_id }}</strong></h4>
                     <p class="h3">We will email/call you if you are approved by our Team.</p>
                     <p>Application form mailed to your email address (<strong class="text-primary">{{ $volunteer->email }}</strong>)</p>
                     <a href="{{ route('frontend.events.index') }}" class="btn btn-lg btn-theme-colored">See our Events</a>
