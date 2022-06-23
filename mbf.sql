@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2022 at 11:17 PM
+-- Generation Time: Jun 23, 2022 at 06:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -458,7 +458,9 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (5, 'project management', 'web', '2022-06-19 19:09:14', '2022-06-19 19:09:14'),
 (6, 'slider management', 'web', '2022-06-19 19:09:14', '2022-06-19 19:09:14'),
 (7, 'event management', 'web', '2022-06-19 19:09:14', '2022-06-19 19:09:14'),
-(8, 'team management', 'web', '2022-06-19 19:09:14', '2022-06-19 19:09:14');
+(8, 'team management', 'web', '2022-06-19 19:09:14', '2022-06-19 19:09:14'),
+(9, 'volunteers management', 'web', '2022-06-23 16:09:44', '2022-06-23 16:09:44'),
+(10, 'media management', 'web', '2022-06-23 16:09:44', '2022-06-23 16:09:44');
 
 -- --------------------------------------------------------
 
@@ -563,7 +565,9 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (5, 1),
 (6, 1),
 (7, 1),
-(8, 1);
+(8, 1),
+(9, 1),
+(10, 1);
 
 -- --------------------------------------------------------
 
@@ -1213,8 +1217,9 @@ CREATE TABLE `volunteers` (
 --
 
 INSERT INTO `volunteers` (`id`, `applicant_id`, `volunteer_id`, `name_en`, `name_bn`, `email`, `mobile`, `image`, `father_name`, `mother_name`, `blood_group`, `sex`, `date_of_birth`, `nid`, `bcn`, `nationality`, `occupation`, `institute`, `facebook_url`, `giverFromInspiration`, `prDivison`, `prDistrict`, `prThana`, `prPostOffice`, `prZIP`, `prVillage`, `pmDivison`, `pmDistrict`, `pmThana`, `pmPostOffice`, `pmZIP`, `pmVillage`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'TJSIC', NULL, 'Montana Morse', 'August Ellison', 'xuceh@mailinator.com', '656', 'Montana Morse - .jpg', 'Brandon Irwin', 'Eleanor Spencer', 'b+', 3, '1976-02-26', '295', '250', 'bangladeshi', 'student', 'Tempora nostrud in i', 'Illum esse odit vo', 'Et quia et dolor ex', 3, 20, 187, 'Maxime aperiam labor', '46200', 'Et eos cupiditate qu', 3, 20, 187, 'Maxime aperiam labor', '46200', 'Et eos cupiditate qu', 1, '2022-06-22 19:53:10', '2022-06-22 19:53:10'),
-(2, 'PUORHGQW2', NULL, 'Kelsie Cotton', 'Hayfa Murray', 'hejeqog@mailinator.com', '187', 'Kelsie Cotton - .jpg', 'Melanie Buckner', 'Lila Gay', 'b+', 2, '1973-03-13', '138', '960', 'bangladeshi', 'private_job', 'Ab inventore eum eli', 'Debitis libero volup', 'Autem sapiente sit', 2, 10, 76, 'Elit nulla et imped', '69764', 'Aliqua Proident ev', 2, 10, 76, 'Elit nulla et imped', '69764', 'Aliqua Proident ev', 1, '2022-06-22 21:12:49', '2022-06-22 21:12:49');
+(1, 'TJSIC', 'MBF-20221', 'Montana Morse', 'August Ellison', 'xuceh@mailinator.com', '656', 'Montana Morse - .jpg', 'Brandon Irwin', 'Eleanor Spencer', 'b+', 3, '1976-02-26', '295', '250', 'bangladeshi', 'student', 'Tempora nostrud in i', 'Illum esse odit vo', 'Et quia et dolor ex', 3, 20, 187, 'Maxime aperiam labor', '46200', 'Et eos cupiditate qu', 3, 20, 187, 'Maxime aperiam labor', '46200', 'Et eos cupiditate qu', 2, '2022-06-22 19:53:10', '2022-06-23 15:47:59'),
+(2, 'PUORHGQW2', 'MBF-20222', 'Kelsie Cotton', 'Hayfa Murray', 'hejeqog@mailinator.com', '187', 'Kelsie Cotton - .jpg', 'Melanie Buckner', 'Lila Gay', 'b+', 2, '1973-03-13', '138', '960', 'bangladeshi', 'private_job', 'Ab inventore eum eli', 'Debitis libero volup', 'Autem sapiente sit', 2, 10, 76, 'Elit nulla et imped', '69764', 'Aliqua Proident ev', 2, 10, 76, 'Elit nulla et imped', '69764', 'Aliqua Proident ev', 2, '2022-06-22 21:12:49', '2022-06-23 16:20:22'),
+(3, 'BFDPYTKW3', 'MBF-20223', 'Evelyn Byers', 'Finn Russo', 'zozucejyh@mailinator.com', '931', 'Evelyn Byers - .png', 'Cody Carr', 'Camilla Walker', 'a-', 3, '2014-10-21', '282', '462', 'bangladeshi', 'teacher', 'Est voluptas amet d', 'Dicta enim quae prov', 'Quam ad dolor laboru', 6, 47, 373, 'Optio amet corrupt', '94970', 'Enim qui repellendus', 6, 47, 373, 'Optio amet corrupt', '94970', 'Enim qui repellendus', 2, '2022-06-23 16:04:48', '2022-06-23 16:14:57');
 
 --
 -- Indexes for dumped tables
@@ -1494,7 +1499,7 @@ ALTER TABLE `official_team_socials`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `projects`
@@ -1548,7 +1553,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `volunteers`
 --
 ALTER TABLE `volunteers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
