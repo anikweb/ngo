@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta name="description" content="Nonprofit, Non-Governmental, Environmental, climate, Crowdfunding & Charity, " />
-    <meta name="keywords" content="charity, crowdfunding, nonprofit, orphan, environmental, Poor, funding, fundrising, ngo, children, climate" />
+    <meta name="keywords" content="@if(isset($event->tags)) {{ $event->tags }} @else charity, crowdfunding, nonprofit, orphan, environmental, Poor, funding, fundrising, ngo, children, climate @endif" />
     <meta name="author" content="{{ generalSettings()->site_title }}" />
     @yield('og_meta')
 
@@ -91,6 +91,9 @@
         background-color: #0d6231 !important;;
         border-color: #064a22 !important;;
     }
+    .showhide{
+        background: white
+    }
 </style>
 @yield('internal_css')
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -130,15 +133,15 @@
                     <div class="widget no-border clearfix m-0 mt-5">
                     <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
                         <li>
-                        <a class="text-success" target="_blank" href="#">FAQ</a>
+                        <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">FAQ</a>
                         </li>
                         <li class="text-success">|</li>
                         <li>
-                        <a class="text-success" target="_blank" href="#">Help Desk</a>
+                        <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Help Desk</a>
                         </li>
                         <li class="text-success">|</li>
                         <li>
-                        <a class="text-success" target="_blank" href="#">Contact</a>
+                        <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Contact</a>
                         </li>
                         @auth
 
@@ -182,59 +185,70 @@
                 </div>
             </div>
             </div>
-            <div class="header-nav">
-            <div class="header-nav-wrapper navbar-scrolltofixed">
-                <div class="container">
-                <nav id="menuzord" class="menuzord default">
-                    <ul class="menuzord-menu">
-                    <li class=" text-light"><a class="text-white mr-5 @if(Route::is('frontend')) actives @endif" href="{{ route('frontend') }}">Home</a></li>
-                    <li><a class="text-white mr-5" href="#">Projects</a>
-                        <ul class="dropdown">
-                            @foreach (projects() as $project)
-                                <li><a href="{{ route('frontend.project.index',$project->slug) }}">{{ $project->title }}</a></li>
-                            @endforeach
+            <div class="header-nav ">
+                <div class="header-nav-wrapper navbar-scrolltofixed">
+                    <div class="container">
+                    <nav id="menuzord" class="menuzord default ">
+                        <ul class="menuzord-menu bg-theme-colored">
+                            <li>
+                                <a class="text-white mr-5 @if(Route::is('frontend')) actives @endif" href="{{ route('frontend') }}">Home</a>
+                            </li>
+                            <li>
+                                <a class="text-white mr-5 @if(Route::is('frontend.project.index')) actives @endif"  href="javascript:void(0)">Projects</a>
+                                <ul class="dropdown">
+                                    @foreach (projects() as $project)
+                                        <li><a href="{{ route('frontend.project.index',$project->slug) }}">{{ $project->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="text-white mr-5 @if(Route::is('frontend.events.index')||Route::is('frontend.events.show')) actives @endif" href="{{ route('frontend.events.index') }}">Events</a>
+                                {{-- <ul class="dropdown">
+                                <li><a href="event-list.html">Event List</a></li>
+                                <li><a href="event-calendar.html">Event Calendar</a></li>
+                                </ul> --}}
+                            </li>
+                            <li>
+                                <a class="text-white mr-5" href="javascript:void(0)">Donations</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ route('frontend.cooming.soon') }}">Donate Now</a></li>
+                                    <li><a href="{{ route('frontend.cooming.soon') }}">Donation Certificate</a></li>
+                                    <li><a href="{{ route('frontend.cooming.soon') }}">Bank Information</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="text-white mr-5 @if(Route::is('frontend.team.advisor.index')||Route::is('frontend.team.official.index')) actives @endif" href="#">Team</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ route('frontend.team.advisor.index') }}">Adviser</a></li>
+                                    <li><a href="{{ route('frontend.team.official.index') }}">Official</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="text-white mr-5 @if(Route::is('frontend.publications.index')||Route::is('frontend.image.gallery')) actives @endif" href="javascript:void">Media</a>
+                                <ul class="dropdown">
+                                    <li><a href="{{route('frontend.publications.index')}}">Publications</a></li>
+                                    <li><a href="{{ route('frontend.cooming.soon') }}">Press Releases</a></li>
+                                    <li><a href="{{ route('frontend.image.gallery') }}">Image Gallery</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="text-white mr-5" href="blog.html">Blog</a>
+                            </li>
+                            <li>
+                                <a class="text-white mr-5" href="{{ route('frontend.about') }}">About us</a>
+                            </li>
+                            </ul>
+                        <ul class="list-inline pull-right flip hidden-sm hidden-xs">
+                            <li>
+                                <a class="btn text-success  btn-flat bg-white mt-15 hvr-bounce-to-right" target="_blank" href="{{ route('frontend.cooming.soon') }}">Donate Now</a>
+                            </li>
+                            <li>
+                                <a class="btn text-success btn-flat bg-white mt-15 hvr-bounce-to-right" href="{{ route('frontend.volunteer.apply') }}" >Join Us</a>
+                            </li>
                         </ul>
-                    </li>
-                    <li><a class="text-white mr-5" href="{{ route('frontend.events.index') }}">Events</a>
-                        {{-- <ul class="dropdown">
-                        <li><a href="event-list.html">Event List</a></li>
-                        <li><a href="event-calendar.html">Event Calendar</a></li>
-                        </ul> --}}
-                    </li>
-                    <li><a class="text-white mr-5" href="#">Donations</a>
-                        <ul class="dropdown">
-                        <li><a href="#">Donate Now</a></li>
-                        <li><a href="#">Donation Certificate</a></li>
-                        <li><a href="#">Bank Information</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="text-white mr-5 @if(Route::is('frontend.team.advisor.index')||Route::is('frontend.team.official.index')) actives @endif" href="#">Team</a>
-                        <ul class="dropdown">
-                        <li><a href="{{ route('frontend.team.advisor.index') }}">Adviser</a></li>
-                        <li><a href="{{ route('frontend.team.official.index') }}">Official</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="text-white mr-5" href="#">Media</a>
-                        <ul class="dropdown">
-                        <li><a href="{{route('frontend.publications.index')}}">Publications</a></li>
-                        <li><a href="#">Press Releases</a></li>
-                        <li><a href="{{ route('frontend.image.gallery') }}">Image Gallery</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="text-white mr-5" href="blog.html">Blog</a></li>
-                    <li><a class="text-white mr-5" href="{{ route('frontend.about') }}">About us</a></li>
-                    </ul>
-                    <ul class="list-inline pull-right flip hidden-sm hidden-xs">
-                    <li>
-                        <a class="btn text-success  btn-flat bg-white mt-15 hvr-bounce-to-right" target="_blank" href="#">Donate Now</a>
-                    </li>
-                    <li>
-                        <a class="btn text-success btn-flat bg-white mt-15 hvr-bounce-to-right" href="{{ route('frontend.volunteer.apply') }}" >Join Us</a>
-                    </li>
-                    </ul>
-                </nav>
+                    </nav>
+                    </div>
                 </div>
-            </div>
             </div>
         </header>
         {{--  Main Content   --}}
@@ -244,11 +258,11 @@
         <section class="clients bg-theme-colored">
             <div class="container pt-0 pb-0">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 col-6">
                 <!-- Section: Clients -->
                 <div class="owl-carousel-7col clients-logo transparent text-center">
                     @foreach (imageGallery() as $gallery)
-                        <div class="item"> <a target="_blank" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="100" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
+                        <div class="item"> <a target="_blank" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="200" width="400" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
                     @endforeach
                 </div>
                 </div>
@@ -263,9 +277,9 @@
                     <img class="mt-10 mb-20" alt="{{ generalSettings()->site_title }}" src="{{ asset('images/generalSettings/'.generalSettings()->logo) }}">
                     <p>{{ generalSettings()->tagline }}</p>
                     <ul class="list-inline mt-5">
-                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-gray" href="#">123-456-789</a> </li>
-                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-gray" href="#">contact@yourdomain.com</a> </li>
-                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-colored mr-5"></i> <a class="text-gray" href="#">www.yourdomain.com</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-gray" href="#">+88-8391224</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-gray" href="mailto:info@muktirbondhon.com">info@muktirbondhon.com</a> </li>
+                    <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-colored mr-5"></i> <a class="text-gray" href="https://muktirbondhon.com">www.muktirbondhon.com</a> </li>
                     </ul>
                 </div>
                 </div>
@@ -301,19 +315,19 @@
                 <div class="widget dark">
                     <h5 class="widget-title line-bottom">Visit</h5>
                     <ul class="list angle-double-right list-border">
-                    <li><a href="">Donate</a></li>
-                    <li><a href="#">Projects</a></li>
+                    <li><a href="{{ route('frontend.cooming.soon') }}">Donate</a></li>
+                    <li><a href="{{ route('frontend.cooming.soon') }}">Projects</a></li>
                     <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
                     <li><a href="{{ route('frontend.image.gallery') }}">Media</a></li>
                     <li><a href="{{ route('frontend.volunteer.apply') }}">Volunteers</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Terms & Condition</a></li>
-                    <li><a href="#">Policy</a></li>
-                    <li><a href="#">Constitution</a></li>
+                    <li><a href="{{ route('frontend.cooming.soon') }}">Blog</a></li>
+                    <li><a href="{{ route('frontend.cooming.soon') }}">Terms & Condition</a></li>
+                    <li><a href="{{ route('frontend.cooming.soon') }}">Policy</a></li>
+                    <li><a href="{{ route('frontend.cooming.soon') }}">Constitution</a></li>
                     </ul>
                 </div>
                 </div>
-                <div class="col-sm-6 col-md-3">
+                {{-- <div class="col-sm-6 col-md-3">
                 <div class="widget dark">
                     <h5 class="widget-title line-bottom">Opening Hours</h5>
                     <div class="opening-hours">
@@ -333,10 +347,10 @@
                     </ul>
                     </div>
                 </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row mt-10">
-                <div class="col-md-5">
+                {{-- <div class="col-md-5">
                 <div class="widget dark">
                     <h5 class="widget-title mb-10">Subscribe Us</h5>
                     <!-- Mailchimp Subscription Form Starts Here -->
@@ -349,16 +363,7 @@
                     </div>
                     </form>
                 </div>
-                </div>
-                <div class="col-md-3 col-md-offset-1">
-                <div class="widget dark">
-                    <h5 class="widget-title mb-10">Call Us Now</h5>
-                    <div class="text-gray">
-                    +61 3 1234 5678 <br>
-                    +12 3 1234 5678
-                    </div>
-                </div>
-                </div>
+                </div> --}}
                 <div class="col-md-3">
                 <div class="widget dark">
                     <h5 class="widget-title mb-10">Connect With Us</h5>
@@ -402,7 +407,7 @@
             </div>
             </div>
         </footer>
-    <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+    <a class="scrollToTop" href="javascript:void(0)"><i class="fa fa-angle-up"></i></a>
     </div>
 <!-- end wrapper -->
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2022 at 06:23 PM
+-- Generation Time: Jun 24, 2022 at 11:31 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -41,7 +41,7 @@ CREATE TABLE `abouts` (
 --
 
 INSERT INTO `abouts` (`id`, `about`, `image`, `mission`, `created_at`, `updated_at`) VALUES
-(1, 'muktirbondhon', 'gofZLcaQYocover-image.jpg', 'gofZLcaQYocover-image.jpg', '2022-06-19 18:59:14', '2022-06-19 18:59:14');
+(1, '<p>Muktir Bondhon Foundation(MBF) is a non-profit, non-political, non-government organization working to ensure the betterment of human beings by protecting the environment, creating provision of education, health, social safety, environmental safety, and gender balance in Bangladesh. With the ground belief, people are the driver of all solutions, Muktir Bondhon engages youth in conservation, disaster management, education, legal support for underprivileged people. MBF has formed in 2014 with the support of some enthusiastic people like Iqbal Hossain and others. In 2018 registered to join stock as a nonprofit organization in Bangladesh.</p>', '7lSRkY3iFdcover-image.jpg', '<p>Muktir Bondhon Foundation(MBF) is a non-profit, non-political, non-government organization working to ensure the betterment of human beings by protecting the environment, creating provision of education, health, social safety, environmental safety, and gender balance in Bangladesh. With the ground belief, people are the driver of all solutions, Muktir Bondhon engages youth in conservation, disaster management, education, legal support for underprivileged people. MBF has formed in 2014 with the support of some enthusiastic people like Iqbal Hossain and others. In 2018 registered to join stock as a nonprofit organization in Bangladesh.</p>', '2022-06-19 18:59:14', '2022-06-24 19:59:15');
 
 -- --------------------------------------------------------
 
@@ -59,6 +59,17 @@ CREATE TABLE `advisors` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `advisors`
+--
+
+INSERT INTO `advisors` (`id`, `name`, `designation`, `image`, `email`, `priority`, `created_at`, `updated_at`) VALUES
+(1, 'AFZALUR RAHMAN BHUIYAN', 'Professor, Department of Bangla, Netrokona College', 'afzalur-rahman-bhuiyan-image-oEpe7.jpg', NULL, 5, '2022-06-24 19:15:58', '2022-06-24 19:19:51'),
+(2, 'Bhanulal Das', 'DIG-CID, BANGLADESH POLICE', 'bhanulal-das-image-XGHLU.jpg', NULL, 4, '2022-06-24 19:17:16', '2022-06-24 19:19:51'),
+(3, 'Mostaque Hassan', 'NDC, ADDITIONAL SECRETARY', 'mostaque-hassan-image-kQ3Fx.jpg', NULL, 3, '2022-06-24 19:17:57', '2022-06-24 19:19:51'),
+(4, 'Zahir Uddin Ahmed', 'FORMER DEPUTY CHIEF CONSERVATOR OF FOREST', 'zahir-uddin-ahmed-image-Pmt6k.jpg', NULL, 2, '2022-06-24 19:18:44', '2022-06-24 19:19:35'),
+(5, 'Tasmima Hossain', 'EDITOR OF THE DAILY ITTEFAQ', 'tasmima-hossain-image-xwOYc.jpg', NULL, 1, '2022-06-24 19:19:21', '2022-06-24 19:19:27');
 
 -- --------------------------------------------------------
 
@@ -244,6 +255,13 @@ CREATE TABLE `events` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `project_id`, `title`, `slug`, `image`, `description`, `location`, `likes`, `tags`, `event_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '7', 'Distribution of powdered milk among the flooded children', 'distribution-of-powdered-milk-among-the-flooded-children', 'distribution-of-powdered-milk-among-the-flooded-childrenW2qca.jpg', '<p>The flood victims rushed to Sunamganj as soon as they saw the truck loaded with relief vehicles. Behind the truckloads of dried food, they look for food for their children. 2-5 year old children will no longer be able to eat dry food. So our team in Sunamganj yesterday distributed high quality milk powder in the market for children.</p>', 'Sunamgonj, Sylhet', '0', 'Flood,Sylhet Flood,বন্যা,সিলেটের বন্য,সুনামগঞ্জ বন্যা,বন্যার্ত,মুক্তির বন্ধন ফাউন্ডেশন', '2022-06-22', '2022-06-24 20:36:47', '2022-06-24 20:36:47', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -287,7 +305,7 @@ CREATE TABLE `general_settings` (
 --
 
 INSERT INTO `general_settings` (`id`, `site_title`, `logo`, `icon`, `tagline`, `admin_email`, `membership`, `new_user_role`, `timezone`, `date_format`, `time_format`, `created_at`, `updated_at`) VALUES
-(1, 'Muktir Bondhon Foundation', 'muktir-bondhon-foundation-logo.png', 'muktir-bondhon-foundation-icon.png', 'We care for creation', 'anik.mbf@gmail.com', '2', 'Subscriber', 'Asia/Dhaka', 'dd/mm/yyyy', '12', '2021-09-09 14:50:19', '2022-04-21 04:45:45');
+(1, 'Muktir Bondhon Foundation', 'muktir-bondhon-foundation-logo.png', 'muktir-bondhon-foundation-icon.png', 'We care for creation', 'anik.mbf@gmail.com', '1', 'Subscriber', 'Asia/Dhaka', 'dd/mm/yyyy', '12', '2021-09-09 14:50:19', '2022-06-24 17:58:00');
 
 -- --------------------------------------------------------
 
@@ -309,7 +327,171 @@ CREATE TABLE `image_galleries` (
 --
 
 INSERT INTO `image_galleries` (`id`, `image`, `alt_text`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Image-gallery2ArtD1653933178.jpg', 'Image-gallery2ArtD1653933178.jpg', '2022-06-19 19:02:13', '2022-06-19 19:02:13', NULL);
+(2, 'Image-gallery6H4zy1656103317.jpg', '288493078_779731086535538_1414739795530787201_n', '2022-06-24 20:41:57', '2022-06-24 20:41:57', NULL),
+(3, 'Image-galleryJTrMu1656103317.jpg', '288651604_440135040946343_3242644288655899761_n', '2022-06-24 20:41:57', '2022-06-24 20:41:57', NULL),
+(4, 'Image-gallery4C6xK1656103317.jpg', '288655073_727696761837416_7084464112344587331_n', '2022-06-24 20:41:58', '2022-06-24 20:41:58', NULL),
+(5, 'Image-galleryzDobK1656103318.jpg', '288663517_717081772888741_1637326417838940657_n', '2022-06-24 20:41:58', '2022-06-24 20:41:58', NULL),
+(6, 'Image-gallery0SYDE1656103318.jpg', '288668431_587653202877675_7866084412478899214_n', '2022-06-24 20:41:58', '2022-06-24 20:41:58', NULL),
+(7, 'Image-gallerymkpoi1656103318.jpg', '289368010_711878793472613_8742460346170553994_n', '2022-06-24 20:41:58', '2022-06-24 20:41:58', NULL),
+(8, 'Image-galleryqnvg51656103318.jpg', '289450978_440816138049157_2833661336671569361_n', '2022-06-24 20:41:58', '2022-06-24 20:41:58', NULL),
+(9, 'Image-galleryIQOHk1656103361.jpg', '131978536_1407929269557295_4293900323283779026_n', '2022-06-24 20:42:41', '2022-06-24 20:42:41', NULL),
+(10, 'Image-galleryEEMUL1656103361.jpg', '132446453_1407929096223979_7810874552061000192_n', '2022-06-24 20:42:41', '2022-06-24 20:42:41', NULL),
+(11, 'Image-gallery7zADn1656103361.jpg', '132791904_1407929026223986_1555842872223560933_n (1)', '2022-06-24 20:42:41', '2022-06-24 20:42:41', NULL),
+(12, 'Image-gallerypYLph1656103361.jpg', '132791904_1407929026223986_1555842872223560933_n', '2022-06-24 20:42:41', '2022-06-24 20:42:41', NULL),
+(13, 'Image-galleryZcRw81656103361.jpg', '133086449_1407929149557307_8227106978124744503_n', '2022-06-24 20:42:41', '2022-06-24 20:42:41', NULL),
+(14, 'Image-galleryOYDJ91656103372.jpg', '269631488_1671019643248255_7109262574815160540_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(15, 'Image-gallerydo8cL1656103372.jpg', '269687069_1671019509914935_8076172460347254033_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(16, 'Image-galleryFEqCG1656103372.jpg', '269694980_1671019939914892_493610796851660984_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(17, 'Image-galleryL3rQO1656103372.jpg', '269786643_1671019723248247_6029304425745813521_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(18, 'Image-gallery4hZUl1656103372.jpg', '269819386_1671019416581611_3863904135459979969_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(19, 'Image-gallerysx9iN1656103372.jpg', '269845405_1671019583248261_915375744992663384_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(20, 'Image-gallery0aIVW1656103372.jpg', '269847778_1671019859914900_8627867062682863144_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(21, 'Image-galleryFIRTi1656103372.jpg', '269856369_1671019793248240_442585994588928653_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(22, 'Image-galleryahW8h1656103372.jpg', '269856735_1671019766581576_4614108425847989183_n', '2022-06-24 20:42:52', '2022-06-24 20:42:52', NULL),
+(23, 'Image-galleryi6r741656103373.jpg', '269870872_1671019626581590_2648931704059153799_n', '2022-06-24 20:42:53', '2022-06-24 20:42:53', NULL),
+(24, 'Image-galleryg2kZd1656103373.jpg', '269958174_1671019779914908_2294685567179960554_n', '2022-06-24 20:42:53', '2022-06-24 20:42:53', NULL),
+(25, 'Image-galleryd83q31656103373.jpg', '270009614_1671019453248274_8304057536885317116_n', '2022-06-24 20:42:53', '2022-06-24 20:42:53', NULL),
+(26, 'Image-gallery3J8Sy1656103373.jpg', '270065874_1671019549914931_7915631543754387670_n', '2022-06-24 20:42:53', '2022-06-24 20:42:53', NULL),
+(27, 'Image-galleryqoqH01656103373.jpg', '270110504_1671019899914896_6695685425906796583_n', '2022-06-24 20:42:53', '2022-06-24 20:42:53', NULL),
+(28, 'Image-galleryrWvjK1656103373.jpg', '270128586_1671019693248250_1087489013977494005_n', '2022-06-24 20:42:53', '2022-06-24 20:42:53', NULL),
+(29, 'Image-gallery9NcaD1656103386.jpg', '21167116_534893553527542_5574225427015884046_o', '2022-06-24 20:43:06', '2022-06-24 20:43:06', NULL),
+(30, 'Image-galleryr68Fo1656103386.jpg', '21192856_535560733460824_7052768308411589151_n', '2022-06-24 20:43:06', '2022-06-24 20:43:06', NULL),
+(31, 'Image-galleryFia4B1656103386.jpg', '21231136_535560740127490_1891709072922036118_n', '2022-06-24 20:43:06', '2022-06-24 20:43:06', NULL),
+(32, 'Image-galleryRLfB01656103386.jpg', '21232001_535560730127491_8868263868166797545_n', '2022-06-24 20:43:06', '2022-06-24 20:43:06', NULL),
+(33, 'Image-galleryyAzaJ1656103399.jpg', '35329301_679271715756391_4710426496223674368_n', '2022-06-24 20:43:19', '2022-06-24 20:43:19', NULL),
+(34, 'Image-galleryjRNkZ1656103399.jpg', '39467265_747911695559059_2748619017483714560_n', '2022-06-24 20:43:19', '2022-06-24 20:43:19', NULL),
+(35, 'Image-gallery1Kv051656103399.jpg', '39496776_747910352225860_2841109338611777536_n', '2022-06-24 20:43:19', '2022-06-24 20:43:19', NULL),
+(36, 'Image-galleryUaaGB1656103399.jpg', '39568653_747911722225723_7260904035094364160_n', '2022-06-24 20:43:19', '2022-06-24 20:43:19', NULL),
+(37, 'Image-galleryFeal61656103409.jpg', '67842492_974776416205918_2877457977550307328_n', '2022-06-24 20:43:29', '2022-06-24 20:43:29', NULL),
+(38, 'Image-galleryZ6d8I1656103409.jpg', '67879781_977069649309928_5015874618875969536_n', '2022-06-24 20:43:29', '2022-06-24 20:43:29', NULL),
+(39, 'Image-galleryGatQ11656103409.jpg', '68303362_974776489539244_7074886729466904576_n', '2022-06-24 20:43:29', '2022-06-24 20:43:29', NULL),
+(40, 'Image-gallery7iMPW1656103409.jpg', '68308874_974776302872596_8787958568897740800_n (1)', '2022-06-24 20:43:29', '2022-06-24 20:43:29', NULL),
+(41, 'Image-galleryIL6Qw1656103409.jpg', '68308874_974776302872596_8787958568897740800_n (2)', '2022-06-24 20:43:29', '2022-06-24 20:43:29', NULL),
+(42, 'Image-galleryyusRi1656103409.jpg', '68308874_974776302872596_8787958568897740800_n', '2022-06-24 20:43:29', '2022-06-24 20:43:29', NULL),
+(43, 'Image-galleryAAmfB1656103421.jpg', '97969503_1223230031360554_2600398338889089024_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(44, 'Image-galleryiGoeo1656103421.jpg', '98033194_1223978594619031_1429270515159138304_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(45, 'Image-gallerysf7qN1656103421.jpg', '98149897_1224790541204503_131883254360834048_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(46, 'Image-galleryYLg401656103421.jpg', '98197316_1223978627952361_357582608944594944_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(47, 'Image-galleryaJjUG1656103421.jpg', '98205631_1223978497952374_5986589351495073792_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(48, 'Image-galleryISOET1656103421.jpg', '98209737_1223230061360551_3898581208019238912_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(49, 'Image-galleryYER4P1656103421.jpg', '98346538_1224790457871178_1769776823761108992_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(50, 'Image-galleryEsv3L1656103421.jpg', '98364852_1223978557952368_8697791661868056576_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(51, 'Image-galleryFQbr31656103421.jpg', '98593894_1224790517871172_7290307424152453120_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(52, 'Image-gallery7Tot71656103421.jpg', '99010807_1223230001360557_462703239184252928_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(53, 'Image-gallery1KsG71656103421.jpg', '99123219_1223230084693882_6284869684831453184_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(54, 'Image-galleryEA7mZ1656103421.jpg', '99238440_1224790497871174_4827180646679969792_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(55, 'Image-galleryXOguv1656103421.jpg', '110211330_1275404319476458_723809125955718118_n', '2022-06-24 20:43:41', '2022-06-24 20:43:41', NULL),
+(56, 'Image-gallery2mtZ41656103445.jpg', '181351994_1504589306557957_9112371066856146792_n', '2022-06-24 20:44:05', '2022-06-24 20:44:05', NULL),
+(57, 'Image-galleryA3FmI1656103445.jpg', '181466980_1504362193247335_3707101068562080761_n', '2022-06-24 20:44:05', '2022-06-24 20:44:05', NULL),
+(58, 'Image-gallerym2Zrt1656103445.jpg', '181483519_1504362133247341_701509935528888754_n', '2022-06-24 20:44:05', '2022-06-24 20:44:05', NULL),
+(59, 'Image-gallerySSLQS1656103445.jpg', '182418402_1504589523224602_1075451351099208670_n', '2022-06-24 20:44:05', '2022-06-24 20:44:05', NULL),
+(60, 'Image-galleryuU1bD1656103445.jpg', '182510968_1505240599826161_5033427708723561933_n', '2022-06-24 20:44:05', '2022-06-24 20:44:05', NULL),
+(61, 'Image-galleryHI3Cw1656103445.jpg', '182539970_1504589439891277_5221891497858793511_n', '2022-06-24 20:44:06', '2022-06-24 20:44:06', NULL),
+(62, 'Image-galleryVSloP1656103446.jpg', '182994128_1504362023247352_8855509014806626303_n', '2022-06-24 20:44:06', '2022-06-24 20:44:06', NULL),
+(63, 'Image-galleryM8Igg1656103446.jpg', '183316533_1504361893247365_108864007123773877_n', '2022-06-24 20:44:06', '2022-06-24 20:44:06', NULL),
+(64, 'Image-galleryn3lV21656103446.jpg', '183557729_1505240566492831_7891431910528254189_n', '2022-06-24 20:44:06', '2022-06-24 20:44:06', NULL),
+(65, 'Image-galleryFVmKw1656103446.jpg', '183740942_1505241933159361_1225703808048030835_n', '2022-06-24 20:44:06', '2022-06-24 20:44:06', NULL),
+(66, 'Image-galleryegx761656103455.jpg', '184786598_1504589206557967_3278192590765701944_n', '2022-06-24 20:44:15', '2022-06-24 20:44:15', NULL),
+(67, 'Image-gallerydHMdT1656103455.jpg', '184921012_1505240466492841_3760361342032522158_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(68, 'Image-galleryAzkDv1656103456.jpg', '185217323_1505805646436323_6274231407299201907_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(69, 'Image-galleryERQub1656103456.jpg', '185416230_1510014849348736_6632334405218409389_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(70, 'Image-gallery0NUcP1656103456.jpg', '185557017_1505804946436393_366766975379007086_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(71, 'Image-gallerymF4571656103456.jpg', '186178307_1505805213103033_913532996008364863_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(72, 'Image-galleryZ2sJh1656103456.jpg', '186448983_1510014776015410_1955285032380980452_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(73, 'Image-galleryu7ekE1656103456.jpg', '186455971_1505804896436398_1766644355651029506_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(74, 'Image-galleryj2Qg01656103456.jpg', '186558205_1512393895777498_7679719064855988562_n', '2022-06-24 20:44:16', '2022-06-24 20:44:16', NULL),
+(75, 'Image-gallery2fJpS1656103456.jpg', '186982528_1510014862682068_6190266385694292594_n', '2022-06-24 20:44:17', '2022-06-24 20:44:17', NULL),
+(76, 'Image-galleryGNUVH1656103457.jpg', '187558565_1512394065777481_6901359056810677866_n', '2022-06-24 20:44:17', '2022-06-24 20:44:17', NULL),
+(77, 'Image-gallerySOaQt1656103467.jpg', '277418519_1393138951117077_4867865510918293289_n', '2022-06-24 20:44:27', '2022-06-24 20:44:27', NULL),
+(78, 'Image-galleryGkTeR1656103467.jpg', '277596168_1026434944976943_6067567503403352749_n', '2022-06-24 20:44:27', '2022-06-24 20:44:27', NULL),
+(79, 'Image-galleryz276A1656103467.jpg', '277833426_722661085411658_4483021013516151660_n', '2022-06-24 20:44:27', '2022-06-24 20:44:27', NULL),
+(80, 'Image-galleryKu7O51656103468.jpg', '278133708_1405722406543036_7616899434226994436_n', '2022-06-24 20:44:28', '2022-06-24 20:44:28', NULL),
+(81, 'Image-galleryZtdH31656103468.jpg', '278649457_5118629194888641_7667082824856624611_n', '2022-06-24 20:44:28', '2022-06-24 20:44:28', NULL),
+(82, 'Image-galleryhUaQo1656103468.jpg', '278834192_980289119294192_6900940852527726022_n', '2022-06-24 20:44:28', '2022-06-24 20:44:28', NULL),
+(83, 'Image-galleryEmSGo1656103468.jpg', '278928675_717522982940078_6311386794981613502_n', '2022-06-24 20:44:28', '2022-06-24 20:44:28', NULL),
+(84, 'Image-galleryT0zvW1656103483.jpg', '75303687_1065715803778645_8934674213642436608_n (1)', '2022-06-24 20:44:43', '2022-06-24 20:44:43', NULL),
+(85, 'Image-galleryQtP0h1656103484.jpg', '75303687_1065715803778645_8934674213642436608_n', '2022-06-24 20:44:44', '2022-06-24 20:44:44', NULL),
+(86, 'Image-gallery9pac31656103484.jpg', '75513487_1065715677111991_8065270866113462272_n', '2022-06-24 20:44:44', '2022-06-24 20:44:44', NULL),
+(87, 'Image-gallerySMLEK1656103484.jpg', '75636091_1065715623778663_3343757019189346304_n', '2022-06-24 20:44:44', '2022-06-24 20:44:44', NULL),
+(88, 'Image-gallerydMjj61656103484.jpg', '78310283_1065715760445316_3703841223245561856_n', '2022-06-24 20:44:44', '2022-06-24 20:44:44', NULL),
+(89, 'Image-galleryAGAtX1656103495.jpg', '56119931_884031345280426_5504080003769303040_n', '2022-06-24 20:44:55', '2022-06-24 20:44:55', NULL),
+(90, 'Image-galleryntwwP1656103510.jpg', '138310778_1426071634409725_3354660392585746728_n', '2022-06-24 20:45:10', '2022-06-24 20:45:10', NULL),
+(91, 'Image-gallery0UNlf1656103510.jpg', '138374828_1426125637737658_4028520061456054976_n', '2022-06-24 20:45:10', '2022-06-24 20:45:10', NULL),
+(92, 'Image-galleryt7HGO1656103510.jpg', '138641672_1426071614409727_6421452917251548974_n', '2022-06-24 20:45:11', '2022-06-24 20:45:11', NULL),
+(93, 'Image-galleryRY9Bo1656103511.jpg', '139267228_1426125774404311_213228042621898062_n', '2022-06-24 20:45:11', '2022-06-24 20:45:11', NULL),
+(94, 'Image-gallerypWVn61656103520.jpg', '192225344_1528074687542752_4612680187798913052_n', '2022-06-24 20:45:20', '2022-06-24 20:45:20', NULL),
+(95, 'Image-galleryBmzml1656103520.jpg', '192460247_1528074807542740_5753100357016120963_n', '2022-06-24 20:45:20', '2022-06-24 20:45:20', NULL),
+(96, 'Image-galleryOCg3E1656103520.jpg', '193544665_1528074750876079_2582897141835506275_n', '2022-06-24 20:45:20', '2022-06-24 20:45:20', NULL),
+(97, 'Image-galleryV5gbo1656103520.jpg', '236708036_1574447832905437_4668387233471343241_n', '2022-06-24 20:45:20', '2022-06-24 20:45:20', NULL),
+(98, 'Image-galleryEewOF1656103520.jpg', '237455910_1574447679572119_469829430301966915_n', '2022-06-24 20:45:20', '2022-06-24 20:45:20', NULL),
+(99, 'Image-galleryCBLam1656103520.jpg', '237858788_1574447769572110_3243675635815878638_n', '2022-06-24 20:45:21', '2022-06-24 20:45:21', NULL),
+(100, 'Image-gallerycffgC1656103521.jpg', '238147751_1574447639572123_6333246078784203857_n', '2022-06-24 20:45:21', '2022-06-24 20:45:21', NULL),
+(101, 'Image-galleryPcZqZ1656103534.jpg', '275808186_1732543820429170_6330830846941881653_n', '2022-06-24 20:45:34', '2022-06-24 20:45:34', NULL),
+(102, 'Image-galleryAZEHA1656103534.jpg', '276060682_1732543997095819_2373811308556490033_n', '2022-06-24 20:45:34', '2022-06-24 20:45:34', NULL),
+(103, 'Image-galleryFUL8R1656103534.jpg', '276194169_1732543903762495_5627940114705871369_n', '2022-06-24 20:45:34', '2022-06-24 20:45:34', NULL),
+(104, 'Image-galleryH3Hed1656103534.jpg', '276322064_1732543967095822_8360066550601832685_n', '2022-06-24 20:45:34', '2022-06-24 20:45:34', NULL),
+(105, 'Image-gallery9LNmU1656103534.jpg', '276995700_1732543500429202_5887502135893459847_n', '2022-06-24 20:45:34', '2022-06-24 20:45:34', NULL),
+(106, 'Image-galleryyzYK11656103534.jpg', '276997484_1732543460429206_8692991283283987597_n', '2022-06-24 20:45:34', '2022-06-24 20:45:34', NULL),
+(107, 'Image-galleryAzhOB1656103544.jpg', '275108967_1719561091727443_2476355955148468798_n', '2022-06-24 20:45:44', '2022-06-24 20:45:44', NULL),
+(108, 'Image-galleryowZVZ1656103544.jpg', '275109487_1719561128394106_286404026379189351_n', '2022-06-24 20:45:44', '2022-06-24 20:45:44', NULL),
+(109, 'Image-galleryAHQqS1656103544.jpg', '275121778_1719561011727451_7371177653188164905_n', '2022-06-24 20:45:44', '2022-06-24 20:45:44', NULL),
+(110, 'Image-galleryh3CZz1656103544.jpg', '275154195_1719561055060780_4111596997021236590_n', '2022-06-24 20:45:44', '2022-06-24 20:45:44', NULL),
+(111, 'Image-galleryfum4c1656103561.jpg', '280466817_572054274278571_3413230784600232601_n', '2022-06-24 20:46:01', '2022-06-24 20:46:01', NULL),
+(112, 'Image-galleryhsPWR1656103561.jpg', '280593361_1088794275183761_5236132879420609925_n', '2022-06-24 20:46:01', '2022-06-24 20:46:01', NULL),
+(113, 'Image-gallerya1Yh91656103561.jpg', '280635438_3333905786852814_4275481866562417610_n', '2022-06-24 20:46:01', '2022-06-24 20:46:01', NULL),
+(114, 'Image-galleryXFlbu1656103561.jpg', '280717344_3239664336271183_4571602149884137360_n', '2022-06-24 20:46:01', '2022-06-24 20:46:01', NULL),
+(115, 'Image-galleryMGDWX1656103561.jpg', '280741788_416461266705499_2846642191267545106_n', '2022-06-24 20:46:01', '2022-06-24 20:46:01', NULL),
+(116, 'Image-gallery9Yrrb1656103561.jpg', '281278151_410054330756860_1706407985592206151_n', '2022-06-24 20:46:01', '2022-06-24 20:46:01', NULL),
+(117, 'Image-galleryvFdfs1656103561.jpg', '281329457_561923192161396_7783743276712481490_n', '2022-06-24 20:46:01', '2022-06-24 20:46:01', NULL),
+(118, 'Image-galleryEjm6G1656103582.jpg', 'Untitled-6-samakal-5f947f65131d9', '2022-06-24 20:46:22', '2022-06-24 20:46:22', NULL),
+(119, 'Image-galleryTO7Ph1656103597.jpg', '245745136_1618404915176395_8213299677461749665_n', '2022-06-24 20:46:37', '2022-06-24 20:46:37', NULL),
+(120, 'Image-gallerymIcQj1656103597.jpg', '245773331_1618404791843074_3902357064278626306_n', '2022-06-24 20:46:37', '2022-06-24 20:46:37', NULL),
+(121, 'Image-galleryTSG3o1656103597.jpg', '245806635_1618404745176412_4745018603784400392_n', '2022-06-24 20:46:37', '2022-06-24 20:46:37', NULL),
+(122, 'Image-galleryIe4Rw1656103597.jpg', '245924213_1618404861843067_115437629252235207_n', '2022-06-24 20:46:37', '2022-06-24 20:46:37', NULL),
+(123, 'Image-galleryCSmlZ1656103614.jpg', 'FB_IMG_1595175006973', '2022-06-24 20:46:54', '2022-06-24 20:46:54', NULL),
+(124, 'Image-gallery0UbLj1656103614.jpg', 'FB_IMG_1595175013628', '2022-06-24 20:46:54', '2022-06-24 20:46:54', NULL),
+(125, 'Image-galleryCkTrS1656103614.jpg', 'FB_IMG_1595175017547', '2022-06-24 20:46:54', '2022-06-24 20:46:54', NULL),
+(126, 'Image-galleryjnNRM1656103614.jpg', 'FB_IMG_1595175021616', '2022-06-24 20:46:54', '2022-06-24 20:46:54', NULL),
+(127, 'Image-gallerybQ3kW1656103614.jpg', 'FB_IMG_1595175037211', '2022-06-24 20:46:54', '2022-06-24 20:46:54', NULL),
+(128, 'Image-gallerysQ4CC1656103614.jpg', 'FB_IMG_1595175046459 - Copy', '2022-06-24 20:46:54', '2022-06-24 20:46:54', NULL),
+(129, 'Image-gallerynmIGg1656103614.jpg', 'FB_IMG_1595175046459', '2022-06-24 20:46:54', '2022-06-24 20:46:54', NULL),
+(130, 'Image-galleryAX7QE1656103623.jpg', 'FB_IMG_1595175119752', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(131, 'Image-gallerywfNMQ1656103623.jpg', 'FB_IMG_1595175122787', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(132, 'Image-galleryA3nAm1656103623.jpg', 'FB_IMG_1595175125479', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(133, 'Image-galleryIeCTs1656103623.jpg', 'FB_IMG_1595175127970', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(134, 'Image-gallery8IOBO1656103623.jpg', 'FB_IMG_1595175137064', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(135, 'Image-galleryvI32a1656103623.jpg', 'FB_IMG_1595175143014', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(136, 'Image-gallery9xqms1656103623.jpg', 'FB_IMG_1595175158614', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(137, 'Image-gallery350Jw1656103623.jpg', 'FB_IMG_1595175165005', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(138, 'Image-gallerypgkXa1656103623.jpg', 'FB_IMG_1595175168720', '2022-06-24 20:47:03', '2022-06-24 20:47:03', NULL),
+(139, 'Image-galleryGQb8G1656103643.jpg', 'FB_IMG_1595173928919', '2022-06-24 20:47:23', '2022-06-24 20:47:23', NULL),
+(140, 'Image-galleryoprlb1656103656.jpg', '172129329_1486266061723615_7234188694535550322_n', '2022-06-24 20:47:36', '2022-06-24 20:47:36', NULL),
+(141, 'Image-galleryfEUQJ1656103656.jpg', '173860172_1486265975056957_2716262292642081039_n', '2022-06-24 20:47:36', '2022-06-24 20:47:36', NULL),
+(142, 'Image-gallerynFlqv1656103656.jpg', '173992003_1486265878390300_2377954505759963922_n', '2022-06-24 20:47:36', '2022-06-24 20:47:36', NULL),
+(143, 'Image-galleryRaTgr1656103656.jpg', '178513355_1500917463591808_1471363934864714935_n', '2022-06-24 20:47:36', '2022-06-24 20:47:36', NULL),
+(144, 'Image-galleryVNxMQ1656103656.jpg', '181720074_1500917393591815_8742392004755049371_n', '2022-06-24 20:47:36', '2022-06-24 20:47:36', NULL),
+(145, 'Image-galleryKgtO71656103656.jpg', '181755622_1500917426925145_2896109951473631298_n', '2022-06-24 20:47:36', '2022-06-24 20:47:36', NULL),
+(146, 'Image-galleryRTalB1656103687.jpg', '277531693_1741913152825570_8810724568932182471_n', '2022-06-24 20:48:07', '2022-06-24 20:48:07', NULL),
+(147, 'Image-gallery93Bre1656103687.jpg', '277582435_1741913296158889_4255475766419745983_n', '2022-06-24 20:48:07', '2022-06-24 20:48:07', NULL),
+(148, 'Image-gallery97srX1656103687.jpg', '277588651_1741913389492213_1519015491835247952_n', '2022-06-24 20:48:07', '2022-06-24 20:48:07', NULL),
+(149, 'Image-galleryoMpgs1656103687.jpg', '277672235_1741913459492206_2768041130442687482_n', '2022-06-24 20:48:07', '2022-06-24 20:48:07', NULL),
+(150, 'Image-galleryF8jac1656103687.jpg', 'free-haat-for-ramadan', '2022-06-24 20:48:07', '2022-06-24 20:48:07', NULL),
+(151, 'Image-galleryyAbK31656103703.jpg', '130695252_1396934770656745_6819286275584537734_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(152, 'Image-galleryUpr3u1656103703.jpg', '130751360_1401003186916570_2553098538201324081_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(153, 'Image-galleryfjVvl1656103703.jpg', '131011238_1401003290249893_4317303486941890227_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(154, 'Image-gallery20iBp1656103703.jpg', '131059552_1396934713990084_4508289833094939195_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(155, 'Image-galleryibtyr1656103703.jpg', '131115545_1401003266916562_8787167623699689016_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(156, 'Image-galleryRpvik1656103703.jpg', '131378348_1403999923283563_7500072169861244649_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(157, 'Image-galleryxyIv51656103703.jpg', '131418445_1403999989950223_2355277057412527977_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(158, 'Image-gallery3xxy81656103703.jpg', '131419086_1401676996849189_3961491120217651778_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(159, 'Image-galleryCADrp1656103703.jpg', '131444053_1401003233583232_3280785480755196342_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(160, 'Image-galleryygOnp1656103703.jpg', '131625553_1403999759950246_4329168246106599345_n', '2022-06-24 20:48:23', '2022-06-24 20:48:23', NULL),
+(161, 'Image-galleryCFQVa1656103717.jpg', '262916928_1653820908301462_7410437354268750580_n', '2022-06-24 20:48:37', '2022-06-24 20:48:37', NULL),
+(162, 'Image-gallerymZfXt1656103717.jpg', '265238161_1658932007790352_7448960431376656588_n', '2022-06-24 20:48:37', '2022-06-24 20:48:37', NULL),
+(163, 'Image-gallerydoVXR1656103717.jpg', '265312223_1658932254456994_3345702672040712086_n', '2022-06-24 20:48:37', '2022-06-24 20:48:37', NULL),
+(164, 'Image-galleryFOc0x1656103717.jpg', '265554641_1658933441123542_7606724196665352242_n', '2022-06-24 20:48:37', '2022-06-24 20:48:37', NULL),
+(165, 'Image-galleryIviD71656103717.jpg', '267728465_1665231970493689_5297783659321458159_n', '2022-06-24 20:48:38', '2022-06-24 20:48:38', NULL),
+(166, 'Image-galleryxuZU81656103718.jpg', '269378920_1665231973827022_7212187968748075851_n', '2022-06-24 20:48:38', '2022-06-24 20:48:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -386,7 +568,8 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
 (3, 'App\\Models\\User', 3),
 (5, 'App\\Models\\User', 2),
-(5, 'App\\Models\\User', 4);
+(5, 'App\\Models\\User', 4),
+(5, 'App\\Models\\User', 5);
 
 -- --------------------------------------------------------
 
@@ -405,6 +588,20 @@ CREATE TABLE `offcial_teams` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `offcial_teams`
+--
+
+INSERT INTO `offcial_teams` (`id`, `name`, `designation`, `image`, `email`, `priority`, `created_at`, `updated_at`) VALUES
+(1, 'Md. Iqbal Hossain Hira', 'CHAIRMAN', 'md-iqbal-hossain-hira-image-kPx4x.png', 'cman@muktirbondhon.org', 1, '2022-06-24 19:23:47', '2022-06-24 19:23:47'),
+(2, 'Sultana Pervin', 'Executive Director', 'sultana-pervin-image-KiPqj.jpg', 'director@muktirbondhon.org', 2, '2022-06-24 19:26:03', '2022-06-24 19:26:03'),
+(3, 'Mrinal Chowdhury', 'Manager (Administration)', 'mrinal-chowdhury-image-UzwjS.jpg', 'manager.admin@muktirbondhon.org', 3, '2022-06-24 19:29:40', '2022-06-24 19:29:40'),
+(4, 'Azharul Islam Palash', 'CO-ORDINATOR', 'azharul-islam-palash-image-wW5lo.jpg', 'palash@muktirbondhon.org', 5, '2022-06-24 19:30:35', '2022-06-24 19:33:22'),
+(5, 'Alal Uddin', 'Manager (operation)', 'alal-uddin-image-JkIMO.jpeg', NULL, 4, '2022-06-24 19:33:07', '2022-06-24 19:33:22'),
+(6, 'Anik Kumar Nandi', 'Program Officer', 'anik-kumar-nandi-image-nSlvP.jpg', 'anik@muktirbondhon.org', 6, '2022-06-24 19:38:06', '2022-06-24 19:38:06'),
+(7, 'Md. Habibul Basar Sumon', 'OFFICE SECRETARY', 'md-habibul-basar-sumon-image-JtelM.jpg', 'sumonmasum85@gmail.com', 7, '2022-06-24 19:41:49', '2022-06-24 19:41:49'),
+(8, 'Atikur Rahman Shohag', 'GRAPHIC DESIGNER', 'atikur-rahman-shohag-image-5cjOZ.jpg', 'shohag@muktirbondhon.org', 8, '2022-06-24 19:45:58', '2022-06-24 19:45:58');
+
 -- --------------------------------------------------------
 
 --
@@ -420,6 +617,24 @@ CREATE TABLE `official_team_socials` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `official_team_socials`
+--
+
+INSERT INTO `official_team_socials` (`id`, `official_team_id`, `platform_id`, `username`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'profile.php?id=100004742054702', '2022-06-24 19:23:47', '2022-06-24 19:23:47'),
+(2, 2, 1, 'profile.php?id=100005407454690', '2022-06-24 19:26:03', '2022-06-24 19:26:03'),
+(3, 3, 1, 'mrinal.chowdhury.7', '2022-06-24 19:29:40', '2022-06-24 19:29:40'),
+(4, 4, 1, 'azahrulislam.palash', '2022-06-24 19:30:35', '2022-06-24 19:30:35'),
+(5, 6, 1, 'anik.web.developer', '2022-06-24 19:38:06', '2022-06-24 19:38:06'),
+(6, 6, 6, 'anik_kumar_nandi/?hl=en', '2022-06-24 19:38:06', '2022-06-24 19:38:06'),
+(7, 6, 3, 'AnikKumarNandi1', '2022-06-24 19:38:06', '2022-06-24 19:38:06'),
+(8, 6, 9, '01783674575', '2022-06-24 19:38:06', '2022-06-24 19:38:06'),
+(9, 6, 4, 'in/anik-kumar-nandi-9b645319a/', '2022-06-24 19:39:30', '2022-06-24 19:39:30'),
+(10, 7, 1, 'mdhabibul.basar.3551', '2022-06-24 19:41:49', '2022-06-24 19:41:49'),
+(11, 8, 1, 'Shohag.smile', '2022-06-24 19:45:58', '2022-06-24 19:45:58'),
+(12, 5, 1, 'alal.uddin.10441', '2022-06-24 19:47:07', '2022-06-24 19:47:07');
+
 -- --------------------------------------------------------
 
 --
@@ -431,6 +646,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('surjo.nondi.sn@gmail.com', '$2y$10$jKborIi5hFZ6eLszFZ.CD.DNGuL31NQmKmFrN7AUnUl0UuChbGdXG', '2022-06-24 14:11:53');
 
 -- --------------------------------------------------------
 
@@ -478,6 +700,20 @@ CREATE TABLE `projects` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `title`, `slug`, `description`, `featured_image`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Ramdan\'s Free Haat', 'ramdans-free-haat', '<p>Ramdan&#39;s Free Haat</p>', 'ramdans-free-haat-image-Pn9Iu.jpg', '2022-06-24 20:06:14', '2022-06-24 20:23:43', NULL),
+(2, 'Eid\'s Free Haat', 'eids-free-haat', '<p>Eid&#39;s Free Haat</p>', 'eids-free-haat-image-mJT4j.jpg', '2022-06-24 20:07:35', '2022-06-24 20:20:17', NULL),
+(3, 'Puja\'s Free Haat', 'pujas-free-haat', '<p>Puja&#39;s Free Haat</p>', 'pujas-free-haat-image-sQGs0.jpg', '2022-06-24 20:08:32', '2022-06-24 20:22:45', NULL),
+(4, 'Ushnotar Free Haat', 'ushnotar-free-haat', '<p>Ushnotar Free Haat</p>', 'ushnotar-free-haat-image-QWrm0.jpg', '2022-06-24 20:09:18', '2022-06-24 20:26:58', NULL),
+(5, 'Star Sunday Free Haat', 'star-sunday-free-haat', '<p>Star Sunday Free Haat</p>', 'star-sunday-free-haat-image-pprqL.jpg', '2022-06-24 20:10:41', '2022-06-24 20:25:56', NULL),
+(6, 'Wildlife and Biodiversity conservation and public awareness', 'wildlife-and-biodiversity-conservation-and-public-awareness', '<p>Wildlife and Biodiversity conservation and public awareness</p>', 'wildlife-and-biodiversity-conservation-and-public-awareness-image-rPLD8.jpg', '2022-06-24 20:13:04', '2022-06-24 20:27:41', NULL),
+(7, 'Relief activities', 'relief-activities', '<p>Relief activities</p>', 'relief-activities-image-GVMp8.jpg', '2022-06-24 20:16:28', '2022-06-24 20:25:01', NULL),
+(8, 'Fruit Festival', 'fruit-festival', '<p>Fruit Festival</p>', 'fruit-festival-image-7LOef.jpg', '2022-06-24 20:17:24', '2022-06-24 20:21:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -1163,10 +1399,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Anik Kumar Nandi', 'anik@gmail.com', NULL, '$2y$10$RBDI4wkFJwbKCrKjjfM16O8Wmq/Z3PwDF07sg3X8uWWq0L7nhc6Au', 'ZY2hlxNtpCyDyCrXPYQLgH8cQ1wWuTYlB45ueR7jWDWXIio1AhgOaGXs5MmN', '2021-09-02 01:39:17', '2021-09-02 01:39:17'),
+(1, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '2022-06-24 15:39:54', '$2y$10$RBDI4wkFJwbKCrKjjfM16O8Wmq/Z3PwDF07sg3X8uWWq0L7nhc6Au', '8KzuqS60SqCEtI9yxP4TLluOvacty6Q8lZzUln7Wh23BeGGtaHjr5YHWNmcV', '2021-09-02 01:39:17', '2022-06-24 15:39:54'),
 (2, 'John DOE', 'john@gmail.com', NULL, '$2y$10$3QliVKb3rSLraq0xn7fBOuWMLBQ9O9uFeHlq3oA8G9uw8CbEvCuDe', NULL, '2021-09-15 10:22:48', '2021-09-15 10:22:48'),
 (3, 'Dipika Padukone', 'dipika@gmail.com', NULL, '$2y$10$zGpT6e2a95F5ObRtjfy9kO8jCNnBCYduGsB7o2GiGR8Cwfh/gbIxK', NULL, '2021-09-15 10:24:54', '2021-09-15 10:24:54'),
-(4, 'Mim Sarker', 'mim@gmail.com', NULL, '$2y$10$aPBgn2tW3F/cETFQLEEVkuCUQnalF6NuOY1VVfDNlSc7D4eFYU2S.', NULL, '2021-12-04 16:08:34', '2021-12-04 16:08:34');
+(4, 'Mim Sarker', 'mim@gmail.com', NULL, '$2y$10$aPBgn2tW3F/cETFQLEEVkuCUQnalF6NuOY1VVfDNlSc7D4eFYU2S.', NULL, '2021-12-04 16:08:34', '2021-12-04 16:08:34'),
+(5, 'Anik Kumar Nandi', 'surjo.nondi.sn@gmail.com', '2022-06-24 15:37:17', '$2y$10$3YVMF48RwfT7nRtOkH/KWeszS1Hc2sECY09UqyVHZKYoRRcbQ5gle', NULL, '2022-06-24 14:03:09', '2022-06-24 15:37:17');
 
 -- --------------------------------------------------------
 
@@ -1219,7 +1456,23 @@ CREATE TABLE `volunteers` (
 INSERT INTO `volunteers` (`id`, `applicant_id`, `volunteer_id`, `name_en`, `name_bn`, `email`, `mobile`, `image`, `father_name`, `mother_name`, `blood_group`, `sex`, `date_of_birth`, `nid`, `bcn`, `nationality`, `occupation`, `institute`, `facebook_url`, `giverFromInspiration`, `prDivison`, `prDistrict`, `prThana`, `prPostOffice`, `prZIP`, `prVillage`, `pmDivison`, `pmDistrict`, `pmThana`, `pmPostOffice`, `pmZIP`, `pmVillage`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'TJSIC', 'MBF-20221', 'Montana Morse', 'August Ellison', 'xuceh@mailinator.com', '656', 'Montana Morse - .jpg', 'Brandon Irwin', 'Eleanor Spencer', 'b+', 3, '1976-02-26', '295', '250', 'bangladeshi', 'student', 'Tempora nostrud in i', 'Illum esse odit vo', 'Et quia et dolor ex', 3, 20, 187, 'Maxime aperiam labor', '46200', 'Et eos cupiditate qu', 3, 20, 187, 'Maxime aperiam labor', '46200', 'Et eos cupiditate qu', 2, '2022-06-22 19:53:10', '2022-06-23 15:47:59'),
 (2, 'PUORHGQW2', 'MBF-20222', 'Kelsie Cotton', 'Hayfa Murray', 'hejeqog@mailinator.com', '187', 'Kelsie Cotton - .jpg', 'Melanie Buckner', 'Lila Gay', 'b+', 2, '1973-03-13', '138', '960', 'bangladeshi', 'private_job', 'Ab inventore eum eli', 'Debitis libero volup', 'Autem sapiente sit', 2, 10, 76, 'Elit nulla et imped', '69764', 'Aliqua Proident ev', 2, 10, 76, 'Elit nulla et imped', '69764', 'Aliqua Proident ev', 2, '2022-06-22 21:12:49', '2022-06-23 16:20:22'),
-(3, 'BFDPYTKW3', 'MBF-20223', 'Evelyn Byers', 'Finn Russo', 'zozucejyh@mailinator.com', '931', 'Evelyn Byers - .png', 'Cody Carr', 'Camilla Walker', 'a-', 3, '2014-10-21', '282', '462', 'bangladeshi', 'teacher', 'Est voluptas amet d', 'Dicta enim quae prov', 'Quam ad dolor laboru', 6, 47, 373, 'Optio amet corrupt', '94970', 'Enim qui repellendus', 6, 47, 373, 'Optio amet corrupt', '94970', 'Enim qui repellendus', 2, '2022-06-23 16:04:48', '2022-06-23 16:14:57');
+(3, 'BFDPYTKW3', 'MBF-20223', 'Evelyn Byers', 'Finn Russo', 'zozucejyh@mailinator.com', '931', 'Evelyn Byers - .png', 'Cody Carr', 'Camilla Walker', 'a-', 3, '2014-10-21', '282', '462', 'bangladeshi', 'teacher', 'Est voluptas amet d', 'Dicta enim quae prov', 'Quam ad dolor laboru', 6, 47, 373, 'Optio amet corrupt', '94970', 'Enim qui repellendus', 6, 47, 373, 'Optio amet corrupt', '94970', 'Enim qui repellendus', 2, '2022-06-23 16:04:48', '2022-06-23 16:14:57'),
+(4, 'YQPVH0RQ4', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'aniffk.mbf@gmail.com', '+880178367457521', 'Anik Kumar Nandi - .JPG', 'Reese Richard', 'Ava Hunt', 'a+', 3, '1988-03-01', '370', '910', 'bangladeshi', 'farmer', 'Blanditiis repudiand', 'Quae expedita mollit', 'Quidem hic saepe ita', 2, 12, 92, 'Dolorem numquam ut q', '2282', 'Veniam in voluptate', 2, 12, 92, 'Dolorem numquam ut q', '2282', 'Veniam in voluptate', 1, '2022-06-24 11:55:48', '2022-06-24 11:55:48'),
+(6, 'JYSVULOD6', NULL, 'Lesley Blackburn', 'Ali Savage', 'bygaf@mailinator.com', '944', 'Lesley Blackburn - .JPG', 'Keefe Reilly', 'Tasha Hines', 'a+', 3, '1994-08-26', NULL, '51', 'bangladeshi', 'banker', 'Omnis quis obcaecati', 'Doloremque adipisci', 'Enim nisi suscipit a', 3, 23, 210, 'In qui a corrupti d', '61376', 'Nisi Nam iure laboru', 3, 23, 210, 'In qui a corrupti d', '61376', 'Nisi Nam iure laboru', 1, '2022-06-24 12:19:29', '2022-06-24 12:19:29'),
+(7, 'OU5F4Z0A7', NULL, 'Amy Moran', 'McKenzie Mcneil', 'moseb@mailinator.com', '233', 'Amy Moran - .jpg', 'Amity Holmes', 'Rhiannon Berger', 'a+', 2, '1993-10-22', '7813223596', NULL, 'bangladeshi', 'farmer', 'Excepturi quia dolor', 'Illum aut repellend', 'Nulla et mollitia no', 2, 8, 58, 'Consequatur sint s', '46992', 'Magni temporibus dol', 2, 8, 58, 'Consequatur sint s', '46992', 'Magni temporibus dol', 1, '2022-06-24 12:20:58', '2022-06-24 12:20:59'),
+(8, 'THSJGRIV8', NULL, 'Zephania Estrada', 'Breanna Shelton', 'nidogizas@mailinator.com', '522', 'Zephania Estrada - .jpg', 'Yoko Stuart', 'April Nash', 'ab-', 3, '1986-05-09', '322', '639', 'bangladeshi', 'banker', 'Sint non in nostrum', 'Sed sit earum magni', 'Rerum laborum archit', 3, 19, 182, 'Incididunt veritatis', '11251', 'Dolore doloribus tem', 3, 19, 182, 'Incididunt veritatis', '11251', 'Dolore doloribus tem', 1, '2022-06-24 12:27:35', '2022-06-24 12:27:35'),
+(9, 'H2QUP9HK9', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'surjffo.nondi.sn@gmail.com', '01984938473', 'Anik Kumar Nandi - .jpg', 'Vernon Shaw', 'Jeremy Beck', 'a+', 3, '1974-12-29', '422', '72', 'bangladeshi', 'nurse', 'Placeat expedita ha', 'In et omnis dolore a', 'Veniam voluptatum v', 3, 23, 211, 'Voluptatem fugiat qu', '2282', 'Et nulla quaerat sun', 3, 23, 211, 'Voluptatem fugiat qu', '2282', 'Et nulla quaerat sun', 1, '2022-06-24 13:32:15', '2022-06-24 13:32:16'),
+(10, 'NHRHE4JV10', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'anie.mbf@gmail.com', '+8801783544676554575', 'Anik Kumar Nandi - .jpg', 'Kuame Rowe', 'Lewis Pratt', 'a+', 1, '1998-05-13', '881', '611', 'bangladeshi', 'farmer', 'Harum non aliquip po', 'Laboris quae qui in', 'Dolore hic debitis a', 5, 44, 351, 'Non nemo iste ea por', '2282', 'Excepturi in harum p', 5, 44, 351, 'Non nemo iste ea por', '2282', 'Excepturi in harum p', 1, '2022-06-24 13:35:55', '2022-06-24 13:35:55'),
+(11, 'IFQPF5IA11', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'anikfg.mbf@gmail.com', '+880175583674575', 'Anik Kumar Nandi - .jpg', 'Zephania Raymond', 'Winifred Molina', 'a+', 2, '2017-03-11', '9945454', '442', 'bangladeshi', 'private_job', 'Aspernatur quasi id', 'Esse quasi et non ea', 'Culpa modi deserunt', 4, 32, 272, 'Officia dolores nihi', '2282', 'Minus illo id velit', 4, 32, 272, 'Officia dolores nihi', '2282', 'Minus illo id velit', 1, '2022-06-24 13:38:41', '2022-06-24 13:38:41'),
+(12, 'MPJRLIZZ12', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'anik44.mbf@gmail.com', '+88017836444574575', 'Anik Kumar Nandi - .jpg', 'Samuel Trujillo', 'Amaya Bernard', 'ab+', 3, '1997-08-04', '965', '867', 'bangladeshi', 'student', 'Irure anim veniam q', 'Qui aut et occaecat', 'Ipsum aliqua Saepe', 4, 34, 282, 'Sit atque eveniet', '2282', 'Ut voluptas non quis', 4, 34, 282, 'Sit atque eveniet', '2282', 'Ut voluptas non quis', 1, '2022-06-24 14:16:35', '2022-06-24 14:16:35'),
+(13, 'JMQQTNJP13', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'anikd.mbf@gmail.com', '+8801783223674575', 'Anik Kumar Nandi - .jpg', 'Coby Young', 'Silas Logan', 'a+', 2, '1985-01-27', '966', '387', 'bangladeshi', 'business', 'Ea aperiam consequun', 'Illo ipsum dolorem v', 'Eveniet hic ut maio', 3, 23, 210, 'Aut deserunt exceptu', '2282', 'Accusamus et ducimus', 3, 23, 210, 'Aut deserunt exceptu', '2282', 'Accusamus et ducimus', 1, '2022-06-24 14:21:13', '2022-06-24 14:21:13'),
+(14, '02UDRU4J14', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'ad.mbf@gmail.coma', '+880178367', 'Anik Kumar Nandi - .jpg', 'Yuli Haley', 'Aurora Moreno', 'ab-', 3, '1980-08-14', '961', '556', 'bangladeshi', 'entrepreneur', 'Quae ipsa laboris v', 'Amet modi sunt dolo', 'Asperiores molestias', 2, 7, 52, 'Libero quis sequi vi', '2282', 'Nisi incididunt a ve', 2, 7, 52, 'Libero quis sequi vi', '2282', 'Nisi incididunt a ve', 1, '2022-06-24 14:27:21', '2022-06-24 14:27:21'),
+(15, '3SEVG8NI15', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'ak.mbf@gmail.com', '+88', 'Anik Kumar Nandi - .jpg', 'Indigo Talley', 'Garrett Copeland', 'b+', 2, '2000-07-03', '733', '293', 'bangladeshi', 'entrepreneur', 'Quod sint aute duis', 'Aliqua Eius aut asp', 'Eum voluptates delen', 3, 19, 181, 'Doloribus labore acc', '2282', 'Magna culpa enim non', 3, 19, 181, 'Doloribus labore acc', '2282', 'Magna culpa enim non', 1, '2022-06-24 14:31:47', '2022-06-24 14:31:47'),
+(16, '1LFBXPDK16', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'ansik.mbf@gmail.com', '+8801783674575d', 'Anik Kumar Nandi - .jpg', 'Upton Dillard', 'Noel Carpenter', 'b+', 2, '1984-11-25', '911', '166', 'bangladeshi', 'doctor', 'Blanditiis perspicia', 'Veritatis Nam non al', 'Quasi autem nemo con', 2, 10, 76, 'Saepe magna nulla im', '2282', 'Aut dolorem atque no', 2, 10, 76, 'Saepe magna nulla im', '2282', 'Aut dolorem atque no', 1, '2022-06-24 14:34:49', '2022-06-24 14:34:49'),
+(17, '5YP2L6RM17', NULL, 'Anik Kumar Nandi', 'অনিক কুমার নন্দী', 'ddanik.mbf@gmai', '+811801783674575', 'Anik Kumar Nandi - .jpg', 'Ananda Mohon Nandi', 'Joysree Rani Nondi', 'a+', 1, '2000-03-24', '701', '325', 'bangladeshi', 'doctor', 'Rumdo Polytechnic', 'www.facebook.com/anik.web.developer', 'Azharul Islam Palash', 1, 1, 4, 'Atharabari', '2282', 'Golukunda', 1, 1, 4, 'Atharabari', '2282', 'Golukunda', 1, '2022-06-24 14:42:31', '2022-06-24 14:42:32'),
+(19, 'XNFOSLIE19', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'ank.mbf@gmail.com', '+880178367457', 'Anik Kumar Nandi - .jpg', 'Ananda Mohon Nandi', 'Joysree Rani Nondi', 'a+', 1, '2000-03-24', '7813223596465', '637755', 'bangladeshi', 'nurse', 'Rumdo Polytechnic', 'www.facebook.com/anik.web.developerd', 'Azharul Islam Palash', 5, 42, 332, 'Atharabari', '2282', 'Golukunda', 5, 42, 332, 'Atharabari', '2282', 'Golukunda', 1, '2022-06-24 14:52:28', '2022-06-24 14:52:29'),
+(20, 'PREK9IG620', NULL, 'Anik Kumar Nandi', 'অনিক কুমার নন্দী', 'anikd.mdbf@gmail.com', '+880174483674575', 'Anik Kumar Nandi - .jpg', 'Marshall Osborne', 'Penelope Ford', 'ab+', 1, '1973-01-29', '347', '912', 'bangladeshi', 'others', 'Adipisicing explicab', 'Corrupti officia Na', 'Placeat laboris inc', 5, 42, 334, 'Fugit nesciunt acc', '2282', 'Itaque ratione nobis', 5, 42, 334, 'Fugit nesciunt acc', '2282', 'Itaque ratione nobis', 1, '2022-06-24 15:01:54', '2022-06-24 15:01:55'),
+(21, 'XYMIRZT821', NULL, 'Anik Kumar Nandi', 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '+8801783674575', 'Anik Kumar Nandi - .jpg', 'Alea Cummings', 'Alec Vaughn', 'o+', 1, '1992-10-28', '680', '870', 'bangladeshi', 'farmer', 'Rerum corrupti simi', 'Minim deleniti labor', 'Iste qui qui ad qui', 2, 8, 61, 'Sed veniam fugit e', '2282', 'Nam culpa voluptate', 2, 8, 61, 'Sed veniam fugit e', '2282', 'Nam culpa voluptate', 1, '2022-06-24 15:10:36', '2022-06-24 15:10:36');
 
 --
 -- Indexes for dumped tables
@@ -1421,7 +1674,7 @@ ALTER TABLE `abouts`
 -- AUTO_INCREMENT for table `advisors`
 --
 ALTER TABLE `advisors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `advisor_socials`
@@ -1457,7 +1710,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1475,7 +1728,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `image_galleries`
 --
 ALTER TABLE `image_galleries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1487,13 +1740,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `offcial_teams`
 --
 ALTER TABLE `offcial_teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `official_team_socials`
 --
 ALTER TABLE `official_team_socials`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -1505,7 +1758,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `project_image_galleries`
@@ -1547,13 +1800,13 @@ ALTER TABLE `thanas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `volunteers`
 --
 ALTER TABLE `volunteers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

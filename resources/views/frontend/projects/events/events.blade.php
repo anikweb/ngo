@@ -3,7 +3,7 @@
 <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="Events" />
     <meta property="og:title"              content="Events" />
-    <meta property="og:description"        content="{!! $event->description !!}" />
+    {{-- <meta property="og:description"        content="{!! $event->description !!}" /> --}}
     <meta property="og:image"              content="{{ asset('images/projects/events/events.jpg') }}" />
 @endsection
  @section('content')

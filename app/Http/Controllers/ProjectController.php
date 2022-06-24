@@ -51,7 +51,7 @@ class ProjectController extends Controller
     {
         if(auth()->user()->can('project management')){
             $request->validate([
-                'title'=> 'required|max:50',
+                'title'=> 'required|max:100',
                 'description'=> 'required|max:1000',
                 'image'=> 'required|mimes:jpg,jpeg,png,webp',
             ]);
@@ -119,7 +119,7 @@ class ProjectController extends Controller
     {
         if(auth()->user()->can('project management')){
             $request->validate([
-                'title'=> 'required|max:50',
+                'title'=> 'required|max:100',
                 'description'=> 'required|max:1000',
             ]);
             if($request->hasFile('image')){

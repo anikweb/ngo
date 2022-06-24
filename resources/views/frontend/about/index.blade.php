@@ -37,7 +37,7 @@
             <div class="col-md-6">
               <h3 class="line-bottom mt-0">Our Mission</h3>
               <p class="mb-30">@php echo $about->mission; @endphp</p>
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                   <div class="icon-box p-0 mb-30">
                     <a class="icon icon-sm pull-left sm-pull-none flip bg-theme-colored mb-sm-15 mb-0 mr-10" href="#">
@@ -78,7 +78,7 @@
                    <a href="#" class="text-theme-colored font-13">Read More →</a>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@
     </section>
 
     <!-- Section: volunteers -->
-    <section id="volunteers">
+    {{-- <section id="volunteers">
       <div class="container pb-40">
         <div class="section-title">
           <div class="row">
@@ -179,7 +179,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
 
     <!-- Section: Gallery -->
     <section id="gallery">
@@ -287,7 +287,7 @@
     </section>
 
     <!-- Section: Divider call -->
-    <section class="divider parallax layer-overlay overlay-dark-8" data-bg-img="http://placehold.it/1920x1280">
+    <section class="divider parallax layer-overlay overlay-dark-8" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg') }}">
       <div class="container pt-0 pb-0">
         <div class="row">
           <div class="call-to-action">
@@ -296,7 +296,7 @@
               <h3 class="text-white font-opensans font-18 mt-0">for those helpless childrens who need it</h3>
             </div>
             <div class="col-md-3 mt-30">
-              <a href="#" class="btn btn-default btn-circled btn-lg">Become a Fundraiser</a>
+              <a href="{{ route('frontend.cooming.soon') }}" class="btn btn-default btn-circled btn-lg">Donate Now</a>
             </div>
           </div>
         </div>
@@ -311,12 +311,12 @@
             <div class="col-md-4">
               <div class="p-50 pl-40 pr-40 text-center bg-light">
                 <h2 class="mt-0 font-22">Become a <br> Volunteer?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem temporibus quisquam voluptas natus, provident porro et odio perferendis ipsam, amet sint. Iure ipsam consequuntur vero.</p>
-                <a class="btn btn-dark btn-theme-colored btn-sm" href="#">Sign Up Today!</a>
+                <p>Do you want to work with us as a disadvantaged, socially oppressed and volunteer with the nature, climate, health, education of the country? Then register now.</p>
+                <a class="btn btn-dark btn-theme-colored btn-sm" href="{{ route('frontend.volunteer.apply') }}">Apply Now</a>
               </div>
             </div>
             <div class="col-md-8">
-              <div class="owl-carousel-1col owl-dots-bottom-right" data-dots="true">
+              {{-- <div class="owl-carousel-1col owl-dots-bottom-right" data-dots="true">
                 <div class="item">
                   <div class="row-fluid">
                     <div class="col-md-5">
@@ -374,7 +374,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ class aboutSettings extends Controller
      */
     public function index()
     {
-        if(auth()->user()->can('about')){
+        if(auth()->user()->can('general settings')){
             return view('backend.pages.about.index',[
                 'about' => about::first(),
             ]);
@@ -76,7 +76,7 @@ class aboutSettings extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(auth()->user()->can('about')){
+        if(auth()->user()->can('general settings')){
             $request->validate([
                 'cover_image' => 'image|mimes:png,jpg,svg,jpeg,webp',
                 'about' => 'required',

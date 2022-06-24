@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="email">E-mail <span class="text-danger">*</span></label>
+                                                <label for="email">E-mail</label>
                                                 <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email">
                                                 @error('email')
                                                     <span class="text-danger"><i class="fa fa-exclamation-circle"></i> {{ $message }}</span>

@@ -50,6 +50,7 @@ Route::get('/get/ajax/permanent/district/info/{division_id}',[VolunteerApplyCont
 Route::get('/get/ajax/permanent/thana/info/{district_id}',[VolunteerApplyController::class,'getPmThana']);
 Route::get('/get/ajax/captcha/reload/',[VolunteerApplyController::class,'reloadCaptcha']);
 Route::get('volunteer/apply/success/{id}',[VolunteerApplyController::class,'success'])->name('frontend.volunteer.success');
+Route::get('comming-soon',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
 
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);

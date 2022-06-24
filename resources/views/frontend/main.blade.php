@@ -4,7 +4,7 @@
     <meta property="og:type"               content="Home" />
     <meta property="og:title"              content="{{ generalSettings()->site_title }}" />
     <meta property="og:description"        content="{!! generalSettings()->tagline !!}" />
-    <meta property="og:image"              content="{{ asset('images/projects/'.$project->featured_image) }}" />
+    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
 @endsection
 @section('content')
   <!-- Start main-content -->
@@ -130,13 +130,13 @@
             <div class="col-md-6">
               <img class="img-fullwidth" src="http://placehold.it/555x280" alt="">
               <h3 class="line-bottom">Who We Are?</h3>
-              <p>@php echo $about->about; @endphp</p>
-              <a class="text-theme-colored font-13" href="page-about1.html">Read More →</a>
+            <p>{!! $about->about !!}</p>
+              {{-- <a class="text-theme-colored font-13" href="page-about1.html">Read More →</a> --}}
             </div>
             <div class="col-md-6">
               <h3 class="line-bottom mt-0 mt-sm-30">Our Mission</h3>
               <p class="mb-30">@php echo $about->mission; @endphp</p>
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                   <div class="icon-box p-0 mb-30">
                     <a class="icon icon-sm pull-left sm-pull-none flip bg-theme-colored mb-sm-15 mb-0 mr-10" href="#">
@@ -177,7 +177,7 @@
                    <a href="#" class="text-theme-colored font-13">Read More →</a>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </div>
@@ -186,46 +186,46 @@
 
     <!-- Section: home-boxes -->
     <section>
-      <div class="container pt-0">
-        <div class="section-content">
-          <div class="row equal-height-inner home-boxes">
-            <div class="col-sm-12 col-md-4 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
-              <div class="sm-height-auto bg-theme-colored">
-                <div class="p-30 mb-sm-30">
-                  <h3 class="text-uppercase text-white mt-0">Become a Volunteer</h3>
-                  <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                  <a href="page-become-a-volunteer.html" class="btn btn-border btn-circled btn-transparent btn-sm">Join us Now</a>
+        <div class="container pt-0">
+            <div class="section-content">
+                <div class="row equal-height-inner home-boxes">
+                    <div class="col-sm-12 col-md-4 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
+                    <div class="sm-height-auto bg-theme-colored">
+                        <div class="p-30 mb-sm-30">
+                            <h3 class="text-uppercase text-white mt-0">Become a Volunteer</h3>
+                            <p class="text-white">Register now to be a volunteer.</p>
+                            <a href="{{ route('frontend.volunteer.apply') }}" class="btn btn-border btn-circled btn-transparent btn-sm">Join us Now</a>
+                        </div>
+                        <i class="flaticon-charity-shaking-hands-inside-a-heart bg-icon"></i>
+                    </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
+                    <div class="sm-height-auto bg-theme-colored-darker2">
+                        <div class="p-30 mb-sm-30">
+                        <h3 class="text-uppercase text-white mt-0">Contact Us</h3>
+                        <p class="text-white">Contact us now if you want to know anything about us.</p>
+                        <a href="{{ route('frontend.cooming.soon') }}" class="btn btn-border btn-circled btn-transparent btn-sm">Contact us</a>
+                        </div>
+                        <i class="flaticon-charity-home-insurance bg-icon"></i>
+                    </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
+                    <div class="sm-height-auto bg-theme-colored-darker3">
+                        <div class="p-30 mb-sm-30">
+                        <h3 class="text-uppercase text-white mt-0">Get Involved</h3>
+                        <p class="text-white">Click now to donate to any of our projects</p>
+                        <a href="{{ route('frontend.cooming.soon') }}" class="btn btn-border btn-circled btn-transparent btn-sm">Donate Us</a>
+                        </div>
+                        <i class="flaticon-charity-make-an-online-donation bg-icon"></i>
+                    </div>
+                    </div>
                 </div>
-                <i class="flaticon-charity-shaking-hands-inside-a-heart bg-icon"></i>
-              </div>
             </div>
-            <div class="col-sm-12 col-md-4 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
-              <div class="sm-height-auto bg-theme-colored-darker2">
-                <div class="p-30 mb-sm-30">
-                  <h3 class="text-uppercase text-white mt-0">Adopt a Child</h3>
-                  <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                  <a href="#" class="btn btn-border btn-circled btn-transparent btn-sm">Contact us</a>
-                </div>
-                <i class="flaticon-charity-home-insurance bg-icon"></i>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-4 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
-              <div class="sm-height-auto bg-theme-colored-darker3">
-                <div class="p-30 mb-sm-30">
-                  <h3 class="text-uppercase text-white mt-0">Get Involved</h3>
-                  <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                  <a href="page-donate.html" class="btn btn-border btn-circled btn-transparent btn-sm">Donate Us</a>
-                </div>
-                <i class="flaticon-charity-make-an-online-donation bg-icon"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- Section: Upcoming Events -->
-    <section class="bg-silver-light">
+    {{-- <section class="bg-silver-light">
       <div class="container">
         <div class="section-content">
           <div class="row">
@@ -345,24 +345,24 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
 
     <!-- Divider: Become a Volunteer -->
-    <section class="divider parallax layer-overlay overlay-dark-4" data-bg-img="http://placehold.it/1920x1280" data-parallax-ratio="0.7">
+    <section class="divider parallax layer-overlay overlay-dark-4" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg')  }}" data-parallax-ratio="0.7">
       <div class="container pt-110 pb-110">
         <div class="row">
           <div class="col-md-8">
             <h3 class="text-white font-24 font-weight-600 mb-5">Want to be a Volunteer?</h3>
-            <h2 class="text-white font-36 text-uppercase font-weight-600 mt-0">Become a Proud <span class="text-theme-colored">Volunteer</span></h2>
-            <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis totam, laudantium officia praesentium expedita omnis unde tempora beatae, modi, sequi quis. Est quas corporis, nobis aperiam cumque minima libero rem, itaque quo vitae odit?</p>
-            <a href="#" class="btn btn-lg btn-default mt-20">Join Now</a>
+            <h2 class="text-white font-36 text-uppercase font-weight-600 mt-0">Become a Proud Volunteer</h2>
+            <p class="text-white">Do you want to work with us as a disadvantaged, socially oppressed and volunteer with the nature, climate, health, education of the country? Then register now.</p>
+            <a href="{{ route('frontend.volunteer.apply') }}" class="btn btn-lg btn-theme-colored mt-20">Join Now</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Section: Causes -->
-    <section class="bg-silver-light">
+    {{-- <section class="bg-silver-light">
       <div class="container">
         <div class="section-title text-center">
           <div class="row">
@@ -559,37 +559,37 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
 
     <!-- Divider: Funfact -->
-    <section class="divider parallax layer-overlay overlay-theme-colored-9" data-bg-img="http://placehold.it/1920x1280" data-parallax-ratio="0.7">
+    <section class="divider parallax layer-overlay overlay-theme-colored" data-bg-img="http://placehold.it/1920x1280" data-parallax-ratio="0.7">
       <div class="container pt-90 pb-90">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
             <div class="funfact text-center">
               <i class="pe-7s-smile mt-5 text-white"></i>
-              <h2 data-animation-duration="2000" data-value="754" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
+              <h2 data-animation-duration="2000" data-value="1005" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
               <h5 class="text-white text-uppercase font-weight-600">Happy Donators</h5>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
             <div class="funfact text-center">
               <i class="pe-7s-rocket mt-5 text-white"></i>
-              <h2 data-animation-duration="2000" data-value="675" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
+              <h2 data-animation-duration="2000" data-value="500" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
               <h5 class="text-white text-uppercase font-weight-600">Success Mission</h5>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
             <div class="funfact text-center">
               <i class="pe-7s-add-user mt-5 text-white"></i>
-              <h2 data-animation-duration="2000" data-value="1248" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
+              <h2 data-animation-duration="2000" data-value="300" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
               <h5 class="text-white text-uppercase font-weight-600">Volunteer Reached</h5>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
             <div class="funfact text-center">
               <i class="pe-7s-global mt-5 text-white"></i>
-              <h2 data-animation-duration="2000" data-value="24" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
+              <h2 data-animation-duration="2000" data-value="10" class="animate-number text-white font-42 font-weight-500 mt-0 mb-0">0</h2>
               <h5 class="text-white text-uppercase font-weight-600">Globalization Work</h5>
             </div>
           </div>
@@ -627,7 +627,7 @@
 
               </div>
             <div class="mt-5">
-                <a href="#" class="btn btn-lg btn-theme-colored">See More</a>
+                <a href="{{ route('frontend.image.gallery') }}" class="btn btn-lg btn-theme-colored">See More</a>
             </div>
               <!-- End Portfolio Gallery Grid -->
             </div>
@@ -636,7 +636,7 @@
               <h3 class="text-uppercase title line-bottom mt-0 mb-30 mt-sm-40"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Client <span class="text-theme-colored">Testimonials</span></h3>
 
                 <div class="bxslider bx-nav-top">
-                    <div class="testimonial media sm-maxwidth400 p-15 mt-0 mb-15">
+                    {{-- <div class="testimonial media sm-maxwidth400 p-15 mt-0 mb-15">
                         <div class="pt-10">
                             <div class="thumb pull-left mb-0 mr-0 pr-20">
                                 <img width="75" class="img-circle" alt="" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}">
@@ -679,7 +679,7 @@
                                 <p class="author mt-10">- <span class="text-theme-colored">Catherine Grace,</span> <small><em>CEO apple.inc</em></small></p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
@@ -733,13 +733,15 @@
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <h2 class="text-uppercase line-bottom-center mt-0">Our Blog</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
+              <p>Read our regularly uploaded Blogs. Stay connected with us</p>
             </div>
           </div>
         </div>
+
         <div class="section-content">
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <h1 class="text-center text-theme-colored"><em>Coming Soon</em></h1>
+            {{-- <div class="col-xs-12 col-sm-6 col-md-4">
               <article class="post clearfix mb-sm-30 bg-silver-light">
                 <div class="entry-header">
                   <div class="post-thumb thumb">
@@ -825,7 +827,7 @@
                   <div class="clearfix"></div>
                 </div>
               </article>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>

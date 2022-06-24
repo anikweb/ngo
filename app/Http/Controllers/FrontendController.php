@@ -17,6 +17,9 @@ use PDO;
 
 class FrontendController extends Controller
 {
+    function commingSoon(){
+        return view('frontend.comming_soon.index');
+    }
     function frontend(){
         return view('frontend.main',[
             'sliders' => Slider::orderBy('priority','asc')->get(),

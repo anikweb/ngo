@@ -365,14 +365,12 @@
                         <p>General</p>
                         </a>
                     </li>
-                    @if (auth()->user()->can('about'))
-                        <li class="nav-item">
-                            <a href="{{ route('about-settings.index') }}" class="nav-link @if(Route::is('about-settings.index')) active @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>About</p>
-                            </a>
-                        </li>
-                    @endif
+                    <li class="nav-item">
+                        <a href="{{ route('about-settings.index') }}" class="nav-link @if(Route::is('about-settings.index')) active @endif">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>About</p>
+                        </a>
+                    </li>
                 </ul>
             </li>
         @endif

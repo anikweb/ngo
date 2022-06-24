@@ -30,7 +30,7 @@
             <div class="col-md-7 mb-sm-40">
               <h3 class="pb-10">{{ $project->title }}</h3>
               @php echo $project->description @endphp
-              <a href="#" class="btn btn-default btn-md mt-20">Join Now</a>
+              {{-- <a href="{{ route('frontend.events.index') }}" class="btn btn-default btn-md mt-20">See Events</a> --}}
             </div>
             <div class="col-md-5">
               <div class="owl-carousel-1col" data-nav="true">
@@ -56,7 +56,7 @@
               <h3 class="text-white font-opensans font-18 mt-0">for those helpless who need it</h3>
             </div>
             <div class="col-md-3 mt-30">
-              <a href="#" class="btn btn-default btn-circled btn-lg">Donate Now</a>
+              <a href="{{ route('frontend.cooming.soon') }}" class="btn btn-default btn-circled btn-lg">Donate Now</a>
             </div>
           </div>
         </div>
@@ -69,12 +69,13 @@
         <div class="section-content">
           <div class="row">
             <div class="col-md-12">
-              <h2 class="mt-0">Current Projects</h2>
+              <h2 class="mt-0">Another Projects</h2>
               <p>Here is the list of projects we have taken. Volunteers are constantly conducting various programs under these projects.</p>
             </div>
           </div>
           <div class="row mt-30">
               @foreach ($projects as $projectItem)
+              @if ($project->id != $projectItem->id)
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="schedule-box maxwidth500 bg-lighter mb-30">
                     <div class="thumb">
@@ -90,6 +91,7 @@
                     </div>
                     </div>
                 </div>
+              @endif
 
               @endforeach
           </div>
