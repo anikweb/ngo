@@ -1,4 +1,11 @@
 @extends('frontend.master')
+@section('og_meta')
+<meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="Volunteer Application Form" />
+    <meta property="og:title"              content="Volunteer Application Form" />
+    <meta property="og:description"        content="Volunteer Application Form || {{ generalSettings()->site_title }}" />
+    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+@endsection
 @section('content')
 <!-- Start main-content -->
 <div class="main-content">
@@ -160,9 +167,9 @@
                             @enderror
                             <select @error('sex') style="border:1px solid red" @enderror name="sex" id="sex" class="form-control">
                                 <option  value="">-Select-</option>
-                                <option @if(old('1')) @endif value="1">Male</option>
-                                <option @if(old('2')) @endif value="2">Female</option>
-                                <option @if(old('3')) @endif value="3">3rd Gender</option>
+                                <option @if(old('1')) selected @endif value="1">Male</option>
+                                <option @if(old('2')) selected @endif value="2">Female</option>
+                                <option @if(old('3')) selected @endif value="3">3rd Gender</option>
                             </select>
                         </div>
                     </div>
@@ -180,13 +187,23 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="nid">National Identity Number (NID) </label>
-                            <input type="text" value="{{ old('nid') }}" class="form-control" name="nid" id="nid" placeholder="Enter National Identity Nummber (NID)">
+                            @error('nid')
+                                <p class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </p>
+                            @enderror
+                            <input type="text" @error('nid') style="border:1px solid red" @enderror value="{{ old('nid') }}" class="form-control" name="nid" id="nid" placeholder="Enter National Identity Nummber (NID)">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="bcn">Birth Certification Number</label>
-                            <input type="text" value="{{ old('bcn') }}" class="form-control" name="bcn" id="bcn" placeholder="Enter Birth Certification Number">
+                            @error('bcn')
+                                <p class="text-danger">
+                                    <i class="fa fa-exclamation-triangle"></i> {{ $message }}
+                                </p>
+                            @enderror
+                            <input type="text" @error('bcn') style="border:1px solid red" @enderror value="{{ old('bcn') }}" class="form-control" name="bcn" id="bcn" placeholder="Enter Birth Certification Number">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -207,17 +224,17 @@
                             @enderror
                             <select @error('occupation') style="border:1px solid red" @enderror name="occupation" id="occupation" class="form-control">
                                 <option  value="">-Select-</option>
-                                <option @if(old('banker')) @endif value="banker">Banker</option>
-                                <option @if(old('business')) @endif value="business">Business</option>
-                                <option @if(old('doctor')) @endif value="doctor">Doctor</option>
-                                <option @if(old('entrepreneur')) @endif value="entrepreneur">Entrepreneur</option>
-                                <option @if(old('farmer')) @endif value="farmer">Farmer</option>
-                                <option @if(old('government job')) @endif value="government_job">Government Job</option>
-                                <option @if(old('nurse')) @endif value="nurse">Nurse</option>
-                                <option @if(old('private job')) @endif value="private_job">Private Job</option>
-                                <option @if(old('student')) @endif value="student">Student</option>
-                                <option @if(old('teacher')) @endif value="teacher">Teacher</option>
-                                <option @if(old('others')) @endif value="others">Others</option>
+                                <option @if(old('banker')) selected @endif value="banker">Banker</option>
+                                <option @if(old('business')) selected @endif value="business">Business</option>
+                                <option @if(old('doctor')) selected @endif value="doctor">Doctor</option>
+                                <option @if(old('entrepreneur')) selected @endif value="entrepreneur">Entrepreneur</option>
+                                <option @if(old('farmer')) selected @endif value="farmer">Farmer</option>
+                                <option @if(old('government job')) selected @endif value="government_job">Government Job</option>
+                                <option @if(old('nurse')) selected @endif value="nurse">Nurse</option>
+                                <option @if(old('private job')) selected @endif value="private_job">Private Job</option>
+                                <option @if(old('student')) selected @endif value="student">Student</option>
+                                <option @if(old('teacher')) selected @endif value="teacher">Teacher</option>
+                                <option @if(old('others')) selected @endif value="others">Others</option>
                             </select>
                         </div>
                     </div>

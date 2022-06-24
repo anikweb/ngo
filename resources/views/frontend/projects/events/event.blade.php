@@ -1,14 +1,21 @@
 @extends('frontend.master')
+@section('og_meta')
+<meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="Events" />
+    <meta property="og:title"              content="{{ $event->title }}" />
+    <meta property="og:description"        content="{!! $event->description !!}" />
+    <meta property="og:image"              content="{{ asset('images/projects/events/'.$event->image) }}" />
+@endsection
 @section('content')
  <!-- Start main-content -->
  <div class="main-content">
-  
+
     <!-- Section: inner-header -->
     <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/projects/events/'.$event->image) }}">
         <div class="container pt-100 pb-50">
             <!-- Section Content -->
             <div class="section-content pt-100">
-                <div class="row"> 
+                <div class="row">
                     <div class="col-md-12">
                         <h3 class="title text-white">{{ $event->title }}</h3>
                     </div>
@@ -25,15 +32,15 @@
                     <div class="blog-posts single-post">
                         <article class="post clearfix mb-0">
                             <div class="entry-header">
-                                <div class="post-thumb thumb"> 
-                                    <img src="{{ asset('images/projects/events/'.$event->image) }}" alt="{{ $event->title }}" class="img-responsive img-fullwidth"> 
+                                <div class="post-thumb thumb">
+                                    <img src="{{ asset('images/projects/events/'.$event->image) }}" alt="{{ $event->title }}" class="img-responsive img-fullwidth">
                                 </div>
                             </div>
                             <div class="entry-content">
                                 <div class="entry-meta media no-bg no-border mt-15 pb-20">
                                     <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
                                         @php
-                                            $timestamp = strtotime($event->event_date);  
+                                            $timestamp = strtotime($event->event_date);
                                         @endphp
                                         <ul>
                                             <li class="font-16 text-white font-weight-600">@php echo date('d', $timestamp ) @endphp</li>
@@ -52,7 +59,7 @@
                                             {{-- <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 0 Likes</span> --}}
                                         </div>
                                     </div>
-                                </div>  
+                                </div>
                                 @php
                                     echo $event->description;
                                 @endphp
@@ -179,7 +186,7 @@
             </div>
         </div>
     </section>
-    
+
     {{-- Related Events  --}}
     <section class="divider parallax layer-overlay overlay-dark-8" data-bg-img="">
         <div class="container pt-0 pb-0">
@@ -214,7 +221,7 @@
                                         <div class="text-center pull-left flip bg-theme-colored p-10 pt-5 pb-5 mr-10">
                                             <ul>
                                                 @php
-                                                    $timestamp = strtotime($evnt->event_date);  
+                                                    $timestamp = strtotime($evnt->event_date);
                                                 @endphp
                                                 <li class="font-24 text-white font-weight-600 border-bottom ">@php echo date('d', $timestamp ) @endphp</li>
                                                 <li class="font-18 text-white text-uppercase">@php echo date('M', $timestamp ) @endphp</li>

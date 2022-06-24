@@ -1,4 +1,11 @@
 @extends('frontend.master')
+@section('og_meta')
+<meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="Publications" />
+    <meta property="og:title"              content="Publications || {{ generalSettings()->site_title }}" />
+    <meta property="og:description"        content="non-profit, non-governmental organization" />
+    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+@endsection
 @section('internal_css')
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>
 {{-- Add the new slick-theme.css if you want the default styling --}}

@@ -1,8 +1,14 @@
 @extends('frontend.master')
+@section('og_meta')
+<meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="Image Gallery" />
+    <meta property="og:title"              content="Image Gallery || {{ generalSettings()->site_title }}" />
+    <meta property="og:description"        content="non-profit, non-governmental organization" />
+    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+@endsection
 @section('content')
 <!-- Start main-content -->
 <div class="main-content">
-
     <!-- Section: inner-header -->
     <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg') }}">
       <div class="container pt-100 pb-50">

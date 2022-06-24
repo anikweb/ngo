@@ -1,4 +1,11 @@
 @extends('frontend.master')
+@section('og_meta')
+<meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="Home" />
+    <meta property="og:title"              content="{{ generalSettings()->site_title }}" />
+    <meta property="og:description"        content="{!! generalSettings()->tagline !!}" />
+    <meta property="og:image"              content="{{ asset('images/projects/'.$project->featured_image) }}" />
+@endsection
 @section('content')
   <!-- Start main-content -->
   <div class="main-content">

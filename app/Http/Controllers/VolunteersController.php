@@ -17,7 +17,7 @@ class VolunteersController extends Controller
     {
         if(auth()->user()->can('volunteers management')){
             return view('backend.pages.volunteers.index',[
-                'volunteers' => Volunteers::latest()->paginate(10),
+                'volunteers' => Volunteers::latest()->get(),
             ]);
         }else{
             return abort(404);

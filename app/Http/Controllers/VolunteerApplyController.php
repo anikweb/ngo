@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use Mail;
+use App\Mail\VolunteerApplicationMail;
 
 class VolunteerApplyController extends Controller
 {
@@ -34,6 +36,15 @@ class VolunteerApplyController extends Controller
                 'pmDistrict.required' => 'Permanent District required',
                 'pmThana.required' => 'Permanent Thana required',
                 'pmVillage.required' => 'Permanent Village/Area required',
+            ]);
+        }
+        if(!$request->nid&&!$request->bcn){
+            $request->validate([
+                'nid' => 'required',
+                'bcn' => 'required',
+            ],[
+                'nid.required' => 'NID or Birth registration required, please enter any one or both',
+                'bcn.required' => 'NID or Birth registration required, please enter any one or both',
             ]);
         }
         $volunteer = new Volunteers;
@@ -87,6 +98,7 @@ class VolunteerApplyController extends Controller
             $volunteer->image = $newName;
             $volunteer->save();
         }
+        Mail::to($volunteer->email)->send(new VolunteerApplicationMail($volunteer));
         return redirect()->route('frontend.volunteer.success',$volunteer->id);
     }
     public function success($id){

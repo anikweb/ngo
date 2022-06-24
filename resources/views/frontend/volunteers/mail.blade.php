@@ -46,7 +46,7 @@
     <div class="container">
        <div class="headline">
             <div>
-                {{-- <img src="{{ url('images/generalSettings/muktir-bondhon-foundation-icon.png') }}" alt="{{ generalSettings()->icon }}"> --}}
+                <img src="{{ url('images/generalSettings/muktir-bondhon-foundation-icon.png') }}" alt="{{ generalSettings()->icon }}">
                 <h2 class="org-name">{{ Str::upper(generalSettings()->site_title) }}</h2>
             </div>
             <h3 class="slogan">{{ Str::upper(generalSettings()->tagline) }}</h3>
@@ -69,7 +69,9 @@
                         <td width="40%">{{ Str::upper($volunteer->name_en) }}</td>
                         <th width="30%">Email</th>
                         <td width="40%">{{ $volunteer->email }}</td>
-                        <td  rowspan="3" colspan="2" style="border:1px solid black; text-align:center">Photo</td>
+                        <td  rowspan="3" colspan="2">
+                            <img src="{{ asset('images/volunteers/'.$volunteer->image) }}" alt="{{ $volunteer->name_en }}">
+                        </td>
                     </tr>
                     <tr>
                         <th width="10%">Name(BN)</th>
@@ -165,7 +167,8 @@
             <h4 style="margin-top: 5px;"> Application Date: {{ $volunteer->created_at->format('d-M-Y, h:i A') }}</h4>
             <h4 style="margin-top: 5px;"> Last Update: {{ $volunteer->updated_at->format('d-M-Y, h:i A') }}</h4>
             <h4>Status: @if($volunteer->status == 1) <span style="color:coral;"> Application Pending</span> @elseif($volunteer->status == 2)<span style="color:#10783b"> Volunteer </span> @elseif($volunteer->status == 3) <span style="color:red;">Resticted</span><span style="color:blue;">  @endif</h4>
-
+            <a  href="#" type="button" class="down-pdf">Download PDF</a>
+            <h3>This is automated mail, do not reply.</h3>
        </div>
     </div>
 </body>

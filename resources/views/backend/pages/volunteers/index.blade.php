@@ -38,7 +38,7 @@
                                 <tbody>
                                     @forelse ($volunteers as $volunteer)
                                         <tr>
-                                            <td>{{ $volunteers->firstItem() +$loop->index }}</td>
+                                            <td>{{$loop->index +1 }}</td>
                                             <td>
                                                 <img width="70px" src="{{ asset('images/volunteers/'.$volunteer->image) }}" alt="{{ $volunteer->name_en }}">
                                             </td>
@@ -77,9 +77,6 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div>
-                                {{ $volunteers->links() }}
-                            </div>
                         </div>
                     </div>
                 </div>
