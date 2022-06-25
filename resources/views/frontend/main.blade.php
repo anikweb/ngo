@@ -562,7 +562,7 @@
     </section> --}}
 
     <!-- Divider: Funfact -->
-    <section class="divider parallax layer-overlay overlay-theme-colored" data-bg-img="http://placehold.it/1920x1280" data-parallax-ratio="0.7">
+    <section class="divider parallax layer-overlay overlay-theme-colored" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg') }}" data-parallax-ratio="0.7">
       <div class="container pt-90 pb-90">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
@@ -611,7 +611,7 @@
                 @foreach ($image_galleries as $gallery)
                     <div class="gallery-item">
                         <div class="thumb">
-                            <img alt="{{ $gallery->alt_text }}" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" class="img-fullwidth" style="height: 120px">
+                            <img alt="{{ $gallery->alt_text }}" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" class="img-fullwidth" style="height: 200px">
                             <div class="overlay-shade"></div>
                             <div class="icons-holder">
                                 <div class="icons-holder-inner">

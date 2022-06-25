@@ -25,7 +25,7 @@ class FrontendController extends Controller
             'sliders' => Slider::orderBy('priority','asc')->get(),
             'about' => about::first(),
             'events' => Events::latest()->limit(6)->get(),
-            'image_galleries' => ImageGallery::latest()->limit(28)->get(),
+            'image_galleries' => ImageGallery::latest()->limit(12)->get(),
         ]);
     }
     public function aboutIndex(){
