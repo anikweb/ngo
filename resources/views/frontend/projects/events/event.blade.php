@@ -10,21 +10,6 @@
 @section('content')
  <!-- Start main-content -->
  <div class="main-content">
-
-    <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/projects/events/'.$event->image) }}">
-        <div class="container pt-100 pb-50">
-            <!-- Section Content -->
-            <div class="section-content pt-100">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="title text-white">{{ $event->title }}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Section: Event -->
     <section>
         <div class="container mt-30 mb-30 pt-30 pb-30">

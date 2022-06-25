@@ -195,7 +195,9 @@
               </div>
 
             </div>
-            <div class="col-md-6"> <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus hic suscipit doloremque deleniti ipsa quia dolor laborum natus tenetur, excepturi?</p></div>
+            <div class="col-md-6">
+                <p>Here we are arranged in the best pictures. Which are documentary images of our various events. </p>
+            </div>
           </div>
         </div>
         <div class="section-content">
@@ -207,7 +209,7 @@
                 @foreach ($image_galleries as $gallery)
                     <div class="gallery-item photography">
                         <div class="thumb">
-                            <img class="img-fullwidth" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}">
+                            <img class="img-fullwidth" height="200px" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}">
                             <div class="overlay-shade"></div>
                             <div class="text-holder text-center">
                                 <h5 class="title">{{ $gallery->alt_text }}</h5>
@@ -306,80 +308,80 @@
 
     <!-- Section: -->
     <section>
-      <div class="container">
-        <div class="section-content">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="p-50 pl-40 pr-40 text-center bg-light">
-                <h2 class="mt-0 font-22">Become a <br> Volunteer?</h2>
-                <p>Do you want to work with us as a disadvantaged, socially oppressed and volunteer with the nature, climate, health, education of the country? Then register now.</p>
-                <a class="btn btn-dark btn-theme-colored btn-sm" href="{{ route('frontend.volunteer.apply') }}">Apply Now</a>
-              </div>
+        <div class="container">
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="p-50 pl-40 pr-40 text-center bg-light">
+                            <h2 class="mt-0 font-22">Become a <br> Volunteer?</h2>
+                            <p>Do you want to work with us as a disadvantaged, socially oppressed and volunteer with the nature, climate, health, education of the country? Then register now.</p>
+                            <a class="btn btn-dark btn-theme-colored btn-sm" href="{{ route('frontend.volunteer.apply') }}">Apply Now</a>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                    {{-- <div class="owl-carousel-1col owl-dots-bottom-right" data-dots="true">
+                        <div class="item">
+                        <div class="row-fluid">
+                            <div class="col-md-5">
+                            <img src="http://placehold.it/450x500" alt="">
+                            </div>
+                            <div class="col-md-7">
+                            <h4 class="mt-0 mb-0 text-black-666">Featured Causes:</h4>
+                            <h2 class="line-bottom mt-0">Adopt with us</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam maxime nesciunt ex modi minus illum nemo provident ducimus, velit magnam consectetur adipisicing nemo provident ducimus, velit magnam.</p>
+                            <div class="mt-10 mb-20">
+                                <ul class="list-inline clearfix mt-10">
+                                <li class="pull-left flip pr-0">Raised: <span class="font-weight-700 font-">$1890</span></li>
+                                <li class="text-theme-colored pull-right flip pr-0">Goal: <span class="font-weight-700">$2500</span></li>
+                                </ul>
+                            </div>
+                            <a class="btn btn-theme-colored btn-sm" href="#">Donate Now</a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="item">
+                        <div class="row-fluid">
+                            <div class="col-md-5">
+                            <img src="http://placehold.it/450x500" alt="">
+                            </div>
+                            <div class="col-md-7">
+                            <h4 class="mt-0 mb-0 text-black-666">Featured Causes:</h4>
+                            <h2 class="line-bottom mt-0">Adopt with us</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam maxime nesciunt ex modi minus illum nemo provident ducimus, velit magnam consectetur adipisicing nemo provident ducimus, velit magnam.</p>
+                            <div class="mt-10 mb-20">
+                                <ul class="list-inline clearfix mt-10">
+                                <li class="pull-left flip pr-0">Raised: <span class="font-weight-700 font-">$1890</span></li>
+                                <li class="text-theme-colored pull-right flip pr-0">Goal: <span class="font-weight-700">$2500</span></li>
+                                </ul>
+                            </div>
+                            <a class="btn btn-theme-colored btn-sm" href="#">Donate Now</a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="item">
+                        <div class="row-fluid">
+                            <div class="col-md-5">
+                            <img src="http://placehold.it/450x500" alt="">
+                            </div>
+                            <div class="col-md-7">
+                            <h4 class="mt-0 mb-0 text-black-666">Featured Causes:</h4>
+                            <h2 class="line-bottom mt-0">Adopt with us</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam maxime nesciunt ex modi minus illum nemo provident ducimus, velit magnam consectetur adipisicing nemo provident ducimus, velit magnam.</p>
+                            <div class="mt-10 mb-20">
+                                <ul class="list-inline clearfix mt-10">
+                                <li class="pull-left flip pr-0">Raised: <span class="font-weight-700 font-">$1890</span></li>
+                                <li class="text-theme-colored pull-right flip pr-0">Goal: <span class="font-weight-700">$2500</span></li>
+                                </ul>
+                            </div>
+                            <a class="btn btn-theme-colored btn-sm" href="#">Donate Now</a>
+                            </div>
+                        </div>
+                        </div>
+                    </div> --}}
+                    </div>
+                </div>
             </div>
-            <div class="col-md-8">
-              {{-- <div class="owl-carousel-1col owl-dots-bottom-right" data-dots="true">
-                <div class="item">
-                  <div class="row-fluid">
-                    <div class="col-md-5">
-                      <img src="http://placehold.it/450x500" alt="">
-                    </div>
-                    <div class="col-md-7">
-                      <h4 class="mt-0 mb-0 text-black-666">Featured Causes:</h4>
-                      <h2 class="line-bottom mt-0">Adopt with us</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam maxime nesciunt ex modi minus illum nemo provident ducimus, velit magnam consectetur adipisicing nemo provident ducimus, velit magnam.</p>
-                      <div class="mt-10 mb-20">
-                        <ul class="list-inline clearfix mt-10">
-                          <li class="pull-left flip pr-0">Raised: <span class="font-weight-700 font-">$1890</span></li>
-                          <li class="text-theme-colored pull-right flip pr-0">Goal: <span class="font-weight-700">$2500</span></li>
-                        </ul>
-                      </div>
-                      <a class="btn btn-theme-colored btn-sm" href="#">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="row-fluid">
-                    <div class="col-md-5">
-                      <img src="http://placehold.it/450x500" alt="">
-                    </div>
-                    <div class="col-md-7">
-                      <h4 class="mt-0 mb-0 text-black-666">Featured Causes:</h4>
-                      <h2 class="line-bottom mt-0">Adopt with us</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam maxime nesciunt ex modi minus illum nemo provident ducimus, velit magnam consectetur adipisicing nemo provident ducimus, velit magnam.</p>
-                      <div class="mt-10 mb-20">
-                        <ul class="list-inline clearfix mt-10">
-                          <li class="pull-left flip pr-0">Raised: <span class="font-weight-700 font-">$1890</span></li>
-                          <li class="text-theme-colored pull-right flip pr-0">Goal: <span class="font-weight-700">$2500</span></li>
-                        </ul>
-                      </div>
-                      <a class="btn btn-theme-colored btn-sm" href="#">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="row-fluid">
-                    <div class="col-md-5">
-                      <img src="http://placehold.it/450x500" alt="">
-                    </div>
-                    <div class="col-md-7">
-                      <h4 class="mt-0 mb-0 text-black-666">Featured Causes:</h4>
-                      <h2 class="line-bottom mt-0">Adopt with us</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam maxime nesciunt ex modi minus illum nemo provident ducimus, velit magnam consectetur adipisicing nemo provident ducimus, velit magnam.</p>
-                      <div class="mt-10 mb-20">
-                        <ul class="list-inline clearfix mt-10">
-                          <li class="pull-left flip pr-0">Raised: <span class="font-weight-700 font-">$1890</span></li>
-                          <li class="text-theme-colored pull-right flip pr-0">Goal: <span class="font-weight-700">$2500</span></li>
-                        </ul>
-                      </div>
-                      <a class="btn btn-theme-colored btn-sm" href="#">Donate Now</a>
-                    </div>
-                  </div>
-                </div>
-              </div> --}}
-            </div>
-          </div>
         </div>
-      </div>
     </section>
   </div>
 @endsection
