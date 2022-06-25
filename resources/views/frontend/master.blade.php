@@ -287,27 +287,17 @@
                 <div class="widget dark">
                     <h5 class="widget-title line-bottom">Latest Events</h5>
                     <div class="latest-posts">
-                    <article class="post media-post clearfix pb-0 mb-10">
-                        <a href="#" class="post-thumb"><img alt="" src="http://placehold.it/80x55"></a>
-                        <div class="post-right">
-                        <h5 class="post-title mt-0 mb-5"><a href="#">Sustainable Construction</a></h5>
-                        <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                        </div>
-                    </article>
-                    <article class="post media-post clearfix pb-0 mb-10">
-                        <a href="#" class="post-thumb"><img alt="" src="http://placehold.it/80x55"></a>
-                        <div class="post-right">
-                        <h5 class="post-title mt-0 mb-5"><a href="#">Industrial Coatings</a></h5>
-                        <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                        </div>
-                    </article>
-                    <article class="post media-post clearfix pb-0 mb-10">
-                        <a href="#" class="post-thumb"><img alt="" src="http://placehold.it/80x55"></a>
-                        <div class="post-right">
-                        <h5 class="post-title mt-0 mb-5"><a href="#">Storefront Installations</a></h5>
-                        <p class="post-date mb-0 font-12">Mar 08, 2015</p>
-                        </div>
-                    </article>
+                        @foreach (events() as $event)
+                            <article class="post media-post clearfix pb-0 mb-10">
+                                <a href="{{ route('frontend.events.show',$event->slug) }}" class="post-thumb">
+                                    <img width="80px" alt="{{ $event->title }}" src="{{ asset('images/projects/events/'.$event->image) }}">
+                                </a>
+                                <div class="post-right">
+                                <h5 class="post-title mt-0 mb-5"><a href="{{ route('frontend.events.show',$event->slug) }}">{{ $event->title }}</a></h5>
+                                <p class="post-date mb-0 font-12">{{ date('D m, Y',strtotime($event->event_date)) }}</p>
+                                </div>
+                            </article>
+                        @endforeach
                     </div>
                 </div>
                 </div>
