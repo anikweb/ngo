@@ -28,6 +28,9 @@ nav#menuzord {
 .hvr-bounce-to-right:hover  {
     color: #f3f3f3 !important;
 }
+.scrollToTop{
+    left: 15px !important;
+}
 
 
 
