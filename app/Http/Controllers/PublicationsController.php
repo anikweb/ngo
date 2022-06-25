@@ -74,7 +74,7 @@ class PublicationsController extends Controller
                 $newName = Str::slug($request->headline).'-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/media/publications/'.$newName);
                 // return 'hello';
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $publication->featured_image = $newName;
                 $publication->save();
             }
@@ -155,7 +155,7 @@ class PublicationsController extends Controller
                 $image = $request->file('featured_image');
                 $newName = Str::slug($request->headline).'-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/media/publications/'.$newName);
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $publication->featured_image = $newName;
                 $publication->save();
             }

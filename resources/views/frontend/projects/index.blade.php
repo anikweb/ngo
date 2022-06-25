@@ -1,6 +1,7 @@
 @extends('frontend.master')
 @section('og_meta')
-<meta property="og:url"                content="{{ url()->current() }}" />
+<meta property="description"        content="{!! $project->description !!}" />
+    <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="Project" />
     <meta property="og:title"              content="{{ $project->title }}" />
     <meta property="og:description"        content="{!! $project->description !!}" />

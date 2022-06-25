@@ -104,7 +104,7 @@ class GeneralSettingController extends Controller
                     $image = $request->file('logo');
                     $newName = Str::slug($request->site_title).'-logo'.'.'.$image->getClientOriginalExtension();
                     $destination = public_path('images/generalSettings/'.$newName);
-                    Image::make($image)->save($destination);
+                    Image::make($image)->save($destination,60);
                     $generalSetting->logo = $newName;
                 }
                 if($request->hasFile('icon')){

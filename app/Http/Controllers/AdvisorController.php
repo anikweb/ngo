@@ -76,7 +76,7 @@ class AdvisorController extends Controller
                 $image = $request->file('image');
                 $newName = Str::slug($advisor->name).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/advisors/'.$newName);
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $advisor->image = $newName;
                 $advisor->save();
             }
@@ -164,7 +164,7 @@ class AdvisorController extends Controller
                 $newName = Str::slug($advisor->name).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/advisors/'.$newName);
                 // return 'hello';
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $advisor->image = $newName;
                 $advisor->save();
             }

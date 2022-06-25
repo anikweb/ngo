@@ -78,7 +78,7 @@ class SliderController extends Controller
                 $newName = Str::slug($slider->title).'-slider-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/sliders/'.$newName);
                 // return 'hello';
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $slider->image = $newName;
                 $slider->save();
             }
@@ -162,7 +162,7 @@ class SliderController extends Controller
                 $newName = Str::slug($slider->title).'-slider-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/sliders/'.$newName);
                 // return 'hello';
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $slider->image = $newName;
                 $slider->save();
             }

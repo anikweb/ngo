@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('content')
-    <section class="inner-header divider parallax layer-overlay overlay-dark-6" data-bg-img="http://placehold.it/1920x1280" style="background-image: url(&quot;http://placehold.it/1920x1280&quot;); background-position: 50% 59px;">
+    <section class="inner-header divider parallax layer-overlay overlay-dark-6" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg') }}" style="background-image: url(&quot;http://placehold.it/1920x1280&quot;); background-position: 50% 59px;">
         <div class="container pt-60 pb-60">
             <!-- Section Content -->
             <div class="section-content">
@@ -27,8 +27,8 @@
                         @csrf
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label for="email">Email</label>
-                                <input id="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" type="text">
+                                <label for="email">Email <span class="text-danger">*</span></label>
+                                <input id="email" placeholder="Enter your email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror" type="text">
                                 @error('email')
                                     <div class="text-danger">
                                         <i class="fa fa-exclamation-circle"></i>
@@ -39,8 +39,8 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label for="password">Password</label>
-                                <input id="password" name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror" type="text">
+                                <label for="password">Password <span class="text-danger">*</span></label>
+                                <input id="password" type="password" placeholder="Enter your password" name="password" value="{{ old('password') }}" class="form-control @error('password') is-invalid @enderror">
                                 @error('password')
                                     <div class="text-danger">
                                         <i class="fa fa-exclamation-circle"></i>
@@ -61,11 +61,13 @@
                             <a class="text-theme-colored font-weight-600 font-12" href="{{ route('password.request') }}">Forgot Your Password?</a>
                         </div>
                         <div class="clear text-center pt-10">
-                            <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Login with facebook</a>
-                            <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Login with twitter</a>
+                            {{-- <a class="btn btn-dark btn-lg btn-block no-border mt-15 mb-15" href="#" data-bg-color="#3b5998">Login with facebook</a>
+                            <a class="btn btn-dark btn-lg btn-block no-border" href="#" data-bg-color="#00acee">Login with twitter</a> --}}
                         </div>
                     </form>
-                    <a href="{{ route('register') }}">register </a>
+                    @if (generalSettings()->membership == 2)
+                        <p> Do not have account? <a class="text-primary" href="{{ route('register') }}"> register </a> here</p>
+                    @endif
                 </div>
             </div>
         </div>

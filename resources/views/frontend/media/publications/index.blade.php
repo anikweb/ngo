@@ -1,10 +1,11 @@
 @extends('frontend.master')
 @section('og_meta')
-<meta property="og:url"                content="{{ url()->current() }}" />
+<meta property="description"               content="Article published in various news paper/chanel about the Muktir Bondhon Foundation" />
+    <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="Publications" />
     <meta property="og:title"              content="Publications || {{ generalSettings()->site_title }}" />
-    <meta property="og:description"        content="non-profit, non-governmental organization" />
-    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+    <meta property="og:description"        content="Article published in various news paper/chanel about the Muktir Bondhon Foundation" />
+    <meta property="og:image"              content="{{ asset('images/about/'.about()->image) }}" />
 @endsection
 @section('internal_css')
 <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}"/>

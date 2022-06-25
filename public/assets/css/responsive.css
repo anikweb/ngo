@@ -1,24 +1,62 @@
 /*==================================================
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
- 
- 
+
+
 /*==========  Mobile First Method  ==========*/
- 
+
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
+    .slider-title{
+        font-size: 19px !important;
+    }
+    .slider-subtitle{
+        font-size: 15px !important;
+        text-shadow: 1px 2px #000;
+    }
+    .top-widget-social{
+        display: none !important;
+    }
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
+    .slider-title{
+        font-size: 19px !important;
+    }
+    .slider-subtitle{
+        font-size: 15px !important;
+        text-shadow: 1px 2px #000;
+    }
+    .top-widget-social{
+        display: none !important;
+    }
 }
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+    .slider-title{
+        font-size: 19px !important;
+    }
+    .slider-subtitle{
+        font-size: 15px !important;
+        text-shadow: 1px 2px #000;
+    }
+    .top-widget-social{
+        display: block !important;
+    }
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
+    .slider-title{
+        font-size: 50px !important;
+    }
+    .slider-subtitle{
+        font-size: 30px !important;
+        text-shadow: 1px 2px #000;
+    }
+    
 }
 
 /* Large Devices, Wide Screens */
@@ -27,7 +65,7 @@
 
 
 /*==========  Non-Mobile First Method  ==========*/
- 
+
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1199px) {
 }

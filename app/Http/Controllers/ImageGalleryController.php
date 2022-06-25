@@ -65,7 +65,7 @@ class ImageGalleryController extends Controller
                         $ImageGallery = new ImageGallery();
                         $newName = 'Image-gallery'.Str::random(5).time().'.'.$image->getClientOriginalExtension();
                         $path = public_path('images/media/image_gallery/'.$newName);
-                        Image::make($image)->save($path);
+                        Image::make($image)->save($path,60);
                         $ImageGallery->alt_text =  pathinfo($image->getClientOriginalname(),PATHINFO_FILENAME);
                         $ImageGallery->image = $newName;
                         $ImageGallery->save();

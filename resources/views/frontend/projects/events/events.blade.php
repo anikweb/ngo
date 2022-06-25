@@ -4,14 +4,14 @@
     <meta property="og:type"               content="Events" />
     <meta property="og:title"              content="Events" />
     {{-- <meta property="og:description"        content="{!! $event->description !!}" /> --}}
-    <meta property="og:image"              content="{{ asset('images/projects/events/events.jpg') }}" />
+    <meta property="og:image"              content="{{ asset('images/about/'.about()->image) }}" />
 @endsection
  @section('content')
   <!-- Start main-content -->
   <div class="main-content">
 
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/projects/events/events.jpg') }}">
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg') }}">
       <div class="container pt-100 pb-50">
         <!-- Section Content -->
         <div class="section-content pt-100">

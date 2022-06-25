@@ -100,7 +100,7 @@ class aboutSettings extends Controller
                 $newName = Str::random(10).'cover-image'.'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/about/'.$newName);
                 // return 'hello';
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination, 60);
                 $about->image = $newName;
                 $about->save();
                 return back()->with('success','About Updated!');

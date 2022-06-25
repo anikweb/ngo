@@ -94,7 +94,7 @@ class VolunteerApplyController extends Controller
             $image = $request->file('image');
             $newName = $volunteer-> name_en.' - '.$volunteer->volunteer_id.'.'.$image->getClientOriginalExtension();
             $destination = public_path('images/volunteers/'.$newName);
-            Image::make($image)->save($destination);
+            Image::make($image)->save($destination,60);
             $volunteer->image = $newName;
             $volunteer->save();
         }

@@ -73,7 +73,9 @@
                                             </td>
                                         </tr>
                                     @empty
-                                        <tr colspan="12"><i class="fa fa-exclamation-triangle"></i> No Data Found!</tr>
+                                        <tr >
+                                            <td colspan="12"><i class="fa fa-exclamation-triangle"></i> No Data Found!</td>
+                                        </tr>
                                     @endforelse
                                 </tbody>
                             </table>

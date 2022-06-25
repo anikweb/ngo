@@ -14,4 +14,7 @@
     function events(){
         return App\Models\Events::latest()->limit(5)->get();
     }
+    function about(){
+        return App\Models\about::find(1);
+    }
 ?>

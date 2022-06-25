@@ -72,7 +72,7 @@ class OffcialTeamController extends Controller
                 $image = $request->file('image');
                 $newName = Str::slug($offcialTeam->name).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/official_team/'.$newName);
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $offcialTeam->image = $newName;
                 $offcialTeam->save();
             }
@@ -156,7 +156,7 @@ class OffcialTeamController extends Controller
                 $newName = Str::slug($offcialTeam->name).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/official_team/'.$newName);
                 // return 'hello';
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $offcialTeam->image = $newName;
                 $offcialTeam->save();
             }

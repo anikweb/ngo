@@ -1,10 +1,11 @@
 @extends('frontend.master')
 @section('og_meta')
-<meta property="og:url"                content="{{ url()->current() }}" />
+<meta property="description"        content="Volunteer Application Success || {{ generalSettings()->site_title }}" />
+    <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="Volunteer Application Success" />
     <meta property="og:title"              content="Volunteer Application Success" />
     <meta property="og:description"        content="Volunteer Application Success || {{ generalSettings()->site_title }}" />
-    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+    <meta property="og:image"              content="{{ asset('images/about/'.about()->image) }}" />
 @endsection
 @section('content')
 <!-- Start main-content -->

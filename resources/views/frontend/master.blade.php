@@ -3,15 +3,14 @@
 <head>
 
     <!-- Meta Tags -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="description" content="Nonprofit, Non-Governmental, Environmental, climate, Crowdfunding & Charity, " />
-    <meta name="keywords" content="@if(isset($event->tags)) {{ $event->tags }} @else charity, crowdfunding, nonprofit, orphan, environmental, Poor, funding, fundrising, ngo, children, climate @endif" />
-    <meta name="author" content="{{ generalSettings()->site_title }}" />
+    <meta name="viewport"                   content="width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="content-type"         content="text/html; charset=UTF-8"/>
+    <meta name="keywords"                   content="@if(isset($event->tags)) {{ $event->tags }} @else charity, crowdfunding, nonprofit, orphan, environmental, Poor, funding, fundrising, ngo, children, climate @endif" />
+    <meta name="author"                     content="{{ generalSettings()->site_title }}" />
     @yield('og_meta')
 
 <!-- Page Title -->
-<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.success')) Successfully Applied-Volunteer @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.success')) Successfully Applied-Volunteer @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -34,7 +33,7 @@
 <!-- CSS | Custom Margin Padding Collection -->
 <link href="{{ asset('assets/css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
 <!-- CSS | Responsive media queries -->
-<link href="{{ asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css">
+
 <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
 <!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
 
@@ -47,6 +46,8 @@
 <link href="{{ asset('assets/css/colors/theme-skin-blue.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/css/font-awesome.min.css')}}">
 <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" type="text/css">
+
+<link href="{{ asset('assets/css/responsive.css')}}" rel="stylesheet" type="text/css">
 
 <!-- external javascripts -->
 <script src="{{ asset('assets/js/jquery-2.2.4.min.js')}}"></script>
@@ -104,6 +105,37 @@
 <![endif]-->
 </head>
 <body class="">
+    <!-- Messenger Chat Plugin Code Start -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "523630334653864");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+            xfbml            : true,
+            version          : 'v14.0'
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = '//connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Messenger Chat Plugin Code end -->
     {{-- facebook comment start  --}}
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0" nonce="1ysZlWQx"></script>
@@ -120,70 +152,70 @@
         <!-- Header -->
         <header id="header" class="header">
             <div class="header-top p-0 bg-light xs-text-center" data-bg-img="{{ asset('assets/images/footer-bg.png') }}">
-            <div class="container pt-20 pb-20">
-                <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="widget no-border m-0">
-                        <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="{{ route('frontend') }}">
-                            <img src="{{ asset('images/generalSettings/'.generalSettings()->logo) }}" alt="{{ generalSettings()->site_title }}">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-6">
-                    <div class="widget no-border clearfix m-0 mt-5">
-                    <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
-                        <li>
-                        <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">FAQ</a>
-                        </li>
-                        <li class="text-success">|</li>
-                        <li>
-                        <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Help Desk</a>
-                        </li>
-                        <li class="text-success">|</li>
-                        <li>
-                        <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Contact</a>
-                        </li>
-                        @auth
-
-                        <li class="text-success">|</li>
-                        <li>
-                            <a class="text-success" target="_blank" href="{{ route('dashboard') }}">Dashboard</a>
-                        </li>
-                        <li class="text-success">|</li>
-                        <li>
-                            <a class="text-success" href="" target="_blank" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                            </form>
-                        </li>
-                        @else
-                            <li class="text-success">|</li>
-                            <li>
-                                <a class="text-success" href="{{  route('login' ) }}">Login</a>
-                            </li>
-                            @if (generalSettings()->membership == 2)
+                <div class="container pt-20 pb-20">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="widget no-border m-0">
+                                <a class="menuzord-brand pull-left flip xs-pull-center mb-15" href="{{ route('frontend') }}">
+                                    <img src="{{ asset('images/generalSettings/'.generalSettings()->logo) }}" alt="{{ generalSettings()->site_title }}">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="widget no-border clearfix m-0 mt-5">
+                            <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
+                                <li>
+                                <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">FAQ</a>
+                                </li>
                                 <li class="text-success">|</li>
                                 <li>
-                                    <a class="text-success" href="{{ route('register') }}">Register</a>
+                                <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Help Desk</a>
                                 </li>
-                            @endif
-                        @endauth
-                    </ul>
-                    </div>
-                    <div class="widget no-border clearfix m-0 mt-5">
-                    <ul class="styled-icons icon-gray icon-theme-colored icon-circled icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
-                        @foreach (contactInfo() as $item)
-                            @if ($item->platform->name == 'whatsapp')
-                            <li><a href="tel:{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
-                            @else
-                                <li><a href="https://{{ $item->platform->url }}/{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
-                            @endif
-                        @endforeach
-                    </ul>
+                                <li class="text-success">|</li>
+                                <li>
+                                <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Contact</a>
+                                </li>
+                                @auth
+
+                                <li class="text-success">|</li>
+                                <li>
+                                    <a class="text-success" target="_blank" href="{{ route('dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="text-success">|</li>
+                                <li>
+                                    <a class="text-success" href="" target="_blank" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                    </form>
+                                </li>
+                                @else
+                                    <li class="text-success">|</li>
+                                    <li>
+                                        <a class="text-success" href="{{  route('login' ) }}">Login</a>
+                                    </li>
+                                    @if (generalSettings()->membership == 2)
+                                        <li class="text-success">|</li>
+                                        <li>
+                                            <a class="text-success" href="{{ route('register') }}">Register</a>
+                                        </li>
+                                    @endif
+                                @endauth
+                            </ul>
+                            </div>
+                            <div class="widget top-widget-social no-border clearfix m-0 mt-5">
+                                <ul class="styled-icons icon-gray icon-theme-colored icon-circled icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
+                                    @foreach (contactInfo() as $item)
+                                        @if ($item->platform->name == 'whatsapp')
+                                        <li><a href="tel:{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                                        @else
+                                            <li><a href="https://{{ $item->platform->url }}/{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
             </div>
             <div class="header-nav ">
                 <div class="header-nav-wrapper navbar-scrolltofixed">
@@ -258,13 +290,16 @@
         <section class="clients bg-theme-colored">
             <div class="container pt-0 pb-0">
             <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center text-white">Image Gallery</h4>
+                </div>
                 <div class="col-md-12 col-6">
                 <!-- Section: Clients -->
-                <div class="owl-carousel-7col clients-logo transparent text-center">
-                    @foreach (imageGallery() as $gallery)
-                        <div class="item"> <a target="_blank" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="200" width="400" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
-                    @endforeach
-                </div>
+                    <div class="owl-carousel-7col clients-logo transparent text-center">
+                        @foreach (imageGallery() as $gallery)
+                            <div class="item"> <a target="_blank" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="200" width="400" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
             </div>
@@ -374,7 +409,7 @@
             <div class="container pt-15 pb-10">
                 <div class="row">
                 <div class="col-md-6">
-                    <p class="font-11 text-black-777 m-0">Copyright &copy; 2015-{{ date('y') }} <a href="{{ route('frontend') }}">Muktir Bondhon Foundation</a>. All Rights Reserved</p>
+                    <p class="font-11 text-black-777 m-0">Copyright &copy; 2015-{{ date('y') }} <a href="{{ route('frontend') }}">Muktir Bondhon Foundation</a>. All Rights Reserved || Developed By <a target="_blank" style="color: #fff" href="https://facebook.com/anik.web.developer">Anik Kumar Nandi</a></p>
                 </div>
                 <div class="col-md-6 text-right">
                     <div class="widget no-border m-0">

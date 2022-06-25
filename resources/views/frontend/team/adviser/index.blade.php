@@ -1,10 +1,11 @@
 @extends('frontend.master')
 @section('og_meta')
-<meta property="og:url"                content="{{ url()->current() }}" />
-    <meta property="og:type"               content="Adviser" />
-    <meta property="og:title"              content="Adviser" />
+<meta property="description"        content="Adviser || {{ generalSettings()->site_title }}" />
+    <meta property="og:url"                content="{{ url()->current() }}" />
+    <meta property="og:type"               content="Adviser"/>
+    <meta property="og:title"              content="Adviser"/>
     <meta property="og:description"        content="Adviser || {{ generalSettings()->site_title }}" />
-    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+    <meta property="og:image"              content="{{ asset('images/about/'.about()->image) }}" />
 @endsection
 @section('content')
 <div class="main-content">
@@ -51,8 +52,11 @@
                                         <p>{{ $advisor->designation }}</p>
                                     </div>
                                     <ul class="styled-icons icon-theme-colored icon-sm icon-bordered pt-5">
+                                        @if ($advisor->email)
+                                            <li><a title="E-mail" target="_blank" href="mailto:{{ $advisor->email }}"><i class="fa fa-envelope"></i></a></li>
+                                        @endif
                                         @foreach ($advisor->advisorSocial as $item)
-                                            <li><a target="_blank" href="{{ 'https://'.$item->platform->url.'/'.$item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                                            <li><a target="_blank" title="{{ Str::title($item->platform->name) }}" href="{{ 'https://'.$item->platform->url.'/'.$item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
                                         @endforeach
                                     </ul>
                                 </div>

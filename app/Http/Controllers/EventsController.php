@@ -73,7 +73,7 @@ class EventsController extends Controller
                 $image = $request->file('image');
                 $newName = Str::slug($event->slug).Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/projects/events/'.$newName);
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $event->image = $newName;
                 $event->save();
             }
@@ -155,7 +155,7 @@ class EventsController extends Controller
                 $image = $request->file('image');
                 $newName = Str::slug($event->slug).Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/projects/events/'.$newName);
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $event->image = $newName;
                 $event->save();
             }

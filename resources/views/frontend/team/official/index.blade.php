@@ -1,11 +1,12 @@
 @extends('frontend.master')
 
 @section('og_meta')
-<meta property="og:url"                content="{{ url()->current() }}" />
+<meta property="description"        content="Team || {{ generalSettings()->site_title }}" />
+    <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="Team" />
     <meta property="og:title"              content="Team" />
     <meta property="og:description"        content="Team || {{ generalSettings()->site_title }}" />
-    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+    <meta property="og:image"              content="{{ asset('images/about/'.about()->image) }}" />
 @endsection
 @section('content')
 <div class="main-content">
@@ -52,8 +53,11 @@
                                         <p>{{ $item->designation }}</p>
                                     </div>
                                     <ul class="styled-icons icon-theme-colored icon-sm icon-bordered pt-5">
+                                        @if ($item->email)
+                                            <li><a title="E-mail" target="_blank" href="mailto:{{ $item->email }}"><i class="fa fa-envelope"></i></a></li>
+                                        @endif
                                         @foreach ($item->officialTeamSocial as $items)
-                                            <li><a target="_blank" href="{{ 'https://'.$items->platform->url.'/'.$items->username }}"><i class="{{Str::replace('fab', 'fa', $items->platform->icon)}}"></i></a></li>
+                                            <li><a target="_blank" title="{{ Str::title($items->platform->name) }}" href="{{ 'https://'.$items->platform->url.'/'.$items->username }}"><i class="{{Str::replace('fab', 'fa', $items->platform->icon)}}"></i></a></li>
                                         @endforeach
                                     </ul>
                                 </div>

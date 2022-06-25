@@ -64,7 +64,7 @@ class ProjectController extends Controller
                 $image = $request->file('image');
                 $newName = Str::slug($project->title).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/projects/'.$newName);
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $project->featured_image = $newName;
                 $project->save();
             }
@@ -141,7 +141,7 @@ class ProjectController extends Controller
                 $image = $request->file('image');
                 $newName = Str::slug($project->title).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                 $destination = public_path('images/projects/'.$newName);
-                Image::make($image)->save($destination);
+                Image::make($image)->save($destination,60);
                 $project->featured_image = $newName;
                 $project->save();
             }
@@ -193,7 +193,7 @@ class ProjectController extends Controller
                         $newName = Str::slug($project->title).'-image-'.Str::random(5).'.'.$image->getClientOriginalExtension();
                         $path = public_path('images/projects/image_gallery/').$project->slug.'/';
                         File::makeDirectory($path, $mode = 0777, true, true);
-                        Image::make($image)->save($path.$newName);
+                        Image::make($image)->save($path.$newName,60);
                         $projectGallery->project_id = $project->id;
                         $projectGallery->image = $newName;
                         $projectGallery->save();

@@ -1,10 +1,11 @@
 @extends('frontend.master')
 @section('og_meta')
-<meta property="og:url"                content="{{ url()->current() }}" />
+<meta property="description"        content="Home | {!! generalSettings()->tagline !!}" />
+    <meta property="og:url"                content="{{ url()->current() }}" />
     <meta property="og:type"               content="Home" />
     <meta property="og:title"              content="{{ generalSettings()->site_title }}" />
-    <meta property="og:description"        content="{!! generalSettings()->tagline !!}" />
-    <meta property="og:image"              content="{{ asset('images/media/image_gallery/featured.jpg') }}" />
+    <meta property="og:description"        content="Home | {!! generalSettings()->tagline !!}" />
+    <meta property="og:image"              content="{{ asset('images/about/'.about()->image) }}" />
 @endsection
 @section('content')
   <!-- Start main-content -->
@@ -42,7 +43,7 @@
                                 <!-- LAYERS -->
 
                                 <!-- LAYER NR. 1 -->
-                                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway bg-theme-colored-transparent pr-20 pl-20"
+                                <div class="tp-caption  tp-resizeme text-uppercase text-white bg-theme-colored-transparent pr-20 pl-20"
                                     id="rs-{{$key+1}}-layer-1"
                                     data-x="['{{$slider->align}}']"
                                     data-hoffset="['30']"
@@ -62,11 +63,11 @@
                                     data-splitin="none"
                                     data-splitout="none"
                                     data-responsive_offset="on"
-                                    style="z-index: 7; white-space: nowrap; font-weight:600;"><span class="">{{ $slider->title }}
+                                    style="z-index: 7; white-space: nowrap; font-weight:600;"><span class="slider-title">{{ $slider->title }}
                                 </div>
 
                                 <!-- LAYER NR. 2 -->
-                                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway"
+                                <div class="tp-caption tp-resizeme text-uppercase text-white"
                                     id="rs-{{$key+1}}-layer-2"
                                     data-x="['{{$slider->align}}']"
                                     data-hoffset="['35']"
@@ -86,7 +87,8 @@
                                     data-splitin="none"
                                     data-splitout="none"
                                     data-responsive_offset="on"
-                                    style="z-index: 7; white-space: nowrap; font-weight:600;">{{$slider->subtitle}}
+                                    style="z-index: 7; white-space: nowrap; font-weight:600;">
+                                    <span class="slider-subtitle">{{$slider->subtitle}}</span>
                                 </div>
                                 <!-- LAYER NR. 4 -->
                                 <div class="tp-caption tp-resizeme"
@@ -633,7 +635,7 @@
             </div>
 
             <div class="col-md-5 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
-              <h3 class="text-uppercase title line-bottom mt-0 mb-30 mt-sm-40"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Client <span class="text-theme-colored">Testimonials</span></h3>
+              <h3 class="text-uppercase title line-bottom mt-0 mb-30 mt-sm-40"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Donner's <span class="text-theme-colored">Testimonials</span></h3>
 
                 <div class="bxslider bx-nav-top">
                     {{-- <div class="testimonial media sm-maxwidth400 p-15 mt-0 mb-15">
