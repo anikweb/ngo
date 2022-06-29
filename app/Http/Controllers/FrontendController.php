@@ -70,7 +70,7 @@ class FrontendController extends Controller
     }
     public function publicationsIndex(){
         return view('frontend.media.publications.index',[
-            'projects' => Project::latest()->get(),
+            'projects' => Project::orderBy('id','asc')->get(),
         ]);
 
     }

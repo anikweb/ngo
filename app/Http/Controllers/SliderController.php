@@ -57,7 +57,7 @@ class SliderController extends Controller
         if(auth()->user()->can('slider management'))
         {
             $request->validate([
-                'title' => 'required|max:50',
+                'title' => 'required|max:100',
                 'subtitle' => 'required|max:50',
                 'button_name' => 'max:15',
                 'image' => 'required|mimes:jpg,jpeg,png,webp',
@@ -142,7 +142,7 @@ class SliderController extends Controller
         if(auth()->user()->can('slider management'))
         {
             $request->validate([
-                'title' => 'required|max:50',
+                'title' => 'required|max:100',
                 'subtitle' => 'required|max:50',
                 'button_name' => 'max:15',
                 'image' => 'required|mimes:jpg,jpeg,png,webp',

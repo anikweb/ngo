@@ -15,22 +15,22 @@
 @section('content')
 <!-- Start main-content -->
 <div class="main-content">
-    <section class="bg-primary">
+    <section style="background:#bababa">
       <div class="container pt-0 pb-0 ">
         <div class="section-content">
           <div class="row">
             <div class="col-md-12">
                 @foreach ($projects as $project)
                         @if ($project->publications->count() !=0)
-                            <h2 class="text-center text-white">{{ Str::upper($project->title) }}</h2>
-                            <div class="your-class p-2 bg-primary">
+                            <h2 class="text-center text-theme-colored">{{ Str::upper($project->title) }}</h2>
+                            <div class="your-class p-2">
                                 @foreach ($project->publications as $projectPublication)
                                     <div class="bg-white p-5">
                                         <img style="height: 200px; width:300px" class="img-fluid card-img-top" src="{{ asset('images/media/publications/'.$projectPublication->featured_image) }}" alt="{{ $projectPublication->headline }}">
                                         <h5>{{ Str::limit($projectPublication->headline,32,'...') }}</h5>
                                         <span class="badge">{{ $projectPublication->media }}</span>
                                         <p class="text-primary"> Published: {{ date('d-M-Y',strtotime($projectPublication->published_date)) }}</p>
-                                        <a style="display: block" class="btn btn-info" target="_blank" href="{{ $projectPublication->url }}"><i class="fa fa-link"></i> Read Article </a>
+                                        <a style="display: block" class="btn btn-theme-colored" target="_blank" href="{{ $projectPublication->url }}"><i class="fa fa-link"></i> Read Article </a>
                                     </div>
                                 @endforeach
                             </div>
