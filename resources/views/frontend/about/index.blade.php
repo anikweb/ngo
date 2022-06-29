@@ -36,7 +36,7 @@
               {{-- <a class="text-theme-colored font-13" href="page-about1.html">Read More →</a> --}}
             </div>
             <div class="col-md-6">
-              <h3 class="line-bottom mt-0">Our Mission</h3>
+              <h3 class="line-bottom mt-0">Our Mission, Vision etc.</h3>
               <p class="mb-30">@php echo $about->mission; @endphp</p>
               {{-- <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
