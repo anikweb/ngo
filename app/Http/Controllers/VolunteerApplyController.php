@@ -13,6 +13,7 @@ use Illuminate\Routing\Route;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 use Mail;
+use PDF;
 use App\Mail\VolunteerApplicationMail;
 
 class VolunteerApplyController extends Controller
@@ -99,12 +100,9 @@ class VolunteerApplyController extends Controller
             $volunteer->save();
         }
         Mail::to($volunteer->email)->send(new VolunteerApplicationMail($volunteer));
-        return redirect()->route('frontend.volunteer.success',$volunteer->id);
-    }
-    public function success($id){
-        return view('frontend.volunteers.success',[
-            'volunteer' => Volunteers::find($id),
-        ]);
+        // $pdf = PDF::loadView('frontend.volunteers.pdf', compact('volunteer'))->setPaper('a4', 'portrait');
+        // $pdf->download($volunteer->applicant_id.'.pdf');
+        return view('frontend.volunteers.success',compact('volunteer'));
     }
     public function getDistrict($id){
         $district = District::where('division_id',$id)->orderBy('name','asc')->get();

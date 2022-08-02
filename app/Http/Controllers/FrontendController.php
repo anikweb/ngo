@@ -41,7 +41,7 @@ class FrontendController extends Controller
     }
     public function officialTeamIndex(){
         return view('frontend.team.official.index',[
-            'officialTeam' => OffcialTeam::orderBy('priority','asc')->paginate(15),
+            'officialTeam' => OffcialTeam::orderBy('priority','asc')->paginate(20),
         ]);
     }
     public function projectIndex($slug){

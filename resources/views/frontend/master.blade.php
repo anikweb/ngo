@@ -10,7 +10,7 @@
     @yield('og_meta')
 
 <!-- Page Title -->
-<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.success')) Successfully Applied-Volunteer @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -346,7 +346,7 @@
                     <li><a href="{{ route('frontend.cooming.soon') }}">Projects</a></li>
                     <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
                     <li><a href="{{ route('frontend.image.gallery') }}">Media</a></li>
-                    <li><a href="{{ route('frontend.volunteer.apply') }}">Volunteers</a></li>
+                    <li><a href="{{ route('frontend.volunteer.apply') }}">Join as Volunteer</a></li>
                     <li><a href="{{ route('frontend.cooming.soon') }}">Blog</a></li>
                     <li><a href="{{ route('frontend.cooming.soon') }}">Terms & Condition</a></li>
                     <li><a href="{{ route('frontend.cooming.soon') }}">Policy</a></li>

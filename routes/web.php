@@ -49,9 +49,8 @@ Route::get('/get/ajax/present/thana/info/{district_id}',[VolunteerApplyControlle
 Route::get('/get/ajax/permanent/district/info/{division_id}',[VolunteerApplyController::class,'getPmDistrict']);
 Route::get('/get/ajax/permanent/thana/info/{district_id}',[VolunteerApplyController::class,'getPmThana']);
 Route::get('/get/ajax/captcha/reload/',[VolunteerApplyController::class,'reloadCaptcha']);
-Route::get('volunteer/apply/success/{id}',[VolunteerApplyController::class,'success'])->name('frontend.volunteer.success');
+Route::get('volunteer/apply/success/{applicant_id}',[VolunteerApplyController::class,'success'])->name('frontend.volunteer.success');
 Route::get('comming-soon',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
-
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);
 Route::resource('dashboard/generalSetting', GeneralSettingController::class)->middleware(['auth','verified']);
