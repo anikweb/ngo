@@ -65,6 +65,7 @@ class FrontendController extends Controller
     public function imagegalleryIndex(){
         // return $slug;
         return view('frontend.media.image_gallery.index',[
+            'about' => about::first(),
             'image_galleries' => ImageGallery::latest()->paginate(40),
         ]);
     }
