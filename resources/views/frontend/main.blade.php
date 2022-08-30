@@ -131,12 +131,12 @@
             <div class="col-md-6">
               <img class="img-fullwidth" src="http://placehold.it/555x280" alt="">
               <h3 class="line-bottom">Who We Are?</h3>
-            <p>{!! Str::limit($about->about, 1000); !!} @if (Str::length($about->about) >= 1000) <a href="{{ route('frontend.about') }}" class="text-theme-colored font-13">Read more</a> @endif</p>
+            <p>{!! Str::limit($about->about, 200); !!} @if (Str::length($about->about) >= 200) <a href="{{ route('frontend.about') }}" class="text-theme-colored font-13">Read more</a> @endif</p>
               {{-- <a class="text-theme-colored font-13" href="page-about1.html">Read More →</a> --}}
             </div>
             <div class="col-md-6">
               <h3 class="line-bottom mt-0 mt-sm-30">Our Mission, Vision etc.</h3>
-              <p class="mb-30">{!! Str::limit($about->mission,1000) !!} @if (Str::length($about->mission) >= 1000) <a href="{{ route('frontend.about') }}" class="text-theme-colored font-13">Read more</a> @endif</p>
+              <p class="mb-30">{!! Str::limit($about->mission,200) !!} @if (Str::length($about->mission) >= 200) <a href="{{ route('frontend.about') }}" class="text-theme-colored font-13">Read more</a> @endif</p>
               {{-- <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                   <div class="icon-box p-0 mb-30">
