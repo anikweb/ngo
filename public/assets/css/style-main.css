@@ -50,7 +50,7 @@ This file contains the common styles of this theme.
 		* job.less
 		* shop.less
 		* blog.less
-		* shortcodes.less 
+		* shortcodes.less
 			* alerts.less
 			* blockquote.less
 			* buttons.less
@@ -114,7 +114,7 @@ html {
 }
 body {
   line-height: 1.7;
-  color: #666666;
+  color: rgb(204, 203, 203);
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
   background-color: #fff;
@@ -776,8 +776,8 @@ section > .container-fluid {
   background: rgba(0, 0, 0, 0.6);
   text-decoration: none;
 }
-/*  
- * extra.less 
+/*
+ * extra.less
  * -----------------------------------------------
 */
 /* -------- Heading Style ---------- */
@@ -3539,7 +3539,7 @@ table.no-border td {
   padding: 5px 15px;
 }
 /*
- * Blog 
+ * Blog
  * -----------------------------------------------
 */
 .post .entry-header {
@@ -4386,8 +4386,8 @@ blockquote p {
 .funfact.style-1:hover .funfact-title {
   color: #333333;
 }
-/*  
- * home-boxes.less 
+/*
+ * home-boxes.less
  * -----------------------------------------------
 */
 .home-boxes .each-box {
@@ -6037,10 +6037,10 @@ blockquote p {
   color: #c0c0c0;
 }
 .widget .list-border li {
-  border-bottom: 1px dashed #d3d3d3;
+  border-bottom: 1px dashed rgb(204, 203, 203);
 }
 .widget.dark .list-border li {
-  border-bottom: 1px dashed #404040;
+  border-bottom: 1px dashed rgb(204, 203, 203);
 }
 /* -------- Footer & Sidebar Widgets ---------- */
 .widget {
@@ -6064,7 +6064,7 @@ blockquote p {
   padding: 10px;
 }
 .widget.brochures i {
-  color: #666666;
+  color: rgb(204, 203, 203);
   font-size: 16px;
   margin-right: 10px;
 }
@@ -6290,7 +6290,7 @@ blockquote p {
   background: #fafafa;
 }
 .footer a {
-  color: #808080;
+  color: rgb(204, 203, 203);
 }
 .footer a:focus,
 .footer a:hover,
