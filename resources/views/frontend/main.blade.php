@@ -42,7 +42,7 @@
                                 <!-- LAYERS -->
 
                                 <!-- LAYER NR. 1 -->
-                                <div class="tp-caption  tp-resizeme text-uppercase text-white bg-theme-colored-transparent pr-20 pl-20"
+                                <div class="tp-caption  tp-resizeme text-uppercase text-white pr-20 pl-20"
                                     id="rs-{{$key+1}}-layer-1"
                                     data-x="['{{$slider->align}}']"
                                     data-hoffset="['30']"
@@ -62,7 +62,7 @@
                                     data-splitin="none"
                                     data-splitout="none"
                                     data-responsive_offset="on"
-                                    style="z-index: 7; white-space: nowrap; font-weight:600;"><span class="slider-title">{{ $slider->title }}
+                                    style="z-index: 7; background:#10783bb0; white-space: nowrap; font-weight:600;"><span class="slider-title">{{ $slider->title }}
                                 </div>
 
                                 <!-- LAYER NR. 2 -->
