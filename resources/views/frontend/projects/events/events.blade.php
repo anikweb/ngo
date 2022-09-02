@@ -30,7 +30,7 @@
             <div class="section-content">
                 <div class="row">
                     @foreach ($events as $event)
-                        <div class="col-sm-12 col-md-12 col-lg-12 mb-50">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="schedule-box maxwidth500 bg-lighter clearfix mb-30">
                                 <div class="col-md-5">
                                     <div class="thumb">
@@ -55,7 +55,7 @@
                                             <li><i class="fa fa-bookmark mr-5"></i> Project:  <a class="text-primary" href="{{ route('frontend.project.index',$event->project->slug) }}">{{ $event->project->title }}</a></li>
                                         </ul>
                                         <div class="clearfix"></div>
-                                        @php echo $event->description @endphp
+                                        @php echo Str::limit($event->description, 150, '.....') @endphp
                                         <div class="mt-10">
                                             <a class="btn btn-dark btn-theme-colored btn-sm mt-10" href="{{ route('frontend.events.show',$event->slug) }}">Read More</a>
                                             {{-- <a href="#" class="btn btn-default btn-sm mt-10">Details</a> --}}
@@ -65,6 +65,9 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        {{ $events->links() }}
+                    </div>
                 </div>
             </div>
         </div>

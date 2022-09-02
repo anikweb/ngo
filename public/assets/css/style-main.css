@@ -4738,7 +4738,7 @@ blockquote p {
  * -----------------------------------------------
 */
 .pagination.theme-colored li.active a {
-  background: #BF9E58;
+  background: #10783b;
   color: #fff;
   border: 1px solid transparent;
 }
@@ -4746,7 +4746,7 @@ blockquote p {
   color: #333;
 }
 .pagination.dark li.active a {
-  background: #333;
+  background: #10783b;
   color: #fff;
   border: 1px solid transparent;
 }

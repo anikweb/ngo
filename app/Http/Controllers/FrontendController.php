@@ -53,7 +53,7 @@ class FrontendController extends Controller
     public function eventsIndex(){
         // return 'aschi';
         return view('frontend.projects.events.events',[
-            'events' => Events::latest()->get(),
+            'events' => Events::latest()->paginate(10),
         ]);
     }
     public function eventsShow($slug){
