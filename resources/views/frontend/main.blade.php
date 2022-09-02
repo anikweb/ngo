@@ -129,8 +129,7 @@
         <div class="section-content">
           <div class="row">
             <div class="col-md-6">
-              <img class="img-fullwidth" src="http://placehold.it/555x280" alt="">
-              <h3 class="line-bottom">Who We Are?</h3>
+              <h3 class="line-bottom mt-0">Who We Are?</h3>
             <p>{!! Str::limit($about->about, 200); !!} @if (Str::length($about->about) >= 200) <a href="{{ route('frontend.about') }}" class="text-theme-colored font-13">Read more</a> @endif</p>
               {{-- <a class="text-theme-colored font-13" href="page-about1.html">Read More →</a> --}}
             </div>
