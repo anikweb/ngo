@@ -45,7 +45,7 @@
                                     <select name="project_id" id="project_id" class="form-control">
                                         <option>-Select-</option>
                                         @foreach($projects as $project)
-                                            <option @if($project->id == old('project_id')) selected @endif value="{{$project->id}}">{{$project->title}}</option>
+                                            <option @if($project->id == $publication->project_id) selected @endif value="{{$project->id}}">{{$project->title}}</option>
                                         @endforeach
                                     </select>
                                     @error('project_id')

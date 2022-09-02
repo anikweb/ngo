@@ -702,15 +702,15 @@
                     </div>
                   </div>
                 </div>
-            <div class="row mt-30">
+            <div class="row mt-30 ">
                 @foreach ($events as $event)
-                  <div class="col-sm-4 col-md-4 col-lg-4">
+                  <div class="col-sm-4 col-md-4 col-lg-4 " style="padding-right:65px !important">
                       <div class="schedule-box maxwidth500 bg-lighter mb-30">
-                      <div class="thumb">
-                          <img class="img-fullwidth" alt="{{ $event->title }}" src="{{ asset('images/projects/events/'.$event->image) }}">
+                      <div class="thumb" >
+                          <img class="img-fluid" alt="{{ $event->title }}" src="{{ asset('images/projects/events/'.$event->image) }}">
                       </div>
                       <div class="schedule-details clearfix p-15 pt-10">
-                          <h4 class="title ‍c-title mt-0"><a href="{{route('frontend.events.show',$event->slug)}}">{{ $event->title }}</a></h4>
+                          <h4 class="title mt-0"><a href="{{route('frontend.events.show',$event->slug)}}">{{ $event->title }}</a></h4>
                           <div class="clearfix"></div>
                           <p class="mt-10">@php echo Str::limit($event->description, 230, '....') @endphp @if(Str::length($event->description) >230) <a href="{{route('frontend.events.show',$event->slug)}}">More</a> @endif</p>
                           <div class="mt-10">

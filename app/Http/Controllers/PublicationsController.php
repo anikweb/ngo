@@ -113,6 +113,7 @@ class PublicationsController extends Controller
     {
         if(auth()->user()->can('media management')){
             return view('backend.pages.media.publications.edit',[
+                'projects' => Project::orderBy('title','asc')->get(),
                 'publication' => Publications::find($id),
             ]);
         }else{
