@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2022 at 09:26 PM
+-- Generation Time: Oct 27, 2022 at 09:47 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -260,7 +260,8 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `project_id`, `title`, `slug`, `image`, `description`, `location`, `likes`, `tags`, `event_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '7', 'Distribution of powdered milk among the flooded children', 'distribution-of-powdered-milk-among-the-flooded-children', 'distribution-of-powdered-milk-among-the-flooded-childrenW2qca.jpg', '<p>The flood victims rushed to Sunamganj as soon as they saw the truck loaded with relief vehicles. Behind the truckloads of dried food, they look for food for their children. 2-5 year old children will no longer be able to eat dry food. So our team in Sunamganj yesterday distributed high quality milk powder in the market for children.</p>', 'Sunamgonj, Sylhet', '0', 'Flood,Sylhet Flood,বন্যা,সিলেটের বন্য,সুনামগঞ্জ বন্যা,বন্যার্ত,মুক্তির বন্ধন ফাউন্ডেশন', '2022-06-22', '2022-06-24 20:36:47', '2022-06-24 20:36:47', NULL);
+(1, '7', 'Distribution of powdered milk among the flooded children', 'distribution-of-powdered-milk-among-the-flooded-children', 'distribution-of-powdered-milk-among-the-flooded-children19KWC.jpg', '<p>The flood victims rushed to Sunamganj as soon as they saw the truck loaded with relief vehicles. Behind the truckloads of dried food, they look for food for their children. 2-5 year old children will no longer be able to eat dry food. So our team in Sunamganj yesterday distributed high quality milk powder in the market for children.</p>', 'Sunamgonj, Sylhet', '0', 'Flood,Sylhet Flood,বন্যা,সিলেটের বন্য,সুনামগঞ্জ বন্যা,বন্যার্ত,মুক্তির বন্ধন ফাউন্ডেশন', '2022-06-22', '2022-06-24 20:36:47', '2022-09-02 17:58:25', NULL),
+(2, '1', 'Muktir Bondhon Foundation\'s First Eid Festival', 'muktir-bondhon-foundations-first-eid-festival', 'muktir-bondhon-foundations-first-eid-festivalepwz1.jpg', '<p>Our rural children have been amazed by the unexpected gift! New clothes! Mehedi, lipstick, silk bangles, hair bands to dress up again !!! It&#39;s amazing !!!<br />\r\nIt is as if they are happily toggling inside the stomach !!</p>', 'Atharabari', '0', 'muktirbondhon', '2017-08-31', '2022-06-26 10:11:32', '2022-09-02 17:58:58', NULL);
 
 -- --------------------------------------------------------
 
@@ -534,7 +535,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2022_06_19_181442_create_districts_table', 6),
 (25, '2022_06_19_181818_create_thanas_table', 6),
 (26, '2022_06_19_235041_create_countries_table', 6),
-(28, '2022_06_19_010708_create_volunteers_table', 7);
+(28, '2022_06_19_010708_create_volunteers_table', 7),
+(30, '2022_10_27_230036_create_term_conditions_table', 8);
 
 -- --------------------------------------------------------
 
@@ -829,7 +831,7 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `title`, `subtitle`, `image`, `button_name`, `button_link`, `align`, `priority`, `created_at`, `updated_at`) VALUES
-(14, 'Muktir Bondhon Foundation', 'We care for Creation', 'muktir-bondhon-foundation-slider-1nfFD.jpg', 'Nyssa Mclean', 'Voluptatem nisi vel', 'left', 15, '2022-06-19 19:48:17', '2022-06-19 19:50:14');
+(15, 'Ramdan\'s Free Haat', 'We care for Creation', 'ramdans-free-haat-slider-LnphY.jpg', 'See More', 'http://muktirbondhon.org/project/ramdans-free-haat', 'left', 1, '2022-06-25 19:36:41', '2022-06-25 19:36:41');
 
 -- --------------------------------------------------------
 
@@ -860,6 +862,29 @@ INSERT INTO `social_platforms` (`id`, `name`, `icon`, `url`, `created_at`, `upda
 (7, 'tumblr', 'fab fa-tumblr-square', 'tumblr.com', '2021-09-23 16:28:05', NULL),
 (8, 'pinterest', 'fab fa-pinterest', 'pinterest.com', '2021-09-23 16:32:39', NULL),
 (9, 'whatsapp', 'fab fa-whatsapp', '', '2021-09-23 16:35:53', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `term_conditions`
+--
+
+CREATE TABLE `term_conditions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `term` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `term_conditions`
+--
+
+INSERT INTO `term_conditions` (`id`, `term`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'What do you mean by item and end product?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus, maiores officiis vitae fuga sunt repellendus. Molestiae quae, ducimus ut tenetur nobis id quam autem quibusdam commodi inventore laborum libero officiis, accusantium a laboriosam cumque consequatur voluptates fuga assumenda corporis amet. Vitae placeat architecto ipsa cumque fugiat, atque molestiae perferendis quasi quaerat iste voluptate quas dicta corporis, incidunt quibusdam quia odit unde, rem harum quis! Optio debitis veniam quibusdam, culpa quia, aperiam cupiditate perspiciatis repellat similique saepe magnam quaerat iusto obcaecati doloremque, dolor praesentium a!\r\n\r\nVestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Ut tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio. Phasellus auctor velit at lacus blandit, commodo iaculis justo viverra. Etiam vitae est arcu. Mauris vel congue dolor. Aliquam eget mi mi. Fusce quam tortor, commodo ac dui quis, bibendum viverra erat. Maecenas mattis lectus enim, quis tincidunt dui molestie euismod. Curabitur et diam tristique, accumsan nunc eu, hendrerit tellus.', '2022-10-27 19:17:18', '2022-10-27 19:17:18'),
+(2, 'What are some examples of permitted end products?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus, maiores officiis vitae fuga sunt repellendus. Molestiae quae, ducimus ut tenetur nobis id quam autem quibusdam commodi inventore laborum libero officiis, accusantium a laboriosam cumque consequatur voluptates fuga assumenda corporis amet. Vitae placeat architecto ipsa cumque fugiat, atque molestiae perferendis quasi quaerat iste voluptate quas dicta corporis, incidunt quibusdam quia odit unde, rem harum quis! Optio debitis veniam quibusdam, culpa quia, aperiam cupiditate perspiciatis repellat similique saepe magnam quaerat iusto obcaecati doloremque, dolor praesentium a!\r\n\r\nVestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Ut tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio. Phasellus auctor velit at lacus blandit, commodo iaculis justo viverra. Etiam vitae est arcu. Mauris vel congue dolor. Aliquam eget mi mi. Fusce quam tortor, commodo ac dui quis, bibendum viverra erat. Maecenas mattis lectus enim, quis tincidunt dui molestie euismod. Curabitur et diam tristique, accumsan nunc eu, hendrerit tellus.', '2022-10-27 19:17:18', '2022-10-27 19:17:18'),
+(3, 'What does non-exclusive mean?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus, maiores officiis vitae fuga sunt repellendus. Molestiae quae, ducimus ut tenetur nobis id quam autem quibusdam commodi inventore laborum libero officiis, accusantium a laboriosam cumque consequatur voluptates fuga assumenda corporis amet. Vitae placeat architecto ipsa cumque fugiat, atque molestiae perferendis quasi quaerat iste voluptate quas dicta corporis, incidunt quibusdam quia odit unde, rem harum quis! Optio debitis veniam quibusdam, culpa quia, aperiam cupiditate perspiciatis repellat similique saepe magnam quaerat iusto obcaecati doloremque, dolor praesentium a! Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Ut tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.', '2022-10-27 19:32:12', '2022-10-27 19:42:09');
 
 -- --------------------------------------------------------
 
@@ -1399,7 +1424,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '2022-06-24 15:39:54', '$2y$10$RBDI4wkFJwbKCrKjjfM16O8Wmq/Z3PwDF07sg3X8uWWq0L7nhc6Au', 'gxbGrDDf683Y2S372RYgsWMiGIaD1OT2toffXMOH0Y1rZFqpbnnqMijkhR3z', '2021-09-02 01:39:17', '2022-06-24 15:39:54'),
+(1, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '2022-06-24 15:39:54', '$2y$10$c7jzvP4DN0EvHCllcZgzM.JrbD1jzqvXccwX14nNpzElrrhCPJfwi', 'rKw0sYGyEbyNB2wmTFfyYCnzfioPgTZIf3sWXf5fOHKrkjWph5PiUMoH0YfV', '2021-09-02 01:39:17', '2022-10-27 16:24:57'),
 (2, 'John DOE', 'john@gmail.com', NULL, '$2y$10$3QliVKb3rSLraq0xn7fBOuWMLBQ9O9uFeHlq3oA8G9uw8CbEvCuDe', NULL, '2021-09-15 10:22:48', '2021-09-15 10:22:48'),
 (3, 'Dipika Padukone', 'dipika@gmail.com', NULL, '$2y$10$zGpT6e2a95F5ObRtjfy9kO8jCNnBCYduGsB7o2GiGR8Cwfh/gbIxK', NULL, '2021-09-15 10:24:54', '2021-09-15 10:24:54'),
 (4, 'Mim Sarker', 'mim@gmail.com', NULL, '$2y$10$aPBgn2tW3F/cETFQLEEVkuCUQnalF6NuOY1VVfDNlSc7D4eFYU2S.', NULL, '2021-12-04 16:08:34', '2021-12-04 16:08:34'),
@@ -1610,6 +1635,12 @@ ALTER TABLE `social_platforms`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `term_conditions`
+--
+ALTER TABLE `term_conditions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `thanas`
 --
 ALTER TABLE `thanas`
@@ -1685,7 +1716,7 @@ ALTER TABLE `divisions`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1709,7 +1740,7 @@ ALTER TABLE `image_galleries`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `offcial_teams`
@@ -1745,7 +1776,7 @@ ALTER TABLE `project_image_galleries`
 -- AUTO_INCREMENT for table `publications`
 --
 ALTER TABLE `publications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1757,13 +1788,19 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `social_platforms`
 --
 ALTER TABLE `social_platforms`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `term_conditions`
+--
+ALTER TABLE `term_conditions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `thanas`

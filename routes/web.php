@@ -15,6 +15,7 @@ use App\Http\Controllers\{
     PublicationsController,
     RoleController,
     SliderController,
+    TermConditionController,
     VolunteerApplyController,
     VolunteersController,
 };
@@ -50,7 +51,12 @@ Route::get('/get/ajax/permanent/district/info/{division_id}',[VolunteerApplyCont
 Route::get('/get/ajax/permanent/thana/info/{district_id}',[VolunteerApplyController::class,'getPmThana']);
 Route::get('/get/ajax/captcha/reload/',[VolunteerApplyController::class,'reloadCaptcha']);
 Route::get('volunteer/apply/success/{applicant_id}',[VolunteerApplyController::class,'success'])->name('frontend.volunteer.success');
+
+Route::get('/terms-and-condition', [FrontendController::class,'termsIndex'])->name('frontend.terms.index');
+
 Route::get('comming-soon',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
+
+
 // Backend
 Route::get('/dashboard', [BackendController::class,'dashboard'])->name('dashboard')->middleware(['auth','verified']);
 Route::resource('dashboard/generalSetting', GeneralSettingController::class)->middleware(['auth','verified']);
@@ -85,4 +91,5 @@ Route::get('dashboard/image-gallery/delete/permanently/{id}',[ImageGalleryContro
 Route::resource('dashboard/image-gallery',ImageGalleryController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/publications',PublicationsController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/volunteer',VolunteersController::class)->middleware(['auth','verified']);
+Route::resource('dashboard/terms',TermConditionController::class)->middleware(['auth','verified']);
 require __DIR__.'/auth.php';

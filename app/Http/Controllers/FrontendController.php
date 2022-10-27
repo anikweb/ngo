@@ -12,6 +12,7 @@ use App\Models\{
     Slider,
     Project,
     Publications,
+    TermCondition,
 };
 use PDO;
 
@@ -74,6 +75,12 @@ class FrontendController extends Controller
             'projects' => Project::orderBy('id','asc')->get(),
         ]);
 
+    }
+    public function termsIndex(){
+        return view('frontend.terms.index',[
+            'about' => about::first(),
+            'terms' => TermCondition::latest()->get(),
+        ]);
     }
 
 }
