@@ -14,9 +14,13 @@ class TermConditionController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.terms.index',[
-            "terms" => TermCondition::latest()->paginate(10)
-        ]);
+        if(auth()->user()->can('terms and condition management')){
+            return view('backend.pages.terms.index',[
+                "terms" => TermCondition::latest()->paginate(10)
+            ]);
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -26,7 +30,11 @@ class TermConditionController extends Controller
      */
     public function create()
     {
-        return view('backend.pages.terms.create');
+        if(auth()->user()->can('terms and condition management')){
+            return view('backend.pages.terms.create');
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -37,16 +45,20 @@ class TermConditionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'term' => "required|string|unique:term_conditions,term",
-            'description' => "required|string|unique:term_conditions,description",
-        ]);
-        $terms = new TermCondition;
-        $terms->term = $request->term;
-        $terms->description = $request->description;
-
-        if($terms->save()){
-            return redirect()->route('terms.index')->with('success','New terms and condition added successfull!');
+        if(auth()->user()->can('terms and condition management')){
+            $request->validate([
+                'term' => "required|string|unique:term_conditions,term",
+                'description' => "required|string|unique:term_conditions,description",
+            ]);
+            $terms = new TermCondition;
+            $terms->term = $request->term;
+            $terms->description = $request->description;
+    
+            if($terms->save()){
+                return redirect()->route('terms.index')->with('success','New terms and condition added successfull!');
+            }
+        }else{
+            return abort(404);
         }
     }
 
@@ -69,11 +81,14 @@ class TermConditionController extends Controller
      */
     public function edit($request)
     {
-
-        $term = TermCondition::find($request);
-        return view('backend.pages.terms.edit',[
-            'term' => $term,
-        ]);
+        if(auth()->user()->can('terms and condition management')){
+            $term = TermCondition::find($request);
+            return view('backend.pages.terms.edit',[
+                'term' => $term,
+            ]);
+        }else{
+            return abort(404);
+        }
     }
 
     /**
@@ -85,15 +100,19 @@ class TermConditionController extends Controller
      */
     public function update(Request $request)
     {
-        $request->validate([
-            'term' => "required|string|unique:term_conditions,term,".$request->id,
-            'description' => "required|string|unique:term_conditions,description,".$request->id,
-        ]);
-        $term = TermCondition::findOrFail($request->id);
-        $term->term = $request->term;
-        $term->description = $request->description;
-        if($term->save()){
-            return redirect()->route('terms.index')->with('success','Term and condition successfull');
+        if(auth()->user()->can('terms and condition management')){
+            $request->validate([
+                'term' => "required|string|unique:term_conditions,term,".$request->id,
+                'description' => "required|string|unique:term_conditions,description,".$request->id,
+            ]);
+            $term = TermCondition::findOrFail($request->id);
+            $term->term = $request->term;
+            $term->description = $request->description;
+            if($term->save()){
+                return redirect()->route('terms.index')->with('success','Term and condition successfull');
+            }
+        }else{
+            return abort(404);
         }
     }
 
@@ -105,9 +124,13 @@ class TermConditionController extends Controller
      */
     public function destroy($request)
     {
-        $term = TermCondition::find($request);
-        if($term->delete()){
-            return redirect()->route('terms.index')->with('success','Term and Condition Deleted Successfull');
+        if(auth()->user()->can('terms and condition management')){
+            $term = TermCondition::find($request);
+            if($term->delete()){
+                return redirect()->route('terms.index')->with('success','Term and Condition Deleted Successfull');
+            }
+        }else{
+            return abort(404);
         }
     }
 }

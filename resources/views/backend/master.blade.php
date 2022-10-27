@@ -350,7 +350,7 @@
             </li>
         @endif
         @if (auth()->user()->can('general settings'))
-            <li class="nav-item @if(Route::is('generalSetting.index')||Route::is('about-settings.index')) menu-open @endif">
+            <li class="nav-item @if(Route::is('generalSetting.index')||Route::is('about-settings.index')||Route::is('terms.create')||Route::is('terms.edit')||Route::is('terms.index')) menu-open @endif">
                 <a href="#" class="nav-link @if(Route::is('generalSetting.index')) active @endif">
                 <i class="nav-icon fas fa-wrench"></i>
                 <p>
@@ -371,12 +371,14 @@
                             <p>About</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('terms.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Terms and Condition</p>
-                        </a>
-                    </li>
+                    @can('terms and condition management')
+                        <li class="nav-item">
+                            <a href="{{ route('terms.index') }}" class="nav-link @if(Route::is('terms.create')||Route::is('terms.edit')||Route::is('terms.index')) active @endif">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Terms and Condition</p>
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
         @endif
