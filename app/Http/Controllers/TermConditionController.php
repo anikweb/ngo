@@ -53,7 +53,7 @@ class TermConditionController extends Controller
             $terms = new TermCondition;
             $terms->term = $request->term;
             $terms->description = $request->description;
-    
+
             if($terms->save()){
                 return redirect()->route('terms.index')->with('success','New terms and condition added successfull!');
             }
@@ -109,7 +109,7 @@ class TermConditionController extends Controller
             $term->term = $request->term;
             $term->description = $request->description;
             if($term->save()){
-                return redirect()->route('terms.index')->with('success','Term and condition successfull');
+                return redirect()->route('terms.index')->with('success','Term and condition updated');
             }
         }else{
             return abort(404);

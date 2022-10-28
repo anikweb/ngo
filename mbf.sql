@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2022 at 09:47 PM
+-- Generation Time: Oct 28, 2022 at 09:52 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -536,7 +536,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2022_06_19_181818_create_thanas_table', 6),
 (26, '2022_06_19_235041_create_countries_table', 6),
 (28, '2022_06_19_010708_create_volunteers_table', 7),
-(30, '2022_10_27_230036_create_term_conditions_table', 8);
+(30, '2022_10_27_230036_create_term_conditions_table', 8),
+(31, '2022_10_28_224056_create_privacy_policies_table', 9);
 
 -- --------------------------------------------------------
 
@@ -684,7 +685,32 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (7, 'event management', 'web', '2022-06-19 19:09:14', '2022-06-19 19:09:14'),
 (8, 'team management', 'web', '2022-06-19 19:09:14', '2022-06-19 19:09:14'),
 (9, 'volunteers management', 'web', '2022-06-23 16:09:44', '2022-06-23 16:09:44'),
-(10, 'media management', 'web', '2022-06-23 16:09:44', '2022-06-23 16:09:44');
+(10, 'media management', 'web', '2022-06-23 16:09:44', '2022-06-23 16:09:44'),
+(11, 'terms and condition management', 'web', '2022-10-27 20:03:33', '2022-10-27 20:03:33'),
+(12, 'privacy & policy', 'web', '2022-10-28 19:41:36', '2022-10-28 19:41:36');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `privacy_policies`
+--
+
+CREATE TABLE `privacy_policies` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `privacy_policies`
+--
+
+INSERT INTO `privacy_policies` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'ccvzvxadadad', 'vxvxvv', '2022-10-28 19:17:08', '2022-10-28 19:36:57'),
+(2, 'sfsssds  dsdsd sdsdsd sdssd', 'sfsssds  dsdsd sdsdsd sdssd', '2022-10-28 19:17:08', '2022-10-28 19:17:08'),
+(3, 'Et exercitation molladadadad', 'Cillum veritatis qui', '2022-10-28 19:26:01', '2022-10-28 19:36:37');
 
 -- --------------------------------------------------------
 
@@ -805,7 +831,9 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (7, 1),
 (8, 1),
 (9, 1),
-(10, 1);
+(10, 1),
+(11, 1),
+(12, 1);
 
 -- --------------------------------------------------------
 
@@ -883,7 +911,6 @@ CREATE TABLE `term_conditions` (
 
 INSERT INTO `term_conditions` (`id`, `term`, `description`, `created_at`, `updated_at`) VALUES
 (1, 'What do you mean by item and end product?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus, maiores officiis vitae fuga sunt repellendus. Molestiae quae, ducimus ut tenetur nobis id quam autem quibusdam commodi inventore laborum libero officiis, accusantium a laboriosam cumque consequatur voluptates fuga assumenda corporis amet. Vitae placeat architecto ipsa cumque fugiat, atque molestiae perferendis quasi quaerat iste voluptate quas dicta corporis, incidunt quibusdam quia odit unde, rem harum quis! Optio debitis veniam quibusdam, culpa quia, aperiam cupiditate perspiciatis repellat similique saepe magnam quaerat iusto obcaecati doloremque, dolor praesentium a!\r\n\r\nVestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Ut tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio. Phasellus auctor velit at lacus blandit, commodo iaculis justo viverra. Etiam vitae est arcu. Mauris vel congue dolor. Aliquam eget mi mi. Fusce quam tortor, commodo ac dui quis, bibendum viverra erat. Maecenas mattis lectus enim, quis tincidunt dui molestie euismod. Curabitur et diam tristique, accumsan nunc eu, hendrerit tellus.', '2022-10-27 19:17:18', '2022-10-27 19:17:18'),
-(2, 'What are some examples of permitted end products?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus, maiores officiis vitae fuga sunt repellendus. Molestiae quae, ducimus ut tenetur nobis id quam autem quibusdam commodi inventore laborum libero officiis, accusantium a laboriosam cumque consequatur voluptates fuga assumenda corporis amet. Vitae placeat architecto ipsa cumque fugiat, atque molestiae perferendis quasi quaerat iste voluptate quas dicta corporis, incidunt quibusdam quia odit unde, rem harum quis! Optio debitis veniam quibusdam, culpa quia, aperiam cupiditate perspiciatis repellat similique saepe magnam quaerat iusto obcaecati doloremque, dolor praesentium a!\r\n\r\nVestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Ut tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio. Phasellus auctor velit at lacus blandit, commodo iaculis justo viverra. Etiam vitae est arcu. Mauris vel congue dolor. Aliquam eget mi mi. Fusce quam tortor, commodo ac dui quis, bibendum viverra erat. Maecenas mattis lectus enim, quis tincidunt dui molestie euismod. Curabitur et diam tristique, accumsan nunc eu, hendrerit tellus.', '2022-10-27 19:17:18', '2022-10-27 19:17:18'),
 (3, 'What does non-exclusive mean?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam officia dolor rerum enim doloremque iusto eos atque tempora dignissimos similique, quae, maxime sit accusantium delectus, maiores officiis vitae fuga sunt repellendus. Molestiae quae, ducimus ut tenetur nobis id quam autem quibusdam commodi inventore laborum libero officiis, accusantium a laboriosam cumque consequatur voluptates fuga assumenda corporis amet. Vitae placeat architecto ipsa cumque fugiat, atque molestiae perferendis quasi quaerat iste voluptate quas dicta corporis, incidunt quibusdam quia odit unde, rem harum quis! Optio debitis veniam quibusdam, culpa quia, aperiam cupiditate perspiciatis repellat similique saepe magnam quaerat iusto obcaecati doloremque, dolor praesentium a! Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Ut tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.', '2022-10-27 19:32:12', '2022-10-27 19:42:09');
 
 -- --------------------------------------------------------
@@ -1591,6 +1618,12 @@ ALTER TABLE `permissions`
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
+-- Indexes for table `privacy_policies`
+--
+ALTER TABLE `privacy_policies`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `projects`
 --
 ALTER TABLE `projects`
@@ -1740,7 +1773,7 @@ ALTER TABLE `image_galleries`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `offcial_teams`
@@ -1758,7 +1791,13 @@ ALTER TABLE `official_team_socials`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `privacy_policies`
+--
+ALTER TABLE `privacy_policies`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `projects`

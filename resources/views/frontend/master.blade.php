@@ -9,8 +9,8 @@
     <meta name="author"                     content="{{ generalSettings()->site_title }}" />
     @yield('og_meta')
 
-<!-- Page Title -->
-<title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+    <!-- Page Title -->
+    <title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @elseif(Route::is('frontend.privacy.index')) Privacy & Policy @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -349,7 +349,7 @@
                     <li><a href="{{ route('frontend.volunteer.apply') }}">Join as Volunteer</a></li>
                     <li><a href="{{ route('frontend.cooming.soon') }}">Blog</a></li>
                     <li><a href="{{ route('frontend.terms.index') }}">Terms & Condition</a></li>
-                    <li><a href="{{ route('frontend.cooming.soon') }}">Policy</a></li>
+                    <li><a href="{{ route('frontend.privacy.index') }}">Privacy & Policy</a></li>
                     <li><a href="{{ route('frontend.cooming.soon') }}">Constitution</a></li>
                     </ul>
                 </div>

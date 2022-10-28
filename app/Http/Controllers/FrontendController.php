@@ -9,6 +9,7 @@ use App\Models\{
     Events,
     ImageGallery,
     OffcialTeam,
+    PrivacyPolicy,
     Slider,
     Project,
     Publications,
@@ -82,5 +83,13 @@ class FrontendController extends Controller
             'terms' => TermCondition::latest()->get(),
         ]);
     }
+
+    public function privacyIndex(){
+        return view('frontend.privacy.index',[
+            'about' => about::first(),
+            'privacy' => PrivacyPolicy::latest()->get(),
+        ]);
+    }
+
 
 }

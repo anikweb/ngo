@@ -18,6 +18,7 @@ use App\Http\Controllers\{
     TermConditionController,
     VolunteerApplyController,
     VolunteersController,
+    PrivacyPolicyController,
 };
 use App\Models\Publications;
 
@@ -53,6 +54,7 @@ Route::get('/get/ajax/captcha/reload/',[VolunteerApplyController::class,'reloadC
 Route::get('volunteer/apply/success/{applicant_id}',[VolunteerApplyController::class,'success'])->name('frontend.volunteer.success');
 
 Route::get('/terms-and-condition', [FrontendController::class,'termsIndex'])->name('frontend.terms.index');
+Route::get('/privacy-and-policy', [FrontendController::class,'privacyIndex'])->name('frontend.privacy.index');
 
 Route::get('comming-soon',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
 
@@ -92,4 +94,6 @@ Route::resource('dashboard/image-gallery',ImageGalleryController::class)->middle
 Route::resource('dashboard/publications',PublicationsController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/volunteer',VolunteersController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/terms',TermConditionController::class)->middleware(['auth','verified']);
+Route::resource('dashboard/privacy',PrivacyPolicyController::class)->middleware(['auth','verified']);
+
 require __DIR__.'/auth.php';
