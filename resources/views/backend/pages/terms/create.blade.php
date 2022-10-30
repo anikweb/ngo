@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Description<span class="text-danger">*</span> </label>
+                                        <label for="description">Description<span class="text-danger">*</span> </label>
                                         <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="1" placeholder="Type Description">{{ old('description')}}</textarea>
                                         @error('description')
                                             <span class="text-danger"><i class="fa fa-exclamation-circle"></i>{{ $message }}</span>

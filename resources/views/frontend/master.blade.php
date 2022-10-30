@@ -10,7 +10,7 @@
     @yield('og_meta')
 
     <!-- Page Title -->
-    <title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @elseif(Route::is('frontend.privacy.index')) Privacy & Policy @elseif(Route::is('frontend.refund.index')) Refund Policy @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ '-'.generalSettings()->site_title }}  @endif </title>
+    <title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @elseif(Route::is('frontend.privacy.index')) Privacy & Policy @elseif(Route::is('frontend.refund.index')) Refund Policy @elseif(Route::is('frontend.faq.index')) FAQ @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ ' - '.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -165,29 +165,29 @@
                             <div class="widget no-border clearfix m-0 mt-5">
                             <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
                                 <li>
-                                <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">FAQ</a>
+                                <a class="text-success" href="{{ route('frontend.faq.index') }}">FAQ</a>
                                 </li>
                                 <li class="text-success">|</li>
                                 <li>
-                                <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Help Desk</a>
+                                <a class="text-success"  href="{{ route('frontend.cooming.soon') }}">Help Desk</a>
                                 </li>
                                 <li class="text-success">|</li>
                                 <li>
-                                <a class="text-success" target="_blank" href="{{ route('frontend.cooming.soon') }}">Contact</a>
+                                <a class="text-success" href="{{ route('frontend.cooming.soon') }}">Contact</a>
                                 </li>
                                 @auth
 
-                                <li class="text-success">|</li>
-                                <li>
-                                    <a class="text-success" target="_blank" href="{{ route('dashboard') }}">Dashboard</a>
-                                </li>
-                                <li class="text-success">|</li>
-                                <li>
-                                    <a class="text-success" href="" target="_blank" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                        @csrf
-                                    </form>
-                                </li>
+                                    <li class="text-success">|</li>
+                                    <li>
+                                        <a class="text-success" target="_blank" href="{{ route('dashboard') }}">Dashboard</a>
+                                    </li>
+                                    <li class="text-success">|</li>
+                                    <li>
+                                        <a class="text-success" href="" target="_blank" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                        </form>
+                                    </li>
                                 @else
                                     <li class="text-success">|</li>
                                     <li>
@@ -351,6 +351,7 @@
                     <li><a href="{{ route('frontend.terms.index') }}">Terms & Condition</a></li>
                     <li><a href="{{ route('frontend.privacy.index') }}">Privacy & Policy</a></li>
                     <li><a href="{{ route('frontend.refund.index') }}">Refund Policy</a></li>
+                    <li><a href="{{ route('frontend.faq.index') }}">FAQ</a></li>
                     <li><a href="{{ route('frontend.cooming.soon') }}">Constitution</a></li>
                     </ul>
                 </div>

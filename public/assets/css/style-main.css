@@ -5556,7 +5556,7 @@ blockquote p {
 }
 .panel-group .panel-title a.active::after {
   color: #fff;
-  background: #e3e3e3;
+  background: #10783b;
   content: "\f068";
 }
 .panel-group .panel-title a::after {

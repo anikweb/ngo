@@ -20,6 +20,7 @@ use App\Http\Controllers\{
     VolunteersController,
     PrivacyPolicyController,
     RefundController,
+    FAQController,
 };
 use App\Models\Publications;
 
@@ -57,6 +58,7 @@ Route::get('volunteer/apply/success/{applicant_id}',[VolunteerApplyController::c
 Route::get('/terms-and-condition', [FrontendController::class,'termsIndex'])->name('frontend.terms.index');
 Route::get('/privacy-and-policy', [FrontendController::class,'privacyIndex'])->name('frontend.privacy.index');
 Route::get('/refund-policy', [FrontendController::class,'refundIndex'])->name('frontend.refund.index');
+Route::get('/faq', [FrontendController::class,'faqIndex'])->name('frontend.faq.index');
 
 Route::get('comming-soon',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
 
@@ -98,6 +100,6 @@ Route::resource('dashboard/volunteer',VolunteersController::class)->middleware([
 Route::resource('dashboard/terms',TermConditionController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/privacy',PrivacyPolicyController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/refund',RefundController::class)->middleware(['auth','verified']);
-
+Route::resource('dashboard/faq',FAQController::class)->middleware(['auth','verified']);
 
 require __DIR__.'/auth.php';

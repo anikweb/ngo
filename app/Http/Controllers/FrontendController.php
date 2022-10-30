@@ -7,6 +7,7 @@ use App\Models\{
     about,
     advisor,
     Events,
+    FAQ,
     ImageGallery,
     OffcialTeam,
     PrivacyPolicy,
@@ -95,6 +96,12 @@ class FrontendController extends Controller
         return view('frontend.refund.index',[
             'about' => about::first(),
             'refunds' => Refund::latest()->get(),
+        ]);
+    }
+    public function faqIndex(){
+        return view('frontend.faq.index',[
+            'about' => about::first(),
+            'faqs' => FAQ::latest()->get(),
         ]);
     }
 

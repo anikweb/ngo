@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('terms.index') }}">Terms & Condition</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('faq.index') }}">FAQ</a></li>
             <li class="breadcrumb-item active" aria-current="page">Update</li>
         </ol>
     </nav>
@@ -13,29 +13,29 @@
                 <div class="card card-primary">
                     <div class="card-header">
                         <div class="card-title">
-                            <h5>Update Terms & Condition</h5>
+                            <h5>Update FAQ</h5>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('terms.update',$term->id) }}" method="POST">
+                        <form action="{{ route('faq.update',$faq->id) }}" method="POST">
                             @csrf
                             @method("PUT")
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="hidden" name="id" value="{{ $term->id }}">
-                                        <label for="term">Terms</label>
-                                        <input type="text" value="{{ $term->term }}" class="form-control @error('term') is-invalid @enderror" name="term" id="term" placeholder="Enter Term">
-                                        @error('term')
+                                        <input type="hidden" name="id" value="{{ $faq->id }}">
+                                        <label for="title">Title</label>
+                                        <input type="text" value="{{ $faq->question }}" class="form-control @error('question') is-invalid @enderror" name="question" id="question" placeholder="Enter question">
+                                        @error('question')
                                             <span class="text-danger"><i class="fa fa-exclamation-circle"></i>{{ $message }}</span>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="description">Description<span class="text-danger">*</span> </label>
-                                        <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="1" placeholder="Type Description">{{ $term->description }}</textarea>
-                                        @error('description')
+                                        <label for="answer">Answer<span class="text-danger">*</span> </label>
+                                        <textarea name="answer" class="form-control @error('answer') is-invalid @enderror" rows="1" placeholder="Type answer">{{ $faq->answer }}</textarea>
+                                        @error('answer')
                                             <span class="text-danger"><i class="fa fa-exclamation-circle"></i>{{ $message }}</span>
                                         @enderror
                                     </div>
