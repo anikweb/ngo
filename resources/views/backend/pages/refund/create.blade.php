@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('privacy.index') }}">Privacy & Policy</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('refund.index') }}">Refund Policy</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add</li>
         </ol>
     </nav>
@@ -13,11 +13,11 @@
                 <div class="card card-primary">
                     <div class="card-header">
                         <div class="card-title">
-                            <h5>Add new Privacy & Policy</h5>
+                            <h5>Add new Refund Policy</h5>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('privacy.store') }}" method="POST">
+                        <form action="{{ route('refund.store') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

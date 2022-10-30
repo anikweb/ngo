@@ -13,6 +13,7 @@ use App\Models\{
     Slider,
     Project,
     Publications,
+    Refund,
     TermCondition,
 };
 use PDO;
@@ -88,6 +89,12 @@ class FrontendController extends Controller
         return view('frontend.privacy.index',[
             'about' => about::first(),
             'privacy' => PrivacyPolicy::latest()->get(),
+        ]);
+    }
+    public function refundIndex(){
+        return view('frontend.refund.index',[
+            'about' => about::first(),
+            'refunds' => Refund::latest()->get(),
         ]);
     }
 
