@@ -11,17 +11,21 @@
   <div class="main-content">
 
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/media/image_gallery/featured.jpg') }}">
-      <div class="container pt-100 pb-50">
-        <!-- Section Content -->
-        <div class="section-content pt-100">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="title text-white">Events</h3>
+    <section class="inner-header bg-black-222">
+        <div class="container pt-10 pb-10">
+          <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center">
+                        <h2 class="text-white mt-20">Events</h2>
+                        <ol class="breadcrumb white text-center mt-10">
+                            <li><a href="{{ route('frontend') }}">Home</a></li>
+                            <li class="active">Events</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
     <!-- Section: Events List -->

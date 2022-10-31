@@ -10,7 +10,7 @@
     @yield('og_meta')
 
     <!-- Page Title -->
-    <title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @elseif(Route::is('frontend.privacy.index')) Privacy & Policy @elseif(Route::is('frontend.refund.index')) Refund Policy @elseif(Route::is('frontend.faq.index')) FAQ @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ ' - '.generalSettings()->site_title }}  @endif </title>
+    <title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.projects.index')) Projects @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @elseif(Route::is('frontend.privacy.index')) Privacy & Policy @elseif(Route::is('frontend.refund.index')) Refund Policy @elseif(Route::is('frontend.faq.index')) FAQ @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ ' - '.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -226,12 +226,12 @@
                                 <a class="text-white mr-5 @if(Route::is('frontend')) actives @endif" href="{{ route('frontend') }}">Home</a>
                             </li>
                             <li>
-                                <a class="text-white mr-5 @if(Route::is('frontend.project.index')) actives @endif"  href="javascript:void(0)">Projects</a>
-                                <ul class="dropdown">
+                                <a class="text-white mr-5 @if(Route::is('frontend.projects.index')||Route::is('frontend.project.index')) actives @endif"  href="{{ route('frontend.projects.index') }}">Projects</a>
+                                {{-- <ul class="dropdown">
                                     @foreach (projects() as $project)
                                         <li><a href="{{ route('frontend.project.index',$project->slug) }}">{{ $project->title }}</a></li>
                                     @endforeach
-                                </ul>
+                                </ul> --}}
                             </li>
                             <li>
                                 <a class="text-white mr-5 @if(Route::is('frontend.events.index')||Route::is('frontend.events.show')) actives @endif" href="{{ route('frontend.events.index') }}">Events</a>
@@ -287,23 +287,6 @@
         @yield('content')
         {{--  Main Content   --}}
         <!-- Divider: Clients -->
-        <section class="clients bg-theme-colored">
-            <div class="container pt-0 pb-0">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="text-center text-white">Image Gallery</h4>
-                </div>
-                <div class="col-md-12 col-6">
-                <!-- Section: Clients -->
-                    <div class="owl-carousel-7col clients-logo transparent text-center">
-                        @foreach (imageGallery() as $gallery)
-                            <div class="item"> <a target="_blank" href="{{ asset('images/media/image_gallery/'.$gallery->image) }}"><img height="200" width="400" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}" alt="{{ $gallery->alt_text }}"></a></div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            </div>
-        </section>
         <footer id="footer" class="footer" data-bg-img="{{ asset('assets/images/footer-bg.png') }}" data-bg-color="#25272e">
             <div class="container pt-70 pb-40">
             <div class="row border-bottom-black">

@@ -48,6 +48,12 @@ class FrontendController extends Controller
             'officialTeam' => OffcialTeam::orderBy('priority','asc')->paginate(20),
         ]);
     }
+    public function allProjectIndex(){
+        return view('frontend.projects.list',[
+            'projects' => Project::all(),
+            'about' => about::first(),
+        ]);
+    }
     public function projectIndex($slug){
         return view('frontend.projects.index',[
             'project' => Project::where('slug',$slug)->first(),

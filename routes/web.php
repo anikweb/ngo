@@ -41,6 +41,7 @@ Route::get('/', [FrontendController::class,'frontend'])->name('frontend');
 Route::get('/about', [FrontendController::class,'aboutIndex'])->name('frontend.about');
 Route::get('/team/adviser', [FrontendController::class,'advisorTeamIndex'])->name('frontend.team.advisor.index');
 Route::get('/team/official', [FrontendController::class,'officialTeamIndex'])->name('frontend.team.official.index');
+Route::get('/projects', [FrontendController::class,'allProjectIndex'])->name('frontend.projects.index');
 Route::get('/project/{slug}', [FrontendController::class,'projectIndex'])->name('frontend.project.index');
 Route::get('/events', [FrontendController::class,'eventsIndex'])->name('frontend.events.index');
 Route::get('/events/{slug}', [FrontendController::class,'eventsShow'])->name('frontend.events.show');
@@ -60,7 +61,7 @@ Route::get('/privacy-and-policy', [FrontendController::class,'privacyIndex'])->n
 Route::get('/refund-policy', [FrontendController::class,'refundIndex'])->name('frontend.refund.index');
 Route::get('/faq', [FrontendController::class,'faqIndex'])->name('frontend.faq.index');
 
-Route::get('comming-soon',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
+Route::get('comming-soon/',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
 
 
 // Backend

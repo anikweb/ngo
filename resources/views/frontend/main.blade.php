@@ -599,7 +599,8 @@
     </section>
 
     <!-- Section: Gallery -->
-    <section id="gallery">
+
+    {{-- <section id="gallery">
       <div class="container">
         <div class="section-content">
           <div class="row">
@@ -636,17 +637,6 @@
               <h3 class="text-uppercase title line-bottom mt-0 mb-30 mt-sm-40"><i class="fa fa-calendar text-gray-darkgray mr-10"></i>Donner's <span class="text-theme-colored">Testimonials</span></h3>
 
                 <div class="bxslider bx-nav-top">
-                    {{-- <div class="testimonial media sm-maxwidth400 p-15 mt-0 mb-15">
-                        <div class="pt-10">
-                            <div class="thumb pull-left mb-0 mr-0 pr-20">
-                                <img width="75" class="img-circle" alt="" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}">
-                            </div>
-                            <div class="ml-100 ">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas vel sint, ut. Quisquam doloremque minus possimus eligendi dolore ad.</p>
-                                <p class="author mt-10">- <span class="text-theme-colored">Catherine Grace,</span> <small><em>CEO apple.inc</em></small></p>
-                            </div>
-                        </div>
-                    </div>
                     <div class="testimonial media sm-maxwidth400 p-15 mt-0 mb-15">
                         <div class="pt-10">
                             <div class="thumb pull-left mb-0 mr-0 pr-20">
@@ -679,14 +669,25 @@
                                 <p class="author mt-10">- <span class="text-theme-colored">Catherine Grace,</span> <small><em>CEO apple.inc</em></small></p>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+                    <div class="testimonial media sm-maxwidth400 p-15 mt-0 mb-15">
+                        <div class="pt-10">
+                            <div class="thumb pull-left mb-0 mr-0 pr-20">
+                                <img width="75" class="img-circle" alt="" src="{{ asset('images/media/image_gallery/'.$gallery->image) }}">
+                            </div>
+                            <div class="ml-100 ">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas vel sint, ut. Quisquam doloremque minus possimus eligendi dolore ad.</p>
+                                <p class="author mt-10">- <span class="text-theme-colored">Catherine Grace,</span> <small><em>CEO apple.inc</em></small></p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
 
     {{-- section: Latest Events --}}
     <section class="bg-silver-light">
