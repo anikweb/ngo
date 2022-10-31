@@ -710,9 +710,9 @@
                           <img class="img-fluid" alt="{{ $event->title }}" src="{{ asset('images/projects/events/'.$event->image) }}">
                       </div>
                       <div class="schedule-details clearfix p-15 pt-10">
-                          <h4 class="title mt-0"><a href="{{route('frontend.events.show',$event->slug)}}">{{ $event->title }}</a></h4>
+                          <h4 class="title mt-0"><a href="{{route('frontend.events.show',$event->slug)}}">{{ Str::limit($event->title,25,'.....') }}</a></h4>
                           <div class="clearfix"></div>
-                          <p class="mt-10">@php echo Str::limit($event->description, 230, '....') @endphp @if(Str::length($event->description) >230) <a href="{{route('frontend.events.show',$event->slug)}}">More</a> @endif</p>
+                          <p class="mt-10">@php echo Str::limit($event->description, 200, '....') @endphp @if(Str::length($event->description) >230) <a href="{{route('frontend.events.show',$event->slug)}}">More</a> @endif</p>
                           <div class="mt-10">
                           <a href="{{route('frontend.events.show',$event->slug)}}" class="btn btn-theme-colored btn-sm mt-10">Details</a>
                           </div>
