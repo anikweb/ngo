@@ -7,6 +7,17 @@
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
+    .card-donation-detail{
+        display:none;
+    }
+
+    .card-details{
+        display:block;
+    }
+    .table-md{
+        display:none;
+    }
+
     .terms-sidebar{
         display: none;
     }
@@ -34,6 +45,8 @@
     .top-widget-social{
         display: none !important;
     }
+
+
 }
 
 /* Small Devices, Tablets */
@@ -48,10 +61,30 @@
     .top-widget-social{
         display: block !important;
     }
+    .card-donation-detail{
+        display:block;
+    }
+    .card-details{
+        display:none;
+    }
+    .table-sm{
+        display:none;
+    }
+    .table-md{
+        display:block;
+    }
+
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
+    .card-details{
+        display:none;
+    }
+    #donate_form{
+        margin: 0 auto;
+        width: 70%;
+    }
     .terms-sidebar{
         display: block;
     }

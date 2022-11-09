@@ -1,10 +1,10 @@
 @extends('frontend.master')
 @section('og_meta')
-<meta name="description"                content="Refund Policy of Muktir Bondhon Foundation" />
+<meta name="description"                content="Frequently asked questions of {{ generalSettings()->site_title }}" />
     <meta property="og:url"                 content="{{ url()->current() }}" />
-    <meta property="og:type"                content="Refund Policy" />
-    <meta property="og:title"               content="Refund Policy || {{ generalSettings()->site_title }}" />
-    <meta property="og:description"         content="Refund Policy of Muktir Bondhon Foundation" />
+    <meta property="og:type"                content="Frequently asked questions" />
+    <meta property="og:title"               content="Frequently asked questions || {{ generalSettings()->site_title }}" />
+    <meta property="og:description"         content="Frequently asked questions of {{ generalSettings()->site_title }}" />
     <meta property="og:image"               content="{{ asset('images/about/'.$about->image) }}" />
 @endsection
 @section('content')

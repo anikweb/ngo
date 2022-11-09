@@ -430,7 +430,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <label for="terms"><input type="checkbox" id="terms"> I read all <a target="_blank" href="#" class="text-primary">terms and condition</a>, and i agree with that's.</label>
+                        <label for="terms"><input type="checkbox" id="terms"> I have read and agree to the <a href="{{ route('frontend.terms.index') }}" class="text-danger" target="_blank"><u>Terms & Conditions</u></a> and <a href="{{ route('frontend.privacy.index') }}" class="text-danger" target="_blank"><u>Privacy & Policy</u></a>.</label></label>
                     </div>
                 </div>
                 <div class="form-group">

@@ -10,7 +10,7 @@
     @yield('og_meta')
 
     <!-- Page Title -->
-    <title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.projects.index')) Projects @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @elseif(Route::is('frontend.privacy.index')) Privacy & Policy @elseif(Route::is('frontend.refund.index')) Refund Policy @elseif(Route::is('frontend.faq.index')) FAQ @endif @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ ' - '.generalSettings()->site_title }}  @endif </title>
+    <title>@if(Route::is('frontend.team.advisor.index')) Adviser @elseif (Route::is('login')) Login @elseif(Route::is('frontend.team.official.index')) Official Team @elseif(Route::is('frontend.about')) About @elseif(Route::is('frontend.project.index')) {{ $project->title }}-Project @elseif(Route::is('frontend.projects.index')) Projects @elseif(Route::is('frontend.events.index')) Events @elseif(Route::is('frontend.events.show')) {{ $event->title }}-Event @elseif(Route::is('frontend.image.gallery')) Image Gallery-Media @elseif(Route::is('frontend.publications.index')) Publications @elseif(Route::is('frontend.volunteer.apply')) Apply-Volunteer @elseif(Route::is('frontend.volunteer.store')) Successfully Applied-Volunteer @elseif(Route::is('frontend.terms.index')) Terms & Condition @elseif(Route::is('frontend.privacy.index')) Privacy & Policy @elseif(Route::is('frontend.refund.index')) Refund Policy @elseif(Route::is('frontend.faq.index')) FAQ @elseif(Route::is('frontend.donate.index')||Route::is('frontend.donate.now')) Donate @elseif(Route::is('frontend.donate.billing')) Billing Info @elseif(Route::is('frontend.donate.success')) Donation Success @elseif(Route::is('frontend.bankinfo.index')) Bank Information @endif  @if(Route::is('frontend')) {{ generalSettings()->site_title.' - '.generalSettings()->tagline }} @else {{ ' - '.generalSettings()->site_title }}  @endif </title>
 
 <!-- Favicon and Touch Icons -->
 <link href="{{ asset('images/generalSettings/'.generalSettings()->icon) }}" rel="shortcut icon" type="image/png">
@@ -206,9 +206,9 @@
                                 <ul class="styled-icons icon-gray icon-theme-colored icon-circled icon-sm pull-right flip sm-pull-none sm-text-center mt-sm-15">
                                     @foreach (contactInfo() as $item)
                                         @if ($item->platform->name == 'whatsapp')
-                                        <li><a href="tel:{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                                        <li><a target="_blank" href="tel:{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
                                         @else
-                                            <li><a href="https://{{ $item->platform->url }}/{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
+                                            <li><a target="_blank" href="https://{{ $item->platform->url }}/{{ $item->username }}"><i class="{{Str::replace('fab', 'fa', $item->platform->icon)}}"></i></a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -243,9 +243,8 @@
                             <li>
                                 <a class="text-white mr-5" href="javascript:void(0)">Donations</a>
                                 <ul class="dropdown">
-                                    <li><a href="{{ route('frontend.cooming.soon') }}">Donate Now</a></li>
-                                    <li><a href="{{ route('frontend.cooming.soon') }}">Donation Certificate</a></li>
-                                    <li><a href="{{ route('frontend.cooming.soon') }}">Bank Information</a></li>
+                                    <li><a href="{{ route('frontend.donate.index') }}">Donate Now</a></li>
+                                    <li><a href="{{ route('frontend.bankinfo.index') }}">Bank Information</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -264,7 +263,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a class="text-white mr-5" href="blog.html">Blog</a>
+                                <a class="text-white mr-5" href="{{ route('frontend.cooming.soon') }}">Blog</a>
                             </li>
                             <li>
                                 <a class="text-white mr-5" href="{{ route('frontend.about') }}">About us</a>
@@ -272,7 +271,7 @@
                             </ul>
                         <ul class="list-inline pull-right flip hidden-sm hidden-xs">
                             <li>
-                                <a class="btn text-success  btn-flat bg-white mt-15 hvr-bounce-to-right" target="_blank" href="{{ route('frontend.cooming.soon') }}">Donate Now</a>
+                                <a class="btn text-success  btn-flat bg-white mt-15 hvr-bounce-to-right" href="{{ route('frontend.donate.index') }}">Donate Now</a>
                             </li>
                             <li>
                                 <a class="btn text-success btn-flat bg-white mt-15 hvr-bounce-to-right" href="{{ route('frontend.volunteer.apply') }}" >Join Us</a>
@@ -325,8 +324,8 @@
                 <div class="widget dark">
                     <h5 class="widget-title line-bottom">Visit</h5>
                     <ul class="list angle-double-right list-border">
-                    <li style="color:#e0e0e0 !important"><a href="{{ route('frontend.cooming.soon') }}">Donate</a></li>
-                    <li><a href="{{ route('frontend.cooming.soon') }}">Projects</a></li>
+                    <li style="color:#e0e0e0 !important"><a href="{{ route('frontend.donate.index') }}">Donate</a></li>
+                    <li><a href="{{ route('frontend.projects.index') }}">Projects</a></li>
                     <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
                     <li><a href="{{ route('frontend.image.gallery') }}">Media</a></li>
                     <li><a href="{{ route('frontend.volunteer.apply') }}">Join as Volunteer</a></li>
@@ -439,6 +438,7 @@
 <script type="text/javascript" src="{{ asset('assets/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/revolution-slider/js/extensions/revolution.extension.video.min.js') }}"></script>
+
 @yield('footer_js')
 </body>
 </html>

@@ -43,6 +43,9 @@
                                         <li><a href="#" data-bg-color="#A11312"><i class="fa fa-google-plus text-white"></i></a></li>
                                     </ul>
                                 </div>
+                                <div>
+                                    <a href="{{ route('frontend.donate.now',$project->slug) }}" class="btn btn-theme-colored">Donate Now</a>
+                                </div>
                             </div>
                         </article>
                         {{-- <div class="tagline p-0 pt-20 mt-5">

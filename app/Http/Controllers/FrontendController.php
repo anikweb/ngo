@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Models\{
     about,
@@ -16,6 +18,7 @@ use App\Models\{
     Publications,
     Refund,
     TermCondition,
+
 };
 use PDO;
 
@@ -25,6 +28,16 @@ class FrontendController extends Controller
         return view('frontend.comming_soon.index');
     }
     function frontend(){
+        if(Session::get('donateProject')){
+            Session::forget('donateProject');
+        }
+        if(Session::get('donateAmount')){
+            Session::forget('donateAmount');
+        }
+        if(Session::get('donateComment')){
+            Session::forget('donateComment');
+        }
+        // return Session::get('donateProject');
         return view('frontend.main',[
             'sliders' => Slider::orderBy('priority','asc')->get(),
             'about' => about::first(),
@@ -110,6 +123,11 @@ class FrontendController extends Controller
             'faqs' => FAQ::latest()->get(),
         ]);
     }
+
+
+    // Donations Start
+
+
 
 
 }

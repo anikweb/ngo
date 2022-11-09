@@ -21,6 +21,8 @@ use App\Http\Controllers\{
     PrivacyPolicyController,
     RefundController,
     FAQController,
+    UserDonationController,
+    SslCommerzPaymentController,
 };
 use App\Models\Publications;
 
@@ -61,6 +63,20 @@ Route::get('/privacy-and-policy', [FrontendController::class,'privacyIndex'])->n
 Route::get('/refund-policy', [FrontendController::class,'refundIndex'])->name('frontend.refund.index');
 Route::get('/faq', [FrontendController::class,'faqIndex'])->name('frontend.faq.index');
 
+// Donation
+Route::get('/donate-now/{slug}', [UserDonationController::class,'index'])->name('frontend.donate.now');
+Route::get('/donate-now/', [UserDonationController::class,'index'])->name('frontend.donate.index');
+Route::post('/donate-now/procesing/store', [UserDonationController::class,'donateInfo'])->name('frontend.donate.store');
+// Route::post('/donation/checkout/store', [UserDonationController::class,'donateCheckout'])->name('frontend.donate.checkout');
+Route::get('/donation/billing-detail', [UserDonationController::class,'billing'])->name('frontend.donate.billing');
+
+Route::get('/donation/success/{tran_id}',[UserDonationController::class,'success'])->name('frontend.donate.success');
+Route::get('/donation/success/pdf/download/{tran_id}',[UserDonationController::class,'downloadPDF'])->name('frontend.donate.download');
+Route::get('/donation/failed/{cause}',[UserDonationController::class,'failed'])->name('frontend.donate.failed');
+Route::get('/donation/bank-information',[UserDonationController::class,'bankInfoIndex'])->name('frontend.bankinfo.index');
+
+
+// Donation End
 Route::get('comming-soon/',[FrontendController::class,'commingSoon'])->name('frontend.cooming.soon');
 
 
@@ -103,4 +119,17 @@ Route::resource('dashboard/privacy',PrivacyPolicyController::class)->middleware(
 Route::resource('dashboard/refund',RefundController::class)->middleware(['auth','verified']);
 Route::resource('dashboard/faq',FAQController::class)->middleware(['auth','verified']);
 
+
+
+
+// SSLCOMMERZ Start
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('ssl.pay');
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax'])->name('ssl.pay.ajax');
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
 require __DIR__.'/auth.php';

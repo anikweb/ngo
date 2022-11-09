@@ -203,7 +203,7 @@
                     <div class="sm-height-auto bg-theme-colored-darker2">
                         <div class="p-30 mb-sm-30">
                         <h3 class="text-uppercase text-white mt-0">Contact Us</h3>
-                        <p class="text-white">Contact us now if you want to know anything about us.</p>
+                        <p class="text-white">Contact us now if you want to know anything.</p>
                         <a href="{{ route('frontend.cooming.soon') }}" class="btn btn-border btn-circled btn-transparent btn-sm">Contact us</a>
                         </div>
                         <i class="flaticon-charity-home-insurance bg-icon"></i>
@@ -214,7 +214,7 @@
                         <div class="p-30 mb-sm-30">
                         <h3 class="text-uppercase text-white mt-0">Get Involved</h3>
                         <p class="text-white">Click now to donate to any of our projects</p>
-                        <a href="{{ route('frontend.cooming.soon') }}" class="btn btn-border btn-circled btn-transparent btn-sm">Donate Us</a>
+                        <a href="{{ route('frontend.donate.index') }}" class="btn btn-border btn-circled btn-transparent btn-sm">Donate Us</a>
                         </div>
                         <i class="flaticon-charity-make-an-online-donation bg-icon"></i>
                     </div>

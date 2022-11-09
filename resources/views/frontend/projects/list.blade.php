@@ -47,8 +47,8 @@
                         <div class="clearfix"></div>
                         <p class="mt-10">@php echo Str::limit($projectItem->description, 230, '....') @endphp @if(Str::length($projectItem->description) >230) <a href="{{route('frontend.project.index',$projectItem->slug)}}">More</a> @endif</p>
                         <div class="mt-10">
-                            <a href="{{route('frontend.cooming.soon',$projectItem->slug)}}" class="btn btn-theme-colored btn mt-10">Donate Now</a>
                             <a href="{{route('frontend.project.index',$projectItem->slug)}}" class="btn btn-success btn mt-10">Details</a>
+                            <a href="{{route('frontend.donate.now',$projectItem->slug)}}" class="btn btn-theme-colored btn mt-10">Donate Now</a>
                         </div>
                     </div>
                     </div>
@@ -67,7 +67,7 @@
                 <h3 class="text-white font-opensans font-18 mt-0">for those helpless who need it</h3>
               </div>
               <div class="col-md-3 mt-30">
-                <a href="{{ route('frontend.cooming.soon') }}" class="btn btn-default btn-circled btn-lg">Donate Now</a>
+                <a href="{{ route('frontend.donate.index') }}" class="btn btn-default btn-circled btn-lg">Donate Now</a>
               </div>
             </div>
           </div>
