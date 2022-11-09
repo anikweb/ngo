@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2022 at 09:52 PM
+-- Generation Time: Nov 09, 2022 at 08:44 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -282,6 +282,29 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `f_a_q_s`
+--
+
+CREATE TABLE `f_a_q_s` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `answer` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `f_a_q_s`
+--
+
+INSERT INTO `f_a_q_s` (`id`, `question`, `answer`, `created_at`, `updated_at`) VALUES
+(3, 'What kind of organization is Muktir Bondhon Foundation?', 'Muktir Bondhon Foundation is one of the largest volunteer organizations in Bangladesh.', '2022-10-30 19:50:33', '2022-10-30 20:19:07'),
+(5, 'Are you raising your funds through street collections?', 'No, we are collecting funds from our bank account, Bkash, Rocket, website payment gateway and branch offices.', '2022-10-30 20:24:03', '2022-10-30 20:24:03'),
+(6, 'How can my organization support Muktir Bondhon Foundation?', 'Financial support is not enough to enrich this organization. Rather, your skills in communication make you reach out to more generous people for engagement. You can join us in the following ways:\r\n A) Engage your employees in volunteer work\r\nB) Train Muktir Bondhon Foundation team to be more effective\r\nC) Donate links for your customers', '2022-10-30 20:27:29', '2022-10-30 20:27:29');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `general_settings`
 --
 
@@ -537,7 +560,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (26, '2022_06_19_235041_create_countries_table', 6),
 (28, '2022_06_19_010708_create_volunteers_table', 7),
 (30, '2022_10_27_230036_create_term_conditions_table', 8),
-(31, '2022_10_28_224056_create_privacy_policies_table', 9);
+(31, '2022_10_28_224056_create_privacy_policies_table', 9),
+(32, '2022_10_30_172050_create_refunds_table', 10),
+(33, '2022_10_30_231735_create_f_a_q_s_table', 11),
+(38, '2022_11_04_033723_create_user_donations_table', 12);
 
 -- --------------------------------------------------------
 
@@ -687,7 +713,9 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (9, 'volunteers management', 'web', '2022-06-23 16:09:44', '2022-06-23 16:09:44'),
 (10, 'media management', 'web', '2022-06-23 16:09:44', '2022-06-23 16:09:44'),
 (11, 'terms and condition management', 'web', '2022-10-27 20:03:33', '2022-10-27 20:03:33'),
-(12, 'privacy & policy', 'web', '2022-10-28 19:41:36', '2022-10-28 19:41:36');
+(12, 'privacy & policy', 'web', '2022-10-28 19:41:36', '2022-10-28 19:41:36'),
+(13, 'refund policy', 'web', '2022-10-30 12:14:36', '2022-10-30 12:14:36'),
+(14, 'faq management', 'web', '2022-10-30 17:59:29', '2022-10-30 17:59:29');
 
 -- --------------------------------------------------------
 
@@ -779,6 +807,28 @@ CREATE TABLE `publications` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `refunds`
+--
+
+CREATE TABLE `refunds` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `refunds`
+--
+
+INSERT INTO `refunds` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(2, 'Refund', 'Policy', '2022-10-30 11:53:21', '2022-10-30 11:53:21'),
+(3, 'asdfdfdff', 'dfdffvxvv', '2022-10-30 12:10:40', '2022-10-30 12:10:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `roles`
 --
 
@@ -833,7 +883,9 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (9, 1),
 (10, 1),
 (11, 1),
-(12, 1);
+(12, 1),
+(13, 1),
+(14, 1);
 
 -- --------------------------------------------------------
 
@@ -1460,6 +1512,52 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_donations`
+--
+
+CREATE TABLE `user_donations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` double NOT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `transaction_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `project_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `custom_project` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` tinyint(4) NOT NULL COMMENT '1= one time, 2= recurring',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_donations`
+--
+
+INSERT INTO `user_donations` (`id`, `name`, `email`, `phone`, `amount`, `address`, `status`, `transaction_id`, `currency`, `project_id`, `custom_project`, `comment`, `type`, `created_at`, `updated_at`) VALUES
+(1, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '01783674575', 1000, 'Quam dolor et sint v', 'Complete', 'MBF1667976742', 'BDT', 5, NULL, NULL, 1, '2022-11-09 06:52:22', '2022-11-09 06:52:30'),
+(2, 'Avram Cobb', 'hapemorofi@mailinator.com', '+1 (235) 594-8857', 100, 'Est qui voluptatem', 'Complete', 'MBF1667976960', 'BDT', 5, NULL, NULL, 1, '2022-11-09 06:56:01', '2022-11-09 06:56:10'),
+(3, 'Irma Callahan', 'kidixaho@mailinator.com', '+1 (244) 834-9645', 500, 'Magnam laboriosam q', 'Pending', 'MBF1667977010', 'BDT', 6, NULL, NULL, 1, '2022-11-09 06:56:50', '2022-11-09 06:56:50'),
+(4, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '+1 (244) 834-9645', 500, 'Magnam laboriosam q', 'Complete', 'MBF1667977023', 'BDT', 6, NULL, NULL, 1, '2022-11-09 06:57:03', '2022-11-09 06:57:12'),
+(5, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '01783674575', 100, 'Atharabari, Ishwarganj, Mymensingh', 'Complete', 'MBF1667977332', 'BDT', 5, NULL, NULL, 1, '2022-11-09 07:02:12', '2022-11-09 07:02:19'),
+(6, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '01783674575', 100, 'Atharabari, Ishwarganj, Mymensingh', 'Complete', 'MBF1667977371', 'BDT', 7, NULL, 'adada', 1, '2022-11-09 07:02:51', '2022-11-09 07:03:00'),
+(7, 'Michelle Simpson', 'xuric@mailinator.com', '+1 (627) 685-9058', 500, 'Et accusantium eiusm', 'Complete', 'MBF1667977407', 'BDT', 4, NULL, NULL, 1, '2022-11-09 07:03:27', '2022-11-09 07:03:34'),
+(8, 'Bruno Allison', 'natabiz@mailinator.com', '+1 (305) 985-5661', 10000, 'Distinctio Veniam', 'Complete', 'MBF1667977435', 'BDT', 2, NULL, 'Exercitationem expli', 1, '2022-11-09 07:03:55', '2022-11-09 07:04:02'),
+(9, 'Anik Kumar Nandi', 'anik.mbf@gmail.com', '01783674575', 1000, 'Omnis aut et odit od', 'Complete', 'MBF1667977687', 'BDT', 4, NULL, NULL, 1, '2022-11-09 07:08:07', '2022-11-09 07:08:14'),
+(10, 'Blair Lawson', 'lacusoly@mailinator.com', '+1 (663) 702-6034', 100, 'Ut sit molestiae im', 'Complete', 'MBF1667977722', 'BDT', 4, NULL, NULL, 1, '2022-11-09 07:08:42', '2022-11-09 07:08:50'),
+(11, 'Rigel Henderson', 'zyhevag@mailinator.com', '+1 (276) 473-8056', 100, 'Labore duis est id a', 'Complete', 'MBF1667977804', 'BDT', 5, NULL, NULL, 1, '2022-11-09 07:10:04', '2022-11-09 07:10:12'),
+(12, 'Emerald Copeland', 'vokupin@mailinator.com', '+1 (956) 495-3146', 500, 'Consectetur aut qui', 'Pending', 'MBF1667977915', 'BDT', 6, NULL, NULL, 1, '2022-11-09 07:11:55', '2022-11-09 07:11:55'),
+(13, 'Emerald Copeland', 'anik.mbf@gmail.com', '+1 (956) 495-3146', 500, 'Consectetur aut qui', 'Complete', 'MBF1667977924', 'BDT', 6, NULL, NULL, 1, '2022-11-09 07:12:04', '2022-11-09 07:12:12'),
+(14, 'Bradley Farmer', 'anik.mbf@gmail.com', '+1 (827) 794-9374', 500, 'Eos tempore et non', 'Complete', 'MBF1667978110', 'BDT', 7, NULL, NULL, 1, '2022-11-09 07:15:10', '2022-11-09 07:15:19'),
+(15, 'Hector Galloway', 'aniknandi.it@gmail.com', '+1 (592) 838-5971', 10000, 'Suscipit qui adipisi', 'Complete', 'MBF1667978184', 'BDT', 4, NULL, NULL, 1, '2022-11-09 07:16:24', '2022-11-09 07:16:31'),
+(16, 'Wing Porter', 'anik.mbf@gmail.com', '+1 (246) 103-7553', 500, 'Laborum Amet sed r', 'Complete', 'MBF1667979347', 'BDT', 6, NULL, NULL, 1, '2022-11-09 07:35:47', '2022-11-09 07:35:54');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `volunteers`
 --
 
@@ -1561,6 +1659,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indexes for table `f_a_q_s`
+--
+ALTER TABLE `f_a_q_s`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `general_settings`
 --
 ALTER TABLE `general_settings`
@@ -1642,6 +1746,12 @@ ALTER TABLE `publications`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `refunds`
+--
+ALTER TABLE `refunds`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -1685,6 +1795,12 @@ ALTER TABLE `thanas`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `user_donations`
+--
+ALTER TABLE `user_donations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `volunteers`
@@ -1758,6 +1874,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `f_a_q_s`
+--
+ALTER TABLE `f_a_q_s`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `general_settings`
 --
 ALTER TABLE `general_settings`
@@ -1773,7 +1895,7 @@ ALTER TABLE `image_galleries`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `offcial_teams`
@@ -1791,7 +1913,7 @@ ALTER TABLE `official_team_socials`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `privacy_policies`
@@ -1816,6 +1938,12 @@ ALTER TABLE `project_image_galleries`
 --
 ALTER TABLE `publications`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `refunds`
+--
+ALTER TABLE `refunds`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1852,6 +1980,12 @@ ALTER TABLE `thanas`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user_donations`
+--
+ALTER TABLE `user_donations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `volunteers`
