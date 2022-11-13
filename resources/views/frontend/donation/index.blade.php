@@ -81,7 +81,13 @@
                                 <label for="comment">Comment <em style="font-weight:500">(optional)</em></label>
                                 <textarea style="font-weight: 600" class="form-control" name="comment"  id="comment" rows="3" placeholder="Write Something"></textarea>
                             </div>
-                            <button type="submit" class=" btn-submit btn btn-theme-colored" style="width: 100%;">
+                            <label for="terms" id="termsLabel">
+                            <input type="checkbox" name="terms" id="terms" value="accepted">
+                                    I have read and agree to the <a href="{{ route('frontend.terms.index') }}" class="text-danger" target="_blank"><u>Terms & Conditions</u></a>, <a href="{{ route('frontend.refund.index') }}" class="text-danger" target="_blank"><u>Refund Policy</u></a> and <a href="{{ route('frontend.privacy.index') }}" class="text-danger" target="_blank"><u>Privacy & Policy</u></a>.</label>
+                            <button
+                            type="submit"
+                            class=" btn-submit btn btn-theme-colored"
+                            style="width: 100%;">
                                 <i class="fa fa-money" aria-hidden="true"></i>
                                 Pay With Card / Mobile Banking / Bank
                                 <i class="fa fa-spinner fa-spin"></i>
@@ -246,8 +252,16 @@
 @section('footer_js')
     <script>
         $('.fa-spinner').hide();
+        $('.btn-submit').attr('disabled','');
         $('.btn-submit').click(function(){
             $('.fa-spinner').show();
+        });
+        $('#termsLabel').click(function(event){
+            if($('#terms').is(':checked') == true){
+                $('.btn-submit').removeAttr('disabled');
+            }else{
+                $('.btn-submit').attr('disabled','');
+            }
         });
         function openCurrency(evt, currencyName) {
             var i, tabcontent, tablinks;
@@ -262,11 +276,9 @@
             document.getElementById(currencyName).style.display = "block";
             evt.currentTarget.className += " active";
         }
-
         $(document).ready(function(e) {
             var $custom_other_amount = $("#custom_other_amount");
             $custom_other_amount.hide();
-
             $("#donate_form [name='amount']").change(function() {
                 var $this = $(this);
                 if ($this.val() == 'customAmountValue') {

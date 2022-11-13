@@ -89,11 +89,7 @@
                                     @endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="terms" id="termsLabel">
-                                    <input type="checkbox" name="terms" id="terms" value="accepted">
-                                    I have read and agree to the <a href="{{ route('frontend.terms.index') }}" class="text-danger" target="_blank"><u>Terms & Conditions</u></a>, <a href="{{ route('frontend.refund.index') }}" class="text-danger" target="_blank"><u>Refund Policy</u></a> and <a href="{{ route('frontend.privacy.index') }}" class="text-danger" target="_blank"><u>Privacy & Policy</u></a>.</label>
                                     <button
-                                        onclick="myFunction()"
                                         class="btn btn-submit btn-theme-colored btn-lg"
                                         style="font-weight:500; display:block; width:100%">
                                         Proceed to Payment
@@ -144,17 +140,11 @@
 @section('footer_js')
     <script>
         $('.fa-spinner').hide();
-        $('.btn-submit').attr('disabled','');
+
         $('.btn-submit').click(function(){
             $('.fa-spinner').show();
         });
-        $('#termsLabel').click(function(event){
-            if($('#terms').is(':checked') == true){
-                $('.btn-submit').removeAttr('disabled');
-            }else{
-                $('.btn-submit').attr('disabled','');
-            }
-        });
+
     </script>
 @endsection
 
