@@ -7,6 +7,9 @@
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
+    .ssl_payment_banner_pc{
+        display:none;
+    }
     .card-donation-detail{
         display:none;
     }
@@ -35,6 +38,9 @@
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
+    .ssl_payment_banner_pc{
+        display:none;
+    }
     .slider-title{
         font-size: 19px !important;
     }
@@ -51,6 +57,12 @@
 
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+    .ssl_payment_banner_mobile{
+        display:none;
+    }
+    .ssl_payment_banner_pc{
+        display:block;
+    }
     .slider-title{
         font-size: 19px !important;
     }
@@ -81,6 +93,7 @@
     .card-details{
         display:none;
     }
+
     #donate_form{
         margin: 0 auto;
         width: 70%;
@@ -118,6 +131,12 @@
 }
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 479px) {
+    .ssl_payment_banner_pc{
+        display:none;
+    }
+    .card-donation-detail{
+        display:none;
+    }
 }
 
 /* Extra Small Devices, Phones */

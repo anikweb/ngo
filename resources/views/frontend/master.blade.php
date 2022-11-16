@@ -287,79 +287,89 @@
         {{--  Main Content   --}}
         <!-- Divider: Clients -->
         <footer id="footer" class="footer" data-bg-img="{{ asset('assets/images/footer-bg.png') }}" data-bg-color="#25272e">
-            <div class="container pt-70 pb-40">
-            <div class="row border-bottom-black">
-                <div class="col-sm-6 col-md-3">
+            <div class="container pb-40 pt-40">
+
+                <div class="row border-bottom-black">
+                    <div class="col-sm-6 col-md-3">
+                        <div class="widget dark">
+                            <img class="mt-10 mb-20" alt="{{ generalSettings()->site_title }}" src="{{ asset('images/generalSettings/'.generalSettings()->logo) }}">
+                            <p  class="text-white">{{ generalSettings()->tagline }}</p>
+                            <ul class="list-inline mt-5">
+                                <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a href="tel:+88-02-8391224">+88-02-8391224</a> </li>
+                                <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a href="mailto:info@muktirbondhon.com">info@muktirbondhon.com</a> </li>
+                                <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-colored mr-5"></i> <a href="https://muktirbondhon.com">www.muktirbondhon.com</a> </li>
+                            </ul>
+                            <h4 class="text-theme-colored">Office Address</h4>
+                            <p class="text-white">61, Bijoynagar, Estern Arzoo, Room No. 06-5, Level 6, Dhaka-1000, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
                     <div class="widget dark">
-                        <img class="mt-10 mb-20" alt="{{ generalSettings()->site_title }}" src="{{ asset('images/generalSettings/'.generalSettings()->logo) }}">
-                        <p  class="text-white">{{ generalSettings()->tagline }}</p>
-                        <ul class="list-inline mt-5">
-                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a href="tel:+88-02-8391224">+88-02-8391224</a> </li>
-                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a href="mailto:info@muktirbondhon.com">info@muktirbondhon.com</a> </li>
-                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-globe text-theme-colored mr-5"></i> <a href="https://muktirbondhon.com">www.muktirbondhon.com</a> </li>
+                        <h5 class="widget-title line-bottom">Latest Events</h5>
+                        <div class="latest-posts">
+                            @foreach (events() as $event)
+                                <article class="post media-post clearfix pb-0 mb-10">
+                                    <a href="{{ route('frontend.events.show',$event->slug) }}" class="post-thumb">
+                                        <img width="80px" alt="{{ $event->title }}" src="{{ asset('images/projects/events/'.$event->image) }}">
+                                    </a>
+                                    <div class="post-right">
+                                    <h5 class="post-title mt-0 mb-5"><a href="{{ route('frontend.events.show',$event->slug) }}">{{ $event->title }}</a></h5>
+                                    <p class="post-date mb-0 font-12">{{ date('D m, Y',strtotime($event->event_date)) }}</p>
+                                    </div>
+                                </article>
+                            @endforeach
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="widget dark">
+                            <h5 class="widget-title line-bottom">Visit</h5>
+                            <ul class="list angle-double-right list-border">
+                            <li style="color:#e0e0e0 !important"><a href="{{ route('frontend.donate.index') }}">Donate</a></li>
+                            <li><a href="{{ route('frontend.projects.index') }}">Projects</a></li>
+                            <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
+                            <li><a href="{{ route('frontend.image.gallery') }}">Media</a></li>
+                            <li><a href="{{ route('frontend.volunteer.apply') }}">Join as Volunteer</a></li>
+                            <li><a href="{{ route('frontend.cooming.soon') }}">Blog</a></li>
+                            <li><a href="{{ route('frontend.terms.index') }}">Terms & Condition</a></li>
+                            <li><a href="{{ route('frontend.privacy.index') }}">Privacy & Policy</a></li>
+                            <li><a href="{{ route('frontend.refund.index') }}">Refund Policy</a></li>
+                            <li><a href="{{ route('frontend.faq.index') }}">FAQ</a></li>
+                            <li><a href="{{ route('frontend.cooming.soon') }}">Constitution</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <a href="{{ route("frontend.donate.index") }}">
+                            <div class="widget dark">
+                                <h5 class="widget-title line-bottom">Donate With</h5>
+                                <img class="ssl_payment_banner_pc" src="{{ asset("assets/images/ssl_commerz_mobile.png") }}" alt="ssl payment banner">
+                                <img class="ssl_payment_banner_mobile" src="{{ asset("assets/images/ssl_pay_chanel.png") }}" alt="ssl payment banner">
+                            </div>
+                        </a>
+                    </div>
+                    {{-- <div class="col-sm-6 col-md-3">
+                    <div class="widget dark">
+                        <h5 class="widget-title line-bottom">Opening Hours</h5>
+                        <div class="opening-hours">
+                        <ul class="list-border">
+                            <li class="clearfix"> <span> Mon - Tues :  </span>
+                            <div class="value pull-right"> 6.00 am - 10.00 pm </div>
+                            </li>
+                            <li class="clearfix"> <span> Wednes - Thurs :</span>
+                            <div class="value pull-right"> 8.00 am - 6.00 pm </div>
+                            </li>
+                            <li class="clearfix"> <span> Fri : </span>
+                            <div class="value pull-right"> 3.00 pm - 8.00 pm </div>
+                            </li>
+                            <li class="clearfix"> <span> Sun : </span>
+                            <div class="value pull-right"> Colosed </div>
+                            </li>
                         </ul>
-                        <h4 class="text-theme-colored">Office Address</h4>
-                        <p class="text-white">61, Bijoynagar, Estern Arzoo, Room No. 06-5, Level 6, Dhaka-1000, Bangladesh</p>
+                        </div>
                     </div>
+                    </div> --}}
                 </div>
-                <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Latest Events</h5>
-                    <div class="latest-posts">
-                        @foreach (events() as $event)
-                            <article class="post media-post clearfix pb-0 mb-10">
-                                <a href="{{ route('frontend.events.show',$event->slug) }}" class="post-thumb">
-                                    <img width="80px" alt="{{ $event->title }}" src="{{ asset('images/projects/events/'.$event->image) }}">
-                                </a>
-                                <div class="post-right">
-                                <h5 class="post-title mt-0 mb-5"><a href="{{ route('frontend.events.show',$event->slug) }}">{{ $event->title }}</a></h5>
-                                <p class="post-date mb-0 font-12">{{ date('D m, Y',strtotime($event->event_date)) }}</p>
-                                </div>
-                            </article>
-                        @endforeach
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Visit</h5>
-                    <ul class="list angle-double-right list-border">
-                    <li style="color:#e0e0e0 !important"><a href="{{ route('frontend.donate.index') }}">Donate</a></li>
-                    <li><a href="{{ route('frontend.projects.index') }}">Projects</a></li>
-                    <li><a href="{{ route('frontend.events.index') }}">Events</a></li>
-                    <li><a href="{{ route('frontend.image.gallery') }}">Media</a></li>
-                    <li><a href="{{ route('frontend.volunteer.apply') }}">Join as Volunteer</a></li>
-                    <li><a href="{{ route('frontend.cooming.soon') }}">Blog</a></li>
-                    <li><a href="{{ route('frontend.terms.index') }}">Terms & Condition</a></li>
-                    <li><a href="{{ route('frontend.privacy.index') }}">Privacy & Policy</a></li>
-                    <li><a href="{{ route('frontend.refund.index') }}">Refund Policy</a></li>
-                    <li><a href="{{ route('frontend.faq.index') }}">FAQ</a></li>
-                    <li><a href="{{ route('frontend.cooming.soon') }}">Constitution</a></li>
-                    </ul>
-                </div>
-                </div>
-                {{-- <div class="col-sm-6 col-md-3">
-                <div class="widget dark">
-                    <h5 class="widget-title line-bottom">Opening Hours</h5>
-                    <div class="opening-hours">
-                    <ul class="list-border">
-                        <li class="clearfix"> <span> Mon - Tues :  </span>
-                        <div class="value pull-right"> 6.00 am - 10.00 pm </div>
-                        </li>
-                        <li class="clearfix"> <span> Wednes - Thurs :</span>
-                        <div class="value pull-right"> 8.00 am - 6.00 pm </div>
-                        </li>
-                        <li class="clearfix"> <span> Fri : </span>
-                        <div class="value pull-right"> 3.00 pm - 8.00 pm </div>
-                        </li>
-                        <li class="clearfix"> <span> Sun : </span>
-                        <div class="value pull-right"> Colosed </div>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-                </div> --}}
-            </div>
             <div class="row mt-10">
                 {{-- <div class="col-md-5">
                 <div class="widget dark">
